@@ -1,0 +1,192 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+  post-render: quarto/scripts/restoreMarkdownToHeirarchy.sh
+  #resources:
+
+website:
+  title: "Effective Python: Notes"
+  page-navigation: true
+  open-graph: true
+  navbar:
+    search: true
+    left:
+      - href: index.qmd
+        text: Home
+  sidebar:
+    style: "docked"
+    collapse-level: 1
+    search: true
+    contents:
+      - section: Chapter_01/Chapter_01.qmd
+        contents:
+          - Chapter_01/Item_001/item_001.qmd
+          - Chapter_01/Item_002/item_002.qmd
+          - Chapter_01/Item_003/item_003.qmd
+          - Chapter_01/Item_004/item_004.qmd
+          - Chapter_01/Item_005/item_005.qmd
+          - Chapter_01/Item_006/item_006.qmd
+          - Chapter_01/Item_007/item_007.qmd
+          - Chapter_01/Item_008/item_008.qmd
+          - Chapter_01/Item_009/item_009.qmd
+      - section: Chapter_02/Chapter_02.qmd
+        contents:
+          - Chapter_02/Item_010/item_010.qmd
+          - Chapter_02/Item_011/item_011.qmd
+          - Chapter_02/Item_012/item_012.qmd
+          - Chapter_02/Item_013/item_013.qmd
+          - Chapter_02/Item_014/item_014.qmd
+          - Chapter_02/Item_015/item_015.qmd
+          - Chapter_02/Item_016/item_016.qmd
+      - section: Chapter_03/Chapter_03.qmd
+        contents:
+          - Chapter_03/Item_017/item_017.qmd
+          - Chapter_03/Item_018/item_018.qmd
+          - Chapter_03/Item_019/item_019.qmd
+          - Chapter_03/Item_020/item_020.qmd
+          - Chapter_03/Item_021/item_021.qmd
+          - Chapter_03/Item_022/item_022.qmd
+          - Chapter_03/Item_023/item_023.qmd
+          - Chapter_03/Item_024/item_024.qmd
+      - section: Chapter_04/Chapter_04.qmd
+        contents:
+          - Chapter_04/Item_025/item_025.qmd
+          - Chapter_04/Item_026/item_026.qmd
+          - Chapter_04/Item_027/item_027.qmd
+          - Chapter_04/Item_028/item_028.qmd
+          - Chapter_04/Item_029/item_029.qmd
+      - section: Chapter_05/Chapter_05.qmd
+        contents:
+          - Chapter_05/Item_030/item_030.qmd
+          - Chapter_05/Item_031/item_031.qmd
+          - Chapter_05/Item_032/item_032.qmd
+          - Chapter_05/Item_033/item_033.qmd
+          - Chapter_05/Item_034/item_034.qmd
+          - Chapter_05/Item_035/item_035.qmd
+          - Chapter_05/Item_036/item_036.qmd
+          - Chapter_05/Item_037/item_037.qmd
+          - Chapter_05/Item_038/item_038.qmd
+          - Chapter_05/Item_039/item_039.qmd
+      - section: Chapter_06/Chapter_06.qmd
+        contents:
+          - Chapter_06/Item_040/item_040.qmd
+          - Chapter_06/Item_041/item_041.qmd
+          - Chapter_06/Item_042/item_042.qmd
+          - Chapter_06/Item_043/item_043.qmd
+          - Chapter_06/Item_044/item_044.qmd
+          - Chapter_06/Item_045/item_045.qmd
+          - Chapter_06/Item_046/item_046.qmd
+          - Chapter_06/Item_047/item_047.qmd
+      - section: Chapter_07/Chapter_07.qmd
+        contents:
+          - Chapter_07/Item_048/item_048.qmd
+          - Chapter_07/Item_049/item_049.qmd
+          - Chapter_07/Item_050/item_050.qmd
+          - Chapter_07/Item_051/item_051.qmd
+          - Chapter_07/Item_052/item_052.qmd
+          - Chapter_07/Item_053/item_053.qmd
+          - Chapter_07/Item_054/item_054.qmd
+          - Chapter_07/Item_055/item_055.qmd
+          - Chapter_07/Item_056/item_056.qmd
+          - Chapter_07/Item_057/item_057.qmd
+      - section: Chapter_08/Chapter_08.qmd
+        contents:
+          - Chapter_08/Item_058/item_058.qmd
+          - Chapter_08/Item_059/item_059.qmd
+          - Chapter_08/Item_060/item_060.qmd
+          - Chapter_08/Item_061/item_061.qmd
+          - Chapter_08/Item_062/item_062.qmd
+          - Chapter_08/Item_063/item_063.qmd
+          - Chapter_08/Item_064/item_064.qmd
+          - Chapter_08/Item_065/item_065.qmd
+          - Chapter_08/Item_066/item_066.qmd
+      - section: Chapter_09/Chapter_09.qmd
+        contents:
+          - Chapter_09/Item_067/item_067.qmd
+          - Chapter_09/Item_068/item_068.qmd
+          - Chapter_09/Item_069/item_069.qmd
+          - Chapter_09/Item_070/item_070.qmd
+          - Chapter_09/Item_071/item_071.qmd
+          - Chapter_09/Item_072/item_072.qmd
+          - Chapter_09/Item_073/item_073.qmd
+          - Chapter_09/Item_074/item_074.qmd
+          - Chapter_09/Item_075/item_075.qmd
+          - Chapter_09/Item_076/item_076.qmd
+          - Chapter_09/Item_077/item_077.qmd
+          - Chapter_09/Item_078/item_078.qmd
+          - Chapter_09/Item_079/item_079.qmd
+      - section: Chapter_10/Chapter_10.qmd
+        contents:
+          - Chapter_10/Item_080/item_080.qmd
+          - Chapter_10/Item_081/item_081.qmd
+          - Chapter_10/Item_082/item_082.qmd
+          - Chapter_10/Item_083/item_083.qmd
+          - Chapter_10/Item_084/item_084.qmd
+          - Chapter_10/Item_085/item_085.qmd
+          - Chapter_10/Item_086/item_086.qmd
+          - Chapter_10/Item_087/item_087.qmd
+          - Chapter_10/Item_088/item_088.qmd
+          - Chapter_10/Item_089/item_089.qmd
+          - Chapter_10/Item_090/item_090.qmd
+          - Chapter_10/Item_091/item_091.qmd
+      - section: Chapter_11/Chapter_11.qmd
+        contents:
+          - Chapter_11/Item_092/item_092.qmd
+          - Chapter_11/Item_093/item_093.qmd
+          - Chapter_11/Item_094/item_094.qmd
+          - Chapter_11/Item_095/item_095.qmd
+          - Chapter_11/Item_096/item_096.qmd
+          - Chapter_11/Item_097/item_097.qmd
+          - Chapter_11/Item_098/item_098.qmd
+          - Chapter_11/Item_099/item_099.qmd
+      - section: Chapter_12/Chapter_12.qmd
+        contents:
+          - Chapter_12/Item_100/item_100.qmd
+          - Chapter_12/Item_101/item_101.qmd
+          - Chapter_12/Item_102/item_102.qmd
+          - Chapter_12/Item_103/item_103.qmd
+          - Chapter_12/Item_104/item_104.qmd
+          - Chapter_12/Item_105/item_105.qmd
+          - Chapter_12/Item_106/item_106.qmd
+          - Chapter_12/Item_107/item_107.qmd
+      - section: Chapter_13/Chapter_13.qmd
+        contents:
+          - Chapter_13/Item_108/item_108.qmd
+          - Chapter_13/Item_109/item_109.qmd
+          - Chapter_13/Item_110/item_110.qmd
+          - Chapter_13/Item_111/item_111.qmd
+          - Chapter_13/Item_112/item_112.qmd
+          - Chapter_13/Item_113/item_113.qmd
+          - Chapter_13/Item_114/item_114.qmd
+          - Chapter_13/Item_115/item_115.qmd
+      - section: Chapter_14/Chapter_14.qmd
+        contents:
+          - Chapter_14/Item_116/item_116.qmd
+          - Chapter_14/Item_117/item_117.qmd
+          - Chapter_14/Item_118/item_118.qmd
+          - Chapter_14/Item_119/item_119.qmd
+          - Chapter_14/Item_120/item_120.qmd
+          - Chapter_14/Item_121/item_121.qmd
+          - Chapter_14/Item_122/item_122.qmd
+          - Chapter_14/Item_123/item_123.qmd
+          - Chapter_14/Item_124/item_124.qmd
+          - Chapter_14/Item_125/item_125.qmd
+
+format:
+  html:
+    code-fold: false
+    code-links:
+      - repo
+      - binder
+  gfm:
+    filters:
+      - quarto/scripts/strip_ansi.lua
+  ipynb: default
+toc: true
+toc-depth: 6
+format-links: false
+execute:
+  enabled: true
+  error: true
+engine: jupyter

@@ -1,0 +1,3 @@
+[submodule "foundational-python-for-data-science"]
+	path = foundational-python-for-data-science
+	url = https://github.com/kbehrman/foundational-python-for-data-science.git

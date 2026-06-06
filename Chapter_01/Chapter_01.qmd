@@ -1,0 +1,9 @@
+---
+title: "Chapter 1: Learning Python in a Notebook Environment"
+---
+
+## Notes
+
+## Summary
+
+## Questions
