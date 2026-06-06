@@ -1,6 +1,5 @@
 # Chapter 1: Learning Python in a Notebook Environment
 
-
 - [Notes](#notes)
   - [Running Python Statements](#running-python-statements)
   - [Jupyter Notebooks](#jupyter-notebooks)
@@ -44,8 +43,8 @@ Hello
 
 - The traditional development flow is
 
-  1.  Experiment in the REPL
-  2.  Write software and transition to a file-based program
+  1. Experiment in the REPL
+  2. Write software and transition to a file-based program
 
 - A newer intermediate is to use an *interactive notebook*
 
