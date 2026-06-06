@@ -1,0 +1,67 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Foundational Python for Data Science: Notes",
+    "section": "",
+    "text": "pre-commit.ci status\nThis repository contains notes and code examples from the book, Foundational Python for Data Science by Kennedy Behrman"
+  },
+  {
+    "objectID": "index.html#contents",
+    "href": "index.html#contents",
+    "title": "Foundational Python for Data Science: Notes",
+    "section": "Contents",
+    "text": "Contents\n\nChapter 1 : Introduction to Notebooks"
+  },
+  {
+    "objectID": "index.html#attribution",
+    "href": "index.html#attribution",
+    "title": "Foundational Python for Data Science: Notes",
+    "section": "Attribution",
+    "text": "Attribution\nThe notes and code in this repository are based on the work of the original author. You can find their original supplied code at the attached submodule, or at the following github repository."
+  },
+  {
+    "objectID": "Chapter_01/Chapter_01.html",
+    "href": "Chapter_01/Chapter_01.html",
+    "title": "Chapter 1: Learning Python in a Notebook Environment",
+    "section": "",
+    "text": "Python is an interpreted language\n\nCan be run by reading a script\nOr through the interactive REPL\n\nTypically accessed via, python or python3\n\nTo see what version of python you have installed try the following\n\n\n$ python3 --version\n\nPython 3.14.3\n\nInvoking python without passing a script will instantiate the REPL\n\n$ python3\n\nPython 3.14.3 (main, Feb  3 2026, 22:52:18) [Clang 21.1.4 ] on linux\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n&gt;&gt;&gt; print(\"Hello\")\nHello\n\nInvoking python and passing a script (typically denoted by the extension .py) will execute the file\n\n$ python3 hello.py\nHello\n\nThe traditional development flow is\n\nExperiment in the REPL\nWrite software and transition to a file-based program\n\nA newer intermediate is to use an interactive notebook\n\nUseful to be able to have the interactivity and instant response of the REPL\nBut, also want to be able to group code and keep the reproducibility of a file system",
+    "crumbs": [
+      "Home",
+      "Chapter 1: Learning Python in a Notebook Environment"
+    ]
+  },
+  {
+    "objectID": "Chapter_01/Chapter_01.html#notes",
+    "href": "Chapter_01/Chapter_01.html#notes",
+    "title": "Chapter 1: Learning Python in a Notebook Environment",
+    "section": "",
+    "text": "Python is an interpreted language\n\nCan be run by reading a script\nOr through the interactive REPL\n\nTypically accessed via, python or python3\n\nTo see what version of python you have installed try the following\n\n\n$ python3 --version\n\nPython 3.14.3\n\nInvoking python without passing a script will instantiate the REPL\n\n$ python3\n\nPython 3.14.3 (main, Feb  3 2026, 22:52:18) [Clang 21.1.4 ] on linux\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n&gt;&gt;&gt; print(\"Hello\")\nHello\n\nInvoking python and passing a script (typically denoted by the extension .py) will execute the file\n\n$ python3 hello.py\nHello\n\nThe traditional development flow is\n\nExperiment in the REPL\nWrite software and transition to a file-based program\n\nA newer intermediate is to use an interactive notebook\n\nUseful to be able to have the interactivity and instant response of the REPL\nBut, also want to be able to group code and keep the reproducibility of a file system",
+    "crumbs": [
+      "Home",
+      "Chapter 1: Learning Python in a Notebook Environment"
+    ]
+  },
+  {
+    "objectID": "Chapter_01/Chapter_01.html#summary",
+    "href": "Chapter_01/Chapter_01.html#summary",
+    "title": "Chapter 1: Learning Python in a Notebook Environment",
+    "section": "Summary",
+    "text": "Summary",
+    "crumbs": [
+      "Home",
+      "Chapter 1: Learning Python in a Notebook Environment"
+    ]
+  },
+  {
+    "objectID": "Chapter_01/Chapter_01.html#questions",
+    "href": "Chapter_01/Chapter_01.html#questions",
+    "title": "Chapter 1: Learning Python in a Notebook Environment",
+    "section": "Questions",
+    "text": "Questions",
+    "crumbs": [
+      "Home",
+      "Chapter 1: Learning Python in a Notebook Environment"
+    ]
+  }
+]
