@@ -4,7 +4,9 @@
 - [Contents](#contents)
 - [Attribution](#attribution)
 
-[![](https://results.pre-commit.ci/badge/github/flempriere/foundational-data-science-for-python/main.svg)](https://results.pre-commit.ci/latest/github/flempriere/foundational-data-science-for-python/main)
+[![pre-commit.ci
+status](https://results.pre-commit.ci/badge/github/flempriere/foundational-data-science-for-python/main.svg)](https://results.pre-commit.ci/latest/github/flempriere/foundational-data-science-for-python/main)
+[![pages-build-deployment](https://github.com/flempriere/foundational-data-science-for-python/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/flempriere/foundational-data-science-for-python/actions/workflows/pages/pages-build-deployment)
 
 This repository contains notes and code examples from the book,
 [Foundational Python for Data Science by Kennedy
