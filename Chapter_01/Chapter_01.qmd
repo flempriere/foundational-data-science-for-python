@@ -4,6 +4,49 @@ title: "Chapter 1: Learning Python in a Notebook Environment"
 
 ## Notes
 
+### Running Python Statements
+
+- Python is an interpreted language
+    - Can be run by reading a script
+    - Or through the interactive REPL
+- Typically accessed via, `python` or `python3`
+    - To see what version of python you have installed try the following
+
+```shell
+$ python3 --version
+
+Python 3.14.3
+```
+
+- Invoking python without passing a script will instantiate the REPL
+
+```shell
+$ python3
+
+Python 3.14.3 (main, Feb  3 2026, 22:52:18) [Clang 21.1.4 ] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> print("Hello")
+Hello
+```
+
+- Invoking python and passing a script (typically denoted by the extension `.py`) will execute the file
+
+```shell
+$ python3 hello.py
+Hello
+```
+
+- The traditional development flow is
+
+  1. Experiment in the REPL
+  2. Write software and transition to a file-based program
+
+- A newer intermediate is to use an *interactive notebook*
+    - Useful to be able to have the interactivity and instant response of the REPL
+    - But, also want to be able to group code and keep the reproducibility of a file system
+
+### Jupyter Notebooks
+
 ## Summary
 
 ## Questions
