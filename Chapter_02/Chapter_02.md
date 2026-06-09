@@ -1,6 +1,5 @@
 # Chapter 2: Fundamentals of Python
 
-
 - [Notes](#notes)
   - [Basic Types](#basic-types)
   - [High Level vs Low Level](#high-level-vs-low-level)
@@ -117,7 +116,7 @@ print("x:", x ,"y:", y, "z:", z)
     Cell In[9], line 4
           1 x, y = 5, 6 # Statement hiding a tuple construction (5, 6), then tuple unpacking assignment x, y
           2 bar = x**2 if (x < y) and (y or z) else x // 2 # in-line conditional expression and integer division into variable assignment
-          3 
+          3
     ----> 4 print("x:", x ,"y:", y, "z:", z)
 
     NameError: name 'z' is not defined
@@ -138,7 +137,7 @@ print(f"x is {x} and y is {y}") # Combines x and y
 #### Expression Statements
 
 - Expression statements are statements that consist only of expressions
-  (See [Statements](#Statements))
+  (See [Statements](#statements))
 - Uncaptured values form expression statements are typically lost
 - However, in Notebooks if the last statement is an expression statement
   the value is normally printed
@@ -169,12 +168,12 @@ os.getcwd()
 
 - Values that check as `False` include,
 
-  1.  Any explicit `False` reference such as a `bool` variable
-  2.  Expressions returning `False`
-  3.  Expressions returning `None`
-  4.  The integer and float `0`, `0.0`
-  5.  Empty containers e.g. (`[]`)
-  6.  Empty strings e.g. (`""`)
+  1. Any explicit `False` reference such as a `bool` variable
+  2. Expressions returning `False`
+  3. Expressions returning `None`
+  4. The integer and float `0`, `0.0`
+  5. Empty containers e.g. (`[]`)
+  6. Empty strings e.g. (`""`)
 
 - Anything that is not `False` is `True`
 
@@ -185,14 +184,14 @@ assert(False)
 print("Passed assert!")
 ```
 
-    AssertionError: 
+    AssertionError:
     ---------------------------------------------------------------------------
     AssertionError                            Traceback (most recent call last)
     Cell In[14], line 1
     ----> 1 assert(False)
           2 print("Passed assert!")
 
-    AssertionError: 
+    AssertionError:
 
 - The above will proceed past the `assert`
 
@@ -269,12 +268,12 @@ print(f"x is {x}, y is {y}, z is {z}")
 
 - Best practice for variable naming follow are few heuristics
 
-  1.  Make variables names meaningful
+  1. Make variables names meaningful
       - This helps make readers understand the code
       - `x` is less meaningful than `first_name` or
         `weight_in_kilograms`
-  2.  Use `snake_case` to merge words
-  3.  Variable name lengths should be proportional to their importance
+  2. Use `snake_case` to merge words
+  3. Variable name lengths should be proportional to their importance
       - A temporary list indexing variable can be named `i`
         - Common mathematical convention
         - Short, indicates not an important variable in the whole
