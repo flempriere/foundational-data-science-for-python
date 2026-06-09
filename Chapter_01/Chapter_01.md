@@ -78,36 +78,39 @@ Hello
   1. Text
       - Written using the [markdown
         language](https://www.markdownguide.org/)
+
       - Executing a text cell will *render* the markdown
 
-``` {markdown}
-**Bold**
+        ``` markdown
+          **Bold**
 
-_italic_
+          _italic_
 
-*also italic*
+          *also italic*
 
-~strikethrough~
+          ~strikethrough~
 
-`monospace`
+          `monospace`
 
-# Heading
+          # Heading
 
-## Sub-heading
+          ## Sub-heading
 
-### sub-sub-heading
+          ### sub-sub-heading
 
-[A link](https://colab.research.google.com/notebooks/markdown_guide.ipynb)
-```
+          [A link](https://colab.research.google.com/notebooks/markdown_guide.ipynb)
+        ```
 
-1. Code Cells
-    - Executable cells of python code
-    - Can be comprised of multiple lines
-    - State is maintained between executions of cells
+  2. Code Cells
+      - Executable cells of python code
+      - Can be comprised of multiple lines
+      - State is maintained between executions of cells
 
 - Notebooks allow code to be built up *cell* by *cell*
+
   - Can rerun specific cells rather than the full document
   - Great for iterative prototyping and narrative story-telling
+
 - Cells are typically run either by pressing a play button or the
   shortcut `shift+enter`
 
@@ -136,9 +139,10 @@ _italic_
   system, especially useful for type-setting mathematical equations and
   diagrams.
 - LaTeX can be inserted into Markdown text cells either via
-  - Inline $latex$ format
+  - Inline $latex$ format using `$ text $`
 
-  - Paragraphed
+  - Paragraphed by wrapping the latex block in delimiting opening `$$`
+    and closing `$$`
 
     $$ \begin{align*}
         B' &= -\partial \times E, \\
@@ -217,7 +221,7 @@ import time
 %timeit time.sleep(1)
 ```
 
-    1 s ± 16.2 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    1 s ± 4.91 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
 
 - Or to render HTML
 
