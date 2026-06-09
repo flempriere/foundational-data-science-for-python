@@ -68,6 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../Chapter_02/Chapter_02.html" rel="next">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -199,6 +200,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../Chapter_01/Chapter_01.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Chapter 1: Learning Python in a Notebook Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Chapter_02/Chapter_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 2: Fundamentals of Python</span></a>
   </div>
 </li>
     </ul>
@@ -341,7 +348,11 @@ Note
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  ### sub-sub-heading</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">[</span><span class="ot">A link</span><span class="co">](https://colab.research.google.com/notebooks/markdown_guide.ipynb)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">[</span><span class="ot">A link</span><span class="co">](https://colab.research.google.com/notebooks/markdown_guide.ipynb)</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Unordered list</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Ordered list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul></li>
 <li>Code Cells
 <ul>
@@ -462,7 +473,7 @@ Note
 <li>Prepend the command with the <code>!</code> operator</li>
 </ul></li>
 </ul>
-<div id="576b4428" class="cell" data-execution_count="1">
+<div id="951faa58" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pwd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/home/runner/work/foundational-data-science-for-python/foundational-data-science-for-python/Chapter_01</code></pre>
@@ -471,7 +482,7 @@ Note
 <ul>
 <li>Shell output can be captured in Python variables to be used in the program</li>
 </ul>
-<div id="e8d2c73c" class="cell" data-execution_count="2">
+<div id="d3e9b04d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> <span class="op">!</span>ls</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -485,17 +496,17 @@ Note
 <li>Magic functions are special in-builts that adjust how a python program runs</li>
 <li>For example, jupyter provides an inbuilt of the python <code>timeit</code> statement for timing the execution of a cell</li>
 </ul>
-<div id="fe4674fe" class="cell" data-execution_count="3">
+<div id="619af3ee" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit time.sleep(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1 s ± 79.4 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)</code></pre>
+<pre><code>1 s ± 17.8 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)</code></pre>
 </div>
 </div>
 <ul>
 <li>Or to render HTML</li>
 </ul>
-<div id="42e25e7a" class="cell" data-execution_count="4">
+<div id="9a517076" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>html</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>marquee style<span class="op">=</span><span class="st">'width: 30%; color: blue;'</span><span class="op">&gt;&lt;</span>b<span class="op">&gt;</span>Whee<span class="op">!&lt;/</span>b<span class="op">&gt;&lt;/</span>marquee<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -979,6 +990,15 @@ Tip
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Chapter_02/Chapter_02.html" class="pagination-link" aria-label="Chapter 2: Fundamentals of Python">
+        <span class="nav-page-text">Chapter 2: Fundamentals of Python</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

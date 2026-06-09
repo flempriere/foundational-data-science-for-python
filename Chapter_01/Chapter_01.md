@@ -100,6 +100,10 @@ Hello
           ### sub-sub-heading
 
           [A link](https://colab.research.google.com/notebooks/markdown_guide.ipynb)
+
+          - Unordered list
+
+          1. Ordered list
         ```
   2.  Code Cells
       - Executable cells of python code
@@ -221,7 +225,7 @@ import time
 %timeit time.sleep(1)
 ```
 
-    1 s ± 4.91 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    1 s ± 3.58 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
 
 - Or to render HTML
 
