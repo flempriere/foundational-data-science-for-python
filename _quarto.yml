@@ -20,6 +20,7 @@ website:
     search: true
     contents:
       - Chapter_01/Chapter_01.qmd
+      - Chapter_02/Chapter_02.qmd
 
 format:
   html:

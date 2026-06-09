@@ -79,6 +79,10 @@ The name Jupyter is a derived from the languages, **Ju**lia, **Py**thon, **R**. 
          ### sub-sub-heading
 
          [A link](https://colab.research.google.com/notebooks/markdown_guide.ipynb)
+
+         - Unordered list
+
+         1. Ordered list
        ```
 
   2. Code Cells
