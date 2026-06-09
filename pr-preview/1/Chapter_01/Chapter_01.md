@@ -215,10 +215,10 @@ print(var)
 
 ``` python
 import time
-%timeit(time.sleep(1))
+%timeit time.sleep(1)
 ```
 
-    UsageError: Line magic function `%timeit(time.sleep(1))` not found.
+    1 s ± 5.53 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
 
 - Or to render HTML
 
