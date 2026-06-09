@@ -8,6 +8,8 @@ This repository contains notes and code examples from the book,
 
 ## Contents
 
+- [Chapter 1: Learning Python in a Notebook Environment](./Chapter_01/Chapter_01.md)
+
 ## Attribution
 
 The notes and code in this repository are based on the work of the original author. You can find their original supplied code at the attached submodule, or at the following [github repository](https://github.com/kbehrman/foundational-python-for-data-science).
