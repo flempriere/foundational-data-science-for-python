@@ -20,7 +20,8 @@ This repository contains notes and code examples from the book,
 
 ## Contents
 
-- [Chapter 1 : Introduction to Notebooks](./Chapter_01/Chapter_01.qmd)
+- [Chapter 1: Introduction to Notebooks](./Chapter_01/Chapter_01.qmd)
+- [Chapter 2: Fundamentals of Python](./Chapter_02/Chapter_02.qmd)
 
 ## Attribution
 
