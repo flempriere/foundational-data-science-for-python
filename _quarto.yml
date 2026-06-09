@@ -21,6 +21,7 @@ website:
     contents:
       - Chapter_01/Chapter_01.qmd
       - Chapter_02/Chapter_02.qmd
+      - Chapter_03/Chapter_03.qmd
 
 format:
   html:

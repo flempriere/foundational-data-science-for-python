@@ -10,6 +10,7 @@ This repository contains notes and code examples from the book,
 ## Contents
 
 - [Chapter 1: Learning Python in a Notebook Environment](./Chapter_01/Chapter_01.md)
+- [Chapter 2: Fundamentals of Python](./Chapter_02/Chapter_02.md)
 
 ## Attribution
 
