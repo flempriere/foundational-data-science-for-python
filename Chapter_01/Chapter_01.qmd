@@ -61,25 +61,25 @@ The name Jupyter is a derived from the languages, **Ju**lia, **Py**thon, **R**. 
      - Written using the [markdown language](https://www.markdownguide.org/)
      - Executing a text cell will *render* the markdown
 
-```{markdown}
-**Bold**
+       ```markdown
+         **Bold**
 
-_italic_
+         _italic_
 
-*also italic*
+         *also italic*
 
-~strikethrough~
+         ~strikethrough~
 
-`monospace`
+         `monospace`
 
-# Heading
+         # Heading
 
-## Sub-heading
+         ## Sub-heading
 
-### sub-sub-heading
+         ### sub-sub-heading
 
-[A link](https://colab.research.google.com/notebooks/markdown_guide.ipynb)
-```
+         [A link](https://colab.research.google.com/notebooks/markdown_guide.ipynb)
+       ```
 
   2. Code Cells
      - Executable cells of python code
@@ -110,8 +110,8 @@ _italic_
 
 - [LaTeX](https://www.latex-project.org/about/) is a type-setting system, especially useful for type-setting mathematical equations and diagrams.
 - LaTeX can be inserted into Markdown text cells either via
-   - Inline $latex$ format
-   - Paragraphed
+   - Inline $latex$ format using `$ text $`
+   - Paragraphed by wrapping the latex block in delimiting opening `$$` and closing `$$`
 
      $$
       \begin{align*}
