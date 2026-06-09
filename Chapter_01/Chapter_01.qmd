@@ -178,7 +178,7 @@ print(var)
 
 ```{python}
 import time
-%timeit(time.sleep(1))
+%timeit time.sleep(1)
 ```
 
 - Or to render HTML
