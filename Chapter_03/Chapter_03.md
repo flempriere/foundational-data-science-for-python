@@ -9,6 +9,8 @@
   - [Mathematical Operations](#mathematical-operations)
   - [Lists and Tuples](#lists-and-tuples)
     - [Creating Lists and Tuples](#creating-lists-and-tuples)
+    - [Adding and Removing Items](#adding-and-removing-items)
+    - [Unpacking](#unpacking)
 - [Summary](#summary)
 - [Questions](#questions)
 
@@ -345,23 +347,12 @@ print(tuple_b)
 list_a = list("a")
 print(type(list_a))
 
-list_b = list("d", "e", "f")
+list_b = ["d", "e", "f"]
 print(type(list_b))
 ```
 
     <class 'list'>
-
-    TypeError: list expected at most 1 argument, got 3
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[18], line 4
-          1 list_a = list("a")
-          2 print(type(list_a))
-          3
-    ----> 4 list_b = list("d", "e", "f")
-          5 print(type(list_b))
-
-    TypeError: list expected at most 1 argument, got 3
+    <class 'list'>
 
 - Tuples work similar
   1. The `tuple` constructor
@@ -383,23 +374,150 @@ tuple_c = ("e")
 print(type(tuple_c))
 
 # Correct usage of parentheses for a tuple of size 1
-tuple_d = ("f")
+tuple_d = ("f",)
 print(type(tuple_d))
 
 # Unwrapped comma-separated list
-
 tuple_e = "g", "h"
-type(tuple_e)
+print(type(tuple_e))
 ```
 
     <class 'tuple'>
     <class 'tuple'>
     <class 'str'>
-    <class 'str'>
+    <class 'tuple'>
+    <class 'tuple'>
 
-    tuple
+#### Adding and Removing Items
 
--
+- List’s can be extended or removed
+  - `append` adds an item to the end of the list
+    - This is the most efficient way to do so
+  - `insert` can be used to add an item at a specific index
+    - Every subsequent item is shuffled down one
+    - This is more expensive than an `append` due to the shuffle
+    - This difference is only really significant when doing a large
+      number of `insert` operations and/or on big lists
+
+``` python
+flavours = ["Chocolate", "Strawberry"]
+print(flavours)
+
+# appending an item
+flavours.append("Vanilla")
+print(flavours)
+
+# inserting an item
+flavours.insert("Caramel", 1)
+print(flavours)
+```
+
+    ['Chocolate', 'Strawberry']
+    ['Chocolate', 'Strawberry', 'Vanilla']
+
+    TypeError: 'str' object cannot be interpreted as an integer
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    Cell In[20], line 9
+          5 flavours.append("Vanilla")
+          6 print(flavours)
+          7
+          8 # inserting an item
+    ----> 9 flavours.insert("Caramel", 1)
+         10 print(flavours)
+
+    TypeError: 'str' object cannot be interpreted as an integer
+
+- The `pop` method removes an item
+  - By default the last item is removed
+  - Optionally accepts an index for the item to remove
+- The item that is removed is returned by the `pop` method
+  - Subsequent items will be shuffled down
+
+``` python
+flavour = ["Chocolate", "Caramel", "Strawberry", "Vanilla"]
+
+# Default `pop` call
+print(flavour.pop())
+
+# `pop` with an index
+print(flavour.pop(1))
+```
+
+    Vanilla
+    Caramel
+
+- To merge two lists there are two methods
+  1. Use the concatenation operator `+`
+      - Returns a new list
+  2. Use the `extend` method
+      - Modifies a list in place
+      - Returns `None`
+
+``` python
+a = ["a", "b", "c"]
+b = ["d", "e", "f"]
+# Using the concatenation technique
+print(f"a + b =", a + b)
+print(f"a = {a}\nb = {b}")
+
+# Using the `extend` method
+print(f"a.extend(b)=", a.extend(b))
+print(f"a = {a}\nb = {b}")
+```
+
+    a + b = ['a', 'b', 'c', 'd', 'e', 'f']
+    a = ['a', 'b', 'c']
+    b = ['d', 'e', 'f']
+    a.extend(b)= None
+    a = ['a', 'b', 'c', 'd', 'e', 'f']
+    b = ['d', 'e', 'f']
+
+> [!CAUTION]
+>
+> **Nested Lists**
+>
+> Consider the problem of trying to initialise a series of nested lists.
+> You might be tempted to use list multiplication like,
+>
+> ``` python
+> lists = [[]] * 4
+> print(lists)
+> ```
+>
+>     [[], [], [], []]
+>
+> This looks like we’ve created a list containing four sub-lists but if
+> we try to modify one of the sub-lists we find,
+>
+> ``` python
+> lists = [[]] * 4
+> lists[-1].append(4)
+> print(lists)
+> ```
+>
+>     [[4], [4], [4], [4]]
+>
+> We can see that *all* of the sub-lists are modified! Why is this? This
+> is because, using multiplication doesn’t repeat the *construction* of
+> the list, but merely duplicates the *reference* to the list. Each
+> sub-list is therefore a reference to the same underlying list object.
+> This will happen with any *mutable* type in Python.
+>
+> A way around this is to use a technique called a list comprehension,
+> (which tends to be the more natural way to generate lists)
+>
+> ``` python
+> lists = [[] for _ in range(4)]
+> lists[-1].append(4)
+> print(lists)
+> ```
+>
+>     [[], [], [], [4]]
+>
+> We’ll discuss list comprehensions in more detail later.
+
+#### Unpacking
 
 ## Summary
 
