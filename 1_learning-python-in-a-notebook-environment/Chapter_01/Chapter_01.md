@@ -201,7 +201,7 @@ Hello
 !pwd
 ```
 
-    /home/runner/work/foundational-data-science-for-python/foundational-data-science-for-python/Chapter_01
+    /home/runner/work/foundational-data-science-for-python/foundational-data-science-for-python/1_learning-python-in-a-notebook-environment/Chapter_01
 
 - Shell output can be captured in Python variables to be used in the
   program
@@ -225,7 +225,7 @@ import time
 %timeit time.sleep(1)
 ```
 
-    1 s ± 76.2 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    1 s ± 15 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
 
 - Or to render HTML
 
