@@ -592,7 +592,7 @@ print(" a is in my_list", a in my_list)
 
 # Question 2
 my_string = "bee"
-print(f"b appears {my_string.count()} times in my_string")
+print(f"b appears {my_string.count("b")} times in my_string")
 
 # Question 3
 my_list.append(a)
