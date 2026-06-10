@@ -1,6 +1,5 @@
 # Chapter 3: Sequences
 
-
 - [Notes](#notes)
   - [Shared Operations](#shared-operations)
     - [Testing Membership](#testing-membership)
@@ -23,11 +22,11 @@
   the *sequence* type
   - These are collections that are finite and ordered
 - Python has a number of different concrete sequence implementations
-  1.  `list`
-  2.  `tuple`
-  3.  `string`
-  4.  `bytes`
-  5.  ranges
+  1. `list`
+  2. `tuple`
+  3. `string`
+  4. `bytes`
+  5. ranges
 
 ### Shared Operations
 
@@ -199,7 +198,7 @@ print(max(mixed_list))
     TypeError                                 Traceback (most recent call last)
     Cell In[10], line 3
           1 mixed_list = ["Free", 2, object()]
-          2 
+          2
     ----> 3 print(max(mixed_list))
 
     TypeError: '>' not supported between instances of 'int' and 'str'
@@ -328,7 +327,7 @@ print(tuple_b)
     Cell In[17], line 9
           5 list_a[0] = "-a"
           6 print(list_a)
-          7 
+          7
           8 # Attempting to mutate a tuple
     ----> 9 tuple_b[0] = "g"
          10 print(tuple_b)
@@ -339,8 +338,8 @@ print(tuple_b)
 
 - Lists are created a few ways,
 
-  1.  The `list` constructor
-  2.  Wrapping a comma-separated list in `[]`
+  1. The `list` constructor
+  2. Wrapping a comma-separated list in `[]`
 
 ``` python
 list_a = list("a")
@@ -358,17 +357,17 @@ print(type(list_b))
     Cell In[18], line 4
           1 list_a = list("a")
           2 print(type(list_a))
-          3 
+          3
     ----> 4 list_b = list("d", "e", "f")
           5 print(type(list_b))
 
     TypeError: list expected at most 1 argument, got 3
 
 - Tuples work similar
-  1.  The `tuple` constructor
-  2.  Wrapping a comma-separated list in `()`
+  1. The `tuple` constructor
+  2. Wrapping a comma-separated list in `()`
       - A tuple of length one requires a terminating comma
-  3.  Any unwrapped comma-separated list
+  3. Any unwrapped comma-separated list
 
 ``` python
 # using the tuple constructor
@@ -400,7 +399,7 @@ type(tuple_e)
 
     tuple
 
-- 
+-
 
 ## Summary
 
