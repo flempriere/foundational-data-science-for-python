@@ -9,9 +9,15 @@ This repository contains notes and code examples from the book,
 
 ## Contents
 
-- [Chapter 1: Learning Python in a Notebook Environment](./Chapter_01/Chapter_01.md)
+### I: Learning Python in a Notebook Environment
+
+- [Chapter 1: Introduction Notebooks](./Chapter_01/Chapter_01.md)
 - [Chapter 2: Fundamentals of Python](./Chapter_02/Chapter_02.md)
 - [Chapter 3: Sequences](./Chapter_03/Chapter_03.md)
+
+### II: Data Science Libraries
+
+### III: Intermediate Python
 
 ## Attribution
 

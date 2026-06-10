@@ -88,7 +88,7 @@ print(f"x is {x} and y is {y}") # Combines x and y
 
 #### Expression Statements
 
-- Expression statements are statements that consist only of expressions (See [Statements](#Statements))
+- Expression statements are statements that consist only of expressions (See [Statements](#statements))
 - Uncaptured values form expression statements are typically lost
 - However, in Notebooks if the last statement is an expression statement the value is normally printed
     - This behaviour is also seen in the python REPL

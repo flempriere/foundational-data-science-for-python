@@ -365,6 +365,242 @@ We'll discuss list comprehensions in more detail later.
 
 #### Unpacking
 
+- You can assign multiple values from a sequence to variables using the *unpacking* syntax
+
+```{python}
+a, b, c = (1, 3, 4)
+
+print(f"a is {a}\nb is {b}\n c is {c}")
+```
+
+- The unpacking operator `*` can be combined with variables to assign *all* leftover values to a specific variable following the capture pattern
+- For example, to capture all but the last two elements in `first`
+
+```{python}
+*first, middle, last = ["horse", "carrot", "swan", "burrito", "fly"]
+print(f"first is: {first}\nmiddle is: {middle}\nlast is: {last}")
+```
+
+- If we want to capture the first and the last, and discard the rest
+
+```{python}
+first, *middle, last = ["horse", "carrot", "swan", "burrito", "fly"]
+print(f"first is {first}\nmiddle is {middle}\nlast is: {last}")
+```
+
+#### Sorting Lists
+
+- The ordering of lists can be changed via the `sort` and `reverse` methods
+    - Like `min` and `max` they require values to be comparable
+    - Liable to break for mixed-type lists
+
+```{python}
+name = "Ignatius"
+letters = list(name)
+print("Unsorted:", letters)
+
+letters.sort()
+print("Sorted:", letters)
+
+letters.reverse()
+print("Reversed:", letters)
+```
+
+### Strings
+
+- A string is a sequence of text characters
+- Python strings are by definition Unicode
+- As mentioned Python strings are delimited by `'` or `"`
+    - Both are equivalent
+
+```{python}
+str_a = 'Here is a string'
+print(str_a)
+
+print("Here is a string" == 'Here is a string')
+```
+
+- To include a quote in a string, delimit it with the other type of quote
+
+```{python}
+# This works
+print('Here "is" a string')
+
+# This doesn't, since the double-quote delimiters results in the string being split
+print("Here "is" a string")
+```
+
+- To write multiple line strings use a *triple-quoted* string
+    - Either `'''` or `"""`
+
+```{python}
+a_very_large_phrase = """
+Wikipedia is hosted by the Wikimedia Foundation,
+a non-profit organisation that also hosts a range of other projects
+"""
+print(a_very_large_phrase)
+```
+
+- Some special characters are represented using an *escape sequence*
+    - This include tabs and newlines for examples
+    - These are denoted by a backslash `\` followed by a letter for the given character, e.g. `\t` is for tab
+
+- When representing a windows path `\` is also the path separator
+    - Means we need to use a double `\\` to escape the `\` to make it a literal backslash
+
+```{python}
+# broken path
+windows_path = "c:\row\the\boat\now"
+print(f"Broken path:\n{windows_path}")
+
+# fixed path
+fixed_windows_path = "c:\\row\\the\\boat\\now"
+print(f"Fixed path:\n{fixed_windows_path}")
+```
+
+- The alternative is to use a *raw* string
+    - All characters are then interpreted literally
+    - Done by prepending the string delimiters with `r`
+
+```{python}
+raw_path = r"c:\row\the\boat\now"
+print(raw_path)
+```
+
+- `str` contains a number of helper methods for converting between typography forms
+
+```{python}
+captain = "Patrick Taylor"
+
+print("Default:", captain)
+print("Capitalised:", captain.capitalize())
+print("Lowercase:", captain.lower())
+print("Uppercase:", captain.upper())
+print("Swapped case:", captain.swapcase())
+print("Title case:", captain.title())
+```
+
+- Formatted strings or *f-strings* were introduced in Python 3.6 to simply the process of injecting variable values into a string
+    - Prepended by `f`
+    - Variables are injected by the syntax `{expression}` within a string
+        - `{}` denotes a replacement field
+        - `expression` is an expression to be evaluated for the value to display
+        - These fields can also have additional *format specifiers* which control how the value is displayed
+
+```{python}
+strings_count = 5
+frets_count = 24
+formatted_str = f"Noam Pikelny's banjo has {strings_count} strings and {frets_count} frets"
+print(formatted_str)
+```
+
+- As mentioned, the injected value can be an expression rather than a variable
+
+```{python}
+a = 12
+b = 32
+result_str = f"{a} times {b} equals {a * b}"
+print(result_str)
+```
+
+- One can even inject elements for example
+
+```{python}
+players = ["Tony Trischka", "Bill Evans", "Alan Munde"]
+formatted_str = f"Performances will be held by {players[1]}, {players[0]}, and {players[2]}"
+print(formatted_str)
+```
+
+### Ranges
+
+- Ranges are an efficient way to represent an ordered sequence of values
+- Useful for specifying loop bounds
+- Like [slices](#slicing) ranges take a `start`, `stop` and `step` parameter
+    - `start` is optional, by default $0$
+        - `start` is included in the range
+    - `stop` is required
+        - `stop` is excluded from the range
+    - `step` is optional
+        - $1$ by default
+        - Can use negative step values to count down
+
+```{python}
+# Range with optional start excluded
+r_1 = range(10) # interval [0, 10)
+print(r_1) # Range object
+print("list(range(10)):", list(r_1)) # Converted to a list
+
+# Range with optional start included
+r_2 = range(1, 10) # interval [1, 10)
+print("list(range(1, 10)):", list(r_2)) # Converted to a list
+
+# Range with optional step included
+r_3 = range(0, 10, 2)
+print("list(range(0, 10, 2))", list(r_3))
+
+# Range with negative step
+r_4 = range(10, 0, -2)
+print("list(range(10 ,0, -2))", list(r_4))
+```
+
+- `range` objects generate and return their numbers one at a time
+    - Means there is a reduced memory footprint over a list for large ranges
+
 ## Summary
 
+- A sequence type in python represents an ordered, finite collection of values
+- Concrete implementations of sequences include `list`, `tuple`, `str` and `range`
+    - List and Tuple are arbitrary length, mixed value collections
+        - Lists are *mutable* meaning their items can be added or removed
+        - Tuples are *immutable* meaning their contents are fixed once created
+    - Strings are sequences representing unicode text characters
+    - Ranges are a memory efficient description of a range of integer sequences
+- Sequence types are very commonly used in python
+
 ## Questions
+
+1. How would you test whether `a` is in the list `my_list`
+
+   - We use the `in` operator, as `a in my_list`
+   - This returns `True` if `a` is contained in `my_list`
+
+2. How would you find out how many times `b` appears in a string named `my_string`?
+
+   - We can use the `count` method on the string type e.g. `my_string.count("b")`
+
+3. How would you add `a` to the end of the list `my_list`
+
+   - We can use the `append` method on a list, e.g. `my_list.append("a")`
+
+4. Are the strings `'superior'` and `"superior"` equal?
+
+   - Yes, Python strings can be delimited by `'` or `"` but the string is considered the same regardless
+
+5. How would you make a range going from $3$ to $13$?
+
+    - We would write `range(3, 14)`
+    - This is because ranges are *inclusive* in the `start` argument, and *exclusive* in the `end` argument
+
+- We can see the results below,
+
+```{python}
+# Question 1
+a = "Hello,"
+my_list = list("World!")
+
+print(" a is in my_list", a in my_list)
+
+# Question 2
+my_string = "bee"
+print(f"b appears {my_string.count()} times in my_string")
+
+# Question 3
+my_list.append(a)
+print("my_list after calling my_list.append(a) is:", my_list)
+
+# Question 4
+print("The strings  'superior' and \"superior\" are equal:", 'superior' == "superior")s
+
+# Question 5
+print("The numbers generated by range(3, 14) are:", list(range(3, 14)))
+```
