@@ -13,7 +13,7 @@ title: "Chapter 3: Sequences"
   2. `tuple`
   3. `string`
   4. `bytes`
-  5. ranges
+  5. `range`
 
 ### Shared Operations
 
