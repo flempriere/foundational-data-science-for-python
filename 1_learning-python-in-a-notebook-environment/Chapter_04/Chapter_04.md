@@ -1,0 +1,89 @@
+# Chapter 4: Other Data Structures
+
+
+- [Notes](#notes)
+  - [Dictionaries](#dictionaries)
+    - [Creating Dictionaries](#creating-dictionaries)
+    - [Accessing, Adding and Updating
+      Keys](#accessing-adding-and-updating-keys)
+- [Summary](#summary)
+- [Questions](#questions)
+
+## Notes
+
+- Python contains a number of other data structures that are not
+  [sequence types](../Chapter_03/Chapter_03.qmd)
+- Dictionaries and sets are two common alternative data structures in
+  Python
+
+### Dictionaries
+
+- Dictionaries store key/value pairs
+  - You can think of this as like a list, but rather than being indexed
+    by their position in the list we use *key* value
+- Using key-based look-ups makes dictionaries very quick at testing for
+  if it contains a specific key
+  - Compared to lists which can be slow to look for a specific value
+    since they might need to iterate over all the elements
+- For example we might use a dictionary to associate a student, their
+  height and a GPA
+- Dictionaries are declared using the
+  `{key_1 :value_1, key_2 : value_2, ...}` syntax
+  - i.e. a `{}` delimited, comma-separated list of `key:value` pairs
+    - They key and the value are separated by a `:`
+
+``` python
+person = {"name": "Betty", "height": 62, "gpa": 3.6}
+print(person)
+```
+
+    {'name': 'Betty', 'height': 62, 'gpa': 3.6}
+
+- The above dictionary contains
+  1.  The keys `"name"`, `"height"` and `"gpa"`,
+  2.  The values `"Betty"`, `62` and `3.6`
+- Dictionary values can be of *any* type
+- Dictionary keys have some restrictions
+  - Fundamental types like `int` and `str` will work
+
+#### Creating Dictionaries
+
+- As seen dictionaries can be created with the a brace-delimited comma
+  separated list
+- To create an empty dictionary, simply pass an empty list like `{}`
+
+``` python
+dictionary = {}
+print(f"dictionary is of type {type(dictionary)} and has value {dictionary}")
+```
+
+    dictionary is of type <class 'dict'> and has value {}
+
+- The alternative is to call the `dict` method
+  - An empty call to `dict` also creates an empty list
+  - Optionally can pass a comma-separated list of *keyword* arguments
+  - Or, optionally accept key, value pairs as a sequence of sequences
+
+``` python
+# empty `dict` call
+dictionary = dict()
+print(f"Dictionary created by the call dict(): {dictionary}")
+
+# Using `dict` to create a non-empty `dict` via kwargs
+subject_1 = dict(name="Paula", height=64, gpa=3.8, ranking=1)
+print("Subject 1:", subject_1)
+
+# Using `dict` to create non-empty dict via nested sequences
+subject_2 = dict([["name", "Paula"], ["height", 64], ["gpa", 3.8], ["ranking", 1]])
+print("Subject 2:", subject_2)
+```
+
+    Dictionary created by the call dict(): {}
+    Subject 1: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}
+    Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}
+
+#### Accessing, Adding and Updating Keys
+
+## Summary
+
+## Questions
