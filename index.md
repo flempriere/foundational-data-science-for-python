@@ -2,6 +2,10 @@
 
 
 - [Contents](#contents)
+  - [I: Learning Python in a Notebook
+    Environment](#i-learning-python-in-a-notebook-environment)
+  - [II: Data Science Libraries](#ii-data-science-libraries)
+  - [III: Intermediate Python](#iii-intermediate-python)
 - [Attribution](#attribution)
 
 [![pre-commit.ci
@@ -15,8 +19,18 @@ Behrman](https://www.amazon.com.au/dp/0136624359)
 
 ## Contents
 
-- [Chapter 1: Introduction to Notebooks](./Chapter_01/Chapter_01.qmd)
-- [Chapter 2: Fundamentals of Python](./Chapter_02/Chapter_02.qmd)
+### I: Learning Python in a Notebook Environment
+
+- [Chapter 1: Introduction to
+  Notebooks](./1_learning-python-in-a-notebook-environment/Chapter_01/Chapter_01.qmd)
+- [Chapter 2: Fundamentals of
+  Python](./1_learning-python-in-a-notebook-environment/Chapter_02/Chapter_02.qmd)
+- [Chapter 3:
+  Sequences](./1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.qmd)
+
+### II: Data Science Libraries
+
+### III: Intermediate Python
 
 ## Attribution
 

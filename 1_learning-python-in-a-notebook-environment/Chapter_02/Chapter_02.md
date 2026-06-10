@@ -142,7 +142,7 @@ print(f"x is {x} and y is {y}") # Combines x and y
 #### Expression Statements
 
 - Expression statements are statements that consist only of expressions
-  (See [Statements](#Statements))
+  (See [Statements](#statements))
 - Uncaptured values form expression statements are typically lost
 - However, in Notebooks if the last statement is an expression statement
   the value is normally printed
@@ -165,7 +165,7 @@ import os
 os.getcwd()
 ```
 
-    '/home/runner/work/foundational-data-science-for-python/foundational-data-science-for-python/Chapter_02'
+    '/home/runner/work/foundational-data-science-for-python/foundational-data-science-for-python/1_learning-python-in-a-notebook-environment/Chapter_02'
 
 #### Assert Statements
 
@@ -374,8 +374,8 @@ print(generator_func())
 print(generator_func())
 ```
 
-    <generator object generator_func at 0x7fcf0be8c940>
-    <generator object generator_func at 0x7fcf0be8c940>
+    <generator object generator_func at 0x7f9d38f0cc40>
+    <generator object generator_func at 0x7f9d38f0cc40>
 
 #### Raise Statements
 
