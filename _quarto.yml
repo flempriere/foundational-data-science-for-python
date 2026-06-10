@@ -19,8 +19,11 @@ website:
     collapse-level: 1
     search: true
     contents:
-      - Chapter_01/Chapter_01.qmd
-      - Chapter_02/Chapter_02.qmd
+      - section: "I: Learning Python in a Notebook Environment"
+        contents:
+          - 1_learning-python-in-a-notebook-environment/Chapter_01/Chapter_01.qmd
+          - 1_learning-python-in-a-notebook-environment/Chapter_02/Chapter_02.qmd
+          - 1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.qmd
 
 format:
   html:
