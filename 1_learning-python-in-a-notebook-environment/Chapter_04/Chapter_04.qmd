@@ -85,11 +85,11 @@ student["applied"] = "2019-10-31"
 print(student)
 
 # overwriting a key
-student_record["gpa"] = 3.0
+student["gpa"] = 3.0
 print(student["gpa"])
 
 # overwriting a key using the inplace addition operator
-student_record["gpa"] += 1.0
+student["gpa"] += 1.0
 print(student["gpa"])
 ```
 
@@ -136,7 +136,7 @@ print("popitem returned:", student.popitem())
 print("pop('name') returned:", student.pop("name"))
 
 # Using pop with a default value to handle missing key
-print("pop('id', default=0):", student.pop("id", default=None))
+print("pop('id', default=0):", student.pop("id", None))
 ```
 
 #### Dictionary Views
@@ -219,7 +219,7 @@ student = {"name": "Paula", "height": 64, "gpa": 3.8}
 
 # Keys view
 keys = student.keys()
-print("reversed(keys):", reversed(keys))
+print("reversed(keys):", list(reversed(keys)))
 ```
 
 - `dict_key` objects are *set-like*
@@ -292,7 +292,7 @@ student = {"name": "Paula", "height": 64, "gpa": 3.8}
 
 try:
     print(student["id"])
-except ValueError:
+except KeyError:
     print("ID not found")
 ```
 
@@ -313,7 +313,7 @@ print("name:", student.get("name"))
 print("ID:", student.get("id"))
 
 # Specified default
-print("major:", student.get("major", default="Undeclared"))
+print("major:", student.get("major", "Undeclared"))
 ```
 
 #### Valid Key Types
@@ -351,7 +351,7 @@ dictionary = {1: 1, "a": 2, 2.3: 3, ("b", "c"): 4, b"bytes": 5, range(3): 6}
 print("A dict showing a range of key types:", dictionary)
 
 # Invalid key type
-print("Trying to use a list a key-type")
+print("Trying to use a list as a key")
 list_keyed_dictionary = {["a", "b"]: 1}
 print("A dict using a list as a key:", list_keyed_dict)
 ```
@@ -555,7 +555,7 @@ print(one_to_six >= one_to_three)
 print(evens >= one_to_three)
 
 print("one_to_six is a proper superset of one_to_three:", one_to_six > one_to_three)
-print("one_to_six is a proper superset of one_to_six": one_to_six > one_to_six)
+print("one_to_six is a proper superset of one_to_six":, one_to_six > one_to_six)
 ```
 
 #### Union
@@ -660,7 +660,7 @@ r0 = range(1, 8, step=2)
 unique_numbers.intersection_update(r0)
 print("unique numbers after intersection update:", unique_numbers)
 
-unique_numbers = {1, 2 3}
+unique_numbers = {1, 2, 3}
 unique_numbers &= evens
 print("unique numbers after &= update:", unique_numbers)
 
@@ -767,7 +767,7 @@ print("Method 3:", {"name": "Smuah", "height": 62})
 
 print("Question 2:")
 student = {"name": "Paula", "height": 64, "gpa": 3.8}
-print("Before modification:" student)
+print("Before modification:", student)
 student["gpa"] = 4.0
 print("After modification:", student)
 
