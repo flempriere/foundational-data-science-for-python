@@ -348,10 +348,10 @@ print("Union:", admission_record.keys() | student_record.keys())
 ```
 
     Testing key equality: False
-    Symmetric Difference: {'admitted', 'gpa', 'minor', 'advisor', 'major'}
-    Intersection: {'first', 'last', 'id'}
+    Symmetric Difference: {'major', 'admitted', 'minor', 'advisor', 'gpa'}
+    Intersection: {'last', 'id', 'first'}
     Difference: {'admitted'}
-    Union: {'admitted', 'gpa', 'minor', 'first', 'last', 'advisor', 'major', 'id'}
+    Union: {'major', 'first', 'last', 'admitted', 'minor', 'advisor', 'id', 'gpa'}
 
 - `dict_items` views are useful for iterating over the `key:value` pairs
   in dictionary
@@ -513,7 +513,7 @@ print("Calling __hash__ on string:", "abc".__hash__())
 print("Calling __hash__ on a list:", list("abc").__hash__())
 ```
 
-    Calling __hash__ on string: -1474742819468160406
+    Calling __hash__ on string: 3776690767255463942
 
     TypeError: 'NoneType' object is not callable
     ---------------------------------------------------------------------------
@@ -784,14 +784,16 @@ print(one_to_six >= one_to_three)
 print(evens >= one_to_three)
 
 print("one_to_six is a proper superset of one_to_three:", one_to_six > one_to_three)
-print("one_to_six is a proper superset of one_to_six":, one_to_six > one_to_six)
+print("one_to_six is a proper superset of one_to_six:", one_to_six > one_to_six)
 ```
 
-    SyntaxError: invalid syntax (3808763380.py, line 13)
-      Cell In[32], line 13
-        print("one_to_six is a proper superset of one_to_six":, one_to_six > one_to_six)
-                                                             ^
-    SyntaxError: invalid syntax
+    one_to_six is a superset of one_to_three: True
+    evens is a superset of one_to_three: False
+    Repeating with the >= operator
+    True
+    False
+    one_to_six is a proper superset of one_to_three: True
+    one_to_six is a proper superset of one_to_six: False
 
 #### Union
 
@@ -924,7 +926,7 @@ unique_numbers = {1, 2, 3}
 evens = {0, 2, 4, 6}
 
 # Update using intersection
-r0 = range(1, 8, step=2)
+r0 = range(1, 8, 2)
 unique_numbers.intersection_update(r0)
 print("unique numbers after intersection update:", unique_numbers)
 
@@ -944,7 +946,7 @@ print("Unique numbers after |= update:", unique_numbers)
 
 # Update using the symmetric difference
 unique_numbers = {1, 2, 3}
-r2 = range(2, 8, step=2)
+r2 = range(2, 8, 2)
 unique_numbers.symmetric_difference_update(r2)
 print("Unique numbers after symmetric difference update:", unique__numbers)
 
@@ -954,20 +956,25 @@ unique_numbers ^= evens
 print("Unique numbers after ^= update:", unique_numbers)
 ```
 
-    TypeError: range() takes no keyword arguments
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[38], line 5
-          1 unique_numbers = {1, 2, 3}
-          2 evens = {0, 2, 4, 6}
-          3
-          4 # Update using intersection
-    ----> 5 r0 = range(1, 8, step=2)
-          6 unique_numbers.intersection_update(r0)
-          7 print("unique numbers after intersection update:", unique_numbers)
-          8
+    unique numbers after intersection update: {1, 3}
+    unique numbers after &= update: {2}
+    unique numbers after difference update: {2}
+    Unique numbers after |= update: {1, 3}
 
-    TypeError: range() takes no keyword arguments
+    NameError: name 'unique__numbers' is not defined
+    ---------------------------------------------------------------------------
+    NameError                                 Traceback (most recent call last)
+    Cell In[38], line 27
+         23 # Update using the symmetric difference
+         24 unique_numbers = {1, 2, 3}
+         25 r2 = range(2, 8, 2)
+         26 unique_numbers.symmetric_difference_update(r2)
+    ---> 27 print("Unique numbers after symmetric difference update:", unique__numbers)
+         28
+         29 # Repeating but with an operator
+         30 unique_numbers = {1, 2, 3}
+
+    NameError: name 'unique__numbers' is not defined
 
 #### Frozensets
 
@@ -1096,4 +1103,4 @@ print(set("lost and lost again"))
     Question 3:
     data.get("settings"): None
     Question 5:
-    {'d', 'l', 'a', 'g', 'o', ' ', 'i', 't', 'n', 's'}
+    {'l', 'd', 's', 'i', ' ', 't', 'o', 'g', 'a', 'n'}
