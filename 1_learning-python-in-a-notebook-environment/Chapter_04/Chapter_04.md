@@ -1,6 +1,5 @@
 # Chapter 4: Other Data Structures
 
-
 - [Notes](#notes)
   - [Dictionaries](#dictionaries)
     - [Creating Dictionaries](#creating-dictionaries)
@@ -40,8 +39,8 @@ print(person)
     {'name': 'Betty', 'height': 62, 'gpa': 3.6}
 
 - The above dictionary contains
-  1.  The keys `"name"`, `"height"` and `"gpa"`,
-  2.  The values `"Betty"`, `62` and `3.6`
+  1. The keys `"name"`, `"height"` and `"gpa"`,
+  2. The values `"Betty"`, `62` and `3.6`
 - Dictionary values can be of *any* type
 - Dictionary keys have some restrictions
   - Fundamental types like `int` and `str` will work
