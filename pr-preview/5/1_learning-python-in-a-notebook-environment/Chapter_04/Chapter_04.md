@@ -333,7 +333,7 @@ keys = student.keys()
 print("reversed(keys):", reversed(keys))
 ```
 
-    reversed(keys): <dict_reversekeyiterator object at 0x7fd86e4b0b80>
+    reversed(keys): <dict_reversekeyiterator object at 0x7f5f2816cbd0>
 
 - `dict_key` objects are *set-like*
   - They support set operations
@@ -373,10 +373,10 @@ print("Union:", admission_record.keys() | student_record.keys())
 ```
 
     Testing key equality: False
-    Symmetric Difference: {'major', 'admitted', 'minor', 'gpa', 'advisor'}
-    Intersection: {'first', 'id', 'last'}
+    Symmetric Difference: {'gpa', 'minor', 'major', 'advisor', 'admitted'}
+    Intersection: {'first', 'last', 'id'}
     Difference: {'admitted'}
-    Union: {'major', 'admitted', 'minor', 'gpa', 'advisor', 'id', 'last', 'first'}
+    Union: {'last', 'gpa', 'minor', 'first', 'major', 'advisor', 'id', 'admitted'}
 
 - `dict_items` views are useful for iterating over the `key:value` pairs
   in dictionary
@@ -560,7 +560,7 @@ print("Calling __hash__ on string:", "abc".__hash__())
 print("Calling __hash__ on a list:", list("abc").__hash__())
 ```
 
-    Calling __hash__ on string: 8301652459939043151
+    Calling __hash__ on string: -5832888924080346996
 
     TypeError: 'NoneType' object is not callable
     ---------------------------------------------------------------------------
@@ -614,8 +614,8 @@ print("Set constructed via {1, 1, 1, 2, 2, 3}:", set_c)
 
     Empty set via `set()`: set()
     Empty set via {}: {}
-    Set constructed via `set` called on a string: {'a', 'b', 'c'}
-    Set constructed via `set` called on a tuple: {'a', 'b', 'c'}
+    Set constructed via `set` called on a string: {'b', 'a', 'c'}
+    Set constructed via `set` called on a tuple: {'b', 'a', 'c'}
     Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}
 
 - As mentioned, sets do not work with mutable types
