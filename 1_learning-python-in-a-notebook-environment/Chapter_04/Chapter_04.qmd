@@ -555,7 +555,7 @@ print(one_to_six >= one_to_three)
 print(evens >= one_to_three)
 
 print("one_to_six is a proper superset of one_to_three:", one_to_six > one_to_three)
-print("one_to_six is a proper superset of one_to_six":, one_to_six > one_to_six)
+print("one_to_six is a proper superset of one_to_six:", one_to_six > one_to_six)
 ```
 
 #### Union
@@ -656,7 +656,7 @@ unique_numbers = {1, 2, 3}
 evens = {0, 2, 4, 6}
 
 # Update using intersection
-r0 = range(1, 8, step=2)
+r0 = range(1, 8, 2)
 unique_numbers.intersection_update(r0)
 print("unique numbers after intersection update:", unique_numbers)
 
@@ -676,7 +676,7 @@ print("Unique numbers after |= update:", unique_numbers)
 
 # Update using the symmetric difference
 unique_numbers = {1, 2, 3}
-r2 = range(2, 8, step=2)
+r2 = range(2, 8, 2)
 unique_numbers.symmetric_difference_update(r2)
 print("Unique numbers after symmetric difference update:", unique__numbers)
 
