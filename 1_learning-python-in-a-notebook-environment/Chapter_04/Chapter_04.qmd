@@ -678,7 +678,7 @@ print("Unique numbers after |= update:", unique_numbers)
 unique_numbers = {1, 2, 3}
 r2 = range(2, 8, 2)
 unique_numbers.symmetric_difference_update(r2)
-print("Unique numbers after symmetric difference update:", unique__numbers)
+print("Unique numbers after symmetric difference update:", unique_numbers)
 
 # Repeating but with an operator
 unique_numbers = {1, 2, 3}
