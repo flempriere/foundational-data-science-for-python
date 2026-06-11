@@ -373,8 +373,8 @@ print(generator_func())
 print(generator_func())
 ```
 
-    <generator object generator_func at 0x7fd8c2624dc0>
-    <generator object generator_func at 0x7fd8c2624dc0>
+    <generator object generator_func at 0x7f44e2958dc0>
+    <generator object generator_func at 0x7f44e2958dc0>
 
 #### Raise Statements
 
@@ -473,13 +473,13 @@ import os
 os.listdir()
 ```
 
-    ['Chapter_02.html',
-     'Chapter_02_files',
+    ['Chapter_02_files',
+     'Examples',
      'Chapter_02.quarto_ipynb',
      'Chapter_02.qmd',
+     'Chapter_02.md',
      'Chapter_02.ipynb',
-     'Examples',
-     'Chapter_02.md']
+     'Chapter_02.html']
 
 - Most community modules are located at [PyPI](https://pypi.org/) the
   python package index and are installed via `pip`
