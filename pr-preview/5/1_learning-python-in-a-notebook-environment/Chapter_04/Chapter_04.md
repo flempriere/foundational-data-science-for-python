@@ -349,10 +349,10 @@ print("Union:", admission_record.keys() | student_record.keys())
 ```
 
     Testing key equality: False
-    Symmetric Difference: {'major', 'admitted', 'minor', 'advisor', 'gpa'}
-    Intersection: {'last', 'id', 'first'}
+    Symmetric Difference: {'admitted', 'major', 'minor', 'advisor', 'gpa'}
+    Intersection: {'first', 'id', 'last'}
     Difference: {'admitted'}
-    Union: {'major', 'first', 'last', 'admitted', 'minor', 'advisor', 'id', 'gpa'}
+    Union: {'admitted', 'first', 'major', 'id', 'minor', 'last', 'advisor', 'gpa'}
 
 - `dict_items` views are useful for iterating over the `key:value` pairs
   in dictionary
@@ -514,7 +514,7 @@ print("Calling __hash__ on string:", "abc".__hash__())
 print("Calling __hash__ on a list:", list("abc").__hash__())
 ```
 
-    Calling __hash__ on string: 3776690767255463942
+    Calling __hash__ on string: 9017939042120771738
 
     TypeError: 'NoneType' object is not callable
     ---------------------------------------------------------------------------
@@ -568,8 +568,8 @@ print("Set constructed via {1, 1, 1, 2, 2, 3}:", set_c)
 
     Empty set via `set()`: set()
     Empty set via {}: {}
-    Set constructed via `set` called on a string: {'b', 'a', 'c'}
-    Set constructed via `set` called on a tuple: {'b', 'a', 'c'}
+    Set constructed via `set` called on a string: {'a', 'c', 'b'}
+    Set constructed via `set` called on a tuple: {'a', 'c', 'b'}
     Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}
 
 - As mentioned, sets do not work with mutable types
@@ -949,7 +949,7 @@ print("Unique numbers after |= update:", unique_numbers)
 unique_numbers = {1, 2, 3}
 r2 = range(2, 8, 2)
 unique_numbers.symmetric_difference_update(r2)
-print("Unique numbers after symmetric difference update:", unique__numbers)
+print("Unique numbers after symmetric difference update:", unique_numbers)
 
 # Repeating but with an operator
 unique_numbers = {1, 2, 3}
@@ -961,21 +961,8 @@ print("Unique numbers after ^= update:", unique_numbers)
     unique numbers after &= update: {2}
     unique numbers after difference update: {2}
     Unique numbers after |= update: {1, 3}
-
-    NameError: name 'unique__numbers' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[38], line 27
-         23 # Update using the symmetric difference
-         24 unique_numbers = {1, 2, 3}
-         25 r2 = range(2, 8, 2)
-         26 unique_numbers.symmetric_difference_update(r2)
-    ---> 27 print("Unique numbers after symmetric difference update:", unique__numbers)
-         28 
-         29 # Repeating but with an operator
-         30 unique_numbers = {1, 2, 3}
-
-    NameError: name 'unique__numbers' is not defined
+    Unique numbers after symmetric difference update: {1, 3, 4, 6}
+    Unique numbers after ^= update: {0, 1, 3, 4, 6}
 
 #### Frozensets
 
@@ -1104,4 +1091,4 @@ print(set("lost and lost again"))
     Question 3:
     data.get("settings"): None
     Question 5:
-    {'l', 'd', 's', 'i', ' ', 't', 'o', 'g', 'a', 'n'}
+    {'i', ' ', 'g', 'l', 'a', 'n', 'o', 'd', 's', 't'}
