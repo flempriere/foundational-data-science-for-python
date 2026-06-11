@@ -27,6 +27,8 @@ Behrman](https://www.amazon.com.au/dp/0136624359)
   Python](./1_learning-python-in-a-notebook-environment/Chapter_02/Chapter_02.qmd)
 - [Chapter 3:
   Sequences](./1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.qmd)
+- [Chapter 4: Other Data
+  Structures](./1_learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.qmd)
 
 ### II: Data Science Libraries
 
