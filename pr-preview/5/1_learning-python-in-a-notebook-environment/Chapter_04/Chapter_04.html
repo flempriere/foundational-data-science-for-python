@@ -328,7 +328,7 @@ window.Quarto = {
 </ul></li>
 </ul></li>
 </ul>
-<div id="9ec0b597" class="cell" data-execution_count="1">
+<div id="eb8bbafb" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>person <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Betty"</span>, <span class="st">"height"</span>: <span class="dv">62</span>, <span class="st">"gpa"</span>: <span class="fl">3.6</span>}</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -353,7 +353,7 @@ window.Quarto = {
 <li>As seen dictionaries can be created with the a brace-delimited comma separated list</li>
 <li>To create an empty dictionary, simply pass an empty list like <code>{}</code></li>
 </ul>
-<div id="c4e17173" class="cell" data-execution_count="2">
+<div id="35b1998a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {}</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"dictionary is of type </span><span class="sc">{</span><span class="bu">type</span>(dictionary)<span class="sc">}</span><span class="ss"> and has value </span><span class="sc">{</span>dictionary<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -368,7 +368,7 @@ window.Quarto = {
 <li>Or, optionally accept key, value pairs as a sequence of sequences</li>
 </ul></li>
 </ul>
-<div id="1bbcc65b" class="cell" data-execution_count="3">
+<div id="83814dbc" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># empty `dict` call</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> <span class="bu">dict</span>()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dictionary created by the call dict(): </span><span class="sc">{</span>dictionary<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -395,7 +395,7 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 <li>Can be used to access their associated value</li>
 </ul></li>
 </ul>
-<div id="a354b680" class="cell" data-execution_count="4">
+<div id="651fc980" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># key access</span></span>
@@ -412,7 +412,7 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 <li>Assigning to a non-existent key will create the key</li>
 <li>If the key does exist then the old value is overwritten</li>
 </ul>
-<div id="65a7d251" class="cell" data-execution_count="5">
+<div id="6bf61329" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># defining a new key</span></span>
@@ -420,31 +420,16 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student)</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># overwriting a key</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>student_record[<span class="st">"gpa"</span>] <span class="op">=</span> <span class="fl">3.0</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"gpa"</span>] <span class="op">=</span> <span class="fl">3.0</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student[<span class="st">"gpa"</span>])</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># overwriting a key using the inplace addition operator</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>student_record[<span class="st">"gpa"</span>] <span class="op">+=</span> <span class="fl">1.0</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"gpa"</span>] <span class="op">+=</span> <span class="fl">1.0</span></span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student[<span class="st">"gpa"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'name': 'Paula', 'height': 64, 'gpa': 3.8, 'applied': '2019-10-31'}</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 8</span>
-<span class="ansi-green-fg">      4</span> student[<span class="ansi-yellow-fg">"applied"</span>] = <span class="ansi-yellow-fg">"2019-10-31"</span>
-<span class="ansi-green-fg">      5</span> print(student)
-<span class="ansi-green-fg">      6</span> 
-<span class="ansi-green-fg">      7</span> <span style="font-style:italic;color:rgb(95,135,135)"># overwriting a key</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">8</span> student_record[<span class="ansi-yellow-fg">"gpa"</span>] = <span class="ansi-green-fg">3.0</span>
-<span class="ansi-green-fg">      9</span> print(student[<span class="ansi-yellow-fg">"gpa"</span>])
-<span class="ansi-green-fg">     10</span> 
-<span class="ansi-green-fg">     11</span> <span style="font-style:italic;color:rgb(95,135,135)"># overwriting a key using the inplace addition operator</span>
-
-<span class="ansi-red-fg">NameError</span>: name 'student_record' is not defined</pre>
-</div>
+<pre><code>{'name': 'Paula', 'height': 64, 'gpa': 3.8, 'applied': '2019-10-31'}
+3.0
+4.0</code></pre>
 </div>
 </div>
 </section>
@@ -457,7 +442,7 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 </ul></li>
 <li>One option is to overwrite the value with something meaningless like <code>None</code></li>
 </ul>
-<div id="2f86c9a1" class="cell" data-execution_count="6">
+<div id="ce200923" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing name</span></span>
@@ -470,7 +455,7 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 <ul>
 <li>The <code>key:value</code> pair can be removed directly by the <code>del</code> operator</li>
 </ul>
-<div id="b54fd77f" class="cell" data-execution_count="7">
+<div id="89fdc463" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Deleting the key</span></span>
@@ -507,7 +492,7 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 <li><code>popitem</code> returns the most recent <code>key:value</code> pair</li>
 </ul></li>
 </ul>
-<div id="06dc6f39" class="cell" data-execution_count="8">
+<div id="b98660f1" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Using `popitem`</span></span>
@@ -517,24 +502,11 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"pop('name') returned:"</span>, student.pop(<span class="st">"name"</span>))</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Using pop with a default value to handle missing key</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"pop('id', default=0):"</span>, student.pop(<span class="st">"id"</span>, default<span class="op">=</span><span class="va">None</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"pop('id', default=0):"</span>, student.pop(<span class="st">"id"</span>, <span class="va">None</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>popitem returned: ('gpa', 3.8)
-pop('name') returned: Paula</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 10</span>
-<span class="ansi-green-fg">      6</span> <span style="font-style:italic;color:rgb(95,135,135)"># Using `pop`</span>
-<span class="ansi-green-fg">      7</span> print(<span class="ansi-yellow-fg">"pop('name') returned:"</span>, student.pop(<span class="ansi-yellow-fg">"name"</span>))
-<span class="ansi-green-fg">      8</span> 
-<span class="ansi-green-fg">      9</span> <span style="font-style:italic;color:rgb(95,135,135)"># Using pop with a default value to handle missing key</span>
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">10</span> print(<span class="ansi-yellow-fg">"pop('id', default=0):"</span>, student.pop(<span class="ansi-yellow-fg">"id"</span>, default=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>))
-
-<span class="ansi-red-fg">TypeError</span>: dict.pop() takes no keyword arguments</pre>
-</div>
+pop('name') returned: Paula
+pop('id', default=0): None</code></pre>
 </div>
 </div>
 </section>
@@ -561,7 +533,7 @@ pop('name') returned: Paula</code></pre>
 </ul></li>
 </ol></li>
 </ul>
-<div id="dad06f14" class="cell" data-execution_count="9">
+<div id="eca14cda" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
@@ -584,7 +556,7 @@ Items: dict_items([('name', 'Paula'), ('height', 64), ('gpa', 3.8)])</code></pre
 <ul>
 <li>You can test a view for membership with the <code>in</code></li>
 </ul>
-<div id="7b96d68a" class="cell" data-execution_count="10">
+<div id="c85ea1fa" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
@@ -610,7 +582,7 @@ Items: dict_items([('name', 'Paula'), ('height', 64), ('gpa', 3.8)])</code></pre
 <li>If dictionary is updated so is the corresponding view</li>
 </ul></li>
 </ul>
-<div id="91bbf916" class="cell" data-execution_count="11">
+<div id="e221de02" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
@@ -627,7 +599,7 @@ keys after updating dict: dict_keys(['name', 'height', 'gpa', 'id'])</code></pre
 <ul>
 <li>View’s also support the <code>len</code> built-in function</li>
 </ul>
-<div id="5f8b706e" class="cell" data-execution_count="12">
+<div id="9fa6c25f" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
@@ -640,14 +612,14 @@ keys after updating dict: dict_keys(['name', 'height', 'gpa', 'id'])</code></pre
 <ul>
 <li>Since <code>Python 3.8</code> they can be reversed via the <code>reversed</code> built-in</li>
 </ul>
-<div id="4f8ff4f9" class="cell" data-execution_count="13">
+<div id="40afb2a3" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>keys <span class="op">=</span> student.keys()</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"reversed(keys):"</span>, <span class="bu">reversed</span>(keys))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"reversed(keys):"</span>, <span class="bu">list</span>(<span class="bu">reversed</span>(keys)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>reversed(keys): &lt;dict_reversekeyiterator object at 0x7f39dfe30090&gt;</code></pre>
+<pre><code>reversed(keys): ['gpa', 'height', 'name']</code></pre>
 </div>
 </div>
 <ul>
@@ -656,7 +628,7 @@ keys after updating dict: dict_keys(['name', 'height', 'gpa', 'id'])</code></pre
 <li>They support set operations</li>
 </ul></li>
 </ul>
-<div id="4d568b6e" class="cell" data-execution_count="14">
+<div id="00174468" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>admission_record <span class="op">=</span> {</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"first"</span>: <span class="st">"Julia"</span>,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"last"</span>: <span class="st">"Brown"</span>,</span>
@@ -690,10 +662,10 @@ keys after updating dict: dict_keys(['name', 'height', 'gpa', 'id'])</code></pre
 <span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Union:"</span>, admission_record.keys() <span class="op">|</span> student_record.keys())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Testing key equality: False
-Symmetric Difference: {'admitted', 'major', 'gpa', 'advisor', 'minor'}
-Intersection: {'id', 'first', 'last'}
+Symmetric Difference: {'major', 'admitted', 'gpa', 'minor', 'advisor'}
+Intersection: {'last', 'first', 'id'}
 Difference: {'admitted'}
-Union: {'admitted', 'first', 'gpa', 'major', 'id', 'minor', 'advisor', 'last'}</code></pre>
+Union: {'major', 'admitted', 'first', 'gpa', 'id', 'minor', 'last', 'advisor'}</code></pre>
 </div>
 </div>
 <ul>
@@ -702,7 +674,7 @@ Union: {'admitted', 'first', 'gpa', 'major', 'id', 'minor', 'advisor', 'last'}</
 <li>We can use <code>dict_keys</code> and <code>dict_values</code> if we only want to iterate over keys or values</li>
 </ul></li>
 </ul>
-<div id="2a1ae7f0" class="cell" data-execution_count="15">
+<div id="d9b60904" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> student.items():</span>
@@ -722,7 +694,7 @@ gpa =&gt; 3.8</code></pre>
 <li>This is implicitly done by just using the <code>in</code> operator on the dictionary directly</li>
 </ul></li>
 </ul>
-<div id="c6ce71d2" class="cell" data-execution_count="16">
+<div id="11bb0a11" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>keys <span class="op">=</span> student.keys()</span>
@@ -741,27 +713,15 @@ Using `in` on a dictionary directly: True</code></pre>
 <li>Can use a <code>try/except</code> block to handle this</li>
 </ul></li>
 </ul>
-<div id="8da1bb50" class="cell" data-execution_count="17">
+<div id="125580a4" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(student[<span class="st">"id"</span>])</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">KeyError</span>:</span>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"ID not found"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[17]</span><span class="ansi-green-fg">, line 5</span>
-<span class="ansi-green-fg">      1</span> student = {<span class="ansi-yellow-fg">"name"</span>: <span class="ansi-yellow-fg">"Paula"</span>, <span class="ansi-yellow-fg">"height"</span>: <span class="ansi-green-fg">64</span>, <span class="ansi-yellow-fg">"gpa"</span>: <span class="ansi-green-fg">3.8</span>}
-<span class="ansi-green-fg">      2</span> 
-<span class="ansi-green-fg">      3</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg">      4</span>     print(student[<span class="ansi-yellow-fg">"id"</span>])
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> ValueError:
-<span class="ansi-green-fg">      6</span>     print(<span class="ansi-yellow-fg">"ID not found"</span>)
-
-<span class="ansi-red-fg">KeyError</span>: 'id'</pre>
-</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ID not found</code></pre>
 </div>
 </div>
 <section id="the-get-method" class="level5">
@@ -774,34 +734,21 @@ Using `in` on a dictionary directly: True</code></pre>
 <li>If not supplied the <code>default</code> value is <code>None</code></li>
 </ul></li>
 </ul>
-<div id="6b653b65" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Existing key</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"name:"</span>, student.get(<span class="st">"name"</span>))</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Unspecified default</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ID:"</span>, student.get(<span class="st">"id"</span>))</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Specified default</span></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"major:"</span>, student.get(<span class="st">"major"</span>, default<span class="op">=</span><span class="st">"Undeclared"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="55d0065a" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Existing key</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"name:"</span>, student.get(<span class="st">"name"</span>))</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Unspecified default</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ID:"</span>, student.get(<span class="st">"id"</span>))</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Specified default</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"major:"</span>, student.get(<span class="st">"major"</span>, <span class="st">"Undeclared"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>name: Paula
-ID: None</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[18]</span><span class="ansi-green-fg">, line 10</span>
-<span class="ansi-green-fg">      6</span> <span style="font-style:italic;color:rgb(95,135,135)"># Unspecified default</span>
-<span class="ansi-green-fg">      7</span> print(<span class="ansi-yellow-fg">"ID:"</span>, student.get(<span class="ansi-yellow-fg">"id"</span>))
-<span class="ansi-green-fg">      8</span> 
-<span class="ansi-green-fg">      9</span> <span style="font-style:italic;color:rgb(95,135,135)"># Specified default</span>
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">10</span> print(<span class="ansi-yellow-fg">"major:"</span>, student.get(<span class="ansi-yellow-fg">"major"</span>, default=<span class="ansi-yellow-fg">"Undeclared"</span>))
-
-<span class="ansi-red-fg">TypeError</span>: dict.get() takes no keyword arguments</pre>
-</div>
+ID: None
+major: Undeclared</code></pre>
 </div>
 </div>
 </section>
@@ -827,23 +774,23 @@ Caution
 <div class="callout-body-container callout-body">
 <p><strong>Tuple Immutability</strong></p>
 <p>Tuples are regarded as immutable their contents cannot be changed, i.e.&nbsp;we can’t redefine an index. However, if a tuple contains <em>mutable</em> types, those objects can still be mutated by their reference. For example,</p>
-<div id="6a8e44a5" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>immutable_tuple <span class="op">=</span> (<span class="st">"a"</span>, [<span class="st">"b"</span>, <span class="st">"c"</span>])</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tuple before mutation:"</span>, immutable_tuple)</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mutating the list inside the tuple</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>immutable_tuple[<span class="dv">1</span>].append(<span class="st">"d"</span>)</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tuple after mutation:"</span>, immutable_tuple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6f776cf7" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>immutable_tuple <span class="op">=</span> (<span class="st">"a"</span>, [<span class="st">"b"</span>, <span class="st">"c"</span>])</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tuple before mutation:"</span>, immutable_tuple)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mutating the list inside the tuple</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>immutable_tuple[<span class="dv">1</span>].append(<span class="st">"d"</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tuple after mutation:"</span>, immutable_tuple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tuple before mutation: ('a', ['b', 'c'])
 tuple after mutation: ('a', ['b', 'c', 'd'])</code></pre>
 </div>
 </div>
 <p>This means that in these cases the overall object is <em>not immutable</em>. This means that such objects cannot be used for example as dictionary keys</p>
-<div id="c5a694e7" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {(<span class="st">"a"</span>, [<span class="st">"b"</span>, <span class="st">"c"</span>]): <span class="dv">1</span>}</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dictionary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6b494f93" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {(<span class="st">"a"</span>, [<span class="st">"b"</span>, <span class="st">"c"</span>]): <span class="dv">1</span>}</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dictionary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
@@ -858,17 +805,17 @@ tuple after mutation: ('a', ['b', 'c', 'd'])</code></pre>
 </div>
 </div>
 </div>
-<div id="e26478d1" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {<span class="dv">1</span>: <span class="dv">1</span>, <span class="st">"a"</span>: <span class="dv">2</span>, <span class="fl">2.3</span>: <span class="dv">3</span>, (<span class="st">"b"</span>, <span class="st">"c"</span>): <span class="dv">4</span>, <span class="st">b"bytes"</span>: <span class="dv">5</span>, <span class="bu">range</span>(<span class="dv">3</span>): <span class="dv">6</span>}</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A dict showing a range of key types:"</span>, dictionary)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Invalid key type</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Trying to use a list a key-type"</span>)</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>list_keyed_dictionary <span class="op">=</span> {[<span class="st">"a"</span>, <span class="st">"b"</span>]: <span class="dv">1</span>}</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A dict using a list as a key:"</span>, list_keyed_dict)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="90546278" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {<span class="dv">1</span>: <span class="dv">1</span>, <span class="st">"a"</span>: <span class="dv">2</span>, <span class="fl">2.3</span>: <span class="dv">3</span>, (<span class="st">"b"</span>, <span class="st">"c"</span>): <span class="dv">4</span>, <span class="st">b"bytes"</span>: <span class="dv">5</span>, <span class="bu">range</span>(<span class="dv">3</span>): <span class="dv">6</span>}</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A dict showing a range of key types:"</span>, dictionary)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Invalid key type</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Trying to use a list as a key"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>list_keyed_dictionary <span class="op">=</span> {[<span class="st">"a"</span>, <span class="st">"b"</span>]: <span class="dv">1</span>}</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A dict using a list as a key:"</span>, list_keyed_dict)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A dict showing a range of key types: {1: 1, 'a': 2, 2.3: 3, ('b', 'c'): 4, b'bytes': 5, range(0, 3): 6}
-Trying to use a list a key-type</code></pre>
+Trying to use a list as a key</code></pre>
 </div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -878,7 +825,7 @@ Trying to use a list a key-type</code></pre>
 <span class="ansi-green-fg">      2</span> print(<span class="ansi-yellow-fg">"A dict showing a range of key types:"</span>, dictionary)
 <span class="ansi-green-fg">      3</span> 
 <span class="ansi-green-fg">      4</span> <span style="font-style:italic;color:rgb(95,135,135)"># Invalid key type</span>
-<span class="ansi-green-fg">      5</span> print(<span class="ansi-yellow-fg">"Trying to use a list a key-type"</span>)
+<span class="ansi-green-fg">      5</span> print(<span class="ansi-yellow-fg">"Trying to use a list as a key"</span>)
 <span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">6</span> list_keyed_dictionary = {[<span class="ansi-yellow-fg">"a"</span>, <span class="ansi-yellow-fg">"b"</span>]: <span class="ansi-green-fg">1</span>}
 <span class="ansi-green-fg">      7</span> print(<span class="ansi-yellow-fg">"A dict using a list as a key:"</span>, list_keyed_dict)
 
@@ -895,12 +842,12 @@ Trying to use a list a key-type</code></pre>
 <li>It can only be implemented on <em>immutable</em> objects because it must be <em>stable</em> for a given object reference</li>
 </ul></li>
 </ul>
-<div id="8c333674" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calling __hash__ on string:"</span>, <span class="st">"abc"</span>.<span class="fu">__hash__</span>())</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calling __hash__ on a list:"</span>, <span class="bu">list</span>(<span class="st">"abc"</span>).<span class="fu">__hash__</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d4464241" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calling __hash__ on string:"</span>, <span class="st">"abc"</span>.<span class="fu">__hash__</span>())</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calling __hash__ on a list:"</span>, <span class="bu">list</span>(<span class="st">"abc"</span>).<span class="fu">__hash__</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Calling __hash__ on string: 2029712131782068367</code></pre>
+<pre><code>Calling __hash__ on string: -2541030085968750265</code></pre>
 </div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -953,21 +900,21 @@ Tip
 </ul></li>
 </ol></li>
 </ul>
-<div id="2a7f2fe0" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>empty_set_a <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>empty_set_b <span class="op">=</span> {}</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Empty set via `set()`:"</span>, empty_set_a)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Empty set via </span><span class="sc">{}</span><span class="st">:"</span>, empty_set_b)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>set_a <span class="op">=</span> <span class="bu">set</span>(<span class="st">"abc"</span>)</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set constructed via `set` called on a string:"</span>, set_a)</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>tuple_b <span class="op">=</span> <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>set_b <span class="op">=</span> <span class="bu">set</span>(tuple_b)</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set constructed via `set` called on a tuple:"</span>, set_b)</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>set_c <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set constructed via {1, 1, 1, 2, 2, 3}:"</span>, set_c)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e68d689e" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>empty_set_a <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>empty_set_b <span class="op">=</span> {}</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Empty set via `set()`:"</span>, empty_set_a)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Empty set via </span><span class="sc">{}</span><span class="st">:"</span>, empty_set_b)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>set_a <span class="op">=</span> <span class="bu">set</span>(<span class="st">"abc"</span>)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set constructed via `set` called on a string:"</span>, set_a)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>tuple_b <span class="op">=</span> <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>set_b <span class="op">=</span> <span class="bu">set</span>(tuple_b)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set constructed via `set` called on a tuple:"</span>, set_b)</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>set_c <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set constructed via {1, 1, 1, 2, 2, 3}:"</span>, set_c)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Empty set via `set()`: set()
 Empty set via {}: {}
@@ -979,9 +926,9 @@ Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}</code></pre>
 <ul>
 <li>As mentioned, sets do not work with mutable types</li>
 </ul>
-<div id="e388ba32" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>broken_set <span class="op">=</span> {[<span class="st">"a"</span>, <span class="st">"b"</span>], <span class="st">"c"</span>}</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(broken_set)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e5e50194" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>broken_set <span class="op">=</span> {[<span class="st">"a"</span>, <span class="st">"b"</span>], <span class="st">"c"</span>}</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(broken_set)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
@@ -998,11 +945,11 @@ Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}</code></pre>
 <li><code>set</code> supports most of the standard sequence operations</li>
 <li>Can test for membership with <code>in</code> or <code>not in</code></li>
 </ul>
-<div id="6fb812e7" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"3 in unique_numbers:"</span>, <span class="dv">3</span> <span class="kw">in</span> unique_numbers)</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"3 not in unique_numbers:"</span>, <span class="dv">3</span> <span class="kw">not</span> <span class="kw">in</span> unique_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="8eccf8ef" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"3 in unique_numbers:"</span>, <span class="dv">3</span> <span class="kw">in</span> unique_numbers)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"3 not in unique_numbers:"</span>, <span class="dv">3</span> <span class="kw">not</span> <span class="kw">in</span> unique_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3 in unique_numbers: True
 3 not in unique_numbers: False</code></pre>
@@ -1011,10 +958,10 @@ Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}</code></pre>
 <ul>
 <li><code>len</code> returns the cardinality of a set</li>
 </ul>
-<div id="a9beb4b5" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"len(unique_numbers):"</span>, <span class="bu">len</span>(unique_numbers))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7b974077" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"len(unique_numbers):"</span>, <span class="bu">len</span>(unique_numbers))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>len(unique_numbers): 3</code></pre>
 </div>
@@ -1038,33 +985,33 @@ Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}</code></pre>
 <li><code>clear</code> removes the entire contents of a set</li>
 </ul></li>
 </ul>
-<div id="f671d669" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding an item</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>unique_numbers.add(<span class="dv">4</span>)</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Adding a item:"</span>, unique_numbers)</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing an item</span></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>unique_numbers.remove(<span class="dv">1</span>)</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Removed 1 using `remove`:"</span>, unique_numbers)</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Discarding an item</span></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>unique_numbers.discard(<span class="dv">2</span>)</span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Discarded 2 using `discard`:"</span>, unique_numbers)</span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Popping an arbitrary item</span></span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>popped <span class="op">=</span> unique_numbers.pop()</span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Popped:"</span>, popped)</span>
-<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"set is now:"</span>, unique_numbers)</span>
-<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Discarding a non-existent item</span></span>
-<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>unique_numbers.discard(<span class="dv">5</span>)</span>
-<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Attempting to discard non-existent 5 using `discard`:"</span>, unique_numbers)</span>
-<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Attempting to remove a non-existent item</span></span>
-<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Attempting to remove non-existent 5 using `remove`"</span>)</span>
-<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a>unique_numbers.remove(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f34f6616" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding an item</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>unique_numbers.add(<span class="dv">4</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Adding a item:"</span>, unique_numbers)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing an item</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>unique_numbers.remove(<span class="dv">1</span>)</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Removed 1 using `remove`:"</span>, unique_numbers)</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Discarding an item</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>unique_numbers.discard(<span class="dv">2</span>)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Discarded 2 using `discard`:"</span>, unique_numbers)</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Popping an arbitrary item</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>popped <span class="op">=</span> unique_numbers.pop()</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Popped:"</span>, popped)</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"set is now:"</span>, unique_numbers)</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Discarding a non-existent item</span></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>unique_numbers.discard(<span class="dv">5</span>)</span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Attempting to discard non-existent 5 using `discard`:"</span>, unique_numbers)</span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Attempting to remove a non-existent item</span></span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Attempting to remove non-existent 5 using `remove`"</span>)</span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a>unique_numbers.remove(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Adding a item: {1, 2, 3, 4}
 Removed 1 using `remove`: {2, 3, 4}
@@ -1108,13 +1055,13 @@ Attempting to remove non-existent 5 using `remove`</code></pre>
 <li>Returns <code>True</code> if two sets are disjoint, else <code>False</code></li>
 </ul></li>
 </ul>
-<div id="d0fe2297" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>four_to_six <span class="op">=</span> {<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>even <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is disjoint from four_to_six:"</span>, one_to_three.isdisjoint(four_to_six))</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is disjoint from even:"</span>, one_to_three.isdisjoint(even))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="469abe46" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>four_to_six <span class="op">=</span> {<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>even <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is disjoint from four_to_six:"</span>, one_to_three.isdisjoint(four_to_six))</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is disjoint from even:"</span>, one_to_three.isdisjoint(even))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>one_to_three is disjoint from four_to_six: True
 one_to_three is disjoint from even: False</code></pre>
@@ -1130,17 +1077,17 @@ one_to_three is disjoint from even: False</code></pre>
 <li>Alternatively can use the <code>&lt;=</code> operator</li>
 </ul></li>
 </ul>
-<div id="cdcc0e66" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a subset of one_to_six:"</span>, one_to_three.issubset(one_to_six))</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a subset of evens:"</span>, one_to_three.issubset(evens))</span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Repeating with the &lt;= operator"</span>)</span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">&lt;=</span> one_to_six)</span>
-<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">&lt;=</span> evens)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6e51195d" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a subset of one_to_six:"</span>, one_to_three.issubset(one_to_six))</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a subset of evens:"</span>, one_to_three.issubset(evens))</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Repeating with the &lt;= operator"</span>)</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">&lt;=</span> one_to_six)</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">&lt;=</span> evens)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>one_to_three is a subset of one_to_six: True
 one_to_three is a subset of evens: False
@@ -1155,11 +1102,11 @@ False</code></pre>
 <li>Operator approach will not</li>
 </ul></li>
 </ul>
-<div id="4404fffd" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a subset of range(6):"</span>, one_to_three.issubset(<span class="bu">range</span>(<span class="dv">6</span>)))</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three &lt;= range(6):"</span>, one_to_three <span class="op">&lt;=</span> <span class="bu">range</span>(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f5177cf8" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a subset of range(6):"</span>, one_to_three.issubset(<span class="bu">range</span>(<span class="dv">6</span>)))</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three &lt;= range(6):"</span>, one_to_three <span class="op">&lt;=</span> <span class="bu">range</span>(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>one_to_three is a subset of range(6): True</code></pre>
 </div>
@@ -1187,12 +1134,12 @@ False</code></pre>
 </ul></li>
 <li>The <code>&lt;</code> operator can be used to test for proper subsets between sets</li>
 </ul>
-<div id="0f7a83c0" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a proper subset of one_to_six:"</span>, one_to_three <span class="op">&lt;</span> one_to_six)</span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a proper subset of one_to_three:"</span>, one_to_three <span class="op">&lt;</span> one_to_three)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4d254740" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a proper subset of one_to_six:"</span>, one_to_three <span class="op">&lt;</span> one_to_six)</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a proper subset of one_to_three:"</span>, one_to_three <span class="op">&lt;</span> one_to_three)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>one_to_three is a proper subset of one_to_six: True
 one_to_three is a proper subset of one_to_three: False</code></pre>
@@ -1212,24 +1159,24 @@ one_to_three is a proper subset of one_to_three: False</code></pre>
 <li>To test for a proper superset we use the <code>&gt;</code> operator</li>
 </ul></li>
 </ul>
-<div id="676cd870" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_six is a superset of one_to_three:"</span>, one_to_six.issuperset(one_to_three))</span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"evens is a superset of one_to_three:"</span>, evens.issuperset(one_to_three))</span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Repeating with the &gt;= operator"</span>)</span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_six <span class="op">&gt;=</span> one_to_three)</span>
-<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens <span class="op">&gt;=</span> one_to_three)</span>
-<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_six is a proper superset of one_to_three:"</span>, one_to_six <span class="op">&gt;</span> one_to_three)</span>
-<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_six is a proper superset of one_to_six"</span>: one_to_six <span class="op">&gt;</span> one_to_six)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e0d0e4c6" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_six is a superset of one_to_three:"</span>, one_to_six.issuperset(one_to_three))</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"evens is a superset of one_to_three:"</span>, evens.issuperset(one_to_three))</span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Repeating with the &gt;= operator"</span>)</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_six <span class="op">&gt;=</span> one_to_three)</span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens <span class="op">&gt;=</span> one_to_three)</span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_six is a proper superset of one_to_three:"</span>, one_to_six <span class="op">&gt;</span> one_to_three)</span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_six is a proper superset of one_to_six"</span>:, one_to_six <span class="op">&gt;</span> one_to_six)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[32]</span><span class="ansi-green-fg">, line 13</span>
-<span class="ansi-red-fg">    </span><span class="ansi-red-fg">print("one_to_six is a proper superset of one_to_six": one_to_six &gt; one_to_six)</span>
+<span class="ansi-red-fg">    </span><span class="ansi-red-fg">print("one_to_six is a proper superset of one_to_six":, one_to_six &gt; one_to_six)</span>
                                                          ^
 <span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax
 </pre>
@@ -1244,16 +1191,16 @@ one_to_three is a proper subset of one_to_three: False</code></pre>
 <li>The union of set <span class="math inline">\(A\)</span> and set <span class="math inline">\(B\)</span> is the set containing all elements of <span class="math inline">\(A\)</span> <em>or</em> <span class="math inline">\(B\)</span></li>
 <li>Can be performed via the <code>union</code> method or the <code>|</code> operator</li>
 </ul>
-<div id="3e79b40b" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>odds <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>}</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `union` method:"</span>)</span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> odds.union(evens)</span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_six)</span>
-<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `|` operator:"</span>)</span>
-<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens <span class="op">|</span> odds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0b03eaa3" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>odds <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>}</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `union` method:"</span>)</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> odds.union(evens)</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_six)</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `|` operator:"</span>)</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens <span class="op">|</span> odds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Using the `union` method:
 {1, 2, 3, 4, 5, 6}
@@ -1268,16 +1215,16 @@ Using the `|` operator:
 <li>The intersection of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is the set containing all elements in <em>both</em> <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></li>
 <li>Performed via the <code>intersection</code> method or the <code>&amp;</code> operator</li>
 </ul>
-<div id="9d2bc691" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `intersection` method:"</span>)</span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>two <span class="op">=</span> one_to_three.intersection(evens)</span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(two)</span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `&amp;` operator:"</span>)</span>
-<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">&amp;</span> evens)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="067a4dbe" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `intersection` method:"</span>)</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>two <span class="op">=</span> one_to_three.intersection(evens)</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(two)</span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `&amp;` operator:"</span>)</span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">&amp;</span> evens)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Using the `intersection` method:
 {2}
@@ -1292,16 +1239,16 @@ Using the `&amp;` operator:
 <li>The difference <span class="math inline">\(A - B\)</span> of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is the set of all elements in <span class="math inline">\(A\)</span> that are not contained in <span class="math inline">\(B\)</span></li>
 <li>Performed via the <code>difference</code> method or the <code>-</code> operator</li>
 </ul>
-<div id="8b9eb7be" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `difference` method to calculate one_to_three - evens:"</span>, one_to_three.difference(evens))</span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `difference` method to calculate evens - one_to_three:"</span>, evens.difference(one_to_three))</span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Repeated using the `-` operator:"</span>)</span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">-</span> evens)</span>
-<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens <span class="op">-</span> one_to_three)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="563b8a42" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `difference` method to calculate one_to_three - evens:"</span>, one_to_three.difference(evens))</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `difference` method to calculate evens - one_to_three:"</span>, evens.difference(one_to_three))</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Repeated using the `-` operator:"</span>)</span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">-</span> evens)</span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens <span class="op">-</span> one_to_three)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Using the `difference` method to calculate one_to_three - evens: {1, 3}
 Using the `difference` method to calculate evens - one_to_three: {4, 6}
@@ -1319,12 +1266,12 @@ Repeated using the `-` operator:
 </ul></li>
 <li>Can be calculated via the <code>symmetric_difference</code> method or the <code>^</code> operator</li>
 </ul>
-<div id="5b73df14" class="cell" data-execution_count="36">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Symmetric difference of one_to_three and evens via method call:"</span>, one_to_three.symmetric_difference(evens))</span>
-<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Symmetric difference via `^` operator:"</span>, one_to_three <span class="op">^</span> evens)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e774d937" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Symmetric difference of one_to_three and evens via method call:"</span>, one_to_three.symmetric_difference(evens))</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Symmetric difference via `^` operator:"</span>, one_to_three <span class="op">^</span> evens)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Symmetric difference of one_to_three and evens via method call: {1, 3, 4, 6}
 Symmetric difference via `^` operator: {1, 3, 4, 6}</code></pre>
@@ -1344,16 +1291,16 @@ Symmetric difference via `^` operator: {1, 3, 4, 6}</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="23726f4b" class="cell" data-execution_count="37">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set before update:"</span>, unique_numbers)</span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>unique_numbers.update(<span class="bu">range</span>(<span class="dv">6</span>))</span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set after `update`:"</span>, unique_numbers)</span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>extra_numbers <span class="op">=</span> {<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>}</span>
-<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">|=</span> extra_numbers</span>
-<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set after |=:"</span>, unique_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ed9a39a5" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set before update:"</span>, unique_numbers)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>unique_numbers.update(<span class="bu">range</span>(<span class="dv">6</span>))</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set after `update`:"</span>, unique_numbers)</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>extra_numbers <span class="op">=</span> {<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>}</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">|=</span> extra_numbers</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set after |=:"</span>, unique_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Set before update: {1, 2, 3}
 Set after `update`: {0, 1, 2, 3, 4, 5}
@@ -1377,46 +1324,54 @@ Set after |=: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="7ff7729a" class="cell" data-execution_count="38">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Update using intersection</span></span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>r0 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>, step<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>unique_numbers.intersection_update(r0)</span>
-<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"unique numbers after intersection update:"</span>, unique_numbers)</span>
-<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span> <span class="dv">3</span>}</span>
-<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">&amp;=</span> evens</span>
-<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"unique numbers after &amp;= update:"</span>, unique_numbers)</span>
-<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Update using the difference</span></span>
-<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="bu">range</span>(<span class="dv">3</span>, <span class="dv">6</span>)</span>
-<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a>unique_numbers.difference_update(r)</span>
-<span id="cb71-16"><a href="#cb71-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"unique numbers after difference update:"</span>, unique_numbers)</span>
-<span id="cb71-17"><a href="#cb71-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-18"><a href="#cb71-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeating but with an operator</span></span>
-<span id="cb71-19"><a href="#cb71-19" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb71-20"><a href="#cb71-20" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">-=</span> evens</span>
-<span id="cb71-21"><a href="#cb71-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique numbers after |= update:"</span>, unique_numbers)</span>
-<span id="cb71-22"><a href="#cb71-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-23"><a href="#cb71-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Update using the symmetric difference</span></span>
-<span id="cb71-24"><a href="#cb71-24" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb71-25"><a href="#cb71-25" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">8</span>, step<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb71-26"><a href="#cb71-26" aria-hidden="true" tabindex="-1"></a>unique_numbers.symmetric_difference_update(r2)</span>
-<span id="cb71-27"><a href="#cb71-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique numbers after symmetric difference update:"</span>, unique__numbers)</span>
-<span id="cb71-28"><a href="#cb71-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-29"><a href="#cb71-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeating but with an operator</span></span>
-<span id="cb71-30"><a href="#cb71-30" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
-<span id="cb71-31"><a href="#cb71-31" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">^=</span> evens</span>
-<span id="cb71-32"><a href="#cb71-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique numbers after ^= update:"</span>, unique_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="714e200f" class="cell" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Update using intersection</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>r0 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>, step<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>unique_numbers.intersection_update(r0)</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"unique numbers after intersection update:"</span>, unique_numbers)</span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">&amp;=</span> evens</span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"unique numbers after &amp;= update:"</span>, unique_numbers)</span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Update using the difference</span></span>
+<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="bu">range</span>(<span class="dv">3</span>, <span class="dv">6</span>)</span>
+<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a>unique_numbers.difference_update(r)</span>
+<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"unique numbers after difference update:"</span>, unique_numbers)</span>
+<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeating but with an operator</span></span>
+<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb72-20"><a href="#cb72-20" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">-=</span> evens</span>
+<span id="cb72-21"><a href="#cb72-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique numbers after |= update:"</span>, unique_numbers)</span>
+<span id="cb72-22"><a href="#cb72-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-23"><a href="#cb72-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Update using the symmetric difference</span></span>
+<span id="cb72-24"><a href="#cb72-24" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb72-25"><a href="#cb72-25" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">8</span>, step<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb72-26"><a href="#cb72-26" aria-hidden="true" tabindex="-1"></a>unique_numbers.symmetric_difference_update(r2)</span>
+<span id="cb72-27"><a href="#cb72-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique numbers after symmetric difference update:"</span>, unique__numbers)</span>
+<span id="cb72-28"><a href="#cb72-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-29"><a href="#cb72-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeating but with an operator</span></span>
+<span id="cb72-30"><a href="#cb72-30" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb72-31"><a href="#cb72-31" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">^=</span> evens</span>
+<span id="cb72-32"><a href="#cb72-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique numbers after ^= update:"</span>, unique_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
-<pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[38]</span><span class="ansi-green-fg">, line 9</span>
-<span class="ansi-red-fg">    </span><span class="ansi-red-fg">unique_numbers = {1, 2 3}</span>
-                         ^
-<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax. Perhaps you forgot a comma?
-</pre>
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[38]</span><span class="ansi-green-fg">, line 5</span>
+<span class="ansi-green-fg">      1</span> unique_numbers = {<span class="ansi-green-fg">1</span>, <span class="ansi-green-fg">2</span>, <span class="ansi-green-fg">3</span>}
+<span class="ansi-green-fg">      2</span> evens = {<span class="ansi-green-fg">0</span>, <span class="ansi-green-fg">2</span>, <span class="ansi-green-fg">4</span>, <span class="ansi-green-fg">6</span>}
+<span class="ansi-green-fg">      3</span> 
+<span class="ansi-green-fg">      4</span> <span style="font-style:italic;color:rgb(95,135,135)"># Update using intersection</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span> r0 = range(<span class="ansi-green-fg">1</span>, <span class="ansi-green-fg">8</span>, step=<span class="ansi-green-fg">2</span>)
+<span class="ansi-green-fg">      6</span> unique_numbers.intersection_update(r0)
+<span class="ansi-green-fg">      7</span> print(<span class="ansi-yellow-fg">"unique numbers after intersection update:"</span>, unique_numbers)
+<span class="ansi-green-fg">      8</span> 
+
+<span class="ansi-red-fg">TypeError</span>: range() takes no keyword arguments</pre>
 </div>
 </div>
 </div>
@@ -1435,22 +1390,22 @@ Set after |=: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}</code></pre>
 <li>Is pretty much a drop-in replacement for <code>set</code></li>
 </ul></li>
 </ul>
-<div id="33ffed18" class="cell" data-execution_count="39">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>frozen <span class="op">=</span> <span class="bu">frozenset</span>(<span class="bu">range</span>(<span class="dv">10</span>))</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen)</span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Testing proper subset with a frozenset"</span>)</span>
-<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">&lt;</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">21</span>)))</span>
-<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Taking the intersection with a frozenset"</span>)</span>
-<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">&amp;</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">15</span>)))</span>
-<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Taking the symmetric difference with a frozenset"</span>)</span>
-<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">^</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">15</span>)))</span>
-<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Taking the union with a frozenset"</span>)</span>
-<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">|</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">15</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="183ca2f1" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>frozen <span class="op">=</span> <span class="bu">frozenset</span>(<span class="bu">range</span>(<span class="dv">10</span>))</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen)</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Testing proper subset with a frozenset"</span>)</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">&lt;</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">21</span>)))</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Taking the intersection with a frozenset"</span>)</span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">&amp;</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">15</span>)))</span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Taking the symmetric difference with a frozenset"</span>)</span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">^</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">15</span>)))</span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Taking the union with a frozenset"</span>)</span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">|</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">15</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>frozenset({0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
 Testing proper subset with a frozenset
@@ -1485,7 +1440,7 @@ frozenset({0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14})</code></pre>
 <h2 class="anchored" data-anchor-id="questions">Questions</h2>
 <ol type="1">
 <li><p>What are three ways to create a dictionary with the following key, value pairs?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a> {<span class="st">"name"</span>: <span class="st">"Smuah"</span>, <span class="st">"height"</span>: <span class="dv">62</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a> {<span class="st">"name"</span>: <span class="st">"Smuah"</span>, <span class="st">"height"</span>: <span class="dv">62</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li><code>kwargs</code> to the <code>dict</code> constructor <code>dict(name="Smuah", height=62)</code></li>
 <li>A list of key-value pairs to the <code>dict</code> constructor <code>dict([("name", "Smuah"), ("height", 62)])</code></li>
@@ -1514,39 +1469,43 @@ frozenset({0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14})</code></pre>
 </ul></li>
 </ol>
 <p>The answers can be seen below</p>
-<div id="89671d2c" class="cell" data-execution_count="40">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Q1</span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 1:"</span>)</span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Method 1:"</span>, <span class="bu">dict</span>(name<span class="op">=</span><span class="st">"Smuah"</span>, height<span class="op">=</span><span class="dv">62</span>))</span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Method 2:"</span>, <span class="bu">dict</span>([(<span class="st">"name"</span>, <span class="st">"Smuah"</span>), (<span class="st">"height"</span>, <span class="dv">62</span>)]))</span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Method 3:"</span>, {<span class="st">"name"</span>: <span class="st">"Smuah"</span>, <span class="st">"height"</span>: <span class="dv">62</span>})</span>
-<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Q2</span></span>
-<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 2:"</span>)</span>
-<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
-<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Before modification:"</span> student)</span>
-<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"gpa"</span>] <span class="op">=</span> <span class="fl">4.0</span></span>
-<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After modification:"</span>, student)</span>
-<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-16"><a href="#cb75-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Q3</span></span>
-<span id="cb75-17"><a href="#cb75-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-18"><a href="#cb75-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 3:"</span>)</span>
-<span id="cb75-19"><a href="#cb75-19" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"config"</span>: <span class="va">True</span>, <span class="st">"active"</span>: <span class="va">False</span>}</span>
-<span id="cb75-20"><a href="#cb75-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"data.get(</span><span class="ch">\"</span><span class="st">settings</span><span class="ch">\"</span><span class="st">):"</span>, data.get(<span class="st">"settings"</span>))</span>
-<span id="cb75-21"><a href="#cb75-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-22"><a href="#cb75-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Q5</span></span>
-<span id="cb75-23"><a href="#cb75-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 5:"</span>)</span>
-<span id="cb75-24"><a href="#cb75-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">set</span>(<span class="st">"lost and lost again"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[40]</span><span class="ansi-green-fg">, line 12</span>
-<span class="ansi-red-fg">    </span><span class="ansi-red-fg">print("Before modification:" student)</span>
-          ^
-<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax. Perhaps you forgot a comma?
-</pre>
-</div>
+<div id="3624c0f6" class="cell" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Q1</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 1:"</span>)</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Method 1:"</span>, <span class="bu">dict</span>(name<span class="op">=</span><span class="st">"Smuah"</span>, height<span class="op">=</span><span class="dv">62</span>))</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Method 2:"</span>, <span class="bu">dict</span>([(<span class="st">"name"</span>, <span class="st">"Smuah"</span>), (<span class="st">"height"</span>, <span class="dv">62</span>)]))</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Method 3:"</span>, {<span class="st">"name"</span>: <span class="st">"Smuah"</span>, <span class="st">"height"</span>: <span class="dv">62</span>})</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Q2</span></span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 2:"</span>)</span>
+<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Before modification:"</span>, student)</span>
+<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"gpa"</span>] <span class="op">=</span> <span class="fl">4.0</span></span>
+<span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After modification:"</span>, student)</span>
+<span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-16"><a href="#cb76-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Q3</span></span>
+<span id="cb76-17"><a href="#cb76-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-18"><a href="#cb76-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 3:"</span>)</span>
+<span id="cb76-19"><a href="#cb76-19" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"config"</span>: <span class="va">True</span>, <span class="st">"active"</span>: <span class="va">False</span>}</span>
+<span id="cb76-20"><a href="#cb76-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"data.get(</span><span class="ch">\"</span><span class="st">settings</span><span class="ch">\"</span><span class="st">):"</span>, data.get(<span class="st">"settings"</span>))</span>
+<span id="cb76-21"><a href="#cb76-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-22"><a href="#cb76-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Q5</span></span>
+<span id="cb76-23"><a href="#cb76-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 5:"</span>)</span>
+<span id="cb76-24"><a href="#cb76-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">set</span>(<span class="st">"lost and lost again"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Question 1:
+Method 1: {'name': 'Smuah', 'height': 62}
+Method 2: {'name': 'Smuah', 'height': 62}
+Method 3: {'name': 'Smuah', 'height': 62}
+Question 2:
+Before modification: {'name': 'Paula', 'height': 64, 'gpa': 3.8}
+After modification: {'name': 'Paula', 'height': 64, 'gpa': 4.0}
+Question 3:
+data.get("settings"): None
+Question 5:
+{' ', 'n', 's', 'a', 'i', 'l', 'g', 'o', 'd', 't'}</code></pre>
 </div>
 </div>
 

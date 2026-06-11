@@ -132,30 +132,17 @@ student["applied"] = "2019-10-31"
 print(student)
 
 # overwriting a key
-student_record["gpa"] = 3.0
+student["gpa"] = 3.0
 print(student["gpa"])
 
 # overwriting a key using the inplace addition operator
-student_record["gpa"] += 1.0
+student["gpa"] += 1.0
 print(student["gpa"])
 ```
 
     {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'applied': '2019-10-31'}
-
-    NameError: name 'student_record' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[5], line 8
-          4 student["applied"] = "2019-10-31"
-          5 print(student)
-          6 
-          7 # overwriting a key
-    ----> 8 student_record["gpa"] = 3.0
-          9 print(student["gpa"])
-         10 
-         11 # overwriting a key using the inplace addition operator
-
-    NameError: name 'student_record' is not defined
+    3.0
+    4.0
 
 #### Removing Items from a Dictionary
 
@@ -217,23 +204,12 @@ print("popitem returned:", student.popitem())
 print("pop('name') returned:", student.pop("name"))
 
 # Using pop with a default value to handle missing key
-print("pop('id', default=0):", student.pop("id", default=None))
+print("pop('id', default=0):", student.pop("id", None))
 ```
 
     popitem returned: ('gpa', 3.8)
     pop('name') returned: Paula
-
-    TypeError: dict.pop() takes no keyword arguments
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[8], line 10
-          6 # Using `pop`
-          7 print("pop('name') returned:", student.pop("name"))
-          8 
-          9 # Using pop with a default value to handle missing key
-    ---> 10 print("pop('id', default=0):", student.pop("id", default=None))
-
-    TypeError: dict.pop() takes no keyword arguments
+    pop('id', default=0): None
 
 #### Dictionary Views
 
@@ -330,10 +306,10 @@ student = {"name": "Paula", "height": 64, "gpa": 3.8}
 
 # Keys view
 keys = student.keys()
-print("reversed(keys):", reversed(keys))
+print("reversed(keys):", list(reversed(keys)))
 ```
 
-    reversed(keys): <dict_reversekeyiterator object at 0x7f5f2816cbd0>
+    reversed(keys): ['gpa', 'height', 'name']
 
 - `dict_key` objects are *set-like*
   - They support set operations
@@ -373,10 +349,10 @@ print("Union:", admission_record.keys() | student_record.keys())
 ```
 
     Testing key equality: False
-    Symmetric Difference: {'gpa', 'minor', 'major', 'advisor', 'admitted'}
+    Symmetric Difference: {'admitted', 'gpa', 'minor', 'advisor', 'major'}
     Intersection: {'first', 'last', 'id'}
     Difference: {'admitted'}
-    Union: {'last', 'gpa', 'minor', 'first', 'major', 'advisor', 'id', 'admitted'}
+    Union: {'admitted', 'gpa', 'minor', 'first', 'last', 'advisor', 'major', 'id'}
 
 - `dict_items` views are useful for iterating over the `key:value` pairs
   in dictionary
@@ -421,22 +397,11 @@ student = {"name": "Paula", "height": 64, "gpa": 3.8}
 
 try:
     print(student["id"])
-except ValueError:
+except KeyError:
     print("ID not found")
 ```
 
-    KeyError: 'id'
-    ---------------------------------------------------------------------------
-    KeyError                                  Traceback (most recent call last)
-    Cell In[17], line 5
-          1 student = {"name": "Paula", "height": 64, "gpa": 3.8}
-          2 
-          3 try:
-          4     print(student["id"])
-    ----> 5 except ValueError:
-          6     print("ID not found")
-
-    KeyError: 'id'
+    ID not found
 
 ##### The `get` Method
 
@@ -455,23 +420,12 @@ print("name:", student.get("name"))
 print("ID:", student.get("id"))
 
 # Specified default
-print("major:", student.get("major", default="Undeclared"))
+print("major:", student.get("major", "Undeclared"))
 ```
 
     name: Paula
     ID: None
-
-    TypeError: dict.get() takes no keyword arguments
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[18], line 10
-          6 # Unspecified default
-          7 print("ID:", student.get("id"))
-          8 
-          9 # Specified default
-    ---> 10 print("major:", student.get("major", default="Undeclared"))
-
-    TypeError: dict.get() takes no keyword arguments
+    major: Undeclared
 
 #### Valid Key Types
 
@@ -524,13 +478,13 @@ dictionary = {1: 1, "a": 2, 2.3: 3, ("b", "c"): 4, b"bytes": 5, range(3): 6}
 print("A dict showing a range of key types:", dictionary)
 
 # Invalid key type
-print("Trying to use a list a key-type")
+print("Trying to use a list as a key")
 list_keyed_dictionary = {["a", "b"]: 1}
 print("A dict using a list as a key:", list_keyed_dict)
 ```
 
     A dict showing a range of key types: {1: 1, 'a': 2, 2.3: 3, ('b', 'c'): 4, b'bytes': 5, range(0, 3): 6}
-    Trying to use a list a key-type
+    Trying to use a list as a key
 
     TypeError: cannot use 'list' as a dict key (unhashable type: 'list')
     ---------------------------------------------------------------------------
@@ -539,7 +493,7 @@ print("A dict using a list as a key:", list_keyed_dict)
           2 print("A dict showing a range of key types:", dictionary)
           3 
           4 # Invalid key type
-          5 print("Trying to use a list a key-type")
+          5 print("Trying to use a list as a key")
     ----> 6 list_keyed_dictionary = {["a", "b"]: 1}
           7 print("A dict using a list as a key:", list_keyed_dict)
 
@@ -560,7 +514,7 @@ print("Calling __hash__ on string:", "abc".__hash__())
 print("Calling __hash__ on a list:", list("abc").__hash__())
 ```
 
-    Calling __hash__ on string: -5832888924080346996
+    Calling __hash__ on string: -1474742819468160406
 
     TypeError: 'NoneType' object is not callable
     ---------------------------------------------------------------------------
@@ -831,12 +785,12 @@ print(one_to_six >= one_to_three)
 print(evens >= one_to_three)
 
 print("one_to_six is a proper superset of one_to_three:", one_to_six > one_to_three)
-print("one_to_six is a proper superset of one_to_six": one_to_six > one_to_six)
+print("one_to_six is a proper superset of one_to_six":, one_to_six > one_to_six)
 ```
 
-    SyntaxError: invalid syntax (2939587943.py, line 13)
+    SyntaxError: invalid syntax (3808763380.py, line 13)
       Cell In[32], line 13
-        print("one_to_six is a proper superset of one_to_six": one_to_six > one_to_six)
+        print("one_to_six is a proper superset of one_to_six":, one_to_six > one_to_six)
                                                              ^
     SyntaxError: invalid syntax
 
@@ -975,7 +929,7 @@ r0 = range(1, 8, step=2)
 unique_numbers.intersection_update(r0)
 print("unique numbers after intersection update:", unique_numbers)
 
-unique_numbers = {1, 2 3}
+unique_numbers = {1, 2, 3}
 unique_numbers &= evens
 print("unique numbers after &= update:", unique_numbers)
 
@@ -1001,11 +955,20 @@ unique_numbers ^= evens
 print("Unique numbers after ^= update:", unique_numbers)
 ```
 
-    SyntaxError: invalid syntax. Perhaps you forgot a comma? (3136791222.py, line 9)
-      Cell In[38], line 9
-        unique_numbers = {1, 2 3}
-                             ^
-    SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    TypeError: range() takes no keyword arguments
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    Cell In[38], line 5
+          1 unique_numbers = {1, 2, 3}
+          2 evens = {0, 2, 4, 6}
+          3 
+          4 # Update using intersection
+    ----> 5 r0 = range(1, 8, step=2)
+          6 unique_numbers.intersection_update(r0)
+          7 print("unique numbers after intersection update:", unique_numbers)
+          8 
+
+    TypeError: range() takes no keyword arguments
 
 #### Frozensets
 
@@ -1109,7 +1072,7 @@ print("Method 3:", {"name": "Smuah", "height": 62})
 
 print("Question 2:")
 student = {"name": "Paula", "height": 64, "gpa": 3.8}
-print("Before modification:" student)
+print("Before modification:", student)
 student["gpa"] = 4.0
 print("After modification:", student)
 
@@ -1124,8 +1087,14 @@ print("Question 5:")
 print(set("lost and lost again"))
 ```
 
-    SyntaxError: invalid syntax. Perhaps you forgot a comma? (1396165015.py, line 12)
-      Cell In[40], line 12
-        print("Before modification:" student)
-              ^
-    SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    Question 1:
+    Method 1: {'name': 'Smuah', 'height': 62}
+    Method 2: {'name': 'Smuah', 'height': 62}
+    Method 3: {'name': 'Smuah', 'height': 62}
+    Question 2:
+    Before modification: {'name': 'Paula', 'height': 64, 'gpa': 3.8}
+    After modification: {'name': 'Paula', 'height': 64, 'gpa': 4.0}
+    Question 3:
+    data.get("settings"): None
+    Question 5:
+    {'d', 'l', 'a', 'g', 'o', ' ', 'i', 't', 'n', 's'}
