@@ -145,7 +145,7 @@ def does_default_list(my_list=[]):
     """Uses a list as a default value"""
 
     my_list.append(1)
-    print(my_lis)
+    print(my_list)
 
 does_default_list()
 does_default_list()
@@ -219,8 +219,6 @@ def shows_scope():
 
     inner = "inner scope"
     print("Outer inside function:", outer)
-    outer = "shadowed"
-    print("Outer shadowed:", outer)
     print("Inner inside function:", inner)
 
 shows_scope()
