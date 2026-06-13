@@ -27,6 +27,9 @@ website:
           - 1_learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.qmd
           - 1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.qmd
           - 1_learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.qmd
+      - section: "II: Data Science Libraries"
+        contents:
+          - 1_learning-python-in-a-notebook-environment/Chapter_07/Chapter_07.qmd
 
 format:
   html:
