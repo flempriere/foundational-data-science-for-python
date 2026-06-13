@@ -162,7 +162,7 @@ b = a or 'default value' # evaluates to second argument since the empty string e
 print(b)
 ```
 
-### `if` Statements
+#### `if` Statements
 
 - Let code branch based on a control expression
 
@@ -201,7 +201,7 @@ else:
     print(f"No match found in {s}")
 ```
 
-#### `else` Statements
+##### `else` Statements
 
 - `if` statements may have an optional `else` branch
 - This is a set of statements that is only executed if an expression tests `False`
