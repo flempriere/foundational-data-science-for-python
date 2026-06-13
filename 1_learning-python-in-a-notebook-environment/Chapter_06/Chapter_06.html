@@ -68,6 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../2_data_science_libraries/Chapter_07/Chapter_07.html" rel="next">
 <link href="../../1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -212,6 +213,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">II: Data Science Libraries</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_07/Chapter_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 7: NumPy</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -298,13 +316,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Finally a colon</p></li>
 <li><p>The most basic function we can write would be</p></li>
 </ul>
-<div id="d3d996b9" class="cell" data-execution_count="1">
+<div id="56822b7c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func():</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(func)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;function func at 0x7f6e583cfd70&gt;</code></pre>
+<pre><code>&lt;function func at 0x7f7e842f4040&gt;</code></pre>
 </div>
 </div>
 <ul>
@@ -324,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Docstrings can be expected in code by the <code>help</code> function</li>
 </ul>
-<div id="11c53dbd" class="cell" data-execution_count="2">
+<div id="078bbea1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> do_nothing(not_used):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""This is a function doing nothing</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -364,7 +382,7 @@ do_nothing(not_used)
 <li>We can mix the two, but all positional arguments must <em>precede</em> the keyword arguments</li>
 </ul></li>
 </ul>
-<div id="7e39f929" class="cell" data-execution_count="3">
+<div id="b3c26d66" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parameterised_function(first, second, third):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Prints out the parameters"""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -403,7 +421,7 @@ do_nothing(not_used)
 <li>All parameters <em>before</em> must be positional only</li>
 </ul></li>
 </ul>
-<div id="cb59aa85" class="cell" data-execution_count="4">
+<div id="0dfdf803" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fixed_position_and_keyword(first, <span class="op">/</span>, second, <span class="op">*</span>, third):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Prints out the parameters"""</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -448,7 +466,7 @@ Third: 3</code></pre>
 <li>Used if no other value is supplied</li>
 </ul></li>
 </ul>
-<div id="5fe10270" class="cell" data-execution_count="5">
+<div id="b395177e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> does_default(first, second, third<span class="op">=</span><span class="dv">3</span>):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Prints parameters"""</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -471,7 +489,7 @@ Third: 3</code></pre>
 <li>This means that if we define a mutable type like a <code>list</code> or <code>dictionary</code> it is shared between all calls to the function</li>
 </ul></li>
 </ul>
-<div id="48f22d2b" class="cell" data-execution_count="6">
+<div id="b618109a" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> does_default_list(my_list<span class="op">=</span>[]):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Uses a list as a default value"""</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -491,7 +509,7 @@ Third: 3</code></pre>
 <li>If you need default mutables a work-around is to use <code>None</code> as the default value and then check</li>
 </ul></li>
 </ul>
-<div id="d6a6100d" class="cell" data-execution_count="7">
+<div id="5536dde0" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fixed_default_list(my_list<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Defaults to an  empty list on every call"""</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -514,7 +532,7 @@ Third: 3</code></pre>
 <li><code>kwargs</code> works similar but is a dictionary mapping argument names to values</li>
 </ul></li>
 </ul>
-<div id="140e82b0" class="cell" data-execution_count="8">
+<div id="6f0a4f8b" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> args_and_kwargs(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Accepts and prints arbitrary positional and keyword arguments"""</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -536,7 +554,7 @@ Third: 3</code></pre>
 <li>Otherwise a function terminates when it reaches the end of it’s statements and returns a value of <code>None</code></li>
 </ul></li>
 </ul>
-<div id="cda8a110" class="cell" data-execution_count="9">
+<div id="48cf0626" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adds_one(some_number):</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""increments the supplied number by one</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -569,7 +587,7 @@ Third: 3</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="5820958a" class="cell" data-execution_count="10">
+<div id="3bc5808e" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>outer <span class="op">=</span> <span class="st">"Global scope"</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> shows_scope():</span>
@@ -617,7 +635,7 @@ Outer outside function: Global scope</code></pre>
 </ul></li>
 <li>For example, to assign the function <code>add_one</code> to another variable <code>my_func</code> we write,</li>
 </ul>
-<div id="94d5ecce" class="cell" data-execution_count="11">
+<div id="227549af" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_one(n):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Adds one to a number"""</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -627,14 +645,14 @@ Outer outside function: Global scope</code></pre>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_func)</span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_func(<span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;function add_one at 0x7f6e88424880&gt;
+<pre><code>&lt;function add_one at 0x7f7e842f4b40&gt;
 3</code></pre>
 </div>
 </div>
 <ul>
 <li>Since functions can be treated as any other object or variable they can be passed to functions or stored in data structures</li>
 </ul>
-<div id="35b0de8d" class="cell" data-execution_count="12">
+<div id="109c5db4" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_one(n):</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Adds one to a number"""</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -662,7 +680,7 @@ Outer outside function: Global scope</code></pre>
 <li>They can even be returned from a function</li>
 </ul></li>
 </ul>
-<div id="ab4ac8a3" class="cell" data-execution_count="13">
+<div id="c1e2676a" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> call_nested():</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calls a nested function"""</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -688,7 +706,7 @@ nested</code></pre>
 <li>Allows for defining nesting and building up behaviours</li>
 </ul></li>
 </ul>
-<div id="22bd7fb3" class="cell" data-execution_count="14">
+<div id="9506af49" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_one(n):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Adds one to a number"""</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -721,7 +739,7 @@ After calling function</code></pre>
 <li>For example, we can define a function which accepts a function, applies a wrapper and returns the wrapped function</li>
 </ul></li>
 </ul>
-<div id="51f2d50d" class="cell" data-execution_count="15">
+<div id="999f0258" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_one(n):</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Adds one to a number"""</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -760,7 +778,7 @@ After calling function</code></pre>
 <li>They use the <code>@decorator</code> syntax</li>
 <li>To recreate our wrapping function above as a decorator we would write</li>
 </ul>
-<div id="153ef374" class="cell" data-execution_count="16">
+<div id="91057183" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> wrap_function(func):</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Applies a wrapper to a function"""</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -806,7 +824,7 @@ After calling function</code></pre>
 <li>Normal functions are clearer</li>
 </ul></li>
 </ul>
-<div id="c8228043" class="cell" data-execution_count="17">
+<div id="f9f39a43" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_to_list(data, func):</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Applies the function to the elements in data"""</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> data:</span>
@@ -885,7 +903,7 @@ After calling function</code></pre>
 <ul>
 <li>For Questions one through three</li>
 </ul>
-<div id="e6a48e95" class="cell" data-execution_count="18">
+<div id="cfd2b317" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Questions 1 - 3</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_prefix(word, prefix<span class="op">=</span><span class="st">"before-"</span>):</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Prepend a word."""</span></span>
@@ -906,7 +924,7 @@ After calling function</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>after-nighttime
 before-nighttime
-&lt;function add_prefix at 0x7f6e88425220&gt;</code></pre>
+&lt;function add_prefix at 0x7f7e842f5430&gt;</code></pre>
 </div>
 </div>
 <ul>
@@ -915,7 +933,7 @@ before-nighttime
 <li>Where we’ve added a demo of <code>simple_logging</code></li>
 </ul></li>
 </ul>
-<div id="54bda158" class="cell" data-execution_count="19">
+<div id="528193b5" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Questions 1 - 3</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_prefix(word, prefix<span class="op">=</span><span class="st">"before-"</span>):</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Prepend a word."""</span></span>
@@ -1359,6 +1377,9 @@ b
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../2_data_science_libraries/Chapter_07/Chapter_07.html" class="pagination-link" aria-label="Chapter 7: NumPy">
+        <span class="nav-page-text">Chapter 7: NumPy</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

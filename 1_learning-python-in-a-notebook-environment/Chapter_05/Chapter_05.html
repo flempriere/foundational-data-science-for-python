@@ -242,6 +242,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">II: Data Science Libraries</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_07/Chapter_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 7: NumPy</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -380,7 +397,7 @@ window.Quarto = {
 </ul></li>
 </ol></li>
 </ul>
-<div id="a446230d" class="cell" data-execution_count="1">
+<div id="00220a39" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign values to variables</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span></span>
@@ -413,7 +430,7 @@ a is b: True</code></pre>
 <li>But liable to fail when comparing other types</li>
 </ul></li>
 </ul>
-<div id="d8975843" class="cell" data-execution_count="2">
+<div id="a3161c4f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"1 == 1.0:"</span>, <span class="dv">1</span> <span class="op">==</span> <span class="fl">1.0</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"'1' == 1:"</span>, <span class="st">'1'</span> <span class="op">==</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -438,7 +455,7 @@ a is b: True</code></pre>
 <li><code>&gt;=</code> greater than or equal</li>
 </ol></li>
 </ul>
-<div id="0708d85f" class="cell" data-execution_count="3">
+<div id="fe36ea8a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"a &lt; b:"</span>, a <span class="op">&lt;</span> b)</span>
@@ -503,7 +520,7 @@ b &gt;= a: True</code></pre>
 <li>Else if returns the value of the second expressions</li>
 </ul></li>
 </ul>
-<div id="7f86ac09" class="cell" data-execution_count="4">
+<div id="587ad2a4" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"False and True:"</span>, <span class="va">False</span> <span class="kw">and</span> <span class="va">True</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"True or False:"</span>, <span class="va">True</span> <span class="kw">or</span> <span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -527,7 +544,7 @@ True or False: True</code></pre>
 <li>Pretty much anything else evaluates to <code>True</code></li>
 </ul></li>
 </ul>
-<div id="2ee6a7e0" class="cell" data-execution_count="5">
+<div id="c31a72fd" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">''</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a <span class="kw">or</span> <span class="st">'default value'</span> <span class="co"># evaluates to second argument since the empty string evaluates `False`</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -545,7 +562,7 @@ True or False: True</code></pre>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>statements<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Code inside the <code>if</code> only executes if the control condition is <code>True</code></p></li>
 </ul>
-<div id="7f32af0e" class="cell" data-execution_count="6">
+<div id="438583e3" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example use cases for if</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">True</span>:</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    message <span class="op">=</span> <span class="st">"It's True"</span></span>
@@ -568,7 +585,7 @@ True or False: True</code></pre>
 <li>Useful when we want to assign and test in the same sequence</li>
 </ul></li>
 </ul>
-<div id="aecd2c54" class="cell" data-execution_count="7">
+<div id="f2d5bee6" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">'2020-12-14'</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> match <span class="op">:=</span> re.search(<span class="vs">r"</span><span class="kw">(</span><span class="dv">\d\d\d\d</span><span class="kw">)</span><span class="vs">-</span><span class="kw">(</span><span class="dv">\d\d</span><span class="kw">)</span><span class="vs">-</span><span class="kw">(</span><span class="dv">\d\d</span><span class="kw">)</span><span class="vs">"</span>, s):</span>
@@ -590,7 +607,7 @@ True or False: True</code></pre>
 <li>We might want to print an alternative method if <code>snack</code> is not in the set</li>
 </ul></li>
 </ul>
-<div id="32690cb9" class="cell" data-execution_count="8">
+<div id="8f76ef63" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>snack <span class="op">=</span> <span class="st">"apple"</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fruit <span class="op">=</span> {<span class="st">"orange"</span>, <span class="st">"apple"</span>, <span class="st">"pear"</span>}</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -608,7 +625,7 @@ True or False: True</code></pre>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>statements<span class="op">-</span>executed<span class="op">-</span><span class="cf">if</span><span class="op">-</span>false<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>So we might then write</p></li>
 </ul>
-<div id="607c63b2" class="cell" data-execution_count="9">
+<div id="f7d3335d" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>snack <span class="op">=</span> <span class="st">"cake"</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>fruit <span class="op">=</span> {<span class="st">"orange"</span>, <span class="st">"apple"</span>, <span class="st">"pear"</span>}</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -623,7 +640,7 @@ True or False: True</code></pre>
 <ul>
 <li><code>if</code> and <code>else</code> statements can be nested</li>
 </ul>
-<div id="4a3c6e71" class="cell" data-execution_count="10">
+<div id="786b1f9e" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>balance <span class="op">=</span> <span class="fl">2000.32</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>account_status <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -647,7 +664,7 @@ True or False: True</code></pre>
 <li>Allow us to add sequential tests for if the first <code>if</code> (and preceding <code>elif</code>) tests fail</li>
 </ul></li>
 </ul>
-<div id="c412337a" class="cell" data-execution_count="11">
+<div id="2519a3fe" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fav_num <span class="op">=</span> <span class="dv">13</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> fav_num <span class="kw">in</span> (<span class="dv">3</span>, <span class="dv">7</span>):</span>
@@ -675,7 +692,7 @@ True or False: True</code></pre>
 <li>Each iteration increases <code>counter</code> until the loop condition is <code>False</code> and the <code>while</code> loop ends</li>
 </ul></li>
 </ul>
-<div id="f18cc5fa" class="cell" data-execution_count="12">
+<div id="fc0a147c" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> counter <span class="op">==</span> <span class="dv">5</span>:</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"I've counted </span><span class="sc">{</span>counter<span class="sc">}</span><span class="ss"> so far, I hope there aren't more"</span>)</span>
@@ -715,7 +732,7 @@ Caution
 <li>i.e.&nbsp;Recreating the <code>for</code> loop above</li>
 </ul></li>
 </ul>
-<div id="e5444805" class="cell" data-execution_count="13">
+<div id="b63c8e75" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -730,7 +747,7 @@ Caution
 <ul>
 <li>As mentioned we can also iterate over sequences like <code>list</code></li>
 </ul>
-<div id="350dde40" class="cell" data-execution_count="14">
+<div id="74c85310" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>colours <span class="op">=</span> [<span class="st">"Green"</span>, <span class="st">"Red"</span>, <span class="st">"Blue"</span>]</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> colour <span class="kw">in</span> colours:</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"My favourite colour is </span><span class="sc">{</span>colour<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -757,7 +774,7 @@ No, wait...</code></pre>
 </ul></li>
 <li>Using a <code>break</code> statement we can stop otherwise apparently infinite loops</li>
 </ul>
-<div id="628f0eea" class="cell" data-execution_count="15">
+<div id="2d5c5265" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>fish <span class="op">=</span> [<span class="st">"mackerel"</span>, <span class="st">"salmon"</span>, <span class="st">"pike"</span>]</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>beasts <span class="op">=</span> [<span class="st">"salmon"</span>, <span class="st">"pike"</span>, <span class="st">"bear"</span>, <span class="st">"mackerel"</span>]</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -778,7 +795,7 @@ Oh no! It's not a fish, it's a bear</code></pre>
 <ul>
 <li><code>continue</code> let’s us move to the next loop iteration early, such as if there is an error condition</li>
 </ul>
-<div id="d25d5f00" class="cell" data-execution_count="16">
+<div id="e5c98373" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name <span class="kw">in</span> [<span class="st">"bob"</span>, <span class="st">"billy"</span>, <span class="st">"bonzo"</span>, <span class="st">"fred"</span>, <span class="st">"baxter"</span>]:</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> name.startswith(<span class="st">"b"</span>):</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
@@ -830,7 +847,7 @@ Fine fellow that baxter</code></pre>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>     <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <p>The answers can be seen below</p>
-<div id="9d05873d" class="cell" data-execution_count="17">
+<div id="5cc15e41" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Question 1</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 1"</span>)</span>
