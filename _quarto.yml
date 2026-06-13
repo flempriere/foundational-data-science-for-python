@@ -26,6 +26,7 @@ website:
           - 1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.qmd
           - 1_learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.qmd
           - 1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.qmd
+          - 1_learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.qmd
 
 format:
   html:
