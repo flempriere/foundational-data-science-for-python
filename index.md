@@ -31,6 +31,8 @@ Behrman](https://www.amazon.com.au/dp/0136624359)
   Structures](./1_learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.qmd)
 - [Chapter 5: Execution
   Control](./1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.qmd)
+- [Chapter 6:
+  Functions](./1_learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.qmd)
 
 ### II: Data Science Libraries
 
