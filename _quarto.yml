@@ -29,7 +29,7 @@ website:
           - 1_learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.qmd
       - section: "II: Data Science Libraries"
         contents:
-          - 1_learning-python-in-a-notebook-environment/Chapter_07/Chapter_07.qmd
+          - 2_data_science_libraries/Chapter_07/Chapter_07.qmd
 
 format:
   html:
