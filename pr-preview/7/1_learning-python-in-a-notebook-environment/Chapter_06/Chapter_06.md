@@ -57,7 +57,7 @@ def func():
 print(func)
 ```
 
-    <function func at 0x7f896db3fe20>
+    <function func at 0x7f0070e74040>
 
 - This defines a function `func` that accepts no arguments, does nothing
   and returns nothing
@@ -365,7 +365,7 @@ print(my_func)
 print(my_func(2))
 ```
 
-    <function add_one at 0x7f8998b04460>
+    <function add_one at 0x7f0070e745c0>
     3
 
 - Since functions can be treated as any other object or variable they
@@ -647,7 +647,7 @@ print(add_prefix)
 
     after-nighttime
     before-nighttime
-    <function add_prefix at 0x7f8998b05430>
+    <function add_prefix at 0x7f0070e75590>
 
 - and for four and five,
   - Where we’ve added a demo of `simple_logging`
