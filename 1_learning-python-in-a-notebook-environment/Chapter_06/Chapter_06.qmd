@@ -1,5 +1,5 @@
 ---
-title: "Functions"
+title: "Chapter 6: Functions"
 ---
 
 ## Notes
@@ -63,7 +63,7 @@ def do_nothing(not_used):
 
     pass
 
-help(not_used)
+help(do_nothing)
 ```
 
 ### Parameters
@@ -99,11 +99,11 @@ parameterised_function(second=2, 1, 3)
 
 - If you want to force certain parameters to *only* be passed by keyword you can indicate that by the `*` placeholder in the argument list
     - All parameters that come after *must* be keyword-specified
-- If we want to force something to be supplied *only* positionally then we can use the `\` placeholder
+- If we want to force something to be supplied *only* positionally then we can use the `/` placeholder
     - All parameters *before* must be positional only
 
 ```{python}
-def fixed_position_and_keyword(first, \, second, *, third):
+def fixed_position_and_keyword(first, /, second, *, third):
     """Prints out the parameters"""
 
     print(f"First: {first}")
@@ -147,8 +147,8 @@ def does_default_list(my_list=[]):
     my_list.append(1)
     print(my_lis)
 
-does_list_default()
-does_list_default()
+does_default_list()
+does_default_list()
 ```
 
 - In general avoid using mutable types for the default
@@ -163,8 +163,8 @@ def fixed_default_list(my_list=None):
     my_list.append(1)
     print(my_list)
 
-fixed_default_list(1)
-fixed_default_list(1)
+fixed_default_list()
+fixed_default_list()
 ```
 
 - To accept an arbitrary number of positional arguments or keyword-arguments we can use the `*args` or `**kwargs` arguments
@@ -281,6 +281,8 @@ def call_nested():
         """Prints a message"""
 
         print("nested")
+
+    return nested
 
 my_func = call_nested()
 my_func()
@@ -493,7 +495,7 @@ def return_one():
 
 def simple_logging(func):
 
-    def wrapped:
+    def wrapped():
         print("logged")
         func()
 
