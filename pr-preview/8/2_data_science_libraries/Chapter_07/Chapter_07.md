@@ -7595,7 +7595,7 @@ help(np)
         class errstate(builtins.object)
          |  errstate(
          |      *,
-         |      call=<numpy._core._ufunc_config._unspecified object at 0x7f163433c440>,
+         |      call=<numpy._core._ufunc_config._unspecified object at 0x7fa040114440>,
          |      all=None,
          |      divide=None,
          |      over=None,
@@ -7677,7 +7677,7 @@ help(np)
          |  __init__(
          |      self,
          |      *,
-         |      call=<numpy._core._ufunc_config._unspecified object at 0x7f163433c440>,
+         |      call=<numpy._core._ufunc_config._unspecified object at 0x7fa040114440>,
          |      all=None,
          |      divide=None,
          |      over=None,
@@ -59689,7 +59689,7 @@ help(np)
             :Character code: ``'?'``
 
         __NUMPY_SETUP__ = False
-        __all__ = ['nanstd', 'uint64', 'put', 'single', 'info', 'ndindex', 'di...
+        __all__ = ['seterr', 'asfortranarray', 'isclose', 'spacing', 'sctypeDi...
         __array_api_version__ = '2024.12'
         __expired_attributes__ = {'DataSource': "It's still available as `np.l...
         __former_attrs__ = {'complex': "module 'numpy' has no attribute 'compl...
@@ -67235,3 +67235,89 @@ print("Integral of p is", p.integ())
         extended syntactic support for multi-dimensional accesses and
         slices, python lists must implement multiple dimensions as a
         list-of-lists construct
+
+2.  Given the following code what would you expect the final value to be
+    for `d2`?
+
+    ``` python
+     import numpy as np
+
+     d1 = np.array([[0, 1, 3], [4, 2, 9]])
+     d2 = d1[:, 1:]
+    ```
+
+    - The first slice selects all rows, and the second selects all
+      columns from $1$ onwards
+    - We would thus expect the final output to be
+      `np.array([[1, 3], [2, 9]])`
+
+3.  Given the following code what would you expect the final value of
+    `d1[0, 2]`?
+
+    ``` python
+     import numpy as np
+
+     d1 = np.array([[0, 1, 3], [4, 2, 9]])
+     d2 = d1[:, 1:]
+     d2[0, 1] = 0
+    ```
+
+    - `d2` is a view over `d1[:, 1 :]` and `d2[0, 1]` thus corresponds
+      to `d1[0, 2]`
+    - Since the zeroth column of `d2` is the first column of `d1`
+    - So `d1[0, 2]` should be `0`, since changes to the view propagate
+
+4.  If you add two arrays of dimensions `(1, 2, 3)` and `(5, 2, 1)`,
+    what will the dimensions of the resulting array be?
+
+    - From the broadcasting rules this would be `(5, 2, 3)`
+
+5.  Use the `poly1d` class to model the following polynomial
+
+    $$ 6x^4 + 2x^3 + 5x^2 + x - 10$$
+
+    - We can do this easily by defining the coefficients
+
+      ``` python
+         import numpy as np
+
+         g = np.poly1d((6, 2, 5, 1, -10))
+      ```
+
+- The answers are repeated below
+
+``` python
+import numpy as np
+
+d1 = np.array([[0, 1, 3], [4, 2, 9]])
+d2 = d1[:, 1:]
+
+print("Q1:", d2)
+
+d2[0,  1] = 0
+print("Q2:", d1)
+
+M = np.arange(6).reshape(1, 2, 3)
+N = np.arange(10).reshape(5, 2, 1)
+
+print("Q4:")
+print("M.shape:", M.shape)
+print("N.shape:", N.shape)
+print("(M + N).shape:", (M + N).shape)
+
+print("Q5:")
+g = np.poly1d((6, 2, 5, 1, -10))
+print(g)
+```
+
+    Q1: [[1 3]
+     [2 9]]
+    Q2: [[0 1 0]
+     [4 2 9]]
+    Q4:
+    M.shape: (1, 2, 3)
+    N.shape: (5, 2, 1)
+    (M + N).shape: (5, 2, 3)
+    Q5:
+       4     3     2
+    6 x + 2 x + 5 x + 1 x - 10
