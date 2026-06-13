@@ -1,6 +1,5 @@
 # Functions
 
-
 - [Notes](#notes)
   - [Defining Functions](#defining-functions)
   - [Control Statement](#control-statement)
@@ -92,9 +91,9 @@ help(not_used)
     NameError                                 Traceback (most recent call last)
     Cell In[2], line 10
           6     """
-          7 
+          7
           8     pass
-          9 
+          9
     ---> 10 help(not_used)
 
     NameError: name 'not_used' is not defined
@@ -212,10 +211,10 @@ does_list_default()
     ---------------------------------------------------------------------------
     NameError                                 Traceback (most recent call last)
     Cell In[6], line 7
-          3 
+          3
           4     my_list.append(1)
           5     print(my_lis)
-          6 
+          6
     ----> 7 does_list_default()
           8 does_list_default()
 
@@ -245,13 +244,13 @@ fixed_default_list(1)
           5         my_list = []
           6     my_list.append(1)
           7     print(my_list)
-          8 
+          8
     ----> 9 fixed_default_list(1)
          10 fixed_default_list(1)
 
     Cell In[7], line 6, in fixed_default_list(my_list)
           2     """Defaults to an  empty list on every call"""
-          3 
+          3
           4     if my_list is None:
           5         my_list = []
     ----> 6     my_list.append(1)
@@ -339,7 +338,7 @@ print("Inner outside function:", inner)
     Cell In[10], line 13
           9     print("Outer shadowed:", outer)
          10     print("Inner inside function:", inner)
-         11 
+         11
          12 print("Outer outside function:", outer)
     ---> 13 print("Inner outside function:", inner)
 
@@ -420,9 +419,9 @@ my_func()
     ---------------------------------------------------------------------------
     TypeError                                 Traceback (most recent call last)
     Cell In[13], line 12
-          8 
+          8
           9         print("nested")
-         10 
+         10
          11 my_func = call_nested()
     ---> 12 my_func()
 
@@ -588,7 +587,7 @@ def wrapper():
     print(retval)
 ```
 
-1.  What would be the output of the following?
+1. What would be the output of the following?
 
     ``` python
      add_prefix("nighttime", "after-")
@@ -596,7 +595,7 @@ def wrapper():
 
     - The output should be `"after-nighttime"`
 
-2.  What would be the output of the following?
+2. What would be the output of the following?
 
     ``` python
      add_prefix("nighttime")
@@ -604,7 +603,7 @@ def wrapper():
 
     - The output should be `"before-nighttime"`
 
-3.  What would be the output of the following call?
+3. What would be the output of the following call?
 
     ``` python
      add_prefix()
@@ -613,12 +612,12 @@ def wrapper():
     - We would get an error as we have failed to supply the required
       `word` parameter
 
-4.  What line should you put above a function definition to decorate it
+4. What line should you put above a function definition to decorate it
     with the function `standard_logging`?
 
     - The decorator syntax is `@standard_logging`
 
-5.  What would be printed by the following call?
+5. What would be printed by the following call?
 
     ``` python
      wrapper()
