@@ -194,8 +194,7 @@ if False:
 ```{python}
 import re
 s = '2020-12-14'
-if match := re.search(r"(\d\d\d\d)-(\d\d)-(\d\d)", s)
-if match:
+if match := re.search(r"(\d\d\d\d)-(\d\d)-(\d\d)", s):
     print(f"Matched items: {match.groups(1)}")
 else:
     print(f"No match found in {s}")
@@ -228,11 +227,13 @@ if snack in fruit:
 - So we might then write
 
 ```{python}
-snack = "apple"
+snack = "cake"
 fruit = {"orange", "apple", "pear"}
 
 if snack in fruit:
     print(f"Yeah, {snack} is good!")
+else:
+    print(f"{snack}!? You should have some fruit")
 ```
 
 - `if` and `else` statements can be nested
@@ -259,7 +260,7 @@ print(account_status)
 ```{python}
 fav_num = 13
 
-if fav_num in (3.7):
+if fav_num in (3, 7):
     print(f"{fav_num} is lucky")
 elif fav_num == 0:
     print(f"{fav_num} is evocative")
@@ -282,7 +283,7 @@ else:
 
 ```{python}
 counter = 0
-while counter = 5:
+while counter == 5:
     print(f"I've counted {counter} so far, I hope there aren't more")
     counter += 1
 ```
