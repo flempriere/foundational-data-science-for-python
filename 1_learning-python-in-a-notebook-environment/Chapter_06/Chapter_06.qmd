@@ -223,6 +223,7 @@ def shows_scope():
     print("Outer shadowed:", outer)
     print("Inner inside function:", inner)
 
+shows_scope()
 print("Outer outside function:", outer)
 print("Inner outside function:", inner)
 ```
