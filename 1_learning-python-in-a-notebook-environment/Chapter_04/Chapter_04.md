@@ -348,10 +348,10 @@ print("Union:", admission_record.keys() | student_record.keys())
 ```
 
     Testing key equality: False
-    Symmetric Difference: {'minor', 'advisor', 'gpa', 'major', 'admitted'}
-    Intersection: {'last', 'id', 'first'}
+    Symmetric Difference: {'gpa', 'major', 'admitted', 'minor', 'advisor'}
+    Intersection: {'id', 'last', 'first'}
     Difference: {'admitted'}
-    Union: {'minor', 'first', 'last', 'advisor', 'gpa', 'id', 'major', 'admitted'}
+    Union: {'gpa', 'major', 'admitted', 'minor', 'first', 'id', 'last', 'advisor'}
 
 - `dict_items` views are useful for iterating over the `key:value` pairs
   in dictionary
@@ -513,7 +513,7 @@ print("Calling __hash__ on string:", "abc".__hash__())
 print("Calling __hash__ on a list:", list("abc").__hash__())
 ```
 
-    Calling __hash__ on string: 8937484800996479138
+    Calling __hash__ on string: -3777267129638939084
 
     TypeError: 'NoneType' object is not callable
     ---------------------------------------------------------------------------
@@ -1090,4 +1090,4 @@ print(set("lost and lost again"))
     Question 3:
     data.get("settings"): None
     Question 5:
-    {' ', 'n', 't', 'a', 'g', 's', 'i', 'd', 'o', 'l'}
+    {'g', 'l', 'i', 'a', 't', 's', 'd', ' ', 'n', 'o'}
