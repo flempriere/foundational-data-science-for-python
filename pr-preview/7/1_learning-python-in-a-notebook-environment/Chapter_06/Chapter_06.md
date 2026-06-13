@@ -1,4 +1,4 @@
-# Functions
+# Chapter 6: Functions
 
 
 - [Notes](#notes)
@@ -57,7 +57,7 @@ def func():
 print(func)
 ```
 
-    <function func at 0x7f0e34954040>
+    <function func at 0x7f896db3fe20>
 
 - This defines a function `func` that accepts no arguments, does nothing
   and returns nothing
@@ -84,20 +84,16 @@ def do_nothing(not_used):
 
     pass
 
-help(not_used)
+help(do_nothing)
 ```
 
-    NameError: name 'not_used' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[2], line 10
-          6     """
-          7 
-          8     pass
-          9 
-    ---> 10 help(not_used)
+    Help on function do_nothing in module __main__:
 
-    NameError: name 'not_used' is not defined
+    do_nothing(not_used)
+        This is a function doing nothing
+
+        Parameters:
+            not_used - an unused parameter
 
 ### Parameters
 
@@ -142,11 +138,11 @@ parameterised_function(second=2, 1, 3)
   you can indicate that by the `*` placeholder in the argument list
   - All parameters that come after *must* be keyword-specified
 - If we want to force something to be supplied *only* positionally then
-  we can use the `\` placeholder
+  we can use the `/` placeholder
   - All parameters *before* must be positional only
 
 ``` python
-def fixed_position_and_keyword(first, \, second, *, third):
+def fixed_position_and_keyword(first, /, second, *, third):
     """Prints out the parameters"""
 
     print(f"First: {first}")
@@ -163,11 +159,24 @@ fixed_position_and_keyword(1, second=2, third=3)
 fixed_position_and_keyword(1, 2, 3)
 ```
 
-    SyntaxError: unexpected character after line continuation character (740517188.py, line 1)
-      Cell In[4], line 1
-        def fixed_position_and_keyword(first, \, second, *, third):
-                                               ^
-    SyntaxError: unexpected character after line continuation character
+    First: 1
+    Second: 2
+    Third: 3
+    First: 1
+    Second: 2
+    Third: 3
+
+    TypeError: fixed_position_and_keyword() takes 2 positional arguments but 3 were given
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    Cell In[4], line 15
+         11 # using pos, kwarg, kwarg
+         12 fixed_position_and_keyword(1, second=2, third=3)
+         13 
+         14 # trying fully positional
+    ---> 15 fixed_position_and_keyword(1, 2, 3)
+
+    TypeError: fixed_position_and_keyword() takes 2 positional arguments but 3 were given
 
 - Parameters can be assigned optional default values
   - Used if no other value is supplied
@@ -204,11 +213,11 @@ def does_default_list(my_list=[]):
     my_list.append(1)
     print(my_lis)
 
-does_list_default()
-does_list_default()
+does_default_list()
+does_default_list()
 ```
 
-    NameError: name 'does_list_default' is not defined
+    NameError: name 'my_lis' is not defined
     ---------------------------------------------------------------------------
     NameError                                 Traceback (most recent call last)
     Cell In[6], line 7
@@ -216,10 +225,17 @@ does_list_default()
           4     my_list.append(1)
           5     print(my_lis)
           6 
-    ----> 7 does_list_default()
-          8 does_list_default()
+    ----> 7 does_default_list()
+          8 does_default_list()
 
-    NameError: name 'does_list_default' is not defined
+    Cell In[6], line 5, in does_default_list(my_list)
+          1 def does_default_list(my_list=[]):
+          2     """Uses a list as a default value"""
+          3 
+          4     my_list.append(1)
+    ----> 5     print(my_lis)
+
+    NameError: name 'my_lis' is not defined
 
 - In general avoid using mutable types for the default
   - If you need default mutables a work-around is to use `None` as the
@@ -234,30 +250,12 @@ def fixed_default_list(my_list=None):
     my_list.append(1)
     print(my_list)
 
-fixed_default_list(1)
-fixed_default_list(1)
+fixed_default_list()
+fixed_default_list()
 ```
 
-    AttributeError: 'int' object has no attribute 'append'
-    ---------------------------------------------------------------------------
-    AttributeError                            Traceback (most recent call last)
-    Cell In[7], line 9
-          5         my_list = []
-          6     my_list.append(1)
-          7     print(my_list)
-          8 
-    ----> 9 fixed_default_list(1)
-         10 fixed_default_list(1)
-
-    Cell In[7], line 6, in fixed_default_list(my_list)
-          2     """Defaults to an  empty list on every call"""
-          3 
-          4     if my_list is None:
-          5         my_list = []
-    ----> 6     my_list.append(1)
-          7     print(my_list)
-
-    AttributeError: 'int' object has no attribute 'append'
+    [1]
+    [1]
 
 - To accept an arbitrary number of positional arguments or
   keyword-arguments we can use the `*args` or `**kwargs` arguments
@@ -367,7 +365,7 @@ print(my_func)
 print(my_func(2))
 ```
 
-    <function add_one at 0x7f0e34954bf0>
+    <function add_one at 0x7f8998b04460>
     3
 
 - Since functions can be treated as any other object or variable they
@@ -410,23 +408,14 @@ def call_nested():
 
         print("nested")
 
+    return nested
+
 my_func = call_nested()
 my_func()
 ```
 
     outer
-
-    TypeError: 'NoneType' object is not callable
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[13], line 12
-          8 
-          9         print("nested")
-         10 
-         11 my_func = call_nested()
-    ---> 12 my_func()
-
-    TypeError: 'NoneType' object is not callable
+    nested
 
 - Functions can call other functions
   - Allows for defining nesting and building up behaviours
@@ -658,7 +647,7 @@ print(add_prefix)
 
     after-nighttime
     before-nighttime
-    <function add_prefix at 0x7f0e34955850>
+    <function add_prefix at 0x7f8998b05430>
 
 - and for four and five,
   - Where we’ve added a demo of `simple_logging`
@@ -674,7 +663,7 @@ def return_one():
 
 def simple_logging(func):
 
-    def wrapped:
+    def wrapped():
         print("logged")
         func()
 
@@ -690,8 +679,7 @@ def wrapper():
 wrapper()
 ```
 
-    SyntaxError: expected '(' (3645523198.py, line 11)
-      Cell In[19], line 11
-        def wrapped:
-                   ^
-    SyntaxError: expected '('
+    logged
+    a
+    b
+    1
