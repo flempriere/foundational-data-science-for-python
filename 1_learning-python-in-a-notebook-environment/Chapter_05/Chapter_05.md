@@ -262,18 +262,13 @@ if False:
 ``` python
 import re
 s = '2020-12-14'
-if match := re.search(r"(\d\d\d\d)-(\d\d)-(\d\d)", s)
-if match:
+if match := re.search(r"(\d\d\d\d)-(\d\d)-(\d\d)", s):
     print(f"Matched items: {match.groups(1)}")
 else:
     print(f"No match found in {s}")
 ```
 
-    SyntaxError: expected ':' (2456532456.py, line 3)
-      Cell In[7], line 3
-        if match := re.search(r"(\d\d\d\d)-(\d\d)-(\d\d)", s)
-                                                             ^
-    SyntaxError: expected ':'
+    Matched items: ('2020', '12', '14')
 
 ##### `else` Statements
 
@@ -306,14 +301,16 @@ if snack in fruit:
 - So we might then write
 
 ``` python
-snack = "apple"
+snack = "cake"
 fruit = {"orange", "apple", "pear"}
 
 if snack in fruit:
     print(f"Yeah, {snack} is good!")
+else:
+    print(f"{snack}!? You should have some fruit")
 ```
 
-    Yeah, apple is good!
+    cake!? You should have some fruit
 
 - `if` and `else` statements can be nested
 
@@ -343,7 +340,7 @@ print(account_status)
 ``` python
 fav_num = 13
 
-if fav_num in (3.7):
+if fav_num in (3, 7):
     print(f"{fav_num} is lucky")
 elif fav_num == 0:
     print(f"{fav_num} is evocative")
@@ -353,18 +350,7 @@ else:
     print(f"I have no opinion about {fav_num}")
 ```
 
-    TypeError: argument of type 'float' is not a container or iterable
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[11], line 3
-          1 fav_num = 13
-          2
-    ----> 3 if fav_num in (3.7):
-          4     print(f"{fav_num} is lucky")
-          5 elif fav_num == 0:
-          6     print(f"{fav_num} is evocative")
-
-    TypeError: argument of type 'float' is not a container or iterable
+    I have no opinion about 13
 
 #### `While` Loops
 
@@ -383,16 +369,10 @@ else:
 
 ``` python
 counter = 0
-while counter = 5:
+while counter == 5:
     print(f"I've counted {counter} so far, I hope there aren't more")
     counter += 1
 ```
-
-    SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='? (1051944267.py, line 2)
-      Cell In[12], line 2
-        while counter = 5:
-              ^
-    SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
 
 > [!CAUTION]
 >
