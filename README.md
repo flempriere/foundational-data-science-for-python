@@ -20,7 +20,7 @@ This repository contains notes and code examples from the book,
 
 ### II: Data Science Libraries
 
-- [Chapter 7: NumPy](2_data_science_libraries/Chapter_07/Chapter_07.qmd)
+- [Chapter 7: NumPy](2_data_science_libraries/Chapter_07/Chapter_07.md)
 
 ### III: Intermediate Python
 

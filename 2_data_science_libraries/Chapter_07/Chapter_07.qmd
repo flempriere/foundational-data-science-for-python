@@ -25,10 +25,8 @@ Python code is organised into packages or libraries. Python itself comes with th
 - Once installed, Numpy can then be imported to be used
     - A common convention is to import `numpy` under the alias `np`
 
-```{python}
+```python
 import numpy as np
-
-help(np)
 ```
 
 ### Creating Arrays
@@ -184,7 +182,7 @@ print("Accessing row 2:", two_d_array[2])
 print("Accessing row 2, column 3:", two_d_array[2, 3])
 
 print("Slicing:")
-print("Slicing row 0 to 2:" two_d_array[:2])
+print("Slicing row 0 to 2:", two_d_array[:2])
 print("Accessing column 3 in all rows:", two_d_array[:, 3])
 print("Print accessing last 3 columns in row 0 and 1:", two_d_array[:2, -3:])
 ```
@@ -363,7 +361,7 @@ print("data.std(axis=1):", data.std(axis=1))
     - Retrieve the diagonal (`.diagonal()`)
 
 ```{python}
-from numpy import np
+import numpy as np
 
 M = np.arange(9).reshape(3,3)
 N = np.arange(9).reshape(3,3)
@@ -435,7 +433,7 @@ print("M\n", M, "\nN:\n", N)
 print("Normal element-by-element addition:", M + N)
 
 K = np.arange(1, 4)
-print("Broadcasted addition (M + K):" M + K)
+print("Broadcasted addition (M + K):", M + K)
 
 print("Broadcasted addition (M + 1):", M + 1)
 ```
@@ -504,7 +502,7 @@ print(p(5))
 import numpy as np
 
 p = np.poly1d((2, 3))
-print(p1)
+print(p)
 
 q = np.poly1d((1, 2, 3))
 print(q)
