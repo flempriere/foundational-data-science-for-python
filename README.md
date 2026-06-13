@@ -16,8 +16,11 @@ This repository contains notes and code examples from the book,
 - [Chapter 3: Sequences](./1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.md)
 - [Chapter 4: Other Data Structures](./1_learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.md)
 - [Chapter 5: Execution Control](./1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.md)
+- [Chapter 6: Functions](./1_learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.qmd)
 
 ### II: Data Science Libraries
+
+- [Chapter 7: NumPy](2_data_science_libraries/Chapter_07/Chapter_07.md)
 
 ### III: Intermediate Python
 
