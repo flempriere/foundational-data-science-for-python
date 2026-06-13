@@ -56,7 +56,7 @@ def func():
 print(func)
 ```
 
-    <function func at 0x7f0070e74040>
+    <function func at 0x7fb1b8314040>
 
 - This defines a function `func` that accepts no arguments, does nothing
   and returns nothing
@@ -324,23 +324,34 @@ def shows_scope():
     print("Outer shadowed:", outer)
     print("Inner inside function:", inner)
 
+shows_scope()
 print("Outer outside function:", outer)
 print("Inner outside function:", inner)
 ```
 
-    Outer outside function: Global scope
-
-    NameError: name 'inner' is not defined
+    UnboundLocalError: cannot access local variable 'outer' where it is not associated with a value
     ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[10], line 13
+    UnboundLocalError                         Traceback (most recent call last)
+    Cell In[10], line 12
+          8     outer = "shadowed"
           9     print("Outer shadowed:", outer)
          10     print("Inner inside function:", inner)
          11
-         12 print("Outer outside function:", outer)
-    ---> 13 print("Inner outside function:", inner)
+    ---> 12 shows_scope()
+         13 print("Outer outside function:", outer)
+         14 print("Inner outside function:", inner)
 
-    NameError: name 'inner' is not defined
+    Cell In[10], line 7, in shows_scope()
+          3 def shows_scope():
+          4     """Demonstrates local variable"""
+          5
+          6     inner = "inner scope"
+    ----> 7     print("Outer inside function:", outer)
+          8     outer = "shadowed"
+          9     print("Outer shadowed:", outer)
+         10     print("Inner inside function:", inner)
+
+    UnboundLocalError: cannot access local variable 'outer' where it is not associated with a value
 
 ### Decorators
 
@@ -364,7 +375,7 @@ print(my_func)
 print(my_func(2))
 ```
 
-    <function add_one at 0x7f0070e745c0>
+    <function add_one at 0x7fb1b8314b40>
     3
 
 - Since functions can be treated as any other object or variable they
@@ -646,7 +657,7 @@ print(add_prefix)
 
     after-nighttime
     before-nighttime
-    <function add_prefix at 0x7f0070e75590>
+    <function add_prefix at 0x7fb1b83154e0>
 
 - and for four and five,
   - Where we’ve added a demo of `simple_logging`
