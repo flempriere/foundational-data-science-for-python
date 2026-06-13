@@ -1,6 +1,5 @@
 # Chapter 7: NumPy
 
-
 - [Notes](#notes)
   - [Installing NumPy](#installing-numpy)
   - [Creating Arrays](#creating-arrays)
@@ -66629,7 +66628,7 @@ matrix = np.arange(12).reshape(5, 5)
     ValueError                                Traceback (most recent call last)
     Cell In[6], line 3
           1 import numpy as np
-          2 
+          2
     ----> 3 matrix = np.arange(12).reshape(5, 5)
 
     ValueError: cannot reshape array of size 12 into shape (5,5)
@@ -66959,7 +66958,7 @@ print("M.diagonal():\n", M.diagonal())
     ImportError                               Traceback (most recent call last)
     Cell In[17], line 1
     ----> 1 from numpy import np
-          2 
+          2
           3 M = np.arange(9).reshape(3,3)
           4 N = np.arange(9).reshape(3,3)
 
@@ -67032,7 +67031,7 @@ small_array[14] = "Hello, World!"
     Cell In[18], line 20
          16 small_array[14] += 0.5
          17 print(small_array)
-         18 
+         18
          19 print("Modifying a value to a string")
     ---> 20 small_array[14] = "Hello, World!"
 
@@ -67096,7 +67095,7 @@ print(K.shape)
     M:
      [[[0 1 2 3 4]]
 
-     [[5 6 7 8 9]]] 
+     [[5 6 7 8 9]]]
     N:
      [[[ 0]
       [ 1]
@@ -67151,7 +67150,6 @@ p = np.poly1d((4, 5))
 print(p)
 ```
 
-     
     4 x + 5
 
 - Alternatively takes a boolean flag as the second argument to indicate
@@ -67205,10 +67203,10 @@ print("Integral of p is", p.integ())
     NameError                                 Traceback (most recent call last)
     Cell In[24], line 4
           1 import numpy as np
-          2 
+          2
           3 p = np.poly1d((2, 3))
     ----> 4 print(p1)
-          5 
+          5
           6 q = np.poly1d((1, 2, 3))
           7 print(q)
 
@@ -67225,13 +67223,13 @@ print("Integral of p is", p.integ())
 
 ## Questions
 
-1.  Name three differences between NumPy arrays and Python lists
+1. Name three differences between NumPy arrays and Python lists
 
-    1.  NumPy arrays must be of fixed-type rather than supporting
+    1. NumPy arrays must be of fixed-type rather than supporting
         mixed-type
-    2.  NumPy arrays naturally support element-by-element operations,
+    2. NumPy arrays naturally support element-by-element operations,
         list’s default operations apply to list itself
-    3.  NumPy arrays are by default multi-dimensional and provide
+    3. NumPy arrays are by default multi-dimensional and provide
         extended syntactic support for multi-dimensional accesses and
         slices, python lists must implement multiple dimensions as a
         list-of-lists construct
