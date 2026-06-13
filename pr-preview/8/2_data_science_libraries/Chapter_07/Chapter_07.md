@@ -7595,7 +7595,7 @@ help(np)
         class errstate(builtins.object)
          |  errstate(
          |      *,
-         |      call=<numpy._core._ufunc_config._unspecified object at 0x7fa040114440>,
+         |      call=<numpy._core._ufunc_config._unspecified object at 0x7f4e482c8440>,
          |      all=None,
          |      divide=None,
          |      over=None,
@@ -7677,7 +7677,7 @@ help(np)
          |  __init__(
          |      self,
          |      *,
-         |      call=<numpy._core._ufunc_config._unspecified object at 0x7fa040114440>,
+         |      call=<numpy._core._ufunc_config._unspecified object at 0x7f4e482c8440>,
          |      all=None,
          |      divide=None,
          |      over=None,
@@ -59689,7 +59689,7 @@ help(np)
             :Character code: ``'?'``
 
         __NUMPY_SETUP__ = False
-        __all__ = ['seterr', 'asfortranarray', 'isclose', 'spacing', 'sctypeDi...
+        __all__ = ['bitwise_count', 'isrealobj', 'info', 'shape', 'copy', 'cor...
         __array_api_version__ = '2024.12'
         __expired_attributes__ = {'DataSource': "It's still available as `np.l...
         __former_attrs__ = {'complex': "module 'numpy' has no attribute 'compl...
