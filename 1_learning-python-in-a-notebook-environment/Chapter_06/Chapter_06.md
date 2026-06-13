@@ -56,7 +56,7 @@ def func():
 print(func)
 ```
 
-    <function func at 0x7fb1b8314040>
+    <function func at 0x7fc64aa43e20>
 
 - This defines a function `func` that accepts no arguments, does nothing
   and returns nothing
@@ -210,31 +210,14 @@ def does_default_list(my_list=[]):
     """Uses a list as a default value"""
 
     my_list.append(1)
-    print(my_lis)
+    print(my_list)
 
 does_default_list()
 does_default_list()
 ```
 
-    NameError: name 'my_lis' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[6], line 7
-          3
-          4     my_list.append(1)
-          5     print(my_lis)
-          6
-    ----> 7 does_default_list()
-          8 does_default_list()
-
-    Cell In[6], line 5, in does_default_list(my_list)
-          1 def does_default_list(my_list=[]):
-          2     """Uses a list as a default value"""
-          3
-          4     my_list.append(1)
-    ----> 5     print(my_lis)
-
-    NameError: name 'my_lis' is not defined
+    [1]
+    [1, 1]
 
 - In general avoid using mutable types for the default
   - If you need default mutables a work-around is to use `None` as the
@@ -320,8 +303,6 @@ def shows_scope():
 
     inner = "inner scope"
     print("Outer inside function:", outer)
-    outer = "shadowed"
-    print("Outer shadowed:", outer)
     print("Inner inside function:", inner)
 
 shows_scope()
@@ -329,29 +310,21 @@ print("Outer outside function:", outer)
 print("Inner outside function:", inner)
 ```
 
-    UnboundLocalError: cannot access local variable 'outer' where it is not associated with a value
+    Outer inside function: Global scope
+    Inner inside function: inner scope
+    Outer outside function: Global scope
+
+    NameError: name 'inner' is not defined
     ---------------------------------------------------------------------------
-    UnboundLocalError                         Traceback (most recent call last)
+    NameError                                 Traceback (most recent call last)
     Cell In[10], line 12
-          8     outer = "shadowed"
-          9     print("Outer shadowed:", outer)
-         10     print("Inner inside function:", inner)
-         11
-    ---> 12 shows_scope()
-         13 print("Outer outside function:", outer)
-         14 print("Inner outside function:", inner)
+          8     print("Inner inside function:", inner)
+          9
+         10 shows_scope()
+         11 print("Outer outside function:", outer)
+    ---> 12 print("Inner outside function:", inner)
 
-    Cell In[10], line 7, in shows_scope()
-          3 def shows_scope():
-          4     """Demonstrates local variable"""
-          5
-          6     inner = "inner scope"
-    ----> 7     print("Outer inside function:", outer)
-          8     outer = "shadowed"
-          9     print("Outer shadowed:", outer)
-         10     print("Inner inside function:", inner)
-
-    UnboundLocalError: cannot access local variable 'outer' where it is not associated with a value
+    NameError: name 'inner' is not defined
 
 ### Decorators
 
@@ -375,7 +348,7 @@ print(my_func)
 print(my_func(2))
 ```
 
-    <function add_one at 0x7fb1b8314b40>
+    <function add_one at 0x7fc684b009e0>
     3
 
 - Since functions can be treated as any other object or variable they
@@ -657,7 +630,7 @@ print(add_prefix)
 
     after-nighttime
     before-nighttime
-    <function add_prefix at 0x7fb1b83154e0>
+    <function add_prefix at 0x7fc684b012d0>
 
 - and for four and five,
   - Where we’ve added a demo of `simple_logging`
