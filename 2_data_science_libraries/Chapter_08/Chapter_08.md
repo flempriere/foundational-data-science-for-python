@@ -206,7 +206,7 @@ plt.show()
     B.mean(): 6.0
     B.std(): 2.04939015319192
     B.rvs(): 7
-    B.rvs(15): [9 6 5 6 3 7 5 5 7 3 7 4 8 9 6]
+    B.rvs(15): [6 6 8 4 1 7 8 7 6 4 9 6 2 4 7]
 
 ![](Chapter_08_files/figure-commonmark/cell-5-output-2.png)
 
@@ -318,7 +318,7 @@ print("N.std():", N.std()) # Standard Deviation
     N.mean(): 30.0
     N.pdf(4): 0.006969850255179491
     N.cdf(2): 0.28773971884902705
-    N.rvs(): 19.02406446329659
+    N.rvs(): 172.6482203735427
     N.var(): 2500.0
     N.median(): 30.0
     N.std(): 50.0
@@ -394,7 +394,7 @@ See answers implemented below
 from scipy import stats
 import matplotlib.pyplot as plt
 
-U = stats.normal(location=15)
+U = stats.norm(location=15)
 print("Q1\nU.mean() =", U.mean())
 
 print("Q2")
@@ -408,16 +408,37 @@ V = stats.binomial(20, 0.3)
 print("Standard Deviation:", V.std())
 ```
 
-    AttributeError: module 'scipy.stats' has no attribute 'normal'
+    TypeError: _parse_args() got an unexpected keyword argument 'location'
     ---------------------------------------------------------------------------
-    AttributeError                            Traceback (most recent call last)
+    TypeError                                 Traceback (most recent call last)
     Cell In[12], line 4
           1 from scipy import stats
           2 import matplotlib.pyplot as plt
           3
-    ----> 4 U = stats.normal(location=15)
+    ----> 4 U = stats.norm(location=15)
           5 print("Q1\nU.mean() =", U.mean())
           6
           7 print("Q2")
 
-    AttributeError: module 'scipy.stats' has no attribute 'normal'
+    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/scipy/stats/_distn_infrastructure.py:913, in rv_generic.__call__(self, *args, **kwds)
+        912 def __call__(self, *args, **kwds):
+    --> 913     return self.freeze(*args, **kwds)
+
+    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/scipy/stats/_distn_infrastructure.py:908, in rv_generic.freeze(self, *args, **kwds)
+        893 """Freeze the distribution for the given arguments.
+        894
+        895 Parameters
+       (...)    905
+        906 """
+        907 if isinstance(self, rv_continuous):
+    --> 908     return rv_continuous_frozen(self, *args, **kwds)
+        909 else:
+        910     return rv_discrete_frozen(self, *args, **kwds)
+
+    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/scipy/stats/_distn_infrastructure.py:518, in rv_frozen.__init__(self, dist, *args, **kwds)
+        515 # create a new instance
+        516 self.dist = dist.__class__(**dist._updated_ctor_param())
+    --> 518 shapes, _, _ = self.dist._parse_args(*args, **kwds)
+        519 self.a, self.b = self.dist._get_support(*shapes)
+
+    TypeError: _parse_args() got an unexpected keyword argument 'location'
