@@ -1,6 +1,5 @@
 # Chapter 8: SciPy
 
-
 - [Notes](#notes)
   - [SciPy Overview](#scipy-overview)
   - [The `scipy.misc` Submodule](#the-scipymisc-submodule)
@@ -128,10 +127,10 @@ plt.show()
     Cell In[2], line 5
           1 from scipy import datasets
           2 import matplotlib.pyplot as plt
-          3 
+          3
           4 ascent = datasets.ascent()
     ----> 5 print(a)
-          6 
+          6
           7 plt.imshow(a)
           8 plt.show()
 
@@ -214,13 +213,13 @@ plt.show()
     NameError                                 Traceback (most recent call last)
     Cell In[4], line 8
           4 B = stats.binom(20, 0.3)  # 20 trials with a 30% success chance
-          5 
+          5
           6 print("B.pmf(2):", B.pmf(2)) # Probability mass function P(x == 2)
-          7 
+          7
     ----> 8 print("B.cdf(4):", C.cdf(4)) # Cumulative density function (P x < 4)
-          9 
+          9
          10 print("B.mean():", B.mean()) # Mean
-         11 
+         11
 
     NameError: name 'C' is not defined
 
@@ -295,7 +294,7 @@ plt.show()
     NameError                                 Traceback (most recent call last)
     Cell In[7], line 6
           2 import matplotlib.pyplot as plt
-          3 
+          3
           4 N = stats.norm() # a Normal Distribution located at `0` and with scale `1`
           5 samples = N.rvs(size=100_000)
     ----> 6 plt.hist(rvs, bins=1000)
@@ -321,7 +320,7 @@ plt.show()
     NameError                                 Traceback (most recent call last)
     Cell In[8], line 6
           2 import matplotlib.pyplot as plt
-          3 
+          3
           4 N = stats.norm(loc=30, scale=50)
           5 samples = N.rvs(size=100_000)
     ----> 6 plt.hist(rvs, bins=100)
@@ -395,7 +394,7 @@ plt.show()
 
 ## Questions
 
-1.  Use the `scipy.stats` module to model a Normal distribution with a
+1. Use the `scipy.stats` module to model a Normal distribution with a
     mean of 15
 
     ``` python
@@ -404,7 +403,7 @@ plt.show()
      U = stats.normal(location=15)
     ```
 
-2.  Generate $25$ random samples from the distribution modelled in
+2. Generate $25$ random samples from the distribution modelled in
     Question 1
 
     ``` python
@@ -414,12 +413,12 @@ plt.show()
      samples = U.rvs(25)
     ```
 
-3.  Which SciPy module has utilities designed for mathematical physics?
+3. Which SciPy module has utilities designed for mathematical physics?
 
     - Special functions like those used in mathematical physics are
       stored in `scipy.special`
 
-4.  What method is provided with a discrete distribution to calculate it
+4. What method is provided with a discrete distribution to calculate it
     standard deviation?
 
     - The standard deviation can be found with the `.std` method
