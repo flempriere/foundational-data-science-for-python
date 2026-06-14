@@ -5,8 +5,11 @@ description = "A collection of notes and code examples for the book Foundational
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "matplotlib>=3.11.0",
     "numpy>=2.4.6",
     "pandas>=3.0.3",
+    "pooch>=1.9.0",
+    "scipy>=1.17.1",
 ]
 
 [dependency-groups]
