@@ -37,6 +37,7 @@ Behrman](https://www.amazon.com.au/dp/0136624359)
 ### II: Data Science Libraries
 
 - [Chapter 7: NumPy](2_data_science_libraries/Chapter_07/Chapter_07.qmd)
+- [Chapter 8: SciPy](2_data_science_libraries/Chapter_08/Chapter_08.qmd)
 
 ### III: Intermediate Python
 
