@@ -50,9 +50,9 @@ from scipy import datasets
 import matplotlib.pyplot as plt
 
 ascent = datasets.ascent()
-print(a)
+print(ascent)
 
-plt.imshow(a)
+plt.imshow(ascent)
 plt.show()
 ```
 
@@ -104,7 +104,7 @@ B = stats.binom(20, 0.3)  # 20 trials with a 30% success chance
 
 print("B.pmf(2):", B.pmf(2)) # Probability mass function P(x == 2)
 
-print("B.cdf(4):", C.cdf(4)) # Cumulative density function (P x < 4)
+print("B.cdf(4):", B.cdf(4)) # Cumulative density function (P x < 4)
 
 print("B.mean():", B.mean()) # Mean
 
@@ -176,7 +176,7 @@ import matplotlib.pyplot as plt
 
 N = stats.norm() # a Normal Distribution located at `0` and with scale `1`
 samples = N.rvs(size=100_000)
-plt.hist(rvs, bins=1000)
+plt.hist(samples, bins=1000)
 plt.show()
 ```
 
@@ -188,7 +188,7 @@ import matplotlib.pyplot as plt
 
 N = stats.norm(loc=30, scale=50)
 samples = N.rvs(size=100_000)
-plt.hist(rvs, bins=100)
+plt.hist(samples, bins=100)
 plt.show()
 ```
 
@@ -233,7 +233,7 @@ from scipy import stats
 import matplotlib.pyplot as plt
 
 U = stats.uniform()
-samples = E.rvs(size=100_000)
+samples = U.rvs(size=100_000)
 plt.hist(samples)
 plt.show()
 ```
@@ -276,7 +276,7 @@ from scipy import stats
 import matplotlib.pyplot as plt
 
 U = stats.normal(location=15)
-print("Q1\nU.mean() =": U.mean())
+print("Q1\nU.mean() =", U.mean())
 
 print("Q2")
 samples = U.rvs(25)
