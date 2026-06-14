@@ -115,26 +115,21 @@ from scipy import datasets
 import matplotlib.pyplot as plt
 
 ascent = datasets.ascent()
-print(a)
+print(ascent)
 
-plt.imshow(a)
+plt.imshow(ascent)
 plt.show()
 ```
 
-    NameError: name 'a' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[2], line 5
-          1 from scipy import datasets
-          2 import matplotlib.pyplot as plt
-          3
-          4 ascent = datasets.ascent()
-    ----> 5 print(a)
-          6
-          7 plt.imshow(a)
-          8 plt.show()
+    [[ 83  83  83 ... 117 117 117]
+     [ 82  82  83 ... 117 117 117]
+     [ 80  81  83 ... 117 117 117]
+     ...
+     [178 178 178 ...  57  59  57]
+     [178 178 178 ...  56  57  57]
+     [178 178 178 ...  57  57  58]]
 
-    NameError: name 'a' is not defined
+![](Chapter_08_files/figure-commonmark/cell-3-output-2.png)
 
 - `face` and `ascent` return NumPy arrays representing an image.
 - The `imshow` function from `matplotlib.pyplot` can be used to plot an
@@ -190,7 +185,7 @@ B = stats.binom(20, 0.3)  # 20 trials with a 30% success chance
 
 print("B.pmf(2):", B.pmf(2)) # Probability mass function P(x == 2)
 
-print("B.cdf(4):", C.cdf(4)) # Cumulative density function (P x < 4)
+print("B.cdf(4):", B.cdf(4)) # Cumulative density function (P x < 4)
 
 print("B.mean():", B.mean()) # Mean
 
@@ -207,21 +202,13 @@ plt.show()
 ```
 
     B.pmf(2): 0.027845872524268643
+    B.cdf(4): 0.23750777887760136
+    B.mean(): 6.0
+    B.std(): 2.04939015319192
+    B.rvs(): 7
+    B.rvs(15): [9 6 5 6 3 7 5 5 7 3 7 4 8 9 6]
 
-    NameError: name 'C' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[4], line 8
-          4 B = stats.binom(20, 0.3)  # 20 trials with a 30% success chance
-          5
-          6 print("B.pmf(2):", B.pmf(2)) # Probability mass function P(x == 2)
-          7
-    ----> 8 print("B.cdf(4):", C.cdf(4)) # Cumulative density function (P x < 4)
-          9
-         10 print("B.mean():", B.mean()) # Mean
-         11
-
-    NameError: name 'C' is not defined
+![](Chapter_08_files/figure-commonmark/cell-5-output-2.png)
 
 - Another discrete distribution is the Poisson Distribution
   - Models the probability of a certain number of events happening
@@ -285,22 +272,11 @@ import matplotlib.pyplot as plt
 
 N = stats.norm() # a Normal Distribution located at `0` and with scale `1`
 samples = N.rvs(size=100_000)
-plt.hist(rvs, bins=1000)
+plt.hist(samples, bins=1000)
 plt.show()
 ```
 
-    NameError: name 'rvs' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[7], line 6
-          2 import matplotlib.pyplot as plt
-          3
-          4 N = stats.norm() # a Normal Distribution located at `0` and with scale `1`
-          5 samples = N.rvs(size=100_000)
-    ----> 6 plt.hist(rvs, bins=1000)
-          7 plt.show()
-
-    NameError: name 'rvs' is not defined
+![](Chapter_08_files/figure-commonmark/cell-8-output-1.png)
 
 - As we change the `loc` and `scale` parameters the distribution will
   change too
@@ -311,22 +287,11 @@ import matplotlib.pyplot as plt
 
 N = stats.norm(loc=30, scale=50)
 samples = N.rvs(size=100_000)
-plt.hist(rvs, bins=100)
+plt.hist(samples, bins=100)
 plt.show()
 ```
 
-    NameError: name 'rvs' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[8], line 6
-          2 import matplotlib.pyplot as plt
-          3
-          4 N = stats.norm(loc=30, scale=50)
-          5 samples = N.rvs(size=100_000)
-    ----> 6 plt.hist(rvs, bins=100)
-          7 plt.show()
-
-    NameError: name 'rvs' is not defined
+![](Chapter_08_files/figure-commonmark/cell-9-output-1.png)
 
 - As mentioned continuous distributions have a common interface
 
@@ -353,7 +318,7 @@ print("N.std():", N.std()) # Standard Deviation
     N.mean(): 30.0
     N.pdf(4): 0.006969850255179491
     N.cdf(2): 0.28773971884902705
-    N.rvs(): 18.08448765327101
+    N.rvs(): 19.02406446329659
     N.var(): 2500.0
     N.median(): 30.0
     N.std(): 50.0
@@ -380,7 +345,7 @@ from scipy import stats
 import matplotlib.pyplot as plt
 
 U = stats.uniform()
-samples = E.rvs(size=100_000)
+samples = U.rvs(size=100_000)
 plt.hist(samples)
 plt.show()
 ```
@@ -430,7 +395,7 @@ from scipy import stats
 import matplotlib.pyplot as plt
 
 U = stats.normal(location=15)
-print("Q1\nU.mean() =": U.mean())
+print("Q1\nU.mean() =", U.mean())
 
 print("Q2")
 samples = U.rvs(25)
@@ -443,8 +408,16 @@ V = stats.binomial(20, 0.3)
 print("Standard Deviation:", V.std())
 ```
 
-    SyntaxError: invalid syntax (1980816291.py, line 5)
-      Cell In[12], line 5
-        print("Q1\nU.mean() =": U.mean())
-                              ^
-    SyntaxError: invalid syntax
+    AttributeError: module 'scipy.stats' has no attribute 'normal'
+    ---------------------------------------------------------------------------
+    AttributeError                            Traceback (most recent call last)
+    Cell In[12], line 4
+          1 from scipy import stats
+          2 import matplotlib.pyplot as plt
+          3
+    ----> 4 U = stats.normal(location=15)
+          5 print("Q1\nU.mean() =", U.mean())
+          6
+          7 print("Q2")
+
+    AttributeError: module 'scipy.stats' has no attribute 'normal'
