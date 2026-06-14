@@ -285,6 +285,6 @@ plt.hist(samples)
 plt.show()
 
 print("Q4")
-V = stats.binomial(20, 0.3)
+V = stats.binom(20, 0.3)
 print("Standard Deviation:", V.std())
 ```
