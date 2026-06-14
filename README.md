@@ -21,6 +21,7 @@ This repository contains notes and code examples from the book,
 ### II: Data Science Libraries
 
 - [Chapter 7: NumPy](2_data_science_libraries/Chapter_07/Chapter_07.md)
+- [Chapter 8: SciPy](2_data_science_libraries/Chapter_08/Chapter_08.md)
 
 ### III: Intermediate Python
 

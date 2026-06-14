@@ -275,7 +275,7 @@ See answers implemented below
 from scipy import stats
 import matplotlib.pyplot as plt
 
-U = stats.normal(location=15)
+U = stats.norm(location=15)
 print("Q1\nU.mean() =", U.mean())
 
 print("Q2")
