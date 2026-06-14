@@ -206,8 +206,8 @@ plt.show()
     B.cdf(4): 0.23750777887760136
     B.mean(): 6.0
     B.std(): 2.04939015319192
-    B.rvs(): 7
-    B.rvs(15): [6 6 8 4 1 7 8 7 6 4 9 6 2 4 7]
+    B.rvs(): 6
+    B.rvs(15): [4 8 7 5 4 7 4 9 4 7 3 7 6 1 5]
 
 ![](Chapter_08_files/figure-commonmark/cell-5-output-2.png)
 
@@ -319,7 +319,7 @@ print("N.std():", N.std()) # Standard Deviation
     N.mean(): 30.0
     N.pdf(4): 0.006969850255179491
     N.cdf(2): 0.28773971884902705
-    N.rvs(): 172.6482203735427
+    N.rvs(): 10.704538400407657
     N.var(): 2500.0
     N.median(): 30.0
     N.std(): 50.0
@@ -395,7 +395,7 @@ See answers implemented below
 from scipy import stats
 import matplotlib.pyplot as plt
 
-U = stats.norm(location=15)
+U = stats.norm(loc=15)
 print("Q1\nU.mean() =", U.mean())
 
 print("Q2")
@@ -409,37 +409,85 @@ V = stats.binomial(20, 0.3)
 print("Standard Deviation:", V.std())
 ```
 
-    TypeError: _parse_args() got an unexpected keyword argument 'location'
+    Q1
+    U.mean() = 15.0
+    Q2
+    [14.22491153 14.61354233 13.73250903 14.74778159 13.82941723 14.0242081
+     15.09645364 14.74619856 14.9419952  14.19823651 15.32492468 12.99242226
+     13.70967824 15.86453814 15.45576306 15.8557699  15.36774206 14.07534097
+     16.21608226 15.75031873 16.0596065  14.55458432 15.08985904 14.89025237
+     14.58005719]
+
+    TypeError: Invalid shape (25,) for image data
     ---------------------------------------------------------------------------
     TypeError                                 Traceback (most recent call last)
-    Cell In[12], line 4
-          1 from scipy import stats
-          2 import matplotlib.pyplot as plt
-          3 
-    ----> 4 U = stats.norm(location=15)
-          5 print("Q1\nU.mean() =", U.mean())
+    Cell In[12], line 10
           6 
           7 print("Q2")
+          8 samples = U.rvs(25)
+          9 print(samples)
+    ---> 10 plt.imshow(samples)
+         11 plt.show()
+         12 
+         13 print("Q4")
 
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/scipy/stats/_distn_infrastructure.py:913, in rv_generic.__call__(self, *args, **kwds)
-        912 def __call__(self, *args, **kwds):
-    --> 913     return self.freeze(*args, **kwds)
+    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/matplotlib/pyplot.py:3784, in imshow(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, colorizer, origin, extent, interpolation_stage, filternorm, filterrad, resample, url, data, **kwargs)
+       3762 @_copy_docstring_and_deprecators(Axes.imshow)
+       3763 def imshow(
+       3764     X: ArrayLike | PIL.Image.Image,
+       (...)   3782     **kwargs,
+       3783 ) -> AxesImage:
+    -> 3784     __ret = gca().imshow(
+       3785         X,
+       3786         cmap=cmap,
+       3787         norm=norm,
+       3788         aspect=aspect,
+       3789         interpolation=interpolation,
+       3790         alpha=alpha,
+       3791         vmin=vmin,
+       3792         vmax=vmax,
+       3793         colorizer=colorizer,
+       3794         origin=origin,
+       3795         extent=extent,
+       3796         interpolation_stage=interpolation_stage,
+       3797         filternorm=filternorm,
+       3798         filterrad=filterrad,
+       3799         resample=resample,
+       3800         url=url,
+       3801         **({"data": data} if data is not None else {}),
+       3802         **kwargs,
+       3803     )
+       3804     sci(__ret)
+       3805     return __ret
 
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/scipy/stats/_distn_infrastructure.py:908, in rv_generic.freeze(self, *args, **kwds)
-        893 """Freeze the distribution for the given arguments.
-        894 
-        895 Parameters
-       (...)    905 
-        906 """
-        907 if isinstance(self, rv_continuous):
-    --> 908     return rv_continuous_frozen(self, *args, **kwds)
-        909 else:
-        910     return rv_discrete_frozen(self, *args, **kwds)
+        [... skipping hidden 1 frame]
 
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/scipy/stats/_distn_infrastructure.py:518, in rv_frozen.__init__(self, dist, *args, **kwds)
-        515 # create a new instance
-        516 self.dist = dist.__class__(**dist._updated_ctor_param())
-    --> 518 shapes, _, _ = self.dist._parse_args(*args, **kwds)
-        519 self.a, self.b = self.dist._get_support(*shapes)
+    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/matplotlib/axes/_axes.py:6377, in Axes.imshow(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, colorizer, origin, extent, interpolation_stage, filternorm, filterrad, resample, url, **kwargs)
+       6374 if aspect is not None:
+       6375     self.set_aspect(aspect)
+    -> 6377 im.set_data(X)
+       6378 im.set_alpha(alpha)
+       6379 if im.get_clip_path() is None:
+       6380     # image does not already have clipping set, clip to Axes patch
 
-    TypeError: _parse_args() got an unexpected keyword argument 'location'
+    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/matplotlib/image.py:709, in _ImageBase.set_data(self, A)
+        707 if isinstance(A, PIL.Image.Image):
+        708     A = pil_to_array(A)  # Needed e.g. to apply png palette.
+    --> 709 self._A = self._normalize_image_array(A)
+        710 self._imcache = None
+        711 self.stale = True
+
+    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/matplotlib/image.py:677, in _ImageBase._normalize_image_array(A)
+        675     A = A.squeeze(-1)  # If just (M, N, 1), assume scalar and apply colormap.
+        676 if not (A.ndim == 2 or A.ndim == 3 and A.shape[-1] in [3, 4]):
+    --> 677     raise TypeError(f"Invalid shape {A.shape} for image data")
+        678 if A.ndim == 3:
+        679     # If the input data has values outside the valid range (after
+        680     # normalisation), we issue a warning and then clip X to the bounds
+        681     # - otherwise casting wraps extreme values, hiding outliers and
+        682     # making reliable interpretation impossible.
+        683     high = 255 if np.issubdtype(A.dtype, np.integer) else 1
+
+    TypeError: Invalid shape (25,) for image data
+
+![](Chapter_08_files/figure-commonmark/cell-13-output-3.png)
