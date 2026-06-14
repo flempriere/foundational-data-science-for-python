@@ -281,7 +281,7 @@ print("Q1\nU.mean() =", U.mean())
 print("Q2")
 samples = U.rvs(25)
 print(samples)
-plt.imshow(samples)
+plt.hist(samples)
 plt.show()
 
 print("Q4")
