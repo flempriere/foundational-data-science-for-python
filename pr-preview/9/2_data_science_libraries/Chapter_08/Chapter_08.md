@@ -207,7 +207,7 @@ plt.show()
     B.mean(): 6.0
     B.std(): 2.04939015319192
     B.rvs(): 4
-    B.rvs(15): [10  6  6  6  6  6 11  5  5  7  3 13  8  8  6]
+    B.rvs(15): [5 4 6 5 8 5 5 5 9 5 5 7 7 4 9]
 
 ![](Chapter_08_files/figure-commonmark/cell-5-output-2.png)
 
@@ -319,7 +319,7 @@ print("N.std():", N.std()) # Standard Deviation
     N.mean(): 30.0
     N.pdf(4): 0.006969850255179491
     N.cdf(2): 0.28773971884902705
-    N.rvs(): 26.40637919699585
+    N.rvs(): 80.01621660212281
     N.var(): 2500.0
     N.median(): 30.0
     N.std(): 50.0
