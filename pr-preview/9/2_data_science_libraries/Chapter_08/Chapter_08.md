@@ -206,8 +206,8 @@ plt.show()
     B.cdf(4): 0.23750777887760136
     B.mean(): 6.0
     B.std(): 2.04939015319192
-    B.rvs(): 6
-    B.rvs(15): [7 6 6 7 7 3 9 7 8 7 4 4 4 8 6]
+    B.rvs(): 2
+    B.rvs(15): [8 3 6 6 6 7 4 9 6 8 6 6 7 3 5]
 
 ![](Chapter_08_files/figure-commonmark/cell-5-output-2.png)
 
@@ -319,7 +319,7 @@ print("N.std():", N.std()) # Standard Deviation
     N.mean(): 30.0
     N.pdf(4): 0.006969850255179491
     N.cdf(2): 0.28773971884902705
-    N.rvs(): -45.46391663921355
+    N.rvs(): 33.99883983612176
     N.var(): 2500.0
     N.median(): 30.0
     N.std(): 50.0
@@ -405,32 +405,20 @@ plt.hist(samples)
 plt.show()
 
 print("Q4")
-V = stats.binomial(20, 0.3)
+V = stats.binom(20, 0.3)
 print("Standard Deviation:", V.std())
 ```
 
     Q1
     U.mean() = 15.0
     Q2
-    [14.27108038 15.68086371 14.89246307 13.99673942 12.70951186 15.11398246
-     14.82914832 16.33898035 16.12295993 14.00380012 16.67503089 15.15311001
-     16.60384391 15.85213254 14.86491551 15.39537368 14.30473705 14.04934603
-     16.16572656 15.39900273 12.95563306 14.87651297 14.24630078 15.70406216
-     13.22525045]
+    [15.03197693 14.88214126 13.58668366 15.33093128 15.05846461 12.53657792
+     14.40799211 13.70074851 14.92152105 14.09819372 13.96164159 13.85591357
+     16.12302189 15.68715786 17.30160426 16.09852477 15.4553055  15.06538983
+     17.01258563 15.28121988 14.75981328 12.80933375 13.95167964 15.17918237
+     16.9940924 ]
 
 ![](Chapter_08_files/figure-commonmark/cell-13-output-2.png)
 
     Q4
-
-    AttributeError: module 'scipy.stats' has no attribute 'binomial'
-    ---------------------------------------------------------------------------
-    AttributeError                            Traceback (most recent call last)
-    Cell In[12], line 14
-         10 plt.hist(samples)
-         11 plt.show()
-         12 
-         13 print("Q4")
-    ---> 14 V = stats.binomial(20, 0.3)
-         15 print("Standard Deviation:", V.std())
-
-    AttributeError: module 'scipy.stats' has no attribute 'binomial'
+    Standard Deviation: 2.04939015319192
