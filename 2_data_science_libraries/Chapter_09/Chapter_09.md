@@ -1,6 +1,5 @@
 # Chapter 9: Pandas
 
-
 - [Notes](#notes)
   - [About DataFrames](#about-dataframes)
   - [Creating DataFrames](#creating-dataframes)
@@ -436,7 +435,7 @@ gapminder["pop"]
     2       10267083
     3       11537966
     4       13079460
-              ...   
+              ...
     1699     9216418
     1700    10704340
     1701    11404948
@@ -819,7 +818,7 @@ participants.loc[:, "first"]
          14 column_names = ["First", "Last", "Ages"]
          15 index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
          16 participants = pd.DataFrame(data, columns=column_names, index=index_labels)
-         17 
+         17
     ---> 18 participants.loc[:, "first"]
 
     File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1200, in _LocationIndexer.__getitem__(self, key)
@@ -862,7 +861,7 @@ participants.loc[:, "first"]
 
     File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/generic.py:4239, in NDFrame.xs(self, key, axis, level, drop_level)
        4235             return result
-       4236 
+       4236
        4237         if axis == 1:
        4238             if drop_level:
     -> 4239                 return self[key]
@@ -871,7 +870,7 @@ participants.loc[:, "first"]
        4242             index = self.index
 
     File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/frame.py:4378, in DataFrame.__getitem__(self, key)
-       4374 
+       4374
        4375         if is_single_key:
        4376             if self.columns.nlevels > 1:
        4377                 return self._getitem_multilevel(key)
@@ -928,7 +927,7 @@ participants.loc[:"c", ["ages", "last"]]
          14 column_names = ["First", "Last", "Ages"]
          15 index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
          16 participants = pd.DataFrame(data, columns=column_names, index=index_labels)
-         17 
+         17
     ---> 18 participants.loc[:"c", ["ages", "last"]]
 
     File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1200, in _LocationIndexer.__getitem__(self, key)
@@ -1180,7 +1179,7 @@ gapminder.year == 2002
     2       False
     3       False
     4       False
-            ...  
+            ...
     1699    False
     1700    False
     1701    False
@@ -1253,7 +1252,7 @@ print(life_exp_mask)
     2        True
     3        True
     4        True
-            ...  
+            ...
     1699    False
     1700    False
     1701     True
@@ -1380,7 +1379,7 @@ print(total_mask)
     2       False
     3       False
     4       False
-            ...  
+            ...
     1699    False
     1700    False
     1701    False
@@ -2161,7 +2160,7 @@ Use the following table to answer the following questions
 | 2.34             | 34  | 66  |
 | 0.0234           | 12  | 88  |
 
-1.  Create a DataFrame representing this table
+1. Create a DataFrame representing this table
 
     - There are a few techniques we could use
     - We’ll use the dictionary of lists technique
@@ -2177,7 +2176,7 @@ Use the following table to answer the following questions
      df = pd.DataFrame(data)
     ```
 
-2.  Add a new column Total Q that contains the amount of Q (in mg) for
+2. Add a new column Total Q that contains the amount of Q (in mg) for
     each sample
 
     - We can do this through a simple `apply` function
@@ -2193,7 +2192,7 @@ Use the following table to answer the following questions
      df.loc[:, "Total Q"] = df.apply(calculate_Q, axis=1)
     ```
 
-3.  Divide the columns `%P` and `%Q` by $100$
+3. Divide the columns `%P` and `%Q` by $100$
 
     - The question is awkwardly framed, but we’ll assume the intention
       is to do this division in-place
