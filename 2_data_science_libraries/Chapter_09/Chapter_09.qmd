@@ -159,14 +159,15 @@ gapminder.describe(percentiles=[0.1, 0.9])
     - Can specify data types to include via the `include` parameter
         - Should be a sequence of datatypes (including) [NumPy](../Chapter_07/Chapter_07.qmd) types
             - In older NumPy ($\leq 1.20$), the internal `np.object` is used instead of the built-in `object`
-        - Pandas represents strings as `object` types, so to include `string` columns, use `object`
+        - Newer Pandas represents strings as `str` types
+            - Older Pandas represents them as `object` so to include `string` columns, use `object`
 
 ```{python}
 import numpy as np
 import pandas as pd
 
 gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
-gapminder.describe(include=[object])
+gapminder.describe(include=[str])
 ```
 
 - To include statistics for all column types use `"all"`
@@ -206,12 +207,15 @@ gapminder["pop"]
 - This returns the `pd.Series` object
 - Columns with names that don't contain dashes, spaces and special characters can be accessed as attributes
     - Also can't be accessed as an attribute if it would conflict with an existing attribute for the dataframe
+    - For example we can see accessing `lifeExp` works but accessing `pop` fails because it conflicts with an existing method
 
 ```{python}
 import pandas as pd
 
 gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
-gapminder.pop
+
+print("gapminder.lifeExp:\n", gapminder.lifeExp)
+print("gapminder.pop:\n", gapminder.pop)
 ```
 
 - To access multiple columns, rather than passing a single column name, we pass a list of column names
@@ -235,7 +239,7 @@ gapminder[3:6]
 ```
 
 - If row's have labels then they can also be sliced
-    - The endpoint is included
+    - The endpoint is excluded (unlike label-based slices)
 
 ```{python}
 import pandas as pd
