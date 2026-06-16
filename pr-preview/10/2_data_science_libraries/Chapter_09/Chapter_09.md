@@ -782,7 +782,7 @@ participants.loc[mask]
 
 - To also select a subset of columns can provide an optional second
   argument to `loc`
-- For example, to select all rows and the column `"first"`
+- For example, to select all rows and the column `"First"`
 
 ``` python
 import pandas as pd
@@ -802,113 +802,18 @@ column_names = ["First", "Last", "Ages"]
 index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
 participants = pd.DataFrame(data, columns=column_names, index=index_labels)
 
-participants.loc[:, "first"]
+participants.loc[:, "First"]
 ```
 
-    KeyError: 'first'
-    ---------------------------------------------------------------------------
-    KeyError                                  Traceback (most recent call last)
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py:3641, in Index.get_loc(self, key)
-       3640 try:
-    -> 3641     return self._engine.get_loc(casted_key)
-       3642 except KeyError as err:
-
-    File pandas/_libs/index.pyx:168, in pandas._libs.index.IndexEngine.get_loc()
-    --> 168 'Could not get source, probably due dynamically evaluated source code.'
-
-    File pandas/_libs/index.pyx:197, in pandas._libs.index.IndexEngine.get_loc()
-    --> 197 'Could not get source, probably due dynamically evaluated source code.'
-
-    File pandas/_libs/hashtable_class_helper.pxi:7668, in pandas._libs.hashtable.PyObjectHashTable.get_item()
-    -> 7668 'Could not get source, probably due dynamically evaluated source code.'
-
-    File pandas/_libs/hashtable_class_helper.pxi:7676, in pandas._libs.hashtable.PyObjectHashTable.get_item()
-    -> 7676 'Could not get source, probably due dynamically evaluated source code.'
-
-    KeyError: 'first'
-
-    The above exception was the direct cause of the following exception:
-
-    KeyError                                  Traceback (most recent call last)
-    Cell In[20], line 18
-         14 column_names = ["First", "Last", "Ages"]
-         15 index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
-         16 participants = pd.DataFrame(data, columns=column_names, index=index_labels)
-         17 
-    ---> 18 participants.loc[:, "first"]
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1200, in _LocationIndexer.__getitem__(self, key)
-       1198     if self._is_scalar_access(key):
-       1199         return self.obj._get_value(*key, takeable=self._takeable)
-    -> 1200     return self._getitem_tuple(key)
-       1201 else:
-       1202     # we by definition only have the 0th axis
-       1203     axis = self.axis or 0
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1386, in _LocIndexer._getitem_tuple(self, tup)
-       1384 with suppress(IndexingError):
-       1385     tup = self._expand_ellipsis(tup)
-    -> 1386     return self._getitem_lowerdim(tup)
-       1388 # no multi-index, so validate all of the indexers
-       1389 tup = self._validate_tuple_indexer(tup)
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1093, in _LocationIndexer._getitem_lowerdim(self, tup)
-       1089 for i, key in zip(range(len(tup) - 1, -1, -1), reversed(tup), strict=True):
-       1090     if is_label_like(key) or is_list_like(key):
-       1091         # We don't need to check for tuples here because those are
-       1092         #  caught by the _is_nested_tuple_indexer check above.
-    -> 1093         section = self._getitem_axis(key, axis=i)
-       1095         # We should never have a scalar section here, because
-       1096         #  _getitem_lowerdim is only called after a check for
-       1097         #  is_scalar_access, which that would be.
-       1098         if section.ndim == self.ndim:
-       1099             # we're in the middle of slicing through a MultiIndex
-       1100             # revise the key wrt to `section` by inserting an _NS
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1449, in _LocIndexer._getitem_axis(self, key, axis)
-       1447 # fall thru to straight lookup
-       1448 self._validate_key(key, axis)
-    -> 1449 return self._get_label(key, axis=axis)
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1399, in _LocIndexer._get_label(self, label, axis)
-       1397 def _get_label(self, label, axis: AxisInt):
-       1398     # GH#5567 this will fail if the label is not present in the axis.
-    -> 1399     return self.obj.xs(label, axis=axis)
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/generic.py:4239, in NDFrame.xs(self, key, axis, level, drop_level)
-       4235             return result
-       4236 
-       4237         if axis == 1:
-       4238             if drop_level:
-    -> 4239                 return self[key]
-       4240             index = self.columns
-       4241         else:
-       4242             index = self.index
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/frame.py:4378, in DataFrame.__getitem__(self, key)
-       4374 
-       4375         if is_single_key:
-       4376             if self.columns.nlevels > 1:
-       4377                 return self._getitem_multilevel(key)
-    -> 4378             indexer = self.columns.get_loc(key)
-       4379             if is_integer(indexer):
-       4380                 indexer = [indexer]
-       4381         else:
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py:3648, in Index.get_loc(self, key)
-       3643     if isinstance(casted_key, slice) or (
-       3644         isinstance(casted_key, abc.Iterable)
-       3645         and any(isinstance(x, slice) for x in casted_key)
-       3646     ):
-       3647         raise InvalidIndexError(key) from err
-    -> 3648     raise KeyError(key) from err
-       3649 except TypeError:
-       3650     # If we have a listlike key, _check_indexing_error will raise
-       3651     #  InvalidIndexError. Otherwise we fall through and re-raise
-       3652     #  the TypeError.
-       3653     self._check_indexing_error(key)
-
-    KeyError: 'first'
+    a    Shanda
+    b     Rolly
+    c     Molly
+    d     Frank
+    e       Rip
+    f    Steven
+    g      Gwen
+    h    Arthur
+    Name: First, dtype: str
 
 - To select all rows up to row `"c"` associated with the columns
   `"ages"` and `"last"`
@@ -933,84 +838,29 @@ column_names = ["First", "Last", "Ages"]
 index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
 participants = pd.DataFrame(data, columns=column_names, index=index_labels)
 
-participants.loc[:"c", ["ages", "last"]]
+participants.loc[:"c", ["Ages", "Last"]]
 ```
 
-    KeyError: "None of [Index(['ages', 'last'], dtype='str')] are in the [columns]"
-    ---------------------------------------------------------------------------
-    KeyError                                  Traceback (most recent call last)
-    Cell In[21], line 18
-         14 column_names = ["First", "Last", "Ages"]
-         15 index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
-         16 participants = pd.DataFrame(data, columns=column_names, index=index_labels)
-         17 
-    ---> 18 participants.loc[:"c", ["ages", "last"]]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+&#10;    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+&#10;    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1200, in _LocationIndexer.__getitem__(self, key)
-       1198     if self._is_scalar_access(key):
-       1199         return self.obj._get_value(*key, takeable=self._takeable)
-    -> 1200     return self._getitem_tuple(key)
-       1201 else:
-       1202     # we by definition only have the 0th axis
-       1203     axis = self.axis or 0
+|     | Ages | Last    |
+|-----|------|---------|
+| a   | 42   | Smith   |
+| b   | 23   | Brocker |
+| c   | 78   | Stein   |
 
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1386, in _LocIndexer._getitem_tuple(self, tup)
-       1384 with suppress(IndexingError):
-       1385     tup = self._expand_ellipsis(tup)
-    -> 1386     return self._getitem_lowerdim(tup)
-       1388 # no multi-index, so validate all of the indexers
-       1389 tup = self._validate_tuple_indexer(tup)
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1093, in _LocationIndexer._getitem_lowerdim(self, tup)
-       1089 for i, key in zip(range(len(tup) - 1, -1, -1), reversed(tup), strict=True):
-       1090     if is_label_like(key) or is_list_like(key):
-       1091         # We don't need to check for tuples here because those are
-       1092         #  caught by the _is_nested_tuple_indexer check above.
-    -> 1093         section = self._getitem_axis(key, axis=i)
-       1095         # We should never have a scalar section here, because
-       1096         #  _getitem_lowerdim is only called after a check for
-       1097         #  is_scalar_access, which that would be.
-       1098         if section.ndim == self.ndim:
-       1099             # we're in the middle of slicing through a MultiIndex
-       1100             # revise the key wrt to `section` by inserting an _NS
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1438, in _LocIndexer._getitem_axis(self, key, axis)
-       1435     if hasattr(key, "ndim") and key.ndim > 1:
-       1436         raise ValueError("Cannot index with multidimensional key")
-    -> 1438     return self._getitem_iterable(key, axis=axis)
-       1440 # nested tuple slicing
-       1441 if is_nested_tuple(key, labels):
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1378, in _LocIndexer._getitem_iterable(self, key, axis)
-       1375 self._validate_key(key, axis)
-       1377 # A collection of keys
-    -> 1378 keyarr, indexer = self._get_listlike_indexer(key, axis)
-       1379 return self.obj._reindex_with_indexers(
-       1380     {axis: [keyarr, indexer]}, allow_dups=True
-       1381 )
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexing.py:1576, in _LocIndexer._get_listlike_indexer(self, key, axis)
-       1573 ax = self.obj._get_axis(axis)
-       1574 axis_name = self.obj._get_axis_name(axis)
-    -> 1576 keyarr, indexer = ax._get_indexer_strict(key, axis_name)
-       1578 return keyarr, indexer
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py:6302, in Index._get_indexer_strict(self, key, axis_name)
-       6299 else:
-       6300     keyarr, indexer, new_indexer = self._reindex_non_unique(keyarr)
-    -> 6302 self._raise_if_missing(keyarr, indexer, axis_name)
-       6304 keyarr = self.take(indexer)
-       6305 if isinstance(key, Index):
-       6306     # GH 42790 - Preserve name from an Index
-
-    File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py:6352, in Index._raise_if_missing(self, key, indexer, axis_name)
-       6350 if nmissing:
-       6351     if nmissing == len(indexer):
-    -> 6352         raise KeyError(f"None of [{key}] are in the [{axis_name}]")
-       6354     not_found = list(ensure_index(key)[missing_mask.nonzero()[0]].unique())
-       6355     raise KeyError(f"{not_found} not in index")
-
-    KeyError: "None of [Index(['ages', 'last'], dtype='str')] are in the [columns]"
+</div>
 
 - Or provide a list of Booleans corresponding to each column
 
