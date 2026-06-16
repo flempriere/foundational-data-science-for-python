@@ -369,7 +369,7 @@ participants.loc[mask]
 ```
 
 - To also select a subset of columns can provide an optional second argument to `loc`
-- For example, to select all rows and the column `"first"`
+- For example, to select all rows and the column `"First"`
 
 ```{python}
 import pandas as pd
@@ -389,7 +389,7 @@ column_names = ["First", "Last", "Ages"]
 index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
 participants = pd.DataFrame(data, columns=column_names, index=index_labels)
 
-participants.loc[:, "first"]
+participants.loc[:, "First"]
 ```
 
 - To select all rows up to row `"c"` associated with the columns `"ages"` and `"last"`
@@ -414,7 +414,7 @@ column_names = ["First", "Last", "Ages"]
 index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
 participants = pd.DataFrame(data, columns=column_names, index=index_labels)
 
-participants.loc[:"c", ["ages", "last"]]
+participants.loc[:"c", ["Ages", "Last"]]
 ```
 
 - Or provide a list of Booleans corresponding to each column
