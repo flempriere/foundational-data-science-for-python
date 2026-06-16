@@ -605,7 +605,7 @@ print("Here "is" a string")
 
     <>:5: SyntaxWarning: "is" with 'str' literal. Did you mean "=="?
     <>:5: SyntaxWarning: "is" with 'str' literal. Did you mean "=="?
-    /tmp/ipykernel_2978/2287492867.py:5: SyntaxWarning: "is" with 'str' literal. Did you mean "=="?
+    /tmp/ipykernel_2760/2287492867.py:5: SyntaxWarning: "is" with 'str' literal. Did you mean "=="?
       print("Here "is" a string")
 
 - To write multiple line strings use a *triple-quoted* string

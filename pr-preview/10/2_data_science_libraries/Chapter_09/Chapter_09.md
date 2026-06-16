@@ -328,20 +328,17 @@ gapminder.describe(percentiles=[0.1, 0.9])
       [NumPy](../Chapter_07/Chapter_07.qmd) types
       - In older NumPy ($\leq 1.20$), the internal `np.object` is used
         instead of the built-in `object`
-    - Pandas represents strings as `object` types, so to include
-      `string` columns, use `object`
+    - Newer Pandas represents strings as `str` types
+      - Older Pandas represents them as `object` so to include `string`
+        columns, use `object`
 
 ``` python
 import numpy as np
 import pandas as pd
 
 gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
-gapminder.describe(include=[object])
+gapminder.describe(include=[str])
 ```
-
-    /tmp/ipykernel_3542/2228034460.py:5: Pandas4Warning: For backward compatibility, 'str' dtypes are included by select_dtypes when 'object' dtype is specified. This behavior is deprecated and will be removed in a future version. Explicitly pass 'str' to `include` to select them, or to `exclude` to remove them and silence this warning.
-    See https://pandas.pydata.org/docs/user_guide/migration-3-strings.html#string-migration-select-dtypes for details on how to write code that works with pandas 2 and 3.
-      gapminder.describe(include=[object])
 
 <div>
 <style scoped>
@@ -449,15 +446,33 @@ gapminder["pop"]
   characters can be accessed as attributes
   - Also can’t be accessed as an attribute if it would conflict with an
     existing attribute for the dataframe
+  - For example we can see accessing `lifeExp` works but accessing `pop`
+    fails because it conflicts with an existing method
 
 ``` python
 import pandas as pd
 
 gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
-gapminder.pop
+
+print("gapminder.lifeExp:\n", gapminder.lifeExp)
+print("gapminder.pop:\n", gapminder.pop)
 ```
 
-    <bound method DataFrame.pop of           country continent  year  lifeExp       pop   gdpPercap
+    gapminder.lifeExp:
+     0       28.801
+    1       30.332
+    2       31.997
+    3       34.020
+    4       36.088
+             ...  
+    1699    62.351
+    1700    60.377
+    1701    46.809
+    1702    39.989
+    1703    43.487
+    Name: lifeExp, Length: 1704, dtype: float64
+    gapminder.pop:
+     <bound method DataFrame.pop of           country continent  year  lifeExp       pop   gdpPercap
     0     Afghanistan      Asia  1952   28.801   8425333  779.445314
     1     Afghanistan      Asia  1957   30.332   9240934  820.853030
     2     Afghanistan      Asia  1962   31.997  10267083  853.100710
@@ -545,7 +560,7 @@ gapminder[3:6]
 </div>
 
 - If row’s have labels then they can also be sliced
-  - The endpoint is included
+  - The endpoint is excluded (unlike label-based slices)
 
 ``` python
 import pandas as pd
