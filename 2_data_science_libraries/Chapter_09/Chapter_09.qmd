@@ -1,0 +1,1099 @@
+---
+title: "Chapter 9: Pandas"
+---
+
+## Notes
+
+- Pandas uses the NumPy array to create *dataframes*
+- Dataframes are a specialised data structure for handling comma-separated data
+
+### About DataFrames
+
+- Dataframes consist of columns and rows
+    - Each column is a `pandas.Series` object
+- Dataframes can be viewed as two-dimensional NumPy array
+    - Columns and indices are labelled
+    - However, each column can have a different datatype
+- More accurate to think of a dataframe as a collection of individual one-dimensional arrays
+    - Each column is a series
+    - Each series has a fixed data-type
+- Most `numpy.ndarray` methods will work on a `pandas.Series` object
+    - e.g. `min`, `max`, `mean`, `median`
+- The usual `import` convention for pandas is `pd`
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame()
+print(df)
+```
+
+- You can create an empty dataframe but it's generally better to create them with data directly
+
+### Creating DataFrames
+
+#### Creating a DataFrame from a Dictionary
+
+- Dataframes can be created from a list of dictionaries or from a dictionary directly
+    - Dictionary key's are used to define the column names
+```{python}
+import pandas as pd
+
+first_names = ["Shanda", "Rolly", "Molly", "Frank", "Rip", "Steven", "Gwen", "Arthur"]
+last_names = ["Smith", "Brocker", "Stein", "Bach", "Spencer", "De Wilde", "Mason", "Davis"]
+
+ages = [43, 23, 78, 56, 26, 14, 46, 92]
+data = {"first": first_names, "last": last_names, "age": ages}
+
+participants = pd.DataFrame(data)
+print(participants)
+```
+
+#### Creating a DataFrame from a List of Lists
+
+- Another creation mechanisms is via a list of lists
+    - Each sub-list contains the data for one row
+- This can then be passed to create a dataframe
+    - The column's are unlabelled
+    - They can be supplied manually
+    - Can do the same for the indices
+
+```{python}
+import pandas as pd
+
+data = [["Shanda", "Smith", 42],
+        ["Rolly", "Brocker", 23],
+        ["Molly", "Stein", 78],
+        ["Frank", "Bach", 56],
+        ["Rip", "Spencer", 26],
+        ["Steven", "De Wilde", 14],
+        ["Gwen", "Mason", 46],
+        ["Arthur", "Davis", 92]]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+print(participants)
+```
+
+#### Creating a DataFrame from a File
+
+- Typically dataframes are created by loading in data from a file
+- Pandas supports several different input file formats
+    - CSV,
+    - Excel,
+    - HTML,
+    - JSON,
+    - SQL
+- For example, to open a tab-separated data file
+    - Note the use of `sep='\t'` is used to specify that tabs are the separator
+    - By default, comma's are used as the separator
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+print(gapminder)
+```
+
+:::{.callout-important}
+**Gap Minder**
+
+The [gapminder.tsv](./Data/gapminder.tsv) used as an example in this chapter is sourced from the [gapminder dataset](https://github.com/jennybc/gapminder) hosted on GitHub.
+:::
+
+### Interacting with DataFrame Data
+
+- Pandas offers a range of techniques for inspecting data
+    - By row,
+    - By column,
+    - By cell
+- Can also extract data by value
+- A good way to start is by peeking at data, and generating some summary statistics
+
+#### Heads and Tails
+
+- You can examine the top rows of a dataset with the `head` method
+    - By default, shows the top five rows, but the number can be specified
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder.head()
+```
+
+- You can also show the bottom rows with the `tail` method
+    - As with `head` defaults to five, but can be specified
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder.tail(3)
+```
+
+#### Descriptive Statistics
+
+- `describe` produces summary statistics about a dataset
+    - By default it can be called with no arguments
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder.describe()
+```
+
+- Also accepts optional arguments to control what data is reported
+- e.g. `percentiles` to set which quantiles are shown
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder.describe(percentiles=[0.1, 0.9])
+```
+
+- What if we want to calculate statistics for non-numeric objects?
+    - Like the number of unique strings in a column
+    - Can specify data types to include via the `include` parameter
+        - Should be a sequence of datatypes (including) [NumPy](../Chapter_07/Chapter_07.qmd) types
+            - In older NumPy ($\leq 1.20$), the internal `np.object` is used instead of the built-in `object`
+        - Newer Pandas represents strings as `str` types
+            - Older Pandas represents them as `object` so to include `string` columns, use `object`
+
+```{python}
+import numpy as np
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder.describe(include=[str])
+```
+
+- To include statistics for all column types use `"all"`
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder.describe(include="all")
+```
+
+:::{.callout-tip}
+**`NaN` and Summary Statistics**
+
+When a statistic is not appropriate for a given data column, such as the standard deviation of a string, a `NaN` is instead produced
+:::
+
+#### Accessing Data
+
+- `head`, `tail`, `describe` and `print` give useful methods for examining part of a dataframe as a whole
+- The next step is to be able to access and examine select rows, columns or cells
+- Pandas provides a couple of different mechanisms for data access
+
+##### Bracket Syntax
+
+- Columns and rows are accessed via bracket syntax
+- Columns are accessed like dictionary keys
+    - Specify the column name in the brackets
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder["pop"]
+```
+
+- This returns the `pd.Series` object
+- Columns with names that don't contain dashes, spaces and special characters can be accessed as attributes
+    - Also can't be accessed as an attribute if it would conflict with an existing attribute for the dataframe
+    - For example we can see accessing `lifeExp` works but accessing `pop` fails because it conflicts with an existing method
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+
+print("gapminder.lifeExp:\n", gapminder.lifeExp)
+print("gapminder.pop:\n", gapminder.pop)
+```
+
+- To access multiple columns, rather than passing a single column name, we pass a list of column names
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder[["pop", "year"]]
+```
+
+- The bracket syntax is also used for row selection
+    - Utilises the slice syntax similar to NumPy
+- integer slices are interpreted as slices over the rows
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder[3:6]
+```
+
+- If row's have labels then they can also be sliced
+    - The endpoint is excluded (unlike label-based slices)
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+participants["a":"c"]
+```
+
+- The last option is to provide a list of Boolean masks
+    - Must be one Boolean value for each row in the dataframe
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+mask = [False, True, True, False, False, True, False, False]
+participants[mask]
+```
+
+- Bracket syntax is useful for interactive sessions
+- Convenient and easy to read syntax
+- Not optimised for efficiency or large dataset interrogation
+- For production code or large sets instead the `loc` and `iloc` indexers are preferred
+    - These use a similar bracket-based indexing
+    - `loc` is for label-based locating
+    - `iloc` is for index-based locating
+
+##### Optimised Access by Label
+
+- `loc` accepts a single label
+    - Associated values for that row are returned
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants.loc["c"]
+```
+
+- `loc` also supports slice-style indexing
+    - Last label is included
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants.loc["c":"f"]
+```
+
+- Or provide a Boolean mask
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+mask = [False, True, True, False, False, True, False, False]
+participants.loc[mask]
+```
+
+- To also select a subset of columns can provide an optional second argument to `loc`
+- For example, to select all rows and the column `"First"`
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants.loc[:, "First"]
+```
+
+- To select all rows up to row `"c"` associated with the columns `"ages"` and `"last"`
+    - Take a slice against the rows, then
+    - a list of column names
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants.loc[:"c", ["Ages", "Last"]]
+```
+
+- Or provide a list of Booleans corresponding to each column
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants.loc[:"c", [False, True, True]]
+```
+
+##### Optimised Access by Index
+
+- `iloc` works like `loc` but is designed to work with numeric indices
+- To specify a single row, provide a single number
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants.iloc[3]
+```
+
+- Specify multiple rows using slice syntax
+    - Does *not* include the endpoint
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants.iloc[1:4] # takes rows 1, 2, 3
+```
+
+- Columns can also be specified by a second slice
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants.iloc[1:4, :2]
+```
+
+#### Masking and Filtering
+
+- Pandas data can be selected by value
+- Can examine columns based on conditional expressions
+- For example, might want to see which rows correspond to the year $2002$
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder.year == 2002
+```
+
+- The result is a `pd.Series` object
+    - Boolean result for each column indicating if it satisfied the value
+- These can be passed to the `loc` indexer to filter results
+    - Every `true` value is selected
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+year_mask = gapminder.loc[:, "pop"] > 25_000_000
+data_pop_above_25mil = gapminder.loc[year_mask]
+print(data_pop_above_25mil)
+```
+
+- `describe` can be used on individual columns
+    - For example, we might want to filter down to the bottom quartile of life expectancy
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder.lifeExp.describe()
+```
+
+- Can create a mask using this condition
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+life_exp_mask = gapminder.loc[:, "lifeExp"] <= 48.198000
+print(life_exp_mask)
+```
+
+- This mask might then be used to create a deduced dataframe
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+life_exp_mask = gapminder.loc[:, "lifeExp"] <= 48.198000
+
+life_exp_df = gapminder.loc[life_exp_mask]
+print(life_exp_df)
+```
+
+- We might then use `unique` on the `country` column to see which countries show up the lowest quartile for life expectancy at some point over the data collection period
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+life_exp_mask = gapminder.loc[:, "lifeExp"] <= 48.198000
+
+life_exp_df = gapminder.loc[life_exp_mask]
+life_exp_df.country.unique()
+```
+
+##### Pandas Boolean Operators
+
+- Pandas supports the boolean operators AND (`&`), OR (`|`), and NOT (`~`) on conditions
+- `&` and `|` allow for combining conditions into complex expressions
+- `~` is useful for inverting masks
+
+- For example, we might want to create a mask that shows us highly populated countries with low life expectancies
+    - We can combine the two masks together
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+
+# mask for bottom quartile of life expectancy
+life_exp_mask = gapminder.loc[:, "lifeExp"] <= 48.198000
+
+# population mask for top quartile of life expectancy
+pop_mask = gapminder.loc[:, "pop"] >= 1.958522e7
+
+# combined mask
+total_mask = life_exp_mask & pop_mask
+print(total_mask)
+```
+
+- We can then pass this into the dataframe to get a new dataframe that matches both conditions
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+
+# mask for bottom quartile of life expectancy
+life_exp_mask = gapminder.loc[:, "lifeExp"] <= 48.198000
+
+# population mask for top quartile of life expectancy
+pop_mask = gapminder.loc[:, "pop"] >= 1.958522e7
+
+# combined mask
+total_mask = life_exp_mask & pop_mask
+gapminder.loc[total_mask]
+```
+
+- The `~` lets us create inverse masks
+- For example, to select all rows that are *not* in the bottom quartile of life expectancy
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+
+# mask for bottom quartile of life expectancy
+life_exp_mask = gapminder.loc[:, "lifeExp"] <= 48.198000
+higher_life_exp_mask = ~life_exp_mask
+
+gapminder.loc[higher_life_exp_mask]
+```
+
+- If we wanted to select rows that were *either* in the lowest life expectancy quartile *or* the highest population quartile
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+
+# mask for bottom quartile of life expectancy
+life_exp_mask = gapminder.loc[:, "lifeExp"] <= 48.198000
+
+# population mask for top quartile of life expectancy
+pop_mask = gapminder.loc[:, "pop"] >= 1.958522e7
+
+# combined mask
+total_mask = life_exp_mask | pop_mask
+gapminder.loc[total_mask]
+```
+
+### Manipulating DataFrames
+
+- Often more than *masking* and *filtering* data, we might also want to *modify* the dataframe
+    - Rename columns or row indices
+    - Add new columns or rows
+    - Delete columns or rows
+- `rename` is a straightforward method for relabelling columns
+    - Can first get the columns via the `.columns` attribute
+
+```{python}
+import pandas as pd
+
+gapminder = pd.read_csv("Data/gapminder.tsv", sep="\t")
+gapminder.columns
+```
+
+- Renaming columns is then done by providing a dictionary mapping old column names (`key`) to the new name (`value`)
+    - Columns that are not specified as keys are left untouched
+    - By default, a *new* dataframe is supplied with the new column names
+    - This is a common paradigm for Pandas
+        - This allows for *method chaining*
+        - To modify the current dataframe use the `inplace=True` keyword argument
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+# creates a new Pandas dataframe
+print(participants.rename(columns={"Ages": "Age"}))
+
+print("Original dataframe:")
+print(participants)
+
+# modifies the current one inplace
+participants.rename(columns={"Ages": "Age"}, inplace=True)
+print("Original dataframe:")
+print(participants)
+```
+
+- Indexer syntax can be used to insert new columns much like inserting keys into a dictionary
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants["Zip Code"] = [94702, 97402, 94223, 94705, 97503, 94705, 94111, 95333]
+print(participants)
+```
+
+- We can use NumPy-style array-operations to combine columns together
+    - For example concatenating the `"First"` and `"Last"` columns into a `"Full Name"` column
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants["Full Name"] = participants.loc[:, "First"] + participants.loc[:, "Last"]
+print(participants)
+```
+
+- Column's can also be overwritten the same way
+    - For example if we latter decided to add the whitespace between the first and last names
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+participants["Full Name"] = participants.loc[:, "First"] + participants.loc[:, "Last"]
+print(participants)
+
+print("Redefining the 'Full Name' Column")
+participants["Full Name"] = (
+    participants.loc[:, "First"] + " " + participants.loc[:, "Last"]
+)
+print(participants)
+```
+
+#### Manipulating Data
+
+- There are more complex techniques for modifying data
+    - Let us be more specific, e.g. to the row, column or cell
+    - Create new rows or columns from multiple rows and columns
+- We can use an indexer to change data
+    - Just need to select the subset we want to change and define the new value
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+
+participants["Zip Code"] = [94702, 97402, 94223, 94705, 97503, 94705, 94111, 95333]
+participants["Full Name"] = (
+    participants.loc[:, "First"] + " " + participants.loc[:, "Last"]
+)
+print(participants)
+
+print("Redefining one row h, column first...")
+participants.loc["h", "first"] = "Paul"
+print(participants)
+```
+
+- We could also achieve a similar result through numeric indices with `iloc`
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+
+participants["Zip Code"] = [94702, 97402, 94223, 94705, 97503, 94705, 94111, 95333]
+participants["Full Name"] = (
+    participants.loc[:, "First"] + " " + participants.loc[:, "Last"]
+)
+print(participants)
+
+print("Redefining row 3, column 2")
+participants.iloc[3, 2] = 99
+print(participants)
+```
+
+- We've seen that we can use operations between columns to construct new values
+- We can also use the inplace operators to modify a column inplace
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+print(participants)
+print("Decreasing 'Ages' Column by 10")
+participants.Ages -= 10
+print(participants)
+```
+
+#### The `replace` Method
+
+- `replace` performs a find and replace across a dataframe
+    - For example changing `"Rolly"` to `"Smiley"`
+
+```{python}
+import pandas as pd
+
+data = [
+    ["Shanda", "Smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "Stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "Spencer", 26],
+    ["Steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+print(participants)
+print("Replacing 'Rolly' by 'Smiley'")
+participants.replace("Rolly", "Smiley")
+```
+
+- `replace` supports regular expressions for more advanced pattern matching
+    - For example, to match words starting with a lowercase s and replace with a capital S
+
+```{python}
+import pandas as pd
+
+data = [
+    ["shanda", "smith", 42],
+    ["Rolly", "Brocker", 23],
+    ["Molly", "stein", 78],
+    ["Frank", "Bach", 56],
+    ["Rip", "spencer", 26],
+    ["steven", "De Wilde", 14],
+    ["Gwen", "Mason", 46],
+    ["Arthur", "Davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+print(participants)
+print("Using regex to replace lowercase s with uppercase S")
+participants.replace(r"(s)([a-z]+)", r"S\2", regex=True)
+```
+
+- For more advanced functions Pandas provides the `apply` method
+    - Calls a function of the values
+    - For `pd.Series` apply calls the function on each value in the `Series`
+- For example, we could pass a lambda or function to capitalise every word
+
+```{python}
+import pandas as pd
+
+data = [
+    ["shanda", "smith", 42],
+    ["rolly", "brocker", 23],
+    ["molly", "stein", 78],
+    ["frank", "bach", 56],
+    ["rip", "spencer", 26],
+    ["steven", "de wilde", 14],
+    ["gwen", "mason", 46],
+    ["arthur", "davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+print(participants)
+print("Using `apply` to capitalise first names")
+
+participants.loc[:, "First"].apply(lambda w: w.capitalize())
+```
+
+- When `apply` is called on a DataFrame, rather than operating on every value, the function is applied to each *row*
+    - Means we can look at the value of all the columns in a given row
+
+```{python}
+import pandas as pd
+
+data = [
+    ["shanda", "smith", 42],
+    ["rolly", "brocker", 23],
+    ["molly", "stein", 78],
+    ["frank", "bach", 56],
+    ["rip", "spencer", 26],
+    ["steven", "de wilde", 14],
+    ["gwen", "mason", 46],
+    ["arthur", "davis", 92],
+]
+
+column_names = ["First", "Last", "Ages"]
+index_labels = ["a", "b", "c", "d", "e", "f", "g", "h"]
+participants = pd.DataFrame(data, columns=column_names, index=index_labels)
+
+print(participants)
+print("Using `apply` to generate a new column")
+
+participants.apply(
+    lambda row: f"{row['First']} is {row['Ages']} years old.", axis=1
+)
+```
+
+- `axis` lets us specify how you want to the function to operate on the dataframe
+    - For example we could instead have the function accept columns
+
+## Summary
+
+- Pandas DataFrame objects are designed for working with spreadsheet-like data
+- DataFrames are most commonly constructed from files
+- DataFrames can be extended with new rows and columns
+- Pandas provides specialised indexers for accessing subsets of columns and rows
+    - They can also be used to set data
+- Datasets provide mechanisms to explore and manipulate data
+
+## Questions
+
+Use the following table to answer the following questions
+
+| Sample Size (mg) | %P | %Q |
+|------------------|----|----|
+| 0.24             | 40 | 60 |
+| 2.34             | 34 | 66 |
+| 0.0234           | 12 | 88 |
+
+1. Create a DataFrame representing this table
+
+   - There are a few techniques we could use
+   - We'll use the dictionary of lists technique
+
+   ```python
+    import pandas as pd
+
+    sample_size = [0.24, 2.34, 0.0234]
+    percent_P = [40, 34, 12]
+    percent_Q = [60, 66, 88]
+
+    data = {"Sample Size (mg)": sample_size, "%P": percent_P, "%Q": percent_Q}
+    df = pd.DataFrame(data)
+   ```
+
+2. Add a new column Total Q that contains the amount of Q (in mg) for each sample
+
+   - We can do this through a simple `apply` function
+   - This calculates a new `pd.Series` from the rows in our dataframe
+     - We then need to add this new column into the dataframe
+
+   ```python
+    import pandas as pd
+
+    def calculate_Q(row):
+        return row.loc["Sample Size (mg)"] * row.loc["%Q"] / 100
+
+    df.loc[:, "Total Q"] = df.apply(calculate_Q, axis=1)
+   ```
+
+3. Divide the columns `%P` and `%Q` by $100$
+
+   - The question is awkwardly framed, but we'll assume the intention is to do this division in-place
+   - For these we could repeat the process of using `apply` and a function
+   - However, for simple division this is overkill
+    - We can just use in-place division
+        - This has a subtle caveat
+        - Since it's in-place we must respect the types of the existing columns
+            - However, the `"%P"` and `"%Q"` columns were implicitly defined as `int64`
+            - So we can't assign back, since that the division gives us floating point values
+            - There are two solutions,
+              1. We coerce the columns into floating point values using `astype(flaot)`
+              2. We redefine our DataFrame to store `"%P` and `"%Q"` as floats
+                 - This is easily achieved by adding `.0` to each value
+            - We'll use option 2 for now since it's the most straightforward
+
+   ```python
+    import pandas as pd
+
+    df.loc[:, ["%P", "%Q"]] /= 100
+   ```
+
+- We can put this all together
+
+```{python}
+    import pandas as pd
+
+    sample_size = [0.24, 2.34, 0.0234]
+    percent_P = [40.0, 34.0, 12.0]
+    percent_Q = [60.0, 66.0, 88.0]
+
+    data = {"Sample Size (mg)": sample_size, "%P": percent_P, "%Q": percent_Q}
+    df = pd.DataFrame(data)
+
+    def calculate_Q(row):
+        return row.loc["Sample Size (mg)"] * row.loc["%Q"] / 100
+
+    df.loc[:, "Total Q"] = df.apply(calculate_Q, axis=1)
+    df.loc[:, ["%P", "%Q"]] /= 100
+
+    print(df)
+```
