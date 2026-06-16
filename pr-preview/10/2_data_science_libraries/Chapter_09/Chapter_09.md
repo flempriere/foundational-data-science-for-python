@@ -2062,13 +2062,29 @@ Use the following table to answer the following questions
 
     - The question is awkwardly framed, but we’ll assume the intention
       is to do this division in-place
-    - For these we can apply a simple lambda to both columns
+    - For these we could repeat the process of using `apply` and a
+      function
+    - However, for simple division this is overkill
+    - We can just use in-place division
+      - This has a subtle caveat
+      - Since it’s in-place we must respect the types of the existing
+        columns
+        - However, the `"%P"` and `"%Q"` columns were implicitly defined
+          as `int64`
+        - So we can’t assign back, since that the division gives us
+          floating point values
+        - There are two solutions,
+          1.  We coerce the columns into floating point values using
+              `astype(flaot)`
+          2.  We redefine our DataFrame to store `"%P` and `"%Q"` as
+              floats
+              - This is easily achieved by adding `.0` to each value
+        - We’ll use option 2 for now since it’s the most straightforward
 
     ``` python
      import pandas as pd
 
-     df["%P"] = df.loc[:, "%P"].apply(lambda x : x / 100)
-     df["%Q"] = df.loc[:, "%Q"].apply(lambda x : x / 100)
+     df.loc[:, ["%P", "%Q"]] /= 100
     ```
 
 - We can put this all together
@@ -2077,8 +2093,8 @@ Use the following table to answer the following questions
     import pandas as pd
 
     sample_size = [0.24, 2.34, 0.0234]
-    percent_P = [40, 34, 12]
-    percent_Q = [60, 66, 88]
+    percent_P = [40.0, 34.0, 12.0]
+    percent_Q = [60.0, 66.0, 88.0]
 
     data = {"Sample Size (mg)": sample_size, "%P": percent_P, "%Q": percent_Q}
     df = pd.DataFrame(data)
@@ -2087,9 +2103,7 @@ Use the following table to answer the following questions
         return row.loc["Sample Size (mg)"] * row.loc["%Q"] / 100
 
     df.loc[:, "Total Q"] = df.apply(calculate_Q, axis=1)
-
-    df["%P"] = df.loc[:, "%P"].apply(lambda x : x / 100)
-    df["%Q"] = df.loc[:, "%Q"].apply(lambda x : x / 100)
+    df.loc[:, ["%P", "%Q"]] /= 100
 
     print(df)
 ```
