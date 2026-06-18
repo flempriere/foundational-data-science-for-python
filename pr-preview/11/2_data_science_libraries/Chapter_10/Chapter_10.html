@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Chapter 10: Visualisation Libraries – Effective Python: Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../2_data_science_libraries/Chapter_09/Chapter_09.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-2b6469118f636657c08e1aa3d2b0badf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Chapter 10: Visualisation Libraries – Effective Python: Notes">
+<meta property="og:description" content="">
+<meta property="og:image" content="Chapter_10_files/figure-html/cell-2-output-1.png">
+<meta property="og:site_name" content="Effective Python: Notes">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Effective Python: Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../2_data_science_libraries/Chapter_07/Chapter_07.html">II: Data Science Libraries</a></li><li class="breadcrumb-item"><a href="../../2_data_science_libraries/Chapter_10/Chapter_10.html">Chapter 10: Visualisation Libraries</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">I: Learning Python in a Notebook Environment</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_01/Chapter_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 1: Learning Python in a Notebook Environment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_02/Chapter_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 2: Fundamentals of Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 3: Sequences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 4: Other Data Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 5: Execution Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 6: Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">II: Data Science Libraries</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_07/Chapter_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 7: NumPy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_08/Chapter_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 8: SciPy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_09/Chapter_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 9: Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_10/Chapter_10.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Chapter 10: Visualisation Libraries</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a>
+  <ul>
+  <li><a href="#matplotlib" id="toc-matplotlib" class="nav-link" data-scroll-target="#matplotlib">Matplotlib</a>
+  <ul>
+  <li><a href="#matplotlib.pylab" id="toc-matplotlib.pylab" class="nav-link" data-scroll-target="#matplotlib.pylab"><code>matplotlib.pylab</code></a></li>
+  <li><a href="#matplotlib.pyplot" id="toc-matplotlib.pyplot" class="nav-link" data-scroll-target="#matplotlib.pyplot"><code>matplotlib.pyplot</code></a>
+  <ul>
+  <li><a href="#styling-plots" id="toc-styling-plots" class="nav-link" data-scroll-target="#styling-plots">Styling Plots</a></li>
+  <li><a href="#labelled-data" id="toc-labelled-data" class="nav-link" data-scroll-target="#labelled-data">Labelled Data</a></li>
+  <li><a href="#plotting-multiple-sets-of-data" id="toc-plotting-multiple-sets-of-data" class="nav-link" data-scroll-target="#plotting-multiple-sets-of-data">Plotting Multiple Sets of Data</a></li>
+  <li><a href="#adding-labels-titles-and-legends" id="toc-adding-labels-titles-and-legends" class="nav-link" data-scroll-target="#adding-labels-titles-and-legends">Adding Labels, Titles and Legends</a></li>
+  </ul></li>
+  <li><a href="#axes-interface-or-object-oriented-style" id="toc-axes-interface-or-object-oriented-style" class="nav-link" data-scroll-target="#axes-interface-or-object-oriented-style">Axes Interface or Object-Oriented Style</a></li>
+  </ul></li>
+  <li><a href="#seaborn" id="toc-seaborn" class="nav-link" data-scroll-target="#seaborn">Seaborn</a>
+  <ul>
+  <li><a href="#seaborn-themes" id="toc-seaborn-themes" class="nav-link" data-scroll-target="#seaborn-themes">Seaborn Themes</a></li>
+  <li><a href="#seaborn-plot-types" id="toc-seaborn-plot-types" class="nav-link" data-scroll-target="#seaborn-plot-types">Seaborn Plot Types</a></li>
+  </ul></li>
+  <li><a href="#plotly" id="toc-plotly" class="nav-link" data-scroll-target="#plotly">Plotly</a></li>
+  <li><a href="#bokeh" id="toc-bokeh" class="nav-link" data-scroll-target="#bokeh">Bokeh</a></li>
+  <li><a href="#other-visualisation-libraries" id="toc-other-visualisation-libraries" class="nav-link" data-scroll-target="#other-visualisation-libraries">Other Visualisation Libraries</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  </ul>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/flempriere/foundational-data-science-for-python/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li><li><a href="https://mybinder.org/v2/gh/flempriere/foundational-data-science-for-python/HEAD?urlpath=vscode" target="_blank"><i class="bi bi-journals"></i>Launch Binder</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../2_data_science_libraries/Chapter_07/Chapter_07.html">II: Data Science Libraries</a></li><li class="breadcrumb-item"><a href="../../2_data_science_libraries/Chapter_10/Chapter_10.html">Chapter 10: Visualisation Libraries</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Chapter 10: Visualisation Libraries</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<ul>
+<li>Summary statistics are nice but often truly understanding a dataset requires <em>visualising</em> it
+<ul>
+<li>One can make data sets with identical summary statistics but that look vastly different when visualised</li>
+</ul></li>
+<li>Python has a number of mature libraries for data visualisation</li>
+</ul>
+<section id="matplotlib" class="level3">
+<h3 class="anchored" data-anchor-id="matplotlib">Matplotlib</h3>
+<ul>
+<li>Matplotlib is the most well-known and used plotting tool in Python
+<ul>
+<li>Designed for creating publication-ready plots</li>
+</ul></li>
+<li>Underpin’s many higher-level plotting libraries (See <a href="#seaborn">Seaborn</a>)</li>
+<li>Part of the Scipy ecosysem (With <a href="../../2_data_science_libraries/Chapter_07/Chapter_07.html">NumPy</a>, <a href="../../2_data_science_libraries/Chapter_08/Chapter_08.html">Scipy</a> and <a href="../../2_data_science_libraries/Chapter_09/Chapter_09.html">Pandas</a>)</li>
+<li>Provides several interfaces for use</li>
+</ul>
+<section id="matplotlib.pylab" class="level4">
+<h4 class="anchored" data-anchor-id="matplotlib.pylab"><code>matplotlib.pylab</code></h4>
+<ul>
+<li><code>pylab</code> is outdated interface for Matplotlib</li>
+<li>Designed to simulate a MATPLOT environment</li>
+<li>In general it is should not be used anymore</li>
+</ul>
+</section>
+<section id="matplotlib.pyplot" class="level4">
+<h4 class="anchored" data-anchor-id="matplotlib.pyplot"><code>matplotlib.pyplot</code></h4>
+<ul>
+<li><code>pyplot</code> is the conventional interface for Matplotlib
+<ul>
+<li><p>By convention it is imported at <code>plt</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul></li>
+<li>Matplotlib plots are typically defined in terms of <em>figures</em> and <em>axes</em>
+<ul>
+<li>A figure represents a graph of data
+<ul>
+<li>May contain multiple axes</li>
+</ul></li>
+<li>Axes are areas where points are specified via coordinates
+<ul>
+<li>Is associated to <em>one</em> figure</li>
+</ul></li>
+</ul></li>
+<li>The <code>pyplot</code> interface can either be used <em>implicitly</em> or <em>explicitly</em>
+<ul>
+<li>plot methods will often implicitly plot to the current axis and figure if not otherwise specified</li>
+<li>For example <code>plt.plot</code> is used to plot <span class="math inline">\(x\)</span> vs <span class="math inline">\(y\)</span> data</li>
+<li>Shown below</li>
+</ul></li>
+</ul>
+<div id="f27b0575" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">70</span>, <span class="dv">110</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.plot(X, Y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-2-output-1.png" width="575" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="styling-plots" class="level5">
+<h5 class="anchored" data-anchor-id="styling-plots">Styling Plots</h5>
+<ul>
+<li>Plot’s can be further styled at creation time or after creation</li>
+<li>One can directly style a plotted line by interacting directly with the <code>matplotlib.Line2D</code> class
+<ul>
+<li>The full list of properties is given in the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html">documentation</a></li>
+<li>Alternatively can define these properties as keyword arguments on call to <code>plt.plot</code></li>
+</ul></li>
+<li>Three commonly modified properties are
+<ol type="1">
+<li><p><code>marker</code></p>
+<ul>
+<li><p>Defines special markers that indicate plotted points</p></li>
+<li><p>Large number of options</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>marker</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.</td>
+<td>point</td>
+</tr>
+<tr class="even">
+<td>,</td>
+<td>pixel</td>
+</tr>
+<tr class="odd">
+<td>o</td>
+<td>circle</td>
+</tr>
+<tr class="even">
+<td>v</td>
+<td>upside down triangle</td>
+</tr>
+<tr class="odd">
+<td>^</td>
+<td>up triangle</td>
+</tr>
+<tr class="even">
+<td>&lt;</td>
+<td>left triangle</td>
+</tr>
+<tr class="odd">
+<td>&gt;</td>
+<td>right triangle</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>tri marker (down)</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>tri marker (up)</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>tri marker (left)</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>tri marker (right)</td>
+</tr>
+<tr class="even">
+<td>s</td>
+<td>square</td>
+</tr>
+<tr class="odd">
+<td>p</td>
+<td>pentagon</td>
+</tr>
+<tr class="even">
+<td>*</td>
+<td>star</td>
+</tr>
+<tr class="odd">
+<td>h</td>
+<td>hexagon</td>
+</tr>
+<tr class="even">
+<td>H</td>
+<td>hexagon (alternative)</td>
+</tr>
+<tr class="odd">
+<td>+</td>
+<td>plus</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>diamond</td>
+</tr>
+<tr class="odd">
+<td>d</td>
+<td>thin diamond</td>
+</tr>
+<tr class="even">
+<td>|</td>
+<td>vertical line</td>
+</tr>
+<tr class="odd">
+<td>_</td>
+<td>horizontal line</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li><p><code>linestyle</code></p>
+<ul>
+<li><p>Defines how the line is styled</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>linestyle</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-</td>
+<td>solid line</td>
+</tr>
+<tr class="even">
+<td>–</td>
+<td>dashed line</td>
+</tr>
+<tr class="odd">
+<td>-.</td>
+<td>dash dot line</td>
+</tr>
+<tr class="even">
+<td>:</td>
+<td>dotted line</td>
+</tr>
+<tr class="odd">
+<td>None or empty string</td>
+<td>no line</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li><p><code>color</code></p>
+<ul>
+<li><p>Colours the line</p></li>
+<li><p>There are simple alias for common colours</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>color</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>b</td>
+<td>blue</td>
+</tr>
+<tr class="even">
+<td>g</td>
+<td>green</td>
+</tr>
+<tr class="odd">
+<td>r</td>
+<td>red</td>
+</tr>
+<tr class="even">
+<td>c</td>
+<td>cyan</td>
+</tr>
+<tr class="odd">
+<td>m</td>
+<td>magenta</td>
+</tr>
+<tr class="even">
+<td>y</td>
+<td>yellow</td>
+</tr>
+<tr class="odd">
+<td>k</td>
+<td>black</td>
+</tr>
+<tr class="even">
+<td>w</td>
+<td>white</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ol></li>
+<li>We can put all this together</li>
+</ul>
+<div id="38be7ce5" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">70</span>, <span class="dv">110</span>])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.plot(X, Y, marker<span class="op">=</span><span class="st">"s"</span>, linestyle<span class="op">=</span><span class="st">"-."</span>, color<span class="op">=</span><span class="st">"m"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-3-output-1.png" width="575" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>An alternative technique is to use the optional <code>fmt</code> positional argument
+<ul>
+<li>Takes a format string</li>
+<li>This is a shorthand for the marker, line style and colour</li>
+<li>Structured as <code>[marker][linestyle][color]</code></li>
+<li>e.g.&nbsp;the equivalent <code>fmt</code> string for above is <code>s-.m</code></li>
+<li>is passed into <code>plot</code> after the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> data</li>
+</ul></li>
+</ul>
+<div id="51ac938c" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">70</span>, <span class="dv">110</span>])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.plot(X, Y, <span class="st">"s-.m"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-4-output-1.png" width="575" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>We can combine the format string specifier with other keyword arguments</li>
+</ul>
+<div id="6f3b76fa" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">70</span>, <span class="dv">110</span>])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.plot(X, Y, <span class="st">"s--r"</span>, linewidth<span class="op">=</span><span class="fl">4.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-5-output-1.png" width="575" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="labelled-data" class="level5">
+<h5 class="anchored" data-anchor-id="labelled-data">Labelled Data</h5>
+<ul>
+<li><code>matplotlib</code> works with labelled data
+<ul>
+<li>Integrates nicely with dictionaries, pandas dataframes</li>
+<li>Extends to any data structure that supports bracket indexing</li>
+</ul></li>
+<li>Instead of supplying <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> data we supply the labelled data</li>
+</ul>
+<div id="22cdde13" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Years"</span>: [<span class="st">"2000"</span>, <span class="st">"2002"</span>, <span class="st">"2004"</span>, <span class="st">"2006"</span>, <span class="st">"2008"</span>, <span class="st">"2010"</span>, <span class="st">"2012"</span>, <span class="st">"2014"</span>, <span class="st">"2016"</span>],</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Men"</span>: [<span class="fl">189.1</span>, <span class="fl">191.8</span>, <span class="fl">193.5</span>, <span class="fl">196.0</span>, <span class="fl">194.7</span>, <span class="fl">196.3</span>, <span class="fl">194.4</span>, <span class="fl">197.0</span>, <span class="fl">197.8</span>],</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Women"</span>: [<span class="fl">175.5</span>, <span class="fl">176.4</span>, <span class="fl">176.5</span>, <span class="fl">176.2</span>, <span class="fl">175.9</span>, <span class="fl">175.9</span>, <span class="fl">175.7</span>, <span class="fl">175.8</span>, <span class="fl">175.3</span>],</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>heights_df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="st">"Years"</span>, <span class="st">"Women"</span>, data<span class="op">=</span>heights_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-6-output-1.png" width="588" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Observe here rather than pass the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> we pass the labels as mentioned, then supply the dataframe via the <code>data</code> parameter</li>
+</ul>
+</section>
+<section id="plotting-multiple-sets-of-data" class="level5">
+<h5 class="anchored" data-anchor-id="plotting-multiple-sets-of-data">Plotting Multiple Sets of Data</h5>
+<ul>
+<li>Multiple datasets can be plotted on the same figure</li>
+<li>Most straightforward approach is just to call <code>plot</code> multiple times</li>
+</ul>
+<div id="eb678973" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>X_1 <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>Y_1 <span class="op">=</span> np.array([<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">70</span>, <span class="dv">110</span>])</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>fmt <span class="op">=</span> <span class="st">"s-.r"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>X_2 <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>Y_2 <span class="op">=</span> np.array([<span class="dv">90</span>, <span class="dv">89</span>, <span class="dv">87</span>, <span class="dv">82</span>, <span class="dv">72</span>, <span class="dv">60</span>, <span class="dv">45</span>, <span class="dv">28</span>, <span class="dv">10</span>, <span class="dv">0</span>])</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>fmt2 <span class="op">=</span> <span class="st">"^:k"</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.plot(X_1, Y_1, fmt)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.plot(X_2, Y_2, fmt2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-7-output-1.png" width="575" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>This works because <code>plot</code> defaults to the current figure and axes
+<ul>
+<li>As long as we haven’t cleared the previous figure it will continue to layer onto the current figure</li>
+</ul></li>
+<li>The alternative is to pass everything in one go (each block of <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, <code>fmt</code> sequentially)</li>
+</ul>
+<div id="546229c1" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>X_1 <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>Y_1 <span class="op">=</span> np.array([<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">70</span>, <span class="dv">110</span>])</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>fmt <span class="op">=</span> <span class="st">"s-.r"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>X_2 <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>Y_2 <span class="op">=</span> np.array([<span class="dv">90</span>, <span class="dv">89</span>, <span class="dv">87</span>, <span class="dv">82</span>, <span class="dv">72</span>, <span class="dv">60</span>, <span class="dv">45</span>, <span class="dv">28</span>, <span class="dv">10</span>, <span class="dv">0</span>])</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>fmt2 <span class="op">=</span> <span class="st">"^:k"</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plt.plot(X_1, Y_1, fmt, X_1, Y_1, fmt2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-8-output-1.png" width="575" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>We can do the same with labelled data by passing additional labels</li>
+</ul>
+<div id="c1dfbf54" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Years"</span>: [<span class="st">"2000"</span>, <span class="st">"2002"</span>, <span class="st">"2004"</span>, <span class="st">"2006"</span>, <span class="st">"2008"</span>, <span class="st">"2010"</span>, <span class="st">"2012"</span>, <span class="st">"2014"</span>, <span class="st">"2016"</span>],</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Men"</span>: [<span class="fl">189.1</span>, <span class="fl">191.8</span>, <span class="fl">193.5</span>, <span class="fl">196.0</span>, <span class="fl">194.7</span>, <span class="fl">196.3</span>, <span class="fl">194.4</span>, <span class="fl">197.0</span>, <span class="fl">197.8</span>],</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Women"</span>: [<span class="fl">175.5</span>, <span class="fl">176.4</span>, <span class="fl">176.5</span>, <span class="fl">176.2</span>, <span class="fl">175.9</span>, <span class="fl">175.9</span>, <span class="fl">175.7</span>, <span class="fl">175.8</span>, <span class="fl">175.3</span>],</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>heights_df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="st">"Years"</span>, <span class="st">"Women"</span>, <span class="st">"Men"</span>, data<span class="op">=</span>heights_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-9-output-1.png" width="575" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-labels-titles-and-legends" class="level5">
+<h5 class="anchored" data-anchor-id="adding-labels-titles-and-legends">Adding Labels, Titles and Legends</h5>
+<ul>
+<li><code>pyplot</code> provides simple convenience functions for adding labels, titles and legends</li>
+<li>As with <code>plot</code> these applyt to the current figure and axes</li>
+</ul>
+<div id="ef95cc68" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Years"</span>: [<span class="st">"2000"</span>, <span class="st">"2002"</span>, <span class="st">"2004"</span>, <span class="st">"2006"</span>, <span class="st">"2008"</span>, <span class="st">"2010"</span>, <span class="st">"2012"</span>, <span class="st">"2014"</span>, <span class="st">"2016"</span>],</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Men"</span>: [<span class="fl">189.1</span>, <span class="fl">191.8</span>, <span class="fl">193.5</span>, <span class="fl">196.0</span>, <span class="fl">194.7</span>, <span class="fl">196.3</span>, <span class="fl">194.4</span>, <span class="fl">197.0</span>, <span class="fl">197.8</span>],</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Women"</span>: [<span class="fl">175.5</span>, <span class="fl">176.4</span>, <span class="fl">176.5</span>, <span class="fl">176.2</span>, <span class="fl">175.9</span>, <span class="fl">175.9</span>, <span class="fl">175.7</span>, <span class="fl">175.8</span>, <span class="fl">175.3</span>],</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>heights_df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="st">"Years"</span>, <span class="st">"Women"</span>, <span class="st">"Men"</span>, data<span class="op">=</span>heights_df)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Height (Inches)"</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Average Height over Time"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">"Women"</span>, <span class="st">"Men"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-10-output-1.png" width="594" height="450" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="axes-interface-or-object-oriented-style" class="level4">
+<h4 class="anchored" data-anchor-id="axes-interface-or-object-oriented-style">Axes Interface or Object-Oriented Style</h4>
+<ul>
+<li>The second main interface for Matplotlib is the Axes interface</li>
+<li>Also referred to as the Object-Oriented interface</li>
+<li>Contrasts the implicit or functional interface of pyplot
+<ul>
+<li>Interactive interface tends to be more useful in interactive data interrogation</li>
+<li>Very popular in combination with jupyter notebooks</li>
+</ul></li>
+<li>The axes interface let’s you directly interact with figures and axes to have more fine-grained control over how plot’s look
+<ul>
+<li>Can be accessed directly via the figure and axes elements</li>
+<li>Or via some <code>pyplot</code> functions like <code>pyplot.subplots</code>
+<ul>
+<li>Return’s a figure and a the specified number of axes (by default <span class="math inline">\(1\)</span>)</li>
+<li>Each axes can then be plotted on directly like with the implicit interface</li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="fcef22a7" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Years"</span>: [<span class="st">"2000"</span>, <span class="st">"2002"</span>, <span class="st">"2004"</span>, <span class="st">"2006"</span>, <span class="st">"2008"</span>, <span class="st">"2010"</span>, <span class="st">"2012"</span>, <span class="st">"2014"</span>, <span class="st">"2016"</span>],</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Men"</span>: [<span class="fl">189.1</span>, <span class="fl">191.8</span>, <span class="fl">193.5</span>, <span class="fl">196.0</span>, <span class="fl">194.7</span>, <span class="fl">196.3</span>, <span class="fl">194.4</span>, <span class="fl">197.0</span>, <span class="fl">197.8</span>],</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Women"</span>: [<span class="fl">175.5</span>, <span class="fl">176.4</span>, <span class="fl">176.5</span>, <span class="fl">176.2</span>, <span class="fl">175.9</span>, <span class="fl">175.9</span>, <span class="fl">175.7</span>, <span class="fl">175.8</span>, <span class="fl">175.3</span>],</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>heights_df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Get one figure and axis</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="st">"Years"</span>, <span class="st">"Women"</span>, <span class="st">"Men"</span>, data<span class="op">=</span>heights_df)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>ax_set_ylabel(<span class="st">"Height (Inches)"</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Heights over time"</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>ax.legend([<span class="st">"Women"</span>, <span class="st">"Men"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[10]</span><span class="ansi-green-fg">, line 16</span>
+<span class="ansi-green-fg">     12</span> <span style="font-style:italic;color:rgb(95,135,135)"># Get one figure and axis</span>
+<span class="ansi-green-fg">     13</span> fig, ax = plt.subplots()
+<span class="ansi-green-fg">     14</span> ax.plot(<span class="ansi-yellow-fg">"Years"</span>, <span class="ansi-yellow-fg">"Women"</span>, <span class="ansi-yellow-fg">"Men"</span>, data=heights_df)
+<span class="ansi-green-fg">     15</span> ax.set_xlabel(<span class="ansi-yellow-fg">"Year"</span>)
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">16</span> ax_set_ylabel(<span class="ansi-yellow-fg">"Height (Inches)"</span>)
+<span class="ansi-green-fg">     17</span> ax.set_title(<span class="ansi-yellow-fg">"Heights over time"</span>)
+<span class="ansi-green-fg">     18</span> ax.legend([<span class="ansi-yellow-fg">"Women"</span>, <span class="ansi-yellow-fg">"Men"</span>])
+
+<span class="ansi-red-fg">NameError</span>: name 'ax_set_ylabel' is not defined</pre>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-11-output-2.png" width="575" height="430" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Using multiple axes enables plotting multiple charts on the same figure</li>
+<li>Use <code>plt.subplots</code>, specify the <em>shape</em> of the plot in terms of the number of rows, then columns</li>
+<li>For example, plotting two charts</li>
+</ul>
+<div id="6491fcc0" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Years"</span>: [<span class="st">"2000"</span>, <span class="st">"2002"</span>, <span class="st">"2004"</span>, <span class="st">"2006"</span>, <span class="st">"2008"</span>, <span class="st">"2010"</span>, <span class="st">"2012"</span>, <span class="st">"2014"</span>, <span class="st">"2016"</span>],</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Men"</span>: [<span class="fl">189.1</span>, <span class="fl">191.8</span>, <span class="fl">193.5</span>, <span class="fl">196.0</span>, <span class="fl">194.7</span>, <span class="fl">196.3</span>, <span class="fl">194.4</span>, <span class="fl">197.0</span>, <span class="fl">197.8</span>],</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Women"</span>: [<span class="fl">175.5</span>, <span class="fl">176.4</span>, <span class="fl">176.5</span>, <span class="fl">176.2</span>, <span class="fl">175.9</span>, <span class="fl">175.9</span>, <span class="fl">175.7</span>, <span class="fl">175.8</span>, <span class="fl">175.3</span>],</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>heights_df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>) <span class="co"># Create a figure with 1 row and 2 columns</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>ax1.plot(<span class="st">"Years"</span>, <span class="st">"Women"</span>, data<span class="op">=</span>heights_df)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Height (Inches)"</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Women"</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>ax1.legend([<span class="st">"Women"</span>])</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>ax2.plot(<span class="st">"Years"</span>, <span class="st">"Men"</span>, data<span class="op">=</span>heights_df)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Height (Inches)"</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Men"</span>)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>ax2.legend([<span class="st">"Men"</span>])</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>fig.autofmt_xdate(rotation<span class="op">=</span><span class="dv">65</span>) <span class="co"># Rotate data labels</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-12-output-1.png" width="607" height="430" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>This explicit style is great once you’re looking to create polished finished charts instead of just general interactive data interrogation</li>
+</ul>
+</section>
+</section>
+<section id="seaborn" class="level3">
+<h3 class="anchored" data-anchor-id="seaborn">Seaborn</h3>
+<ul>
+<li><p>Seaborn is a statistical plotting library</p>
+<ul>
+<li>Designed to be used with Pandas</li>
+<li>Builds on top of <a href="#matplotlib">Matplotlib</a></li>
+<li>Aims to provide good-looking plots out of the box</li>
+</ul></li>
+<li><p>By convention Seaborn is imported as <code>sns</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Seaborn comes with some built-in datasets</p>
+<ul>
+<li>Used in the online documentation and tutorials</li>
+<li>Aims to give you something to work with out of the box</li>
+</ul></li>
+<li><p>Datasets are designed to be loaded as Pandas dataframes</p>
+<ul>
+<li>The full list is maintained at ths <a href="https://github.com/mwaskom/seaborn-data">repository</a></li>
+</ul></li>
+<li><p>For example, plotting some data from the car crashes dataset</p>
+<ul>
+<li>Here the relationship between two columns using the <code>relplot</code></li>
+</ul></li>
+</ul>
+<div id="15801814" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>car_crashes <span class="op">=</span> sns.load_dataset(<span class="st">"car_crashes"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>car_crashes <span class="op">=</span> car_crashes[[<span class="st">"total"</span>, <span class="st">"not_distracted"</span>, <span class="st">"alcohol"</span>]] <span class="co">#filtering the dataframe</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>sns.relplot(data<span class="op">=</span>car_crashes, x<span class="op">=</span><span class="st">"total"</span>, y<span class="op">=</span><span class="st">"not_distracted"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-13-output-1.png" width="472" height="471" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="seaborn-themes" class="level4">
+<h4 class="anchored" data-anchor-id="seaborn-themes">Seaborn Themes</h4>
+<ul>
+<li><p>Seaborn bundles a number of themes that control how plots are styled</p></li>
+<li><p>The default is set via</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>  sns.set_theme()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>We can repeat our previous plot to see the style of this theme</p></li>
+</ul>
+<div id="4009ff0c" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sns.set_theme()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>car_crashes <span class="op">=</span> sns.load_dataset(<span class="st">"car_crashes"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>car_crashes <span class="op">=</span> car_crashes[</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"total"</span>, <span class="st">"not_distracted"</span>, <span class="st">"alcohol"</span>]</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>]  <span class="co"># filtering the dataframe</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>sns.relplot(data<span class="op">=</span>car_crashes, x<span class="op">=</span><span class="st">"total"</span>, y<span class="op">=</span><span class="st">"not_distracted"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-14-output-1.png" width="463" height="464" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>A seaborn theme changes a bunch of parameters behind the scenes</p></li>
+<li><p>The theme thus applied to any subsequent seaborn themes</p>
+<ul>
+<li>But is also applied to general Matplotlib plots too!</li>
+</ul></li>
+<li><p>Seaborn breaks down formatting a chart into two types of parameters</p>
+<ol type="1">
+<li>Style
+<ul>
+<li>The aesthetic</li>
+</ul></li>
+<li>Scale
+<ul>
+<li>The scale of the plot</li>
+</ul></li>
+</ol></li>
+<li><p>Seaborn also defines a number of <em>styles</em> that can be set</p>
+<ul>
+<li><p>There are five included by default</p>
+<ol type="1">
+<li><code>darkgrid</code></li>
+<li><code>whitegrid</code></li>
+<li><code>dark</code></li>
+<li><code>white</code></li>
+<li><code>ticks</code></li>
+</ol></li>
+</ul></li>
+<li><p>Style is then set by <code>sns.set_style</code></p></li>
+<li><p>For example, using the dark style</p></li>
+</ul>
+<div id="a85b394d" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"dark"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>car_crashes <span class="op">=</span> sns.load_dataset(<span class="st">"car_crashes"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>car_crashes <span class="op">=</span> car_crashes[</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"total"</span>, <span class="st">"not_distracted"</span>, <span class="st">"alcohol"</span>]</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>]  <span class="co"># filtering the dataframe</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>sns.relplot(data<span class="op">=</span>car_crashes, x<span class="op">=</span><span class="st">"total"</span>, y<span class="op">=</span><span class="st">"not_distracted"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-15-output-1.png" width="463" height="464" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>Setting the scale is designed to target specific presentation styles. The defaults are</p>
+<ol type="1">
+<li><code>paper</code></li>
+<li><code>notebook</code></li>
+<li><code>talk</code></li>
+<li><code>poster</code></li>
+</ol></li>
+<li><p>The scale theme can be set via the <code>set_context</code> instructions</p></li>
+</ul>
+<div id="b20e9f1d" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">"talk"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>car_crashes <span class="op">=</span> sns.load_dataset(<span class="st">"car_crashes"</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>car_crashes <span class="op">=</span> car_crashes[</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"total"</span>, <span class="st">"not_distracted"</span>, <span class="st">"alcohol"</span>]</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>]  <span class="co"># filtering the dataframe</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>sns.relplot(data<span class="op">=</span>car_crashes, x<span class="op">=</span><span class="st">"total"</span>, y<span class="op">=</span><span class="st">"not_distracted"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-16-output-1.png" width="447" height="447" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="seaborn-plot-types" class="level4">
+<h4 class="anchored" data-anchor-id="seaborn-plot-types">Seaborn Plot Types</h4>
+<ul>
+<li>Seaborn has an extension range of different plots</li>
+<li>One useful class is <code>pairplot</code>
+<ul>
+<li>Helps identify correlations in data</li>
+<li>Plot’s the correlations between all columns in a dataframe</li>
+</ul></li>
+<li>For example, using the Iris built-in dataset</li>
+</ul>
+<div id="e39b18e6" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> sns.load_dataset(<span class="st">"iris"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>sns.pairplot(df, hue<span class="op">=</span><span class="st">"species"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-17-output-1.png" width="1130" height="935" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plotly" class="level3">
+<h3 class="anchored" data-anchor-id="plotly">Plotly</h3>
+<ul>
+<li><a href="#matplotlib">Matplotlib</a> and by extension <a href="#seaborn">Seaborn</a> are designed primarily for publication-ready static charts
+<ul>
+<li>Or simple animations</li>
+</ul></li>
+<li>They can be extended to create interactive charts, but not their primary supported use case</li>
+<li>Plotly is designed for producing high-quality interactive charts</li>
+<li>An advantage of Plotly over Matplotlib is that it supports a proper 3D rendering engine for 3D plots</li>
+<li>For example, the chart below demonstrates a 3D plot created in Plotly</li>
+</ul>
+<div id="da271a75" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> pd.data.iris()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter_3d(iris, x<span class="op">=</span><span class="st">"sepal_length"</span>, y<span class="op">=</span><span class="st">"petal_width"</span>, z<span class="op">=</span><span class="st">"petal_length"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[17]</span><span class="ansi-green-fg">, line 3</span>
+<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> plotly.express <span style="font-weight:bold;color:rgb(0,135,0)">as</span> px
+<span class="ansi-green-fg">      2</span> 
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> iris = pd.data.iris()
+<span class="ansi-green-fg">      4</span> 
+<span class="ansi-green-fg">      5</span> fig = px.scatter_3d(iris, x=<span class="ansi-yellow-fg">"sepal_length"</span>, y=<span class="ansi-yellow-fg">"petal_width"</span>, z=<span class="ansi-yellow-fg">"petal_length"</span>, color=<span class="ansi-yellow-fg">"species"</span>)
+<span class="ansi-green-fg">      6</span> fig.show()
+
+<span class="ansi-red-fg">AttributeError</span>: module 'pandas' has no attribute 'data'</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="bokeh" class="level3">
+<h3 class="anchored" data-anchor-id="bokeh">Bokeh</h3>
+<ul>
+<li>Bokeh is another library for creating interactive plots</li>
+<li>Designed to offer improved performance and enable data to be updated without a state reload via the <code>ColumnDataSource</code> class</li>
+<li>Data sources can be shared across figures
+<ul>
+<li>Means updating the data source automatically updates dependent plots</li>
+</ul></li>
+</ul>
+<div id="bfdac83c" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.io <span class="im">import</span> output_notebook</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.plotting <span class="im">import</span> figure, show</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> boken.models <span class="im">import</span> ColumnDataSource</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.layouts <span class="op">=</span> gridplot</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>output_notebook()</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>Y_1 <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">200</span>, <span class="dv">2</span>)]</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>Y_2 <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> Y]</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)]</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"x"</span>: X, <span class="st">"y1"</span>: Y_1, <span class="st">"y2"</span>: Y_2} <span class="co"># create data</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>TOOLS <span class="op">=</span> <span class="st">"box_select"</span> <span class="co"># select interactive tools</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> ColumnDataSource(data<span class="op">=</span>data) <span class="co"># Create data model</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>left <span class="op">=</span> figure(tools<span class="op">=</span>TOOLS, title<span class="op">=</span><span class="st">"Brushing"</span>) <span class="co"># Create figure using the selected tools</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>left.circle(<span class="st">"x"</span>, <span class="st">"y"</span>, source<span class="op">=</span>source) <span class="co"># Create a circle plot on the first figure</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>right <span class="op">=</span> figure(tools<span class="op">=</span>TOOLS, title<span class="op">=</span><span class="st">"Brushing"</span>) <span class="co"># Create a second figure using the selected tools</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>right.circle(<span class="st">"x"</span>, <span class="st">"y1"</span>, source<span class="op">=</span>source) <span class="co"># Create a circle plot on the second figure</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> gridplot([[left, right]]) <span class="co"># Put the figures on a grid</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>show(p)  <span class="co"># Show the grid</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[18]</span><span class="ansi-green-fg">, line 4</span>
+<span class="ansi-red-fg">    </span><span class="ansi-red-fg">from bokeh.layouts = gridplot</span>
+                       ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax
+</pre>
+</div>
+</div>
+</div>
+<ul>
+<li>The resulting figures can be selected cross-axes
+<ul>
+<li>Defined by the specified tool</li>
+</ul></li>
+<li>Selecting one plot, selects the corresponding points on the other chart</li>
+</ul>
+</section>
+<section id="other-visualisation-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="other-visualisation-libraries">Other Visualisation Libraries</h3>
+<ul>
+<li><p>There are a range of other visualisation suites available</p></li>
+<li><p>Most cater to specific domains or data regimes</p>
+<ul>
+<li><code>geoplotlib</code>
+<ul>
+<li>For visualising maps and geographic data</li>
+</ul></li>
+<li><code>ggplot</code>
+<ul>
+<li>Python interface based on the R package ggplot2</li>
+</ul></li>
+<li><code>pygal</code>
+<ul>
+<li>For creating simple plots</li>
+</ul></li>
+<li><code>folium</code>
+<ul>
+<li>For creating interactive maps</li>
+</ul></li>
+<li><code>missingno</code>
+<ul>
+<li>Enables visualising missing data</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>Visualisation is highly important for data exploration and data presentation</li>
+<li>Many libraries exist for visualising data
+<ul>
+<li>Different libraries cater to different domains</li>
+</ul></li>
+<li><code>matplotlib</code> is the plotting library as part of the Scipy suite
+<ul>
+<li>Underpins many other high level plotting libraries</li>
+<li>Very common in scientific communication and publication-ready presentation</li>
+<li>Very powerful but can have a steep learning curve</li>
+</ul></li>
+<li><code>seaborn</code> is a statistics visualisation library built on <code>matplotlib</code>
+<ul>
+<li>It is designed for making it easy to plot standard statistical plots out of the box</li>
+</ul></li>
+<li><code>Plotly</code> and <code>Bokeh</code> are other plotting engines designed for creating more interactive visualisations
+<ul>
+<li>Also great for creating dashboards</li>
+</ul></li>
+</ul>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<p>Use the following example to answer the following questions</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"X"</span>: [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>)],</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y"</span>: [y <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>)],</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y1"</span>: [y<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">25</span>, <span class="dv">75</span>)]</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="1">
+<li>Use <code>matplotlib</code> to plot the relationship between column <code>X</code> and column <code>Y</code>
+<ul>
+<li>See below</li>
+</ul></li>
+<li>Use <code>matplotlib</code> to plot the relationship between column <code>X</code> and column <code>Y1</code> to the same plot
+<ul>
+<li>See below</li>
+</ul></li>
+<li>Use <code>matplotlib</code> to plot the relationship betweeen the relationships from Question 1 and Question 2 on seperate axes of the same figure
+<ul>
+<li>See below</li>
+</ul></li>
+<li>Use <code>seaborn</code> to change the theme to <code>darkgrid</code> and then repeat the plots from Question 3</li>
+</ol>
+<div id="dbbf71e8" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"X"</span>: [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>)],</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y"</span>: [y <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>)],</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y1"</span>: [y<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">25</span>, <span class="dv">75</span>)],</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 1"</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="st">"X"</span>, <span class="st">"Y"</span>, data<span class="op">=</span>data)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X"</span>)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Y"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Question 1</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>Text(0, 0.5, 'Y')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-20-output-3.png" width="614" height="457" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="f54c84f8" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"X"</span>: [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>)],</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y"</span>: [y <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>)],</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y1"</span>: [y<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">25</span>, <span class="dv">75</span>)],</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 2"</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"Y1"</span>, data<span class="op">=</span>data)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X"</span>)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">"Y"</span>, <span class="st">"Y1"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Question 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-21-output-2.png" width="613" height="457" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="7facf4e5" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"X"</span>: [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>)],</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y"</span>: [y <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>)],</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y1"</span>: [y<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">25</span>, <span class="dv">75</span>)],</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 3"</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>ax1.plot(<span class="st">"X"</span>, <span class="st">"Y"</span>, data<span class="op">=</span>data)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"X"</span>)</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Y"</span>)</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>ax2.plot(<span class="st">"X"</span>, <span class="st">"Y1"</span>, data<span class="op">=</span>data)</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"X"</span>)</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Y"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Question 3</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>Text(0, 0.5, 'Y')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_10_files/figure-html/cell-22-output-3.png" width="614" height="457" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="dedebe9d" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"X"</span>: [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>)],</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y"</span>: [y <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>)],</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y1"</span>: [y<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">25</span>, <span class="dv">75</span>)],</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 4"</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>sns.set_theme(<span class="st">"darkgrid"</span>)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>ax1.plot(<span class="st">"X"</span>, <span class="st">"Y"</span>, data<span class="op">=</span>data)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"X"</span>)</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Y"</span>)</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>ax2.plot(<span class="st">"X"</span>, <span class="st">"Y1"</span>, data<span class="op">=</span>data)</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"X"</span>)</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Y"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Question 4</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[22]</span><span class="ansi-green-fg">, line 14</span>
+<span class="ansi-green-fg">     10</span> df = pd.DataFrame(data)
+<span class="ansi-green-fg">     11</span> 
+<span class="ansi-green-fg">     12</span> print(<span class="ansi-yellow-fg">"Question 4"</span>)
+<span class="ansi-green-fg">     13</span> 
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">14</span> sns.set_theme(<span class="ansi-yellow-fg">"darkgrid"</span>)
+<span class="ansi-green-fg">     15</span> 
+<span class="ansi-green-fg">     16</span> fig, (ax1, ax2) = plt.subplots(<span class="ansi-green-fg">1</span>, <span class="ansi-green-fg">2</span>)
+<span class="ansi-green-fg">     17</span> 
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/seaborn/rcmod.py:119</span>, in <span class="ansi-cyan-fg">set_theme</span><span class="ansi-blue-fg">(context, style, palette, font, font_scale, color_codes, rc)</span>
+<span class="ansi-green-fg">     82</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">set_theme</span>(context=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">notebook</span><span class="ansi-yellow-fg">"</span>, style=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">darkgrid</span><span class="ansi-yellow-fg">"</span>, palette=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">deep</span><span class="ansi-yellow-fg">"</span>,
+<span class="ansi-green-fg">     83</span>               font=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">sans-serif</span><span class="ansi-yellow-fg">"</span>, font_scale=<span class="ansi-green-fg">1</span>, color_codes=<span style="font-weight:bold;color:rgb(0,135,0)">True</span>, rc=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>):
+<span class="ansi-green-fg">     84</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic" class="ansi-yellow-fg">"""</span>
+<span class="ansi-green-fg">     85</span> <span style="font-style:italic" class="ansi-yellow-fg">    Set aspects of the visual theme for all matplotlib and seaborn plots.</span>
+<span class="ansi-green-fg">     86</span> 
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    117</span> 
+<span class="ansi-green-fg">    118</span> <span style="font-style:italic" class="ansi-yellow-fg">    """</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">119</span>     <span class="ansi-black-fg ansi-yellow-bg">set_context</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">context</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">font_scale</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    120</span>     set_style(style, rc={<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">font.family</span><span class="ansi-yellow-fg">"</span>: font})
+<span class="ansi-green-fg">    121</span>     set_palette(palette, color_codes=color_codes)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/seaborn/rcmod.py:468</span>, in <span class="ansi-cyan-fg">set_context</span><span class="ansi-blue-fg">(context, font_scale, rc)</span>
+<span class="ansi-green-fg">    435</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">set_context</span>(context=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, font_scale=<span class="ansi-green-fg">1</span>, rc=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>):
+<span class="ansi-green-fg">    436</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic" class="ansi-yellow-fg">"""</span>
+<span class="ansi-green-fg">    437</span> <span style="font-style:italic" class="ansi-yellow-fg">    Set the parameters that control the scaling of plot elements.</span>
+<span class="ansi-green-fg">    438</span> 
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    466</span> 
+<span class="ansi-green-fg">    467</span> <span style="font-style:italic" class="ansi-yellow-fg">    """</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">468</span>     context_object = <span class="ansi-black-fg ansi-yellow-bg">plotting_context</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">context</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">font_scale</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">rc</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    469</span>     mpl.rcParams.update(context_object)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/seaborn/rcmod.py:379</span>, in <span class="ansi-cyan-fg">plotting_context</span><span class="ansi-blue-fg">(context, font_scale, rc)</span>
+<span class="ansi-green-fg">    377</span> contexts = [<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">paper</span><span class="ansi-yellow-fg">"</span>, <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">notebook</span><span class="ansi-yellow-fg">"</span>, <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">talk</span><span class="ansi-yellow-fg">"</span>, <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">poster</span><span class="ansi-yellow-fg">"</span>]
+<span class="ansi-green-fg">    378</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> context <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> contexts:
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">379</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">context must be in </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">, </span><span class="ansi-yellow-fg">'</span>.join(contexts)<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg">"</span>)
+<span class="ansi-green-fg">    381</span> <span style="font-style:italic;color:rgb(95,135,135)"># Set up dictionary of default parameters</span>
+<span class="ansi-green-fg">    382</span> texts_base_context = {
+<span class="ansi-green-fg">    383</span> 
+<span class="ansi-green-fg">    384</span>     <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">font.size</span><span class="ansi-yellow-fg">"</span>: <span class="ansi-green-fg">12</span>,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    391</span> 
+<span class="ansi-green-fg">    392</span> }
+
+<span class="ansi-red-fg">ValueError</span>: context must be in paper, notebook, talk, poster</pre>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../2_data_science_libraries/Chapter_09/Chapter_09.html" class="pagination-link" aria-label="Chapter 9: Pandas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Chapter 9: Pandas</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
