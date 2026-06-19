@@ -214,7 +214,7 @@ X_2 = np.arange(0, 10)
 Y_2 = np.array([90, 89, 87, 82, 72, 60, 45, 28, 10, 0])
 fmt2 = "^:k"
 
-plt.plot(X_1, Y_1, fmt, X_1, Y_1, fmt2)
+plt.plot(X_1, Y_1, fmt, X_2, Y_2, fmt2)
 ```
 
 - We can do the same with labelled data by passing additional labels
@@ -285,7 +285,7 @@ heights_df = pd.DataFrame(data)
 fig, ax = plt.subplots()
 ax.plot("Years", "Women", "Men", data=heights_df)
 ax.set_xlabel("Year")
-ax_set_ylabel("Height (Inches)")
+ax.set_ylabel("Height (Inches)")
 ax.set_title("Heights over time")
 ax.legend(["Women", "Men"])
 ```
@@ -306,7 +306,7 @@ data = {
 
 heights_df = pd.DataFrame(data)
 
-fig, (ax1, ax2) = plt.subplots(1, 2) # Create a figure with 1 row and 2 columns
+fig, (ax1, ax2) = plt.subplots(1, 2)  # Create a figure with 1 row and 2 columns
 
 ax1.plot("Years", "Women", data=heights_df)
 ax1.set_xlabel("Year")
@@ -316,11 +316,10 @@ ax1.legend(["Women"])
 
 ax2.plot("Years", "Men", data=heights_df)
 ax2.set_xlabel("Year")
-ax2.set_ylabel("Height (Inches)")
 ax2.set_title("Men")
 ax2.legend(["Men"])
 
-fig.autofmt_xdate(rotation=65) # Rotate data labels
+fig.autofmt_xdate(rotation=65)  # Rotate data labels
 ```
 
 - This explicit style is great once you're looking to create polished finished charts instead of just general interactive data interrogation
@@ -384,7 +383,7 @@ sns.relplot(data=car_crashes, x="total", y="not_distracted")
   1. Style
      - The aesthetic
   2. Scale
-     - The scale of the plot
+     - The sizing of the plot and various elements
 
 - Seaborn also defines a number of *styles* that can be set
     - There are five included by default
@@ -459,9 +458,11 @@ sns.pairplot(df, hue="species")
 ```{python}
 import plotly.express as px
 
-iris = pd.data.iris()
+iris = px.data.iris()
 
-fig = px.scatter_3d(iris, x="sepal_length", y="petal_width", z="petal_length", color="species")
+fig = px.scatter_3d(
+    iris, x="sepal_length", y="petal_width", z="petal_length", color="species"
+)
 fig.show()
 ```
 
@@ -476,7 +477,7 @@ fig.show()
 from bokeh.io import output_notebook
 from bokeh.plotting import figure, show
 from boken.models import ColumnDataSource
-from bokeh.layouts = gridplot
+from bokeh.layouts import gridplot
 
 output_notebook()
 
@@ -485,18 +486,20 @@ Y_2 = [x**2 for x in Y]
 
 X = [x for x in range(100)]
 
-data = {"x": X, "y1": Y_1, "y2": Y_2} # create data
+data = {"x": X, "y1": Y_1, "y2": Y_2}  # create data
 
-TOOLS = "box_select" # select interactive tools
-source = ColumnDataSource(data=data) # Create data model
+TOOLS = "box_select"  # select interactive tools
+source = ColumnDataSource(data=data)  # Create data model
 
-left = figure(tools=TOOLS, title="Brushing") # Create figure using the selected tools
-left.circle("x", "y", source=source) # Create a circle plot on the first figure
+left = figure(tools=TOOLS, title="Brushing")  # Create figure using the selected tools
+left.circle("x", "y", source=source)  # Create a circle plot on the first figure
 
-right = figure(tools=TOOLS, title="Brushing") # Create a second figure using the selected tools
-right.circle("x", "y1", source=source) # Create a circle plot on the second figure
+right = figure(
+    tools=TOOLS, title="Brushing"
+)  # Create a second figure using the selected tools
+right.circle("x", "y1", source=source)  # Create a circle plot on the second figure
 
-p = gridplot([[left, right]]) # Put the figures on a grid
+p = gridplot([[left, right]])  # Put the figures on a grid
 show(p)  # Show the grid
 ```
 
@@ -637,7 +640,7 @@ df = pd.DataFrame(data)
 
 print("Question 4")
 
-sns.set_theme("darkgrid")
+sns.set_style("darkgrid")
 
 fig, (ax1, ax2) = plt.subplots(1, 2)
 
