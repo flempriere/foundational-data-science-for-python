@@ -476,7 +476,7 @@ fig.show()
 ```{python}
 from bokeh.io import output_notebook
 from bokeh.plotting import figure, show
-from boken.models import ColumnDataSource
+from bokeh.models import ColumnDataSource
 from bokeh.layouts import gridplot
 
 output_notebook()
