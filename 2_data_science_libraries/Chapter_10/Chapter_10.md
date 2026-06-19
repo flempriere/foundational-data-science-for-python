@@ -1,6 +1,5 @@
 # Chapter 10: Visualisation Libraries
 
-
 - [Notes](#notes)
   - [Matplotlib](#matplotlib)
     - [`matplotlib.pylab`](#matplotlibpylab)
@@ -56,6 +55,7 @@
     ``` python
       import matplotlib.pyplot as plt
     ```
+
 - Matplotlib plots are typically defined in terms of *figures* and
   *axes*
   - A figure represents a graph of data
@@ -90,7 +90,7 @@ plt.plot(X, Y)
   - Alternatively can define these properties as keyword arguments on
     call to `plt.plot`
 - Three commonly modified properties are
-  1.  `marker`
+  1. `marker`
 
       - Defines special markers that indicate plotted points
 
@@ -120,7 +120,7 @@ plt.plot(X, Y)
         | \|     | vertical line         |
         | \_     | horizontal line       |
 
-  2.  `linestyle`
+  2. `linestyle`
 
       - Defines how the line is styled
 
@@ -132,7 +132,7 @@ plt.plot(X, Y)
         | :                    | dotted line   |
         | None or empty string | no line       |
 
-  3.  `color`
+  3. `color`
 
       - Colours the line
 
@@ -148,6 +148,7 @@ plt.plot(X, Y)
         | y     | yellow      |
         | k     | black       |
         | w     | white       |
+
 - We can put all this together
 
 ``` python
@@ -479,20 +480,20 @@ sns.relplot(data=car_crashes, x="total", y="not_distracted")
 
 - Seaborn breaks down formatting a chart into two types of parameters
 
-  1.  Style
+  1. Style
       - The aesthetic
-  2.  Scale
+  2. Scale
       - The scale of the plot
 
 - Seaborn also defines a number of *styles* that can be set
 
   - There are five included by default
 
-    1.  `darkgrid`
-    2.  `whitegrid`
-    3.  `dark`
-    4.  `white`
-    5.  `ticks`
+    1. `darkgrid`
+    2. `whitegrid`
+    3. `dark`
+    4. `white`
+    5. `ticks`
 
 - Style is then set by `sns.set_style`
 
@@ -515,10 +516,10 @@ sns.relplot(data=car_crashes, x="total", y="not_distracted")
 - Setting the scale is designed to target specific presentation styles.
   The defaults are
 
-  1.  `paper`
-  2.  `notebook`
-  3.  `talk`
-  4.  `poster`
+  1. `paper`
+  2. `notebook`
+  3. `talk`
+  4. `poster`
 
 - The scale theme can be set via the `set_context` instructions
 
@@ -579,9 +580,9 @@ fig.show()
     AttributeError                            Traceback (most recent call last)
     Cell In[17], line 3
           1 import plotly.express as px
-          2 
+          2
     ----> 3 iris = pd.data.iris()
-          4 
+          4
           5 fig = px.scatter_3d(iris, x="sepal_length", y="petal_width", z="petal_length", color="species")
           6 fig.show()
 
@@ -687,16 +688,16 @@ data = {
 df = pd.DataFrame(data)
 ```
 
-1.  Use `matplotlib` to plot the relationship between column `X` and
+1. Use `matplotlib` to plot the relationship between column `X` and
     column `Y`
     - See below
-2.  Use `matplotlib` to plot the relationship between column `X` and
+2. Use `matplotlib` to plot the relationship between column `X` and
     column `Y1` to the same plot
     - See below
-3.  Use `matplotlib` to plot the relationship betweeen the relationships
+3. Use `matplotlib` to plot the relationship betweeen the relationships
     from Question 1 and Question 2 on seperate axes of the same figure
     - See below
-4.  Use `seaborn` to change the theme to `darkgrid` and then repeat the
+4. Use `seaborn` to change the theme to `darkgrid` and then repeat the
     plots from Question 3
 
 ``` python
@@ -813,21 +814,21 @@ ax2.set_ylabel("Y")
     ValueError                                Traceback (most recent call last)
     Cell In[22], line 14
          10 df = pd.DataFrame(data)
-         11 
+         11
          12 print("Question 4")
-         13 
+         13
     ---> 14 sns.set_theme("darkgrid")
-         15 
+         15
          16 fig, (ax1, ax2) = plt.subplots(1, 2)
-         17 
+         17
 
     File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/seaborn/rcmod.py:119, in set_theme(context, style, palette, font, font_scale, color_codes, rc)
          82 def set_theme(context="notebook", style="darkgrid", palette="deep",
          83               font="sans-serif", font_scale=1, color_codes=True, rc=None):
          84     """
          85     Set aspects of the visual theme for all matplotlib and seaborn plots.
-         86 
-       (...)    117 
+         86
+       (...)    117
         118     """
     --> 119     set_context(context, font_scale)
         120     set_style(style, rc={"font.family": font})
@@ -837,8 +838,8 @@ ax2.set_ylabel("Y")
         435 def set_context(context=None, font_scale=1, rc=None):
         436     """
         437     Set the parameters that control the scaling of plot elements.
-        438 
-       (...)    466 
+        438
+       (...)    466
         467     """
     --> 468     context_object = plotting_context(context, font_scale, rc)
         469     mpl.rcParams.update(context_object)
@@ -849,9 +850,9 @@ ax2.set_ylabel("Y")
     --> 379     raise ValueError(f"context must be in {', '.join(contexts)}")
         381 # Set up dictionary of default parameters
         382 texts_base_context = {
-        383 
+        383
         384     "font.size": 12,
-       (...)    391 
+       (...)    391
         392 }
 
     ValueError: context must be in paper, notebook, talk, poster
