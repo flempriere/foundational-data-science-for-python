@@ -482,7 +482,7 @@ from bokeh.layouts import gridplot
 output_notebook()
 
 Y_1 = [x for x in range(0, 200, 2)]
-Y_2 = [x**2 for x in Y]
+Y_2 = [x**2 for x in Y_1]
 
 X = [x for x in range(100)]
 
