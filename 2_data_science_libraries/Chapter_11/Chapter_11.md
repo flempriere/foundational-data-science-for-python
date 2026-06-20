@@ -1,6 +1,5 @@
 # Chapter 11: Machine Learning Libraries
 
-
 - [Notes](#notes)
   - [Popular Machine Learning
     Libraries](#popular-machine-learning-libraries)
@@ -32,18 +31,18 @@
 
 - Four commonly used Python open-source libraries are
 
-  1.  [**Pytorch**](https://docs.pytorch.org/docs/2.12/index.html)
+  1. [**Pytorch**](https://docs.pytorch.org/docs/2.12/index.html)
       - Developed by Meta based on the Torch Library
       - Probably the most widely-used library, especially in production
       - Designed to utilise GPU programming for improved performance
-  2.  [**Tensorflow**](https://www.tensorflow.org/guide)
+  2. [**Tensorflow**](https://www.tensorflow.org/guide)
       - Google’s internal-produced machine learning library
-  3.  **Keras**
+  3. **Keras**
       - Open-source library developed on top of tensorflow
       - Now included as part of Tensorflow directly
       - Aims to provide a simpler high-level API for ML beginners and
         researchers
-  4.  [**Scikit-Learn**](https://scikit-learn.org/stable/index.html)
+  4. [**Scikit-Learn**](https://scikit-learn.org/stable/index.html)
       - Basic machine-learning library as part of the Scipy ecosystem
       - Good for beginners
 
@@ -51,14 +50,14 @@
 
 - Machine learning is either
 
-  1.  Supervised
+  1. Supervised
       - Known data is used to train and test a model
       - Typical pipeline is,
-        1.  Transform
-        2.  Separate test and training data
-        3.  Train the model
-        4.  Test the model
-  2.  Unsupervised Learning
+        1. Transform
+        2. Separate test and training data
+        3. Train the model
+        4. Test the model
+  2. Unsupervised Learning
       - Data is fed in to discover insights without a pre-existing
         expected output
 
@@ -80,12 +79,12 @@
 
   - Some examples are,
 
-    1.  Cleaning
+    1. Cleaning
         - Used to tidy up a dataset into something that can be used
-    2.  Feature Extraction
+    2. Feature Extraction
         - Used for identifying import aspects or patterns in a dataset
-    3.  Reduction
-    4.  Expansion
+    3. Reduction
+    4. Expansion
 - In Scikit-learn these are typically implemented as classes
   - Use a `fit` method to return a transformation matched to the data
   - `transform` method on this transformation then applies the
@@ -122,10 +121,10 @@ scalar.transform(data)  # Apply the transformation
 
 - Fitted models can suffer from two conditions
 
-  1.  Under-fit
+  1. Under-fit
       - The model doesn’t have enough complexity to capture the true
         dynamics of supplied data
-  2.  Over-fit
+  2. Over-fit
       - The model has too much flexibility and becomes tightly fit to
         the training data, failing to generalise
 
@@ -196,9 +195,9 @@ print("test_t shape:", test_t.shape)
 
   - `fit` typically accepts two parameters
 
-    1.  `samples`
+    1. `samples`
         - The training data
-    2.  results or targets
+    2. results or targets
         - The expected outcome for each input in the training data set
 
   - Both should be [Numpy](../Chapter_07/Chapter_07.qmd) arrays
@@ -265,7 +264,7 @@ metrics.accuracy_score(test_t, test_prediction) # Accuracy against the test data
 
 ## Questions
 
-1.  In which step of training a supervised estimator would a
+1. In which step of training a supervised estimator would a
     Scikit-learn transformer be useful?
 
     - A transformer is usually useful *after* splitting a set into train
@@ -277,7 +276,7 @@ metrics.accuracy_score(test_t, test_prediction) # Accuracy against the test data
       including the test data
       - Reduces the potential for over-fit
 
-2.  Why is important to separate training and test data in machine
+2. Why is important to separate training and test data in machine
     learning?
 
     - Machine learning models will fit to any data that they are
@@ -290,7 +289,7 @@ metrics.accuracy_score(test_t, test_prediction) # Accuracy against the test data
       over-fit to the training data, but *does* let us characterise the
       accuracy on new dataset
 
-3.  After you have transformed your data and trained your model, what
+3. After you have transformed your data and trained your model, what
     should you do next?
 
     - You should run the model against the test set and generate metrics
