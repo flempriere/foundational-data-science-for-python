@@ -348,10 +348,10 @@ print("Union:", admission_record.keys() | student_record.keys())
 ```
 
     Testing key equality: False
-    Symmetric Difference: {'admitted', 'advisor', 'gpa', 'major', 'minor'}
-    Intersection: {'id', 'first', 'last'}
+    Symmetric Difference: {'major', 'advisor', 'gpa', 'minor', 'admitted'}
+    Intersection: {'last', 'first', 'id'}
     Difference: {'admitted'}
-    Union: {'first', 'admitted', 'advisor', 'gpa', 'major', 'minor', 'id', 'last'}
+    Union: {'last', 'major', 'advisor', 'gpa', 'id', 'minor', 'admitted', 'first'}
 
 - `dict_items` views are useful for iterating over the `key:value` pairs
   in dictionary
@@ -513,7 +513,7 @@ print("Calling __hash__ on string:", "abc".__hash__())
 print("Calling __hash__ on a list:", list("abc").__hash__())
 ```
 
-    Calling __hash__ on string: 2206936420941412236
+    Calling __hash__ on string: 7832441723415982492
 
     TypeError: 'NoneType' object is not callable
     ---------------------------------------------------------------------------
@@ -567,8 +567,8 @@ print("Set constructed via {1, 1, 1, 2, 2, 3}:", set_c)
 
     Empty set via `set()`: set()
     Empty set via {}: {}
-    Set constructed via `set` called on a string: {'a', 'b', 'c'}
-    Set constructed via `set` called on a tuple: {'a', 'b', 'c'}
+    Set constructed via `set` called on a string: {'c', 'a', 'b'}
+    Set constructed via `set` called on a tuple: {'c', 'a', 'b'}
     Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}
 
 - As mentioned, sets do not work with mutable types
@@ -1090,4 +1090,4 @@ print(set("lost and lost again"))
     Question 3:
     data.get("settings"): None
     Question 5:
-    {'i', 't', 'a', 'n', ' ', 'd', 'g', 's', 'o', 'l'}
+    {'s', 'd', ' ', 'o', 'n', 'i', 't', 'l', 'a', 'g'}
