@@ -438,7 +438,7 @@ window.Quarto = {
 </ul></li>
 <li>For example, to scale a dataset to a fixed range (typically between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>) we could use a <code>MinMaxScalar</code></li>
 </ul>
-<div id="13cb0ff0" class="cell" data-execution_count="1">
+<div id="44f228f7" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -499,7 +499,7 @@ window.Quarto = {
 </ul></li>
 <li><p>The first step after loading the data set is to split the data into training and test sets via the <code>train_test_split</code> function</p></li>
 </ul>
-<div id="8559c4c2" class="cell" data-execution_count="2">
+<div id="b75ec7c7" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets  <span class="co"># load sample datasets</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -573,7 +573,7 @@ test_t shape: (38,)</code></pre>
 <li>Play around with the number of <code>n_neighbours</code> in the associated notebook version and examine the impact on the accuracy</li>
 </ul></li>
 </ul>
-<div id="9d4c1d11" class="cell" data-execution_count="3">
+<div id="058c4017" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets, metrics</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
@@ -593,7 +593,7 @@ test_t shape: (38,)</code></pre>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Assess the results</span></span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>metrics.accuracy_score(test_t, test_prediction) <span class="co"># Accuracy against the test data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>0.9473684210526315</code></pre>
+<pre><code>1.0</code></pre>
 </div>
 </div>
 </section>
