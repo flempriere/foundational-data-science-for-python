@@ -16,14 +16,14 @@ title: "Chapter 12: Natural Language Toolkit"
 - `nltk.download` is used to download data into a local `nltk/corpora` directory
     - Data can then be imported for use
     - Stored as a *corpus reader* object
-    - A useful feature to download is `punkt`
+    - A useful feature to download is `punkt_tab`
         - This is a tokenizer used to define sentence endings
 
 ```{python}
 import nltk
 
 nltk.download("gutenberg")
-nltk.download("punkt")
+nltk.download("punkt_tab")
 
 from nltk.corpus import gutenberg
 
@@ -92,10 +92,10 @@ caesar
 !ls ~/nltk_data/tokenizers
 ```
 
-- and within the `punkt` directory we can see the languages it supports
+- and within the `punkt_tab` directory we can see the languages it supports
 
 ```{python}
-!ls ~/nltk_data/tokenizers/punkt
+!ls ~/nltk_data/tokenizers/punkt_tab
 ```
 
 ### Frequency Distributions
@@ -132,7 +132,7 @@ print("punctuation:", string.punctuation)
 
 caesar = gutenberg.words("shakespeare-caesar.txt")
 
-caesar_filtered = [word in caesar if word not in string.punctuation]
+caesar_filtered = [word if word not in string.punctuation for word in caesar]
 
 print("Number of punctuation symbols:", len(caesar) - len(caesar_filtered))
 
@@ -173,11 +173,11 @@ from nltk.corpus import gutenberg, stopwords
 caesar = gutenberg.words("shakespeare-caesar.txt")
 
 # filter out punctuation
-caesar_punctuation_filtered = [word in caesar if word not in string.punctuation]
+caesar_punctuation_filtered = [word if word not in string.punctuation for word in caesar]
 
 # filter out stopwords
 english_stopwords = stopwords.words("english")
-caesar_filtered = [word in caesar_punctuation_filtered if word.lower() not in english_stopwords]
+caesar_filtered = [word if word.lower() not in english_stopwords for word in caesar_punctuation_filtered]
 
 print("Number of stop words:", len(caesar_punctuation_filtered) - caesar_filtered)
 
@@ -198,11 +198,11 @@ from nltk.corpus import gutenberg, stopwords
 caesar = gutenberg.words("shakespeare-caesar.txt")
 
 # filter out punctuation
-caesar_filtered = [word in caesar if word not in string.punctuation]
+caesar_filtered = [word if word not in string.punctuation for word in caesar]
 
 # filter out stopwords
 english_stopwords = stopwords.words("english")
-caesar_filtered = [word in caesar_filtered if word.lower() not in english_stopwords]
+caesar_filtered = [word if word.lower() not in english_stopwords for word in caesar_filtered]
 
 caesar_dist = nltk.freqDist(caesar_filtered)
 
@@ -260,11 +260,14 @@ print(
     caesar_t.concordance("Antony", lines=5),
 )
 
-print("caesar_t.collocations(num=4):\n", caesar_t.collocations(num=4))
+print("caesar_t.collocations(num=4):")
+caesar_t.collocations(num=4)
 
-print("caesar_t.similar('Caesar'):\n", caesar_t.similar("Caesar"))
+print("caesar_t.similar('Caesar'):")
+caesar_t.similar("Caesar")
 
-print("caesar_t.findall(r'<O><C.*>'):\n", caesar_t.findall(r"<O><C.*>"))
+print("caesar_t.findall(r'<O><C.*>'):"
+caesar_t.findall(r"<O><C.*>")
 
 caesar_t.dispersion_plot(["Caesar", "Antony", "Brutus", "Cassi"])
 ```
@@ -350,8 +353,8 @@ english_stopwords = stopwords.words("english")
 editorial_paragraphs = brown.paras(categories="editorial")  # load editorial paragraphs
 fiction_paragraphs = brown.paras(categories="fiction")  # load only fiction paragraphs
 
-print("There are", len(editorial_paragraphs), "paragraphs")
-print("There are", len(fiction_paragraphs), "paragraphs")
+print("There are", len(editorial_paragraphs), "editorial paragraphs")
+print("There are", len(fiction_paragraphs), "fiction paragraphs")
 ```
 
 - Each paragraph is a list of lists
@@ -432,7 +435,7 @@ editorial_paragraphs_flattened = [
 ]
 fiction_paragraphs_flattened = [flatten(paragraph) for paragraph in fiction_paragraphs]
 
-print("Flattened editorial paragraphs:\n", editorial_paragraphs_flattened)
+print("Flattened editorial paragraphs:\n", "\n".join(editorial_paragraphs_flattened))
 ```
 
 - Next we need to associate the labels to each of our data sets
@@ -529,7 +532,7 @@ fiction_paragraphs_labelled = itertools.product(
 labelled_data = itertools.chain(
     editorial_paragraphs_labelled, fiction_paragraphs_labelled
 )
-shuffle(labelled_data)
+random.shuffle(labelled_data)
 labelled_data
 ```
 
@@ -622,7 +625,7 @@ fiction_paragraphs_labelled = itertools.product(
 labelled_data = itertools.chain(
     editorial_paragraphs_labelled, fiction_paragraphs_labelled
 )
-shuffle(labelled_data)
+random.shuffle(labelled_data)
 
 
 # create the feature sets
@@ -728,7 +731,7 @@ fiction_paragraphs_labelled = itertools.product(
 labelled_data = itertools.chain(
     editorial_paragraphs_labelled, fiction_paragraphs_labelled
 )
-shuffle(labelled_data)
+random.shuffle(labelled_data)
 
 
 # create the feature sets
@@ -796,7 +799,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
        ```{python}
         from nltk.corpus import gutenberg
 
-        emma_sentences = gutenberg.sents("austen=emma.txt")
+        emma_sentences = gutenberg.sents("austen-emma.txt")
         emma_sentences
        ```
 
@@ -844,14 +847,14 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
         alice = gutenberg.words("carroll-alice.txt")
 
         # filter out punctuation
-        alice_filtered = [word in alice if word not in string.punctuation]
+        alice_filtered = [word if word not in string.punctuation for word in alice]
 
         # filter out stopwords
         english_stopwords = stopwords.words("english")
-        alice_filtered = [word in alice_filtered if word.lower() not in english_stopwords]
+        alice_filtered = [word if word.lower() not in english_stopwords for word in alice_filtered]
 
-        caesar_dist = nltk.freqDist(caesar_filtered)
-        caesar_dist.tabulate(10)
+        alice_dist = nltk.freqDist(alice_filtered)
+        alice_dist.tabulate(10)
      ```
 
 4. Find words that are similar to "rabbit" in *Alice in Wonderland*
@@ -866,7 +869,8 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
 
         alice = gutenberg.words("carroll-alice.txt")
         alice_text = Text(alice)
-        print("Words similar to 'rabbit' in Alice in Wonderland are:\n", alice_text.similar("rabbit"))
+        print("Words similar to 'rabbit' in Alice in Wonderland are:")
+        alice_text.similar("rabbit")
      ```
 
 5. Use the corpus `names` to find the ten most frequently occurring names in *Hamlet*
@@ -916,7 +920,7 @@ emma_sentences = gutenberg.sents("austen-emma.txt")
 print("First two sentences:", emma_sentences[:2])
 
 emma_paragraphs = gutenberg.paras("austen-emma.txt")
-print("First paragraph:" emma_paragraphs[0])
+print("First paragraph:", emma_paragraphs[0])
 ```
 
 ```{python}
@@ -941,11 +945,11 @@ print(
 print("Question 3")
 
 # filter out punctuation
-alice_filtered = [word in alice if word not in string.punctuation]
+alice_filtered = [word if word not in string.punctuation for word in alice]
 
 # filter out stopwords
 english_stopwords = stopwords.words("english")
-alice_filtered = [word in alice_filtered if word.lower() not in english_stopwords]
+alice_filtered = [word if word.lower() not in english_stopwords for word in alice_filtered]
 
 caesar_dist = nltk.freqDist(caesar_filtered)
 caesar_dist.tabulate(10)
