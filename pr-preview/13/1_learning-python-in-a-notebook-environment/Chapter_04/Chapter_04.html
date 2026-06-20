@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Chapter 4: Other Data Structures – Foundational Python for Data Science: Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.html" rel="next">
+<link href="../../1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-2b6469118f636657c08e1aa3d2b0badf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Chapter 4: Other Data Structures – Foundational Python for Data Science: Notes">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Foundational Python for Data Science: Notes">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Foundational Python for Data Science: Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../1_learning-python-in-a-notebook-environment/Chapter_01/Chapter_01.html">I: Learning Python in a Notebook Environment</a></li><li class="breadcrumb-item"><a href="../../1_learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.html">Chapter 4: Other Data Structures</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">I: Learning Python in a Notebook Environment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_01/Chapter_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 1: Learning Python in a Notebook Environment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_02/Chapter_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 2: Fundamentals of Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 3: Sequences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Chapter 4: Other Data Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 5: Execution Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 6: Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">II: Data Science Libraries</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_07/Chapter_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 7: NumPy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_08/Chapter_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 8: SciPy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_09/Chapter_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 9: Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_10/Chapter_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 10: Visualisation Libraries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_11/Chapter_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 11: Machine Learning Libraries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_12/Chapter_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 12: Natural Language Toolkit</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a>
+  <ul>
+  <li><a href="#dictionaries" id="toc-dictionaries" class="nav-link" data-scroll-target="#dictionaries">Dictionaries</a>
+  <ul>
+  <li><a href="#creating-dictionaries" id="toc-creating-dictionaries" class="nav-link" data-scroll-target="#creating-dictionaries">Creating Dictionaries</a></li>
+  <li><a href="#accessing-adding-and-updating-keys" id="toc-accessing-adding-and-updating-keys" class="nav-link" data-scroll-target="#accessing-adding-and-updating-keys">Accessing, Adding and Updating Keys</a></li>
+  <li><a href="#removing-items-from-a-dictionary" id="toc-removing-items-from-a-dictionary" class="nav-link" data-scroll-target="#removing-items-from-a-dictionary">Removing Items from a Dictionary</a></li>
+  <li><a href="#dictionary-views" id="toc-dictionary-views" class="nav-link" data-scroll-target="#dictionary-views">Dictionary Views</a></li>
+  <li><a href="#checking-to-see-if-a-dictionary-has-a-key" id="toc-checking-to-see-if-a-dictionary-has-a-key" class="nav-link" data-scroll-target="#checking-to-see-if-a-dictionary-has-a-key">Checking to See if a Dictionary has a Key</a>
+  <ul>
+  <li><a href="#the-get-method" id="toc-the-get-method" class="nav-link" data-scroll-target="#the-get-method">The <code>get</code> Method</a></li>
+  </ul></li>
+  <li><a href="#valid-key-types" id="toc-valid-key-types" class="nav-link" data-scroll-target="#valid-key-types">Valid Key Types</a>
+  <ul>
+  <li><a href="#the-hash-method" id="toc-the-hash-method" class="nav-link" data-scroll-target="#the-hash-method">The <code>hash</code> Method</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#sets" id="toc-sets" class="nav-link" data-scroll-target="#sets">Sets</a>
+  <ul>
+  <li><a href="#set-operations" id="toc-set-operations" class="nav-link" data-scroll-target="#set-operations">Set Operations</a>
+  <ul>
+  <li><a href="#disjoint" id="toc-disjoint" class="nav-link" data-scroll-target="#disjoint">Disjoint</a></li>
+  <li><a href="#subset" id="toc-subset" class="nav-link" data-scroll-target="#subset">Subset</a></li>
+  <li><a href="#proper-subsets" id="toc-proper-subsets" class="nav-link" data-scroll-target="#proper-subsets">Proper Subsets</a></li>
+  <li><a href="#supersets-and-proper-supersets" id="toc-supersets-and-proper-supersets" class="nav-link" data-scroll-target="#supersets-and-proper-supersets">Supersets and Proper Supersets</a></li>
+  </ul></li>
+  <li><a href="#union" id="toc-union" class="nav-link" data-scroll-target="#union">Union</a></li>
+  <li><a href="#intersection" id="toc-intersection" class="nav-link" data-scroll-target="#intersection">Intersection</a></li>
+  <li><a href="#difference" id="toc-difference" class="nav-link" data-scroll-target="#difference">Difference</a>
+  <ul>
+  <li><a href="#symmetric-difference" id="toc-symmetric-difference" class="nav-link" data-scroll-target="#symmetric-difference">Symmetric Difference</a></li>
+  <li><a href="#updating-sets" id="toc-updating-sets" class="nav-link" data-scroll-target="#updating-sets">Updating Sets</a></li>
+  </ul></li>
+  <li><a href="#frozensets" id="toc-frozensets" class="nav-link" data-scroll-target="#frozensets">Frozensets</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  </ul>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/flempriere/foundational-data-science-for-python/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li><li><a href="https://mybinder.org/v2/gh/flempriere/foundational-data-science-for-python/HEAD?urlpath=vscode" target="_blank"><i class="bi bi-journals"></i>Launch Binder</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../1_learning-python-in-a-notebook-environment/Chapter_01/Chapter_01.html">I: Learning Python in a Notebook Environment</a></li><li class="breadcrumb-item"><a href="../../1_learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.html">Chapter 4: Other Data Structures</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Chapter 4: Other Data Structures</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<ul>
+<li>Python contains a number of other data structures that are not <a href="../../1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.html">sequence types</a></li>
+<li>Dictionaries and sets are two common alternative data structures in Python</li>
+</ul>
+<section id="dictionaries" class="level3">
+<h3 class="anchored" data-anchor-id="dictionaries">Dictionaries</h3>
+<ul>
+<li>Dictionaries store key/value pairs
+<ul>
+<li>You can think of this as like a list, but rather than being indexed by their position in the list we use <em>key</em> value</li>
+</ul></li>
+<li>Using key-based look-ups makes dictionaries very quick at testing for if it contains a specific key
+<ul>
+<li>Compared to lists which can be slow to look for a specific value since they might need to iterate over all the elements</li>
+</ul></li>
+<li>For example we might use a dictionary to associate a student, their height and a GPA</li>
+<li>Dictionaries are declared using the <code>{key_1 :value_1, key_2 : value_2, ...}</code> syntax
+<ul>
+<li>i.e.&nbsp;a <code>{}</code> delimited, comma-separated list of <code>key:value</code> pairs
+<ul>
+<li>They key and the value are separated by a <code>:</code></li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="fe4a14a2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>person <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Betty"</span>, <span class="st">"height"</span>: <span class="dv">62</span>, <span class="st">"gpa"</span>: <span class="fl">3.6</span>}</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'name': 'Betty', 'height': 62, 'gpa': 3.6}</code></pre>
+</div>
+</div>
+<ul>
+<li>The above dictionary contains
+<ol type="1">
+<li>The keys <code>"name"</code>, <code>"height"</code> and <code>"gpa"</code>,</li>
+<li>The values <code>"Betty"</code>, <code>62</code> and <code>3.6</code></li>
+</ol></li>
+<li>Dictionary values can be of <em>any</em> type</li>
+<li>Dictionary keys have some restrictions
+<ul>
+<li>Fundamental types like <code>int</code> and <code>str</code> will work</li>
+</ul></li>
+</ul>
+<section id="creating-dictionaries" class="level4">
+<h4 class="anchored" data-anchor-id="creating-dictionaries">Creating Dictionaries</h4>
+<ul>
+<li>As seen dictionaries can be created with the a brace-delimited comma separated list</li>
+<li>To create an empty dictionary, simply pass an empty list like <code>{}</code></li>
+</ul>
+<div id="62375d65" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {}</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"dictionary is of type </span><span class="sc">{</span><span class="bu">type</span>(dictionary)<span class="sc">}</span><span class="ss"> and has value </span><span class="sc">{</span>dictionary<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dictionary is of type &lt;class 'dict'&gt; and has value {}</code></pre>
+</div>
+</div>
+<ul>
+<li>The alternative is to call the <code>dict</code> method
+<ul>
+<li>An empty call to <code>dict</code> also creates an empty list</li>
+<li>Optionally can pass a comma-separated list of <em>keyword</em> arguments</li>
+<li>Or, optionally accept key, value pairs as a sequence of sequences</li>
+</ul></li>
+</ul>
+<div id="d272a5f6" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># empty `dict` call</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> <span class="bu">dict</span>()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dictionary created by the call dict(): </span><span class="sc">{</span>dictionary<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Using `dict` to create a non-empty `dict` via kwargs</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>subject_1 <span class="op">=</span> <span class="bu">dict</span>(name<span class="op">=</span><span class="st">"Paula"</span>, height<span class="op">=</span><span class="dv">64</span>, gpa<span class="op">=</span><span class="fl">3.8</span>, ranking<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Subject 1:"</span>, subject_1)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Using `dict` to create non-empty dict via nested sequences</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>subject_2 <span class="op">=</span> <span class="bu">dict</span>([[<span class="st">"name"</span>, <span class="st">"Paula"</span>], [<span class="st">"height"</span>, <span class="dv">64</span>], [<span class="st">"gpa"</span>, <span class="fl">3.8</span>], [<span class="st">"ranking"</span>, <span class="dv">1</span>]])</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Subject 2:"</span>, subject_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dictionary created by the call dict(): {}
+Subject 1: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}
+Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre>
+</div>
+</div>
+</section>
+<section id="accessing-adding-and-updating-keys" class="level4">
+<h4 class="anchored" data-anchor-id="accessing-adding-and-updating-keys">Accessing, Adding and Updating Keys</h4>
+<ul>
+<li>Dictionary keys act like indices in a list
+<ul>
+<li>Can be used to access their associated value</li>
+</ul></li>
+</ul>
+<div id="3f535bf0" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># key access</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student[<span class="st">"name"</span>])</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student[<span class="st">"height"</span>])</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student[<span class="st">"gpa"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Paula
+64
+3.8</code></pre>
+</div>
+</div>
+<ul>
+<li>Assigning to a non-existent key will create the key</li>
+<li>If the key does exist then the old value is overwritten</li>
+</ul>
+<div id="05da704a" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># defining a new key</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"applied"</span>] <span class="op">=</span> <span class="st">"2019-10-31"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># overwriting a key</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"gpa"</span>] <span class="op">=</span> <span class="fl">3.0</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student[<span class="st">"gpa"</span>])</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># overwriting a key using the inplace addition operator</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"gpa"</span>] <span class="op">+=</span> <span class="fl">1.0</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student[<span class="st">"gpa"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'name': 'Paula', 'height': 64, 'gpa': 3.8, 'applied': '2019-10-31'}
+3.0
+4.0</code></pre>
+</div>
+</div>
+</section>
+<section id="removing-items-from-a-dictionary" class="level4">
+<h4 class="anchored" data-anchor-id="removing-items-from-a-dictionary">Removing Items from a Dictionary</h4>
+<ul>
+<li>Sometimes dictionary values need to be removed or masked out
+<ul>
+<li>For example removing personally identifiable information in a study</li>
+</ul></li>
+<li>One option is to overwrite the value with something meaningless like <code>None</code></li>
+</ul>
+<div id="e0c15e2a" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing name</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"name"</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'name': None, 'height': 64, 'gpa': 3.8}</code></pre>
+</div>
+</div>
+<ul>
+<li>The <code>key:value</code> pair can be removed directly by the <code>del</code> operator</li>
+</ul>
+<div id="f4300ba7" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Deleting the key</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> student[<span class="st">"name"</span>]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Trying to access the removed key</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(student[<span class="st">"name"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'height': 64, 'gpa': 3.8}</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 8</span>
+<span class="ansi-green-fg">      4</span> <span style="font-weight:bold;color:rgb(0,135,0)">del</span> student[<span class="ansi-yellow-fg">"name"</span>]
+<span class="ansi-green-fg">      5</span> print(student)
+<span class="ansi-green-fg">      6</span> 
+<span class="ansi-green-fg">      7</span> <span style="font-style:italic;color:rgb(95,135,135)"># Trying to access the removed key</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">8</span> print(student[<span class="ansi-yellow-fg">"name"</span>])
+
+<span class="ansi-red-fg">KeyError</span>: 'name'</pre>
+</div>
+</div>
+</div>
+<ul>
+<li>The last technique is to use a variation of the <code>pop</code> method
+<ul>
+<li><code>pop</code> returns the value associated with a key
+<ul>
+<li>Optionally accepts a <code>default</code> value argument to return if the key is missing</li>
+</ul></li>
+<li><code>popitem</code> returns the most recent <code>key:value</code> pair</li>
+</ul></li>
+</ul>
+<div id="e0eebbe3" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Using `popitem`</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"popitem returned:"</span>, student.popitem())</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Using `pop`</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"pop('name') returned:"</span>, student.pop(<span class="st">"name"</span>))</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Using pop with a default value to handle missing key</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"pop('id', default=0):"</span>, student.pop(<span class="st">"id"</span>, <span class="va">None</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>popitem returned: ('gpa', 3.8)
+pop('name') returned: Paula
+pop('id', default=0): None</code></pre>
+</div>
+</div>
+</section>
+<section id="dictionary-views" class="level4">
+<h4 class="anchored" data-anchor-id="dictionary-views">Dictionary Views</h4>
+<ul>
+<li><p><em>dictionary views</em> are special objects that let us look at a dictionary contents through different perspectives</p></li>
+<li><p>There are three views</p>
+<ol type="1">
+<li><code>dict_keys</code>
+<ul>
+<li>Obtained by the <code>keys</code> dictionary method</li>
+<li>Contains the dictionary’s current keys</li>
+</ul></li>
+<li><code>dict_values</code>
+<ul>
+<li>Obtained by the <code>values</code> dictionary method</li>
+<li>Contains the dictionary’s current values</li>
+</ul></li>
+<li><code>dict_items</code>
+<ul>
+<li>Obtained by the <code>items</code> dictionary method</li>
+<li>Contains the <code>key:value</code> mappings as tuples</li>
+</ul></li>
+</ol></li>
+</ul>
+<div id="6e60b45d" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>keys <span class="op">=</span> student.keys()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Keys:"</span>, keys)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Values view</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> student.values()</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Values:"</span>, values)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Items</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> student.items()</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Items:"</span>, items)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Keys: dict_keys(['name', 'height', 'gpa'])
+Values: dict_values(['Paula', 64, 3.8])
+Items: dict_items([('name', 'Paula'), ('height', 64), ('gpa', 3.8)])</code></pre>
+</div>
+</div>
+<ul>
+<li>You can test a view for membership with the <code>in</code></li>
+</ul>
+<div id="b04e689d" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>keys <span class="op">=</span> student.keys()</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"'ranking' in keys:"</span>, <span class="st">"ranking"</span> <span class="kw">in</span> keys)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Values view</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> student.values()</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"64 in values:"</span>, <span class="dv">64</span> <span class="kw">in</span> values)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Items</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> student.items()</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'("height", 64) in items:'</span>, (<span class="st">"height"</span>, <span class="dv">64</span>) <span class="kw">in</span> items)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'ranking' in keys: False
+64 in values: True
+("height", 64) in items: True</code></pre>
+</div>
+</div>
+<ul>
+<li>If working in <code>Python 3.8+</code> then views are dynamic
+<ul>
+<li>If dictionary is updated so is the corresponding view</li>
+</ul></li>
+</ul>
+<div id="b6fe8b55" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>keys <span class="op">=</span> student.keys()</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"keys:"</span>, keys)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"id"</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"keys after updating dict:"</span>, keys)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>keys: dict_keys(['name', 'height', 'gpa'])
+keys after updating dict: dict_keys(['name', 'height', 'gpa', 'id'])</code></pre>
+</div>
+</div>
+<ul>
+<li>View’s also support the <code>len</code> built-in function</li>
+</ul>
+<div id="5dac73ae" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>keys <span class="op">=</span> student.keys()</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"len(keys):"</span>, <span class="bu">len</span>(keys))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>len(keys): 3</code></pre>
+</div>
+</div>
+<ul>
+<li>Since <code>Python 3.8</code> they can be reversed via the <code>reversed</code> built-in</li>
+</ul>
+<div id="275657ca" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>keys <span class="op">=</span> student.keys()</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"reversed(keys):"</span>, <span class="bu">list</span>(<span class="bu">reversed</span>(keys)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>reversed(keys): ['gpa', 'height', 'name']</code></pre>
+</div>
+</div>
+<ul>
+<li><code>dict_key</code> objects are <em>set-like</em>
+<ul>
+<li>They support set operations</li>
+</ul></li>
+</ul>
+<div id="f50d4553" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>admission_record <span class="op">=</span> {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"first"</span>: <span class="st">"Julia"</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"last"</span>: <span class="st">"Brown"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"id"</span>: <span class="st">"ax012E4"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"admitted"</span>: <span class="st">"2020-03-14"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>student_record <span class="op">=</span> {</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"first"</span>: <span class="st">"Julia"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"last"</span>: <span class="st">"Brown"</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"id"</span>: <span class="st">"ax012E4"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gpa"</span>: <span class="fl">3.8</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"major"</span>: <span class="st">"Data Science"</span>,</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"minor"</span>: <span class="st">"Mathematics"</span>,</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"advisor"</span>: <span class="st">"Pickerson"</span>,</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing equality of keys</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Testing key equality:"</span>, admission_record.keys() <span class="op">==</span> student_record.keys())</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Symmetric Difference</span></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Symmetric Difference:"</span>, admission_record.keys() <span class="op">^</span> student_record.keys())</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Intersection</span></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Intersection:"</span>, admission_record.keys() <span class="op">&amp;</span> student_record.keys())</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Difference</span></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Difference:"</span>, admission_record.keys() <span class="op">-</span> student_record.keys())</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Union</span></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Union:"</span>, admission_record.keys() <span class="op">|</span> student_record.keys())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Testing key equality: False
+Symmetric Difference: {'minor', 'advisor', 'admitted', 'gpa', 'major'}
+Intersection: {'first', 'last', 'id'}
+Difference: {'admitted'}
+Union: {'first', 'minor', 'id', 'advisor', 'last', 'admitted', 'gpa', 'major'}</code></pre>
+</div>
+</div>
+<ul>
+<li><code>dict_items</code> views are useful for iterating over the <code>key:value</code> pairs in dictionary
+<ul>
+<li>We can use <code>dict_keys</code> and <code>dict_values</code> if we only want to iterate over keys or values</li>
+</ul></li>
+</ul>
+<div id="d1a2b072" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> student.items():</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss"> =&gt; </span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>name =&gt; Paula
+height =&gt; 64
+gpa =&gt; 3.8</code></pre>
+</div>
+</div>
+</section>
+<section id="checking-to-see-if-a-dictionary-has-a-key" class="level4">
+<h4 class="anchored" data-anchor-id="checking-to-see-if-a-dictionary-has-a-key">Checking to See if a Dictionary has a Key</h4>
+<ul>
+<li><code>dict_keys</code> views can be combined with <code>in</code> to check for a key
+<ul>
+<li>This is implicitly done by just using the <code>in</code> operator on the dictionary directly</li>
+</ul></li>
+</ul>
+<div id="09a485b4" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>keys <span class="op">=</span> student.keys()</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using `in` on a `dict_keys` object:"</span>, <span class="st">"name"</span> <span class="kw">in</span> keys)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using `in` on a dictionary directly:"</span>, <span class="st">"name"</span> <span class="kw">in</span> student)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using `in` on a `dict_keys` object: True
+Using `in` on a dictionary directly: True</code></pre>
+</div>
+</div>
+<ul>
+<li>Another technique is to try and access a key directly
+<ul>
+<li>A <code>KeyError</code> is thrown if the key doesn’t exist</li>
+<li>Can use a <code>try/except</code> block to handle this</li>
+</ul></li>
+</ul>
+<div id="9db54646" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(student[<span class="st">"id"</span>])</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">KeyError</span>:</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"ID not found"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ID not found</code></pre>
+</div>
+</div>
+<section id="the-get-method" class="level5">
+<h5 class="anchored" data-anchor-id="the-get-method">The <code>get</code> Method</h5>
+<ul>
+<li><code>get</code> is a dictionary method</li>
+<li>Is used to retrieve a dictionary value associated with a key
+<ul>
+<li>Returns a <code>default</code> value if a key is missing</li>
+<li>If not supplied the <code>default</code> value is <code>None</code></li>
+</ul></li>
+</ul>
+<div id="899bfd77" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Existing key</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"name:"</span>, student.get(<span class="st">"name"</span>))</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Unspecified default</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ID:"</span>, student.get(<span class="st">"id"</span>))</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Specified default</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"major:"</span>, student.get(<span class="st">"major"</span>, <span class="st">"Undeclared"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>name: Paula
+ID: None
+major: Undeclared</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="valid-key-types" class="level4">
+<h4 class="anchored" data-anchor-id="valid-key-types">Valid Key Types</h4>
+<ul>
+<li>Dictionary keys can only be <em>immutable</em>
+<ul>
+<li>These are types that cannot be modified</li>
+<li>This includes <code>int</code>, <code>str</code>, <code>range</code>, <code>byte</code> and <code>tuple</code></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Tuple Immutability</strong></p>
+<p>Tuples are regarded as immutable their contents cannot be changed, i.e.&nbsp;we can’t redefine an index. However, if a tuple contains <em>mutable</em> types, those objects can still be mutated by their reference. For example,</p>
+<div id="bf63a8ac" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>immutable_tuple <span class="op">=</span> (<span class="st">"a"</span>, [<span class="st">"b"</span>, <span class="st">"c"</span>])</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tuple before mutation:"</span>, immutable_tuple)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mutating the list inside the tuple</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>immutable_tuple[<span class="dv">1</span>].append(<span class="st">"d"</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tuple after mutation:"</span>, immutable_tuple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tuple before mutation: ('a', ['b', 'c'])
+tuple after mutation: ('a', ['b', 'c', 'd'])</code></pre>
+</div>
+</div>
+<p>This means that in these cases the overall object is <em>not immutable</em>. This means that such objects cannot be used for example as dictionary keys</p>
+<div id="da1411e1" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {(<span class="st">"a"</span>, [<span class="st">"b"</span>, <span class="st">"c"</span>]): <span class="dv">1</span>}</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dictionary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[20]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> dictionary = {(<span class="ansi-yellow-fg">"a"</span>, [<span class="ansi-yellow-fg">"b"</span>, <span class="ansi-yellow-fg">"c"</span>]): <span class="ansi-green-fg">1</span>}
+<span class="ansi-green-fg">      2</span> print(dictionary)
+
+<span class="ansi-red-fg">TypeError</span>: cannot use 'tuple' as a dict key (unhashable type: 'list')</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="fd65621e" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {<span class="dv">1</span>: <span class="dv">1</span>, <span class="st">"a"</span>: <span class="dv">2</span>, <span class="fl">2.3</span>: <span class="dv">3</span>, (<span class="st">"b"</span>, <span class="st">"c"</span>): <span class="dv">4</span>, <span class="st">b"bytes"</span>: <span class="dv">5</span>, <span class="bu">range</span>(<span class="dv">3</span>): <span class="dv">6</span>}</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A dict showing a range of key types:"</span>, dictionary)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Invalid key type</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Trying to use a list as a key"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>list_keyed_dictionary <span class="op">=</span> {[<span class="st">"a"</span>, <span class="st">"b"</span>]: <span class="dv">1</span>}</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A dict using a list as a key:"</span>, list_keyed_dict)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A dict showing a range of key types: {1: 1, 'a': 2, 2.3: 3, ('b', 'c'): 4, b'bytes': 5, range(0, 3): 6}
+Trying to use a list as a key</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[21]</span><span class="ansi-green-fg">, line 6</span>
+<span class="ansi-green-fg">      2</span> print(<span class="ansi-yellow-fg">"A dict showing a range of key types:"</span>, dictionary)
+<span class="ansi-green-fg">      3</span> 
+<span class="ansi-green-fg">      4</span> <span style="font-style:italic;color:rgb(95,135,135)"># Invalid key type</span>
+<span class="ansi-green-fg">      5</span> print(<span class="ansi-yellow-fg">"Trying to use a list as a key"</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">6</span> list_keyed_dictionary = {[<span class="ansi-yellow-fg">"a"</span>, <span class="ansi-yellow-fg">"b"</span>]: <span class="ansi-green-fg">1</span>}
+<span class="ansi-green-fg">      7</span> print(<span class="ansi-yellow-fg">"A dict using a list as a key:"</span>, list_keyed_dict)
+
+<span class="ansi-red-fg">TypeError</span>: cannot use 'list' as a dict key (unhashable type: 'list')</pre>
+</div>
+</div>
+</div>
+<section id="the-hash-method" class="level5">
+<h5 class="anchored" data-anchor-id="the-hash-method">The <code>hash</code> Method</h5>
+<ul>
+<li>Technically, the definition of a valid dictionary key is something that implements the <code>__hash__</code> dunder method
+<ul>
+<li><code>__hash__</code> converts the object to a number to act as an index via a <em>hash function</em></li>
+<li>It can only be implemented on <em>immutable</em> objects because it must be <em>stable</em> for a given object reference</li>
+</ul></li>
+</ul>
+<div id="8f5fbdff" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calling __hash__ on string:"</span>, <span class="st">"abc"</span>.<span class="fu">__hash__</span>())</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calling __hash__ on a list:"</span>, <span class="bu">list</span>(<span class="st">"abc"</span>).<span class="fu">__hash__</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Calling __hash__ on string: -3737535279546547427</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[22]</span><span class="ansi-green-fg">, line 3</span>
+<span class="ansi-green-fg">      1</span> print(<span class="ansi-yellow-fg">"Calling __hash__ on string:"</span>, <span class="ansi-yellow-fg">"abc"</span>.__hash__())
+<span class="ansi-green-fg">      2</span> 
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> print(<span class="ansi-yellow-fg">"Calling __hash__ on a list:"</span>, list(<span class="ansi-yellow-fg">"abc"</span>).__hash__())
+
+<span class="ansi-red-fg">TypeError</span>: 'NoneType' object is not callable</pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Dictionary Ordering</strong></p>
+<p>Since Python 3.7 for CPython (and made mandatory for Python 3.8+), dictionaries store their keys in <em>insertion order</em>. This is useful for creating reproducible tests.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="sets" class="level3">
+<h3 class="anchored" data-anchor-id="sets">Sets</h3>
+<ul>
+<li>A <code>set</code> works like the mathematical object</li>
+<li>It is an unordered collection of unique items
+<ul>
+<li>Use case tends to be more niche than <code>list</code>, <code>dict</code>, or <code>tuple</code> but it is powerful</li>
+</ul></li>
+<li>A <code>set</code> can only contain hashable values (<a href="#the-hash-method">See above</a>)</li>
+<li>A set is constructed either via
+<ol type="1">
+<li>The <code>set</code> constructor call
+<ul>
+<li>Converts an existing sequence to a set</li>
+</ul></li>
+<li>A comma-separated list delimited by <code>{}</code>
+<ul>
+<li>Note, the lack of a <code>:</code> separator is used to distinguish between a dictionary construction and a set construction</li>
+</ul></li>
+</ol></li>
+</ul>
+<div id="d608d8f2" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>empty_set_a <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>empty_set_b <span class="op">=</span> {}</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Empty set via `set()`:"</span>, empty_set_a)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Empty set via </span><span class="sc">{}</span><span class="st">:"</span>, empty_set_b)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>set_a <span class="op">=</span> <span class="bu">set</span>(<span class="st">"abc"</span>)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set constructed via `set` called on a string:"</span>, set_a)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>tuple_b <span class="op">=</span> <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>set_b <span class="op">=</span> <span class="bu">set</span>(tuple_b)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set constructed via `set` called on a tuple:"</span>, set_b)</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>set_c <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set constructed via {1, 1, 1, 2, 2, 3}:"</span>, set_c)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Empty set via `set()`: set()
+Empty set via {}: {}
+Set constructed via `set` called on a string: {'c', 'a', 'b'}
+Set constructed via `set` called on a tuple: {'c', 'a', 'b'}
+Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}</code></pre>
+</div>
+</div>
+<ul>
+<li>As mentioned, sets do not work with mutable types</li>
+</ul>
+<div id="610bb39a" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>broken_set <span class="op">=</span> {[<span class="st">"a"</span>, <span class="st">"b"</span>], <span class="st">"c"</span>}</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(broken_set)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[24]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> broken_set = {[<span class="ansi-yellow-fg">"a"</span>, <span class="ansi-yellow-fg">"b"</span>], <span class="ansi-yellow-fg">"c"</span>}
+<span class="ansi-green-fg">      2</span> print(broken_set)
+
+<span class="ansi-red-fg">TypeError</span>: cannot use 'list' as a set element (unhashable type: 'list')</pre>
+</div>
+</div>
+</div>
+<ul>
+<li><code>set</code> supports most of the standard sequence operations</li>
+<li>Can test for membership with <code>in</code> or <code>not in</code></li>
+</ul>
+<div id="046f3086" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"3 in unique_numbers:"</span>, <span class="dv">3</span> <span class="kw">in</span> unique_numbers)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"3 not in unique_numbers:"</span>, <span class="dv">3</span> <span class="kw">not</span> <span class="kw">in</span> unique_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3 in unique_numbers: True
+3 not in unique_numbers: False</code></pre>
+</div>
+</div>
+<ul>
+<li><code>len</code> returns the cardinality of a set</li>
+</ul>
+<div id="7fa01167" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"len(unique_numbers):"</span>, <span class="bu">len</span>(unique_numbers))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>len(unique_numbers): 3</code></pre>
+</div>
+</div>
+<ul>
+<li><code>set</code> contents can be modified
+<ul>
+<li>The <code>add</code> method adds an item to a set</li>
+<li><code>pop</code> removes an arbitrary item
+<ul>
+<li>Raises a <code>KeyError</code> if the set is empty</li>
+</ul></li>
+<li><code>remove</code> removes a specified element
+<ul>
+<li>Raises a <code>KeyError</code> if the element is not in the set</li>
+</ul></li>
+<li><code>discard</code> removes a specified element
+<ul>
+<li>Fails silently if the element does not exist</li>
+</ul></li>
+<li><code>clear</code> removes the entire contents of a set</li>
+</ul></li>
+</ul>
+<div id="bb14cad9" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding an item</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>unique_numbers.add(<span class="dv">4</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Adding a item:"</span>, unique_numbers)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing an item</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>unique_numbers.remove(<span class="dv">1</span>)</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Removed 1 using `remove`:"</span>, unique_numbers)</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Discarding an item</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>unique_numbers.discard(<span class="dv">2</span>)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Discarded 2 using `discard`:"</span>, unique_numbers)</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Popping an arbitrary item</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>popped <span class="op">=</span> unique_numbers.pop()</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Popped:"</span>, popped)</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"set is now:"</span>, unique_numbers)</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Discarding a non-existent item</span></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>unique_numbers.discard(<span class="dv">5</span>)</span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Attempting to discard non-existent 5 using `discard`:"</span>, unique_numbers)</span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Attempting to remove a non-existent item</span></span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Attempting to remove non-existent 5 using `remove`"</span>)</span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a>unique_numbers.remove(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Adding a item: {1, 2, 3, 4}
+Removed 1 using `remove`: {2, 3, 4}
+Discarded 2 using `discard`: {3, 4}
+Popped: 3
+set is now: {4}
+Attempting to discard non-existent 5 using `discard`: {4}
+Attempting to remove non-existent 5 using `remove`</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[27]</span><span class="ansi-green-fg">, line 26</span>
+<span class="ansi-green-fg">     22</span> print(<span class="ansi-yellow-fg">"Attempting to discard non-existent 5 using `discard`:"</span>, unique_numbers)
+<span class="ansi-green-fg">     23</span> 
+<span class="ansi-green-fg">     24</span> <span style="font-style:italic;color:rgb(95,135,135)"># Attempting to remove a non-existent item</span>
+<span class="ansi-green-fg">     25</span> print(<span class="ansi-yellow-fg">"Attempting to remove non-existent 5 using `remove`"</span>)
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">26</span> unique_numbers.remove(<span class="ansi-green-fg">5</span>)
+
+<span class="ansi-red-fg">KeyError</span>: 5</pre>
+</div>
+</div>
+</div>
+<section id="set-operations" class="level4">
+<h4 class="anchored" data-anchor-id="set-operations">Set Operations</h4>
+<ul>
+<li>Python has native support for standard mathematical set operations
+<ul>
+<li>Come in both method call and operator variants</li>
+<li>Methods can be used between a <code>set</code> and any other <code>iterable</code></li>
+<li>Operators only work between <code>set</code> and <code>frozenset</code> objects</li>
+</ul></li>
+</ul>
+<section id="disjoint" class="level5">
+<h5 class="anchored" data-anchor-id="disjoint">Disjoint</h5>
+<ul>
+<li>Disjoint set’s share no common elements</li>
+<li>Can be verified via the <code>isdisjoint</code> method
+<ul>
+<li>Returns <code>True</code> if two sets are disjoint, else <code>False</code></li>
+</ul></li>
+</ul>
+<div id="5d174805" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>four_to_six <span class="op">=</span> {<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>even <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is disjoint from four_to_six:"</span>, one_to_three.isdisjoint(four_to_six))</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is disjoint from even:"</span>, one_to_three.isdisjoint(even))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>one_to_three is disjoint from four_to_six: True
+one_to_three is disjoint from even: False</code></pre>
+</div>
+</div>
+</section>
+<section id="subset" class="level5">
+<h5 class="anchored" data-anchor-id="subset">Subset</h5>
+<ul>
+<li>A set <span class="math inline">\(A\)</span> is a subset of another subset <span class="math inline">\(B\)</span> if all the elements contained in <span class="math inline">\(A\)</span> are also contained in <span class="math inline">\(B\)</span>
+<ul>
+<li>Can test for this via the <code>issubset</code> method</li>
+<li>Alternatively can use the <code>&lt;=</code> operator</li>
+</ul></li>
+</ul>
+<div id="5ff42bb6" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a subset of one_to_six:"</span>, one_to_three.issubset(one_to_six))</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a subset of evens:"</span>, one_to_three.issubset(evens))</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Repeating with the &lt;= operator"</span>)</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">&lt;=</span> one_to_six)</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">&lt;=</span> evens)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>one_to_three is a subset of one_to_six: True
+one_to_three is a subset of evens: False
+Repeating with the &lt;= operator
+True
+False</code></pre>
+</div>
+</div>
+<ul>
+<li>Remember that the method approach will work with non-set objects
+<ul>
+<li>Operator approach will not</li>
+</ul></li>
+</ul>
+<div id="27dcd340" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a subset of range(6):"</span>, one_to_three.issubset(<span class="bu">range</span>(<span class="dv">6</span>)))</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three &lt;= range(6):"</span>, one_to_three <span class="op">&lt;=</span> <span class="bu">range</span>(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>one_to_three is a subset of range(6): True</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[30]</span><span class="ansi-green-fg">, line 4</span>
+<span class="ansi-green-fg">      1</span> one_to_three = {<span class="ansi-green-fg">1</span>, <span class="ansi-green-fg">2</span>, <span class="ansi-green-fg">3</span>}
+<span class="ansi-green-fg">      2</span> 
+<span class="ansi-green-fg">      3</span> print(<span class="ansi-yellow-fg">"one_to_three is a subset of range(6):"</span>, one_to_three.issubset(range(<span class="ansi-green-fg">6</span>)))
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> print(<span class="ansi-yellow-fg">"one_to_three &lt;= range(6):"</span>, one_to_three &lt;= range(<span class="ansi-green-fg">6</span>))
+
+<span class="ansi-red-fg">TypeError</span>: '&lt;=' not supported between instances of 'set' and 'range'</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="proper-subsets" class="level5">
+<h5 class="anchored" data-anchor-id="proper-subsets">Proper Subsets</h5>
+<ul>
+<li>Set <span class="math inline">\(A\)</span> is a proper subset of another set <span class="math inline">\(B\)</span> if <span class="math inline">\(A\)</span> is a subset of <span class="math inline">\(B\)</span> and <span class="math inline">\(B\)</span> contains an element not contained in <span class="math inline">\(A\)</span>
+<ul>
+<li>Equivalent to saying <span class="math inline">\(A\)</span> is a subset of <span class="math inline">\(B\)</span> but not equal to <span class="math inline">\(B\)</span></li>
+</ul></li>
+<li>The <code>&lt;</code> operator can be used to test for proper subsets between sets</li>
+</ul>
+<div id="2a06d95c" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a proper subset of one_to_six:"</span>, one_to_three <span class="op">&lt;</span> one_to_six)</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a proper subset of one_to_three:"</span>, one_to_three <span class="op">&lt;</span> one_to_three)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>one_to_three is a proper subset of one_to_six: True
+one_to_three is a proper subset of one_to_three: False</code></pre>
+</div>
+</div>
+</section>
+<section id="supersets-and-proper-supersets" class="level5">
+<h5 class="anchored" data-anchor-id="supersets-and-proper-supersets">Supersets and Proper Supersets</h5>
+<ul>
+<li>A <em>superset</em> is a reverse of a <em>subset</em></li>
+<li><span class="math inline">\(A\)</span> is a superset of <span class="math inline">\(B\)</span> if <span class="math inline">\(A\)</span> contains every element in <span class="math inline">\(B\)</span>
+<ul>
+<li>If <span class="math inline">\(A\)</span> is not equal to <span class="math inline">\(B\)</span>, i.e.&nbsp;contains at least one element not also in <span class="math inline">\(B\)</span> it is a proper superset</li>
+</ul></li>
+<li>We can test for supersets with the <code>issuperset</code> method or the <code>&gt;=</code> operator
+<ul>
+<li>To test for a proper superset we use the <code>&gt;</code> operator</li>
+</ul></li>
+</ul>
+<div id="5d77b005" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_six is a superset of one_to_three:"</span>, one_to_six.issuperset(one_to_three))</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"evens is a superset of one_to_three:"</span>, evens.issuperset(one_to_three))</span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Repeating with the &gt;= operator"</span>)</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_six <span class="op">&gt;=</span> one_to_three)</span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens <span class="op">&gt;=</span> one_to_three)</span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_six is a proper superset of one_to_three:"</span>, one_to_six <span class="op">&gt;</span> one_to_three)</span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_six is a proper superset of one_to_six:"</span>, one_to_six <span class="op">&gt;</span> one_to_six)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>one_to_six is a superset of one_to_three: True
+evens is a superset of one_to_three: False
+Repeating with the &gt;= operator
+True
+False
+one_to_six is a proper superset of one_to_three: True
+one_to_six is a proper superset of one_to_six: False</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="union" class="level4">
+<h4 class="anchored" data-anchor-id="union">Union</h4>
+<ul>
+<li>The union of set <span class="math inline">\(A\)</span> and set <span class="math inline">\(B\)</span> is the set containing all elements of <span class="math inline">\(A\)</span> <em>or</em> <span class="math inline">\(B\)</span></li>
+<li>Can be performed via the <code>union</code> method or the <code>|</code> operator</li>
+</ul>
+<div id="f44bf742" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>odds <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>}</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `union` method:"</span>)</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> odds.union(evens)</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_six)</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `|` operator:"</span>)</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens <span class="op">|</span> odds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using the `union` method:
+{1, 2, 3, 4, 5, 6}
+Using the `|` operator:
+{1, 2, 3, 4, 5, 6}</code></pre>
+</div>
+</div>
+</section>
+<section id="intersection" class="level4">
+<h4 class="anchored" data-anchor-id="intersection">Intersection</h4>
+<ul>
+<li>The intersection of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is the set containing all elements in <em>both</em> <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></li>
+<li>Performed via the <code>intersection</code> method or the <code>&amp;</code> operator</li>
+</ul>
+<div id="e2015ca9" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `intersection` method:"</span>)</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>two <span class="op">=</span> one_to_three.intersection(evens)</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(two)</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `&amp;` operator:"</span>)</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">&amp;</span> evens)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using the `intersection` method:
+{2}
+Using the `&amp;` operator:
+{2}</code></pre>
+</div>
+</div>
+</section>
+<section id="difference" class="level4">
+<h4 class="anchored" data-anchor-id="difference">Difference</h4>
+<ul>
+<li>The difference <span class="math inline">\(A - B\)</span> of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is the set of all elements in <span class="math inline">\(A\)</span> that are not contained in <span class="math inline">\(B\)</span></li>
+<li>Performed via the <code>difference</code> method or the <code>-</code> operator</li>
+</ul>
+<div id="7128eccf" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `difference` method to calculate one_to_three - evens:"</span>, one_to_three.difference(evens))</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using the `difference` method to calculate evens - one_to_three:"</span>, evens.difference(one_to_three))</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Repeated using the `-` operator:"</span>)</span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one_to_three <span class="op">-</span> evens)</span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens <span class="op">-</span> one_to_three)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using the `difference` method to calculate one_to_three - evens: {1, 3}
+Using the `difference` method to calculate evens - one_to_three: {4, 6}
+Repeated using the `-` operator:
+{1, 3}
+{4, 6}</code></pre>
+</div>
+</div>
+<section id="symmetric-difference" class="level5">
+<h5 class="anchored" data-anchor-id="symmetric-difference">Symmetric Difference</h5>
+<ul>
+<li>The symmetric difference of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is the set of elements contained in exactly one of either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>
+<ul>
+<li>i.e.&nbsp;it is the opposite of the intersection</li>
+</ul></li>
+<li>Can be calculated via the <code>symmetric_difference</code> method or the <code>^</code> operator</li>
+</ul>
+<div id="0865f236" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Symmetric difference of one_to_three and evens via method call:"</span>, one_to_three.symmetric_difference(evens))</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Symmetric difference via `^` operator:"</span>, one_to_three <span class="op">^</span> evens)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Symmetric difference of one_to_three and evens via method call: {1, 3, 4, 6}
+Symmetric difference via `^` operator: {1, 3, 4, 6}</code></pre>
+</div>
+</div>
+</section>
+<section id="updating-sets" class="level5">
+<h5 class="anchored" data-anchor-id="updating-sets">Updating Sets</h5>
+<ul>
+<li>We’ve already seen that set’s <a href="#sets">can be modified</a> after creation</li>
+<li>A powerful technique is in-place modifying a set with another <em>iterable</em>
+<ul>
+<li>This can be done via the <code>update</code> method
+<ul>
+<li>Equivalent to a <code>union_update</code></li>
+<li>For a set can be equivalently done with the <code>|=</code> operator</li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="74968315" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set before update:"</span>, unique_numbers)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>unique_numbers.update(<span class="bu">range</span>(<span class="dv">6</span>))</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set after `update`:"</span>, unique_numbers)</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>extra_numbers <span class="op">=</span> {<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>}</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">|=</span> extra_numbers</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set after |=:"</span>, unique_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Set before update: {1, 2, 3}
+Set after `update`: {0, 1, 2, 3, 4, 5}
+Set after |=: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}</code></pre>
+</div>
+</div>
+<ul>
+<li>Set’s can also be updated in-place based on the set operations discussed above
+<ul>
+<li><code>intersection_update</code> in-place updates the set to the intersection with the provided set (or iterable)
+<ul>
+<li>Comes in operator form <code>&amp;=</code></li>
+</ul></li>
+<li><code>difference_update</code> in-place updates the set to the difference with the provided set (or iterable)
+<ul>
+<li>Comes in operator form <code>-=</code></li>
+</ul></li>
+<li><code>symmetric_difference_update</code> in-place updates the set to the symmetric difference with the provided set (or iterable)
+<ul>
+<li>Comes in operator form <code>^=</code></li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="81cec57a" class="cell" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Update using intersection</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>r0 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">2</span>)</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>unique_numbers.intersection_update(r0)</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"unique numbers after intersection update:"</span>, unique_numbers)</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">&amp;=</span> evens</span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"unique numbers after &amp;= update:"</span>, unique_numbers)</span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Update using the difference</span></span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="bu">range</span>(<span class="dv">3</span>, <span class="dv">6</span>)</span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>unique_numbers.difference_update(r)</span>
+<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"unique numbers after difference update:"</span>, unique_numbers)</span>
+<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-18"><a href="#cb73-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeating but with an operator</span></span>
+<span id="cb73-19"><a href="#cb73-19" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb73-20"><a href="#cb73-20" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">-=</span> evens</span>
+<span id="cb73-21"><a href="#cb73-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique numbers after |= update:"</span>, unique_numbers)</span>
+<span id="cb73-22"><a href="#cb73-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-23"><a href="#cb73-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Update using the symmetric difference</span></span>
+<span id="cb73-24"><a href="#cb73-24" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb73-25"><a href="#cb73-25" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">2</span>)</span>
+<span id="cb73-26"><a href="#cb73-26" aria-hidden="true" tabindex="-1"></a>unique_numbers.symmetric_difference_update(r2)</span>
+<span id="cb73-27"><a href="#cb73-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique numbers after symmetric difference update:"</span>, unique_numbers)</span>
+<span id="cb73-28"><a href="#cb73-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-29"><a href="#cb73-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeating but with an operator</span></span>
+<span id="cb73-30"><a href="#cb73-30" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb73-31"><a href="#cb73-31" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">^=</span> evens</span>
+<span id="cb73-32"><a href="#cb73-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique numbers after ^= update:"</span>, unique_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>unique numbers after intersection update: {1, 3}
+unique numbers after &amp;= update: {2}
+unique numbers after difference update: {2}
+Unique numbers after |= update: {1, 3}
+Unique numbers after symmetric difference update: {1, 3, 4, 6}
+Unique numbers after ^= update: {0, 1, 3, 4, 6}</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="frozensets" class="level4">
+<h4 class="anchored" data-anchor-id="frozensets">Frozensets</h4>
+<ul>
+<li>The python <code>set</code> as seen is <em>mutable</em>
+<ul>
+<li>Mean’s it cannot be used as a dictionary key</li>
+<li>Also can’t construct sets of sets</li>
+</ul></li>
+<li>The <code>frozenset</code> is an <em>immutable</em> set-like object (i.e implements most of the same behaviours)
+<ul>
+<li>Is pretty much a drop-in replacement for <code>set</code></li>
+</ul></li>
+</ul>
+<div id="97e1c9bd" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>frozen <span class="op">=</span> <span class="bu">frozenset</span>(<span class="bu">range</span>(<span class="dv">10</span>))</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen)</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Testing proper subset with a frozenset"</span>)</span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">&lt;</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">21</span>)))</span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Taking the intersection with a frozenset"</span>)</span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">&amp;</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">15</span>)))</span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Taking the symmetric difference with a frozenset"</span>)</span>
+<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">^</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">15</span>)))</span>
+<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Taking the union with a frozenset"</span>)</span>
+<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen <span class="op">|</span> <span class="bu">set</span>(<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">15</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>frozenset({0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+Testing proper subset with a frozenset
+True
+Taking the intersection with a frozenset
+frozenset({5, 6, 7, 8, 9})
+Taking the symmetric difference with a frozenset
+frozenset({0, 1, 2, 3, 4, 10, 11, 12, 13, 14})
+Taking the union with a frozenset
+frozenset({0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14})</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>Python provides specialised data structures beyond the sequence types</li>
+<li>A common one is the <code>dict</code> or dictionary
+<ul>
+<li>Provides a mutable <code>key:value</code> mapping</li>
+</ul></li>
+<li><code>set</code> implements mathematical sets and their associated operations
+<ul>
+<li><code>frozenset</code> is a specialised <em>immutable</em> implementation</li>
+</ul></li>
+<li>Both provide highly efficient structures for unordered data</li>
+</ul>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ol type="1">
+<li><p>What are three ways to create a dictionary with the following key, value pairs?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a> {<span class="st">"name"</span>: <span class="st">"Smuah"</span>, <span class="st">"height"</span>: <span class="dv">62</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="1">
+<li><code>kwargs</code> to the <code>dict</code> constructor <code>dict(name="Smuah", height=62)</code></li>
+<li>A list of key-value pairs to the <code>dict</code> constructor <code>dict([("name", "Smuah"), ("height", 62)])</code></li>
+<li>A <code>{}</code> delimited comma-separated list of <code>key:value</code> pairs <code>{"name": "Smuah", "height": 62}</code></li>
+</ol></li>
+<li><p>How would you update the value associated with the key <code>"gpa"</code> in the dictionary <code>student</code> to be <code>4.0</code>?</p>
+<ul>
+<li>We would write <code>student["gpa"] = 4.0</code></li>
+</ul></li>
+<li><p>Given the dictionary <code>data</code> how would you safely access the value for the key <code>settings</code> if that key might be missing?</p>
+<ul>
+<li>The best way is generally to use the <code>get</code> method via <code>data.get("settings")</code>
+<ul>
+<li>This will return a default of <code>None</code> if the key is missing rather than raising an exception which might crash the program</li>
+<li>Or wasting time with the <code>in</code> check</li>
+</ul></li>
+</ul></li>
+<li><p>What is the difference between a mutable object and immutable object?</p>
+<ul>
+<li>A mutable object can be modified after creation while an immutable object cannot</li>
+</ul></li>
+<li><p>How would you create a set from the string <code>"lost and lost again"</code>?</p>
+<ul>
+<li>We can use the <code>set</code> constructor which will automatically deconstruct an iterable into a <code>set</code></li>
+<li>e.g.&nbsp;<code>set("lost and lost again")</code></li>
+</ul></li>
+</ol>
+<p>The answers can be seen below</p>
+<div id="672e33cc" class="cell" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Q1</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 1:"</span>)</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Method 1:"</span>, <span class="bu">dict</span>(name<span class="op">=</span><span class="st">"Smuah"</span>, height<span class="op">=</span><span class="dv">62</span>))</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Method 2:"</span>, <span class="bu">dict</span>([(<span class="st">"name"</span>, <span class="st">"Smuah"</span>), (<span class="st">"height"</span>, <span class="dv">62</span>)]))</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Method 3:"</span>, {<span class="st">"name"</span>: <span class="st">"Smuah"</span>, <span class="st">"height"</span>: <span class="dv">62</span>})</span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Q2</span></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 2:"</span>)</span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Before modification:"</span>, student)</span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"gpa"</span>] <span class="op">=</span> <span class="fl">4.0</span></span>
+<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After modification:"</span>, student)</span>
+<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Q3</span></span>
+<span id="cb78-17"><a href="#cb78-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-18"><a href="#cb78-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 3:"</span>)</span>
+<span id="cb78-19"><a href="#cb78-19" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"config"</span>: <span class="va">True</span>, <span class="st">"active"</span>: <span class="va">False</span>}</span>
+<span id="cb78-20"><a href="#cb78-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"data.get(</span><span class="ch">\"</span><span class="st">settings</span><span class="ch">\"</span><span class="st">):"</span>, data.get(<span class="st">"settings"</span>))</span>
+<span id="cb78-21"><a href="#cb78-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-22"><a href="#cb78-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Q5</span></span>
+<span id="cb78-23"><a href="#cb78-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 5:"</span>)</span>
+<span id="cb78-24"><a href="#cb78-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">set</span>(<span class="st">"lost and lost again"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Question 1:
+Method 1: {'name': 'Smuah', 'height': 62}
+Method 2: {'name': 'Smuah', 'height': 62}
+Method 3: {'name': 'Smuah', 'height': 62}
+Question 2:
+Before modification: {'name': 'Paula', 'height': 64, 'gpa': 3.8}
+After modification: {'name': 'Paula', 'height': 64, 'gpa': 4.0}
+Question 3:
+data.get("settings"): None
+Question 5:
+{'o', 's', 't', 'd', 'g', 'l', 'n', 'i', 'a', ' '}</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.html" class="pagination-link" aria-label="Chapter 3: Sequences">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Chapter 3: Sequences</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.html" class="pagination-link" aria-label="Chapter 5: Execution Control">
+        <span class="nav-page-text">Chapter 5: Execution Control</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
