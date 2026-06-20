@@ -6,7 +6,7 @@ project:
   #resources:
 
 website:
-  title: "Effective Python: Notes"
+  title: "Foundational Python for Data Science: Notes"
   page-navigation: true
   open-graph: true
   navbar:
