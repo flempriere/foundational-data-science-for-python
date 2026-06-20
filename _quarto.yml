@@ -33,6 +33,7 @@ website:
           - 2_data_science_libraries/Chapter_08/Chapter_08.qmd
           - 2_data_science_libraries/Chapter_09/Chapter_09.qmd
           - 2_data_science_libraries/Chapter_10/Chapter_10.qmd
+          - 2_data_science_libraries/Chapter_11/Chapter_11.qmd
 
 format:
   html:
