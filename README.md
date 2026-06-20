@@ -23,7 +23,8 @@ This repository contains notes and code examples from the book,
 - [Chapter 7: NumPy](2_data_science_libraries/Chapter_07/Chapter_07.md)
 - [Chapter 8: SciPy](2_data_science_libraries/Chapter_08/Chapter_08.md)
 - [Chapter 9: Pandas](2_data_science_libraries/Chapter_09/Chapter_09.md)
-- [Chapter 10: Visualisation Libraries](2_data_science_libraries/Chapter_10/Chapter_10.qmd)
+- [Chapter 10: Visualisation Libraries](2_data_science_libraries/Chapter_10/Chapter_10.md)
+- [Chapter 11: Machine Learning Libraries](2_data_science/libraries/Chapter_11/Chapter_11.md)
 
 ### III: Intermediate Python
 
