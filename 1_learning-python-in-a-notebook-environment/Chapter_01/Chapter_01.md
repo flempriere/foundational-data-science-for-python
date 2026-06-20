@@ -225,7 +225,7 @@ import time
 %timeit time.sleep(1)
 ```
 
-    1 s ± 15.6 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    1 s ± 17.4 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
 
 - Or to render HTML
 
