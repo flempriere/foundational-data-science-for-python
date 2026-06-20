@@ -19,3 +19,7 @@ _site
 
 #vscode artifacts
 .vscode
+
+/.quarto/
+**/*.quarto_ipynb
+site_libs
