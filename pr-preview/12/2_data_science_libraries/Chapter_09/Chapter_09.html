@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Chapter 9: Pandas – Effective Python: Notes</title>
+<title>Chapter 9: Pandas – Foundational Python for Data Science: Notes</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -141,9 +141,9 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Chapter 9: Pandas – Effective Python: Notes">
+<meta property="og:title" content="Chapter 9: Pandas – Foundational Python for Data Science: Notes">
 <meta property="og:description" content="">
-<meta property="og:site_name" content="Effective Python: Notes">
+<meta property="og:site_name" content="Foundational Python for Data Science: Notes">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -154,7 +154,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Effective Python: Notes</span>
+    <span class="navbar-title">Foundational Python for Data Science: Notes</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -382,7 +382,7 @@ window.Quarto = {
 </ul></li>
 <li>The usual <code>import</code> convention for pandas is <code>pd</code></li>
 </ul>
-<div id="3eab7ced" class="cell" data-execution_count="1">
+<div id="ef0ca9bc" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
@@ -407,7 +407,7 @@ Index: []</code></pre>
 <li>Dictionary key’s are used to define the column names</li>
 </ul></li>
 </ul>
-<div id="dc220466" class="cell" data-execution_count="2">
+<div id="5d78e48a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>first_names <span class="op">=</span> [<span class="st">"Shanda"</span>, <span class="st">"Rolly"</span>, <span class="st">"Molly"</span>, <span class="st">"Frank"</span>, <span class="st">"Rip"</span>, <span class="st">"Steven"</span>, <span class="st">"Gwen"</span>, <span class="st">"Arthur"</span>]</span>
@@ -445,7 +445,7 @@ Index: []</code></pre>
 <li>Can do the same for the indices</li>
 </ul></li>
 </ul>
-<div id="424a098c" class="cell" data-execution_count="3">
+<div id="a355c813" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [[<span class="st">"Shanda"</span>, <span class="st">"Smith"</span>, <span class="dv">42</span>],</span>
@@ -492,7 +492,7 @@ h  Arthur     Davis    92</code></pre>
 <li>By default, comma’s are used as the separator</li>
 </ul></li>
 </ul>
-<div id="d9dee262" class="cell" data-execution_count="4">
+<div id="930ee628" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -550,7 +550,7 @@ Important
 <li>By default, shows the top five rows, but the number can be specified</li>
 </ul></li>
 </ul>
-<div id="442f0628" class="cell" data-execution_count="5">
+<div id="ea725648" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -629,7 +629,7 @@ Important
 <li>As with <code>head</code> defaults to five, but can be specified</li>
 </ul></li>
 </ul>
-<div id="2e71335e" class="cell" data-execution_count="6">
+<div id="08532b77" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -693,7 +693,7 @@ Important
 <li>By default it can be called with no arguments</li>
 </ul></li>
 </ul>
-<div id="a7f7b8d0" class="cell" data-execution_count="7">
+<div id="71d3b1ce" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -779,7 +779,7 @@ Important
 <li>Also accepts optional arguments to control what data is reported</li>
 <li>e.g.&nbsp;<code>percentiles</code> to set which quantiles are shown</li>
 </ul>
-<div id="2f9f1ac0" class="cell" data-execution_count="8">
+<div id="8cf5a793" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -871,7 +871,7 @@ Important
 </ul></li>
 </ul></li>
 </ul>
-<div id="03400e47" class="cell" data-execution_count="9">
+<div id="4bda1334" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -919,7 +919,7 @@ Important
 <ul>
 <li>To include statistics for all column types use <code>"all"</code></li>
 </ul>
-<div id="279a04a1" class="cell" data-execution_count="10">
+<div id="8ebe34f6" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -1077,7 +1077,7 @@ Tip
 <li>Specify the column name in the brackets</li>
 </ul></li>
 </ul>
-<div id="3222f6f0" class="cell" data-execution_count="11">
+<div id="d2ae1460" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -1105,7 +1105,7 @@ Name: pop, Length: 1704, dtype: int64</code></pre>
 <li>For example we can see accessing <code>lifeExp</code> works but accessing <code>pop</code> fails because it conflicts with an existing method</li>
 </ul></li>
 </ul>
-<div id="bedfa985" class="cell" data-execution_count="12">
+<div id="1a8e0bd8" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -1146,7 +1146,7 @@ gapminder.pop:
 <ul>
 <li>To access multiple columns, rather than passing a single column name, we pass a list of column names</li>
 </ul>
-<div id="543da415" class="cell" data-execution_count="13">
+<div id="f24e456a" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -1233,7 +1233,7 @@ gapminder.pop:
 </ul></li>
 <li>integer slices are interpreted as slices over the rows</li>
 </ul>
-<div id="6a70b5df" class="cell" data-execution_count="14">
+<div id="09b72361" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -1294,7 +1294,7 @@ gapminder.pop:
 <li>The endpoint is excluded (unlike label-based slices)</li>
 </ul></li>
 </ul>
-<div id="71cced62" class="cell" data-execution_count="15">
+<div id="534c1659" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1356,7 +1356,7 @@ gapminder.pop:
 <li>Must be one Boolean value for each row in the dataframe</li>
 </ul></li>
 </ul>
-<div id="7e6cc01e" class="cell" data-execution_count="16">
+<div id="5a2ad6e6" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1434,7 +1434,7 @@ gapminder.pop:
 <li>Associated values for that row are returned</li>
 </ul></li>
 </ul>
-<div id="8238230b" class="cell" data-execution_count="17">
+<div id="07e0f27c" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1466,7 +1466,7 @@ Name: c, dtype: object</code></pre>
 <li>Last label is included</li>
 </ul></li>
 </ul>
-<div id="9cc66ef0" class="cell" data-execution_count="18">
+<div id="c792c74e" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1532,7 +1532,7 @@ Name: c, dtype: object</code></pre>
 <ul>
 <li>Or provide a Boolean mask</li>
 </ul>
-<div id="de557317" class="cell" data-execution_count="19">
+<div id="4878aff1" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1594,7 +1594,7 @@ Name: c, dtype: object</code></pre>
 <li>To also select a subset of columns can provide an optional second argument to <code>loc</code></li>
 <li>For example, to select all rows and the column <code>"First"</code></li>
 </ul>
-<div id="7a2176a9" class="cell" data-execution_count="20">
+<div id="7b2a01c1" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1632,7 +1632,7 @@ Name: First, dtype: str</code></pre>
 <li>a list of column names</li>
 </ul></li>
 </ul>
-<div id="95ffd9d7" class="cell" data-execution_count="21">
+<div id="52b8169f" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1688,7 +1688,7 @@ Name: First, dtype: str</code></pre>
 <ul>
 <li>Or provide a list of Booleans corresponding to each column</li>
 </ul>
-<div id="e0612d38" class="cell" data-execution_count="22">
+<div id="16f8230e" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1748,7 +1748,7 @@ Name: First, dtype: str</code></pre>
 <li><code>iloc</code> works like <code>loc</code> but is designed to work with numeric indices</li>
 <li>To specify a single row, provide a single number</li>
 </ul>
-<div id="a44d8600" class="cell" data-execution_count="23">
+<div id="46f97df7" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1780,7 +1780,7 @@ Name: d, dtype: object</code></pre>
 <li>Does <em>not</em> include the endpoint</li>
 </ul></li>
 </ul>
-<div id="8550028f" class="cell" data-execution_count="24">
+<div id="d4d7f7ec" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1840,7 +1840,7 @@ Name: d, dtype: object</code></pre>
 <ul>
 <li>Columns can also be specified by a second slice</li>
 </ul>
-<div id="bb45fe9a" class="cell" data-execution_count="25">
+<div id="5c3b2986" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -1902,7 +1902,7 @@ Name: d, dtype: object</code></pre>
 <li>Can examine columns based on conditional expressions</li>
 <li>For example, might want to see which rows correspond to the year <span class="math inline">\(2002\)</span></li>
 </ul>
-<div id="7cf3abf8" class="cell" data-execution_count="26">
+<div id="c15f8544" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -1932,7 +1932,7 @@ Name: year, Length: 1704, dtype: bool</code></pre>
 <li>Every <code>true</code> value is selected</li>
 </ul></li>
 </ul>
-<div id="ce5221a3" class="cell" data-execution_count="27">
+<div id="1db6de1d" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -1962,7 +1962,7 @@ Name: year, Length: 1704, dtype: bool</code></pre>
 <li>For example, we might want to filter down to the bottom quartile of life expectancy</li>
 </ul></li>
 </ul>
-<div id="2e0479c6" class="cell" data-execution_count="28">
+<div id="229d70a0" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -1982,7 +1982,7 @@ Name: lifeExp, dtype: float64</code></pre>
 <ul>
 <li>Can create a mask using this condition</li>
 </ul>
-<div id="e9e4bf0c" class="cell" data-execution_count="29">
+<div id="031d8bd3" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -2006,7 +2006,7 @@ Name: lifeExp, Length: 1704, dtype: bool</code></pre>
 <ul>
 <li>This mask might then be used to create a deduced dataframe</li>
 </ul>
-<div id="fea4820d" class="cell" data-execution_count="30">
+<div id="19465eea" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -2034,7 +2034,7 @@ Name: lifeExp, Length: 1704, dtype: bool</code></pre>
 <ul>
 <li>We might then use <code>unique</code> on the <code>country</code> column to see which countries show up the lowest quartile for life expectancy at some point over the data collection period</li>
 </ul>
-<div id="b4a234fe" class="cell" data-execution_count="31">
+<div id="14561dac" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -2098,7 +2098,7 @@ Length: 80, dtype: str</code></pre>
 <li>We can combine the two masks together</li>
 </ul></li>
 </ul>
-<div id="66060e46" class="cell" data-execution_count="32">
+<div id="bedb2be4" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -2130,7 +2130,7 @@ Length: 1704, dtype: bool</code></pre>
 <ul>
 <li>We can then pass this into the dataframe to get a new dataframe that matches both conditions</li>
 </ul>
-<div id="8696a3f7" class="cell" data-execution_count="33">
+<div id="159dd401" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -2271,7 +2271,7 @@ Length: 1704, dtype: bool</code></pre>
 <li>The <code>~</code> lets us create inverse masks</li>
 <li>For example, to select all rows that are <em>not</em> in the bottom quartile of life expectancy</li>
 </ul>
-<div id="6f867030" class="cell" data-execution_count="34">
+<div id="6fab7030" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -2407,7 +2407,7 @@ Length: 1704, dtype: bool</code></pre>
 <ul>
 <li>If we wanted to select rows that were <em>either</em> in the lowest life expectancy quartile <em>or</em> the highest population quartile</li>
 </ul>
-<div id="b462c1a7" class="cell" data-execution_count="35">
+<div id="8bcd7b3d" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -2561,7 +2561,7 @@ Length: 1704, dtype: bool</code></pre>
 <li>Can first get the columns via the <code>.columns</code> attribute</li>
 </ul></li>
 </ul>
-<div id="d90c42dc" class="cell" data-execution_count="36">
+<div id="2be05303" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"Data/gapminder.tsv"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -2582,7 +2582,7 @@ Length: 1704, dtype: bool</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="1f7a559b" class="cell" data-execution_count="37">
+<div id="d191220c" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -2645,7 +2645,7 @@ h  Arthur     Davis   92</code></pre>
 <ul>
 <li>Indexer syntax can be used to insert new columns much like inserting keys into a dictionary</li>
 </ul>
-<div id="33f49068" class="cell" data-execution_count="38">
+<div id="9c07bc28" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -2683,7 +2683,7 @@ h  Arthur     Davis    92     95333</code></pre>
 <li>For example concatenating the <code>"First"</code> and <code>"Last"</code> columns into a <code>"Full Name"</code> column</li>
 </ul></li>
 </ul>
-<div id="19c770d0" class="cell" data-execution_count="39">
+<div id="f37f359d" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -2721,7 +2721,7 @@ h  Arthur     Davis    92     ArthurDavis</code></pre>
 <li>For example if we latter decided to add the whitespace between the first and last names</li>
 </ul></li>
 </ul>
-<div id="f81e7690" class="cell" data-execution_count="40">
+<div id="93c483fc" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -2782,7 +2782,7 @@ h  Arthur     Davis    92     Arthur Davis</code></pre>
 <li>Just need to select the subset we want to change and define the new value</li>
 </ul></li>
 </ul>
-<div id="5eb9b06f" class="cell" data-execution_count="41">
+<div id="28bc6dd6" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -2835,7 +2835,7 @@ h  Arthur     Davis    92     95333     Arthur Davis  Paul</code></pre>
 <ul>
 <li>We could also achieve a similar result through numeric indices with <code>iloc</code></li>
 </ul>
-<div id="67464f73" class="cell" data-execution_count="42">
+<div id="02ef7b70" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -2889,7 +2889,7 @@ h  Arthur     Davis    92     95333     Arthur Davis</code></pre>
 <li>We’ve seen that we can use operations between columns to construct new values</li>
 <li>We can also use the inplace operators to modify a column inplace</li>
 </ul>
-<div id="053b3129" class="cell" data-execution_count="43">
+<div id="9efad39a" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -2942,7 +2942,7 @@ h  Arthur     Davis    82</code></pre>
 <li>For example changing <code>"Rolly"</code> to <code>"Smiley"</code></li>
 </ul></li>
 </ul>
-<div id="7fe9959b" class="cell" data-execution_count="44">
+<div id="5e9fd285" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -3049,7 +3049,7 @@ Replacing 'Rolly' by 'Smiley'</code></pre>
 <li>For example, to match words starting with a lowercase s and replace with a capital S</li>
 </ul></li>
 </ul>
-<div id="423e4b90" class="cell" data-execution_count="45">
+<div id="75764d36" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -3158,7 +3158,7 @@ Using regex to replace lowercase s with uppercase S</code></pre>
 </ul></li>
 <li>For example, we could pass a lambda or function to capitalise every word</li>
 </ul>
-<div id="ea090a31" class="cell" data-execution_count="46">
+<div id="4f0eb34f" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -3210,7 +3210,7 @@ Name: First, dtype: str</code></pre>
 <li>Means we can look at the value of all the columns in a given row</li>
 </ul></li>
 </ul>
-<div id="2c6a4ffc" class="cell" data-execution_count="47">
+<div id="69985a6b" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
@@ -3368,7 +3368,7 @@ dtype: str</code></pre>
 <ul>
 <li>We can put this all together</li>
 </ul>
-<div id="5ea4ce9e" class="cell" data-execution_count="48">
+<div id="6fcf36c7" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    sample_size <span class="op">=</span> [<span class="fl">0.24</span>, <span class="fl">2.34</span>, <span class="fl">0.0234</span>]</span>
