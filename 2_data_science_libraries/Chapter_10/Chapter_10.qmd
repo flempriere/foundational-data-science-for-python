@@ -492,12 +492,16 @@ TOOLS = "box_select"  # select interactive tools
 source = ColumnDataSource(data=data)  # Create data model
 
 left = figure(tools=TOOLS, title="Brushing")  # Create figure using the selected tools
-left.circle("x", "y", source=source)  # Create a circle plot on the first figure
+left.circle(
+    "x", "y1", radius=0.5, source=source
+)  # Create a circle plot on the first figure
 
 right = figure(
     tools=TOOLS, title="Brushing"
 )  # Create a second figure using the selected tools
-right.circle("x", "y1", source=source)  # Create a circle plot on the second figure
+right.circle(
+    "x", "y2", radius=0.5, source=source
+)  # Create a circle plot on the second figure
 
 p = gridplot([[left, right]])  # Put the figures on a grid
 show(p)  # Show the grid
