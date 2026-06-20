@@ -1,6 +1,5 @@
 # Chapter 12: Natural Language Toolkit
 
-
 - [Notes](#notes)
   - [NLTK Sample Texts](#nltk-sample-texts)
   - [Frequency Distributions](#frequency-distributions)
@@ -122,7 +121,7 @@ caesar
         737 resource_not_found = f"\n{sep}\n{msg}\n{sep}\n"
     --> 738 raise LookupError(resource_not_found)
 
-    LookupError: 
+    LookupError:
     **********************************************************************
       Resource 'punkt_tab' not found.
       Please use the NLTK Downloader to obtain the resource:
@@ -151,9 +150,9 @@ caesar
     ValueError                                Traceback (most recent call last)
     Cell In[3], line 3
           1 from nltk.corpus import gutenberg
-          2 
+          2
     ----> 3 caesar = gutenberg.sents("shakespeare-caesar.txt")
-          4 
+          4
           5 caesar
 
     File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/nltk/corpus/reader/plaintext.py:91, in PlaintextCorpusReader.sents(self, fileids)
@@ -175,9 +174,9 @@ caesar
   - Designed to work across multiple languages
 - As mentioned before NLTK will download into a local `nltk_data` folder
   - It is divided up into,
-    1.  *corpora*
+    1. *corpora*
         - Texts to analyse
-    2.  *tokenizers*
+    2. *tokenizers*
         - Text analysis engines
 
 ``` python
@@ -906,8 +905,8 @@ print("test data sample:\n", test_data[0:10])
          80     editorial_paragraphs_labelled, fiction_paragraphs_labelled
          81 )
     ---> 82 shuffle(labelled_data)
-         83 
-         84 
+         83
+         84
          85 # create the feature sets
 
     NameError: name 'shuffle' is not defined
@@ -1038,8 +1037,8 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
          80     editorial_paragraphs_labelled, fiction_paragraphs_labelled
          81 )
     ---> 82 shuffle(labelled_data)
-         83 
-         84 
+         83
+         84
          85 # create the feature sets
 
     NameError: name 'shuffle' is not defined
@@ -1063,7 +1062,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
 
 ## Questions and Answers
 
-1.  How would you load the text *Emma* by Jane Austen as words,
+1. How would you load the text *Emma* by Jane Austen as words,
     sentences and paragraphs?
 
     - First we need to identify the name of the text by using `fileids`
@@ -1134,7 +1133,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
                 737 resource_not_found = f"\n{sep}\n{msg}\n{sep}\n"
             --> 738 raise LookupError(resource_not_found)
 
-            LookupError: 
+            LookupError:
             **********************************************************************
               Resource 'punkt_tab' not found.
               Please use the NLTK Downloader to obtain the resource:
@@ -1163,7 +1162,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
             ValueError                                Traceback (most recent call last)
             Cell In[24], line 3
                   1 from nltk.corpus import gutenberg
-                  2 
+                  2
             ----> 3 emma_sentences = gutenberg.sents("austen=emma.txt")
                   4 emma_sentences
 
@@ -1210,7 +1209,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
                 737 resource_not_found = f"\n{sep}\n{msg}\n{sep}\n"
             --> 738 raise LookupError(resource_not_found)
 
-            LookupError: 
+            LookupError:
             **********************************************************************
               Resource 'punkt_tab' not found.
               Please use the NLTK Downloader to obtain the resource:
@@ -1239,7 +1238,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
             ValueError                                Traceback (most recent call last)
             Cell In[25], line 3
                   1 from nltk.corpus import gutenberg
-                  2 
+                  2
             ----> 3 emma_paragraphs = gutenberg.paras("austen-emma.txt")
                   4 emma_paragraphs
 
@@ -1256,7 +1255,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
 
             ValueError: No sentence tokenizer for this corpus
 
-2.  Count the occurrences of the word Alice in *Alice in Wonderland* by
+2. Count the occurrences of the word Alice in *Alice in Wonderland* by
     Lewis Carroll
 
     - Again first load the dataset
@@ -1279,7 +1278,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
 
           Alice appears 396 times in Alice in Wonderland by Lewis Carroll
 
-3.  Use tabulate to view the top 10 words in *Alice in Wonderland*,
+3. Use tabulate to view the top 10 words in *Alice in Wonderland*,
     excluding punctuation and stop words
 
     - We can repeat the process from before
@@ -1315,7 +1314,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
                                 ^
           SyntaxError: expected 'else' after 'if' expression
 
-4.  Find words that are similar to “rabbit” in *Alice in Wonderland*
+4. Find words that are similar to “rabbit” in *Alice in Wonderland*
 
     - First we need to load the text into a `Text` object
 
@@ -1336,7 +1335,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
           Words similar to 'rabbit' in Alice in Wonderland are:
            None
 
-5.  Use the corpus `names` to find the ten most frequently occurring
+5. Use the corpus `names` to find the ten most frequently occurring
     names in *Hamlet*
 
     - This is a slightly more involved example
