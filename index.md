@@ -40,6 +40,8 @@ Behrman](https://www.amazon.com.au/dp/0136624359)
 - [Chapter 8: SciPy](2_data_science_libraries/Chapter_08/Chapter_08.qmd)
 - [Chapter 9:
   Pandas](2_data_science_libraries/Chapter_09/Chapter_09.qmd)
+- [Chapter 10: Visualisation
+  Libraries](2_data_science_libraries/Chapter_10/Chapter_10.qmd)
 
 ### III: Intermediate Python
 
