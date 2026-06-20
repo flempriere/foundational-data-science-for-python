@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Chapter 8: SciPy – Effective Python: Notes</title>
+<title>Chapter 8: SciPy – Foundational Python for Data Science: Notes</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -138,10 +138,10 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Chapter 8: SciPy – Effective Python: Notes">
+<meta property="og:title" content="Chapter 8: SciPy – Foundational Python for Data Science: Notes">
 <meta property="og:description" content="">
 <meta property="og:image" content="Chapter_08_files/figure-html/cell-2-output-3.png">
-<meta property="og:site_name" content="Effective Python: Notes">
+<meta property="og:site_name" content="Foundational Python for Data Science: Notes">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -152,7 +152,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Effective Python: Notes</span>
+    <span class="navbar-title">Foundational Python for Data Science: Notes</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -276,6 +276,12 @@ window.Quarto = {
  <span class="menu-text">Chapter 10: Visualisation Libraries</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_data_science_libraries/Chapter_11/Chapter_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 11: Machine Learning Libraries</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -371,7 +377,7 @@ Important
 <p>Scipy has deprecated <code>misc</code> and it is planned for removal in Scipy 2.0. All the functionality of <code>misc</code> has been removed. For example the <code>face</code> and <code>ascent</code> functions now live in <code>scipy.datasets</code></p>
 </div>
 </div>
-<div id="0d246986" class="cell" data-execution_count="1">
+<div id="4e51db83" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> datasets</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -445,7 +451,7 @@ Important
 <ul>
 <li>And doing the same for <code>ascent</code></li>
 </ul>
-<div id="abc7537a" class="cell" data-execution_count="2">
+<div id="ea973213" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> datasets</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -496,7 +502,7 @@ Important
 </ul></li>
 <li>For example,</li>
 </ul>
-<div id="42953eb2" class="cell" data-execution_count="3">
+<div id="5113cf6a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> special</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"special.factorial(3):"</span>, special.factorial(<span class="dv">3</span>))</span>
@@ -535,7 +541,7 @@ Caution
 <li>Each provides a common interface</li>
 <li>For example, demonstrating with a binomial distribution</li>
 </ul>
-<div id="97c7a4d7" class="cell" data-execution_count="4">
+<div id="ccb4e8f7" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -563,7 +569,7 @@ B.cdf(4): 0.23750777887760136
 B.mean(): 6.0
 B.std(): 2.04939015319192
 B.rvs(): 6
-B.rvs(15): [7 3 9 4 7 3 9 6 6 9 8 6 6 8 8]</code></pre>
+B.rvs(15): [8 5 5 7 5 6 5 4 6 5 6 6 5 7 5]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -586,7 +592,7 @@ B.rvs(15): [7 3 9 4 7 3 9 6 6 9 8 6 6 8 8]</code></pre>
 </ul></li>
 <li>A left-skewed distribution</li>
 </ul>
-<div id="c5425f05" class="cell" data-execution_count="5">
+<div id="a3dbf487" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -605,7 +611,7 @@ B.rvs(15): [7 3 9 4 7 3 9 6 6 9 8 6 6 8 8]</code></pre>
 <ul>
 <li>A right-shifted distribution</li>
 </ul>
-<div id="a8ebd35f" class="cell" data-execution_count="6">
+<div id="2c7842d8" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -651,7 +657,7 @@ B.rvs(15): [7 3 9 4 7 3 9 6 6 9 8 6 6 8 8]</code></pre>
 </ul></li>
 <li>For example, a common continuous distribution is the normal distribution</li>
 </ul>
-<div id="01c955a3" class="cell" data-execution_count="7">
+<div id="bec8fde5" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -670,7 +676,7 @@ B.rvs(15): [7 3 9 4 7 3 9 6 6 9 8 6 6 8 8]</code></pre>
 <ul>
 <li>As we change the <code>loc</code> and <code>scale</code> parameters the distribution will change too</li>
 </ul>
-<div id="4fa90310" class="cell" data-execution_count="8">
+<div id="329519b4" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -681,7 +687,7 @@ B.rvs(15): [7 3 9 4 7 3 9 6 6 9 8 6 6 8 8]</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Chapter_08_files/figure-html/cell-9-output-1.png" width="583" height="411" class="figure-img"></p>
+<p><img src="Chapter_08_files/figure-html/cell-9-output-1.png" width="590" height="411" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -689,7 +695,7 @@ B.rvs(15): [7 3 9 4 7 3 9 6 6 9 8 6 6 8 8]</code></pre>
 <ul>
 <li>As mentioned continuous distributions have a common interface</li>
 </ul>
-<div id="339217cb" class="cell" data-execution_count="9">
+<div id="fd4b20c0" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">30</span>, scale<span class="op">=</span><span class="dv">50</span>)</span>
@@ -711,7 +717,7 @@ B.rvs(15): [7 3 9 4 7 3 9 6 6 9 8 6 6 8 8]</code></pre>
 <pre><code>N.mean(): 30.0
 N.pdf(4): 0.006969850255179491
 N.cdf(2): 0.28773971884902705
-N.rvs(): 35.61113237039564
+N.rvs(): 60.24430852538008
 N.var(): 2500.0
 N.median(): 30.0
 N.std(): 50.0</code></pre>
@@ -720,7 +726,7 @@ N.std(): 50.0</code></pre>
 <ul>
 <li>A continuous analogue to the Poisson Distribution is the exponential distribution</li>
 </ul>
-<div id="52df7877" class="cell" data-execution_count="10">
+<div id="6218fa24" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -739,7 +745,7 @@ N.std(): 50.0</code></pre>
 <ul>
 <li>We can also use a uniform distribution</li>
 </ul>
-<div id="0901f2c6" class="cell" data-execution_count="11">
+<div id="c3cec25e" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -786,7 +792,7 @@ N.std(): 50.0</code></pre>
 </ul></li>
 </ol>
 <p>See answers implemented below</p>
-<div id="c57c4e45" class="cell" data-execution_count="12">
+<div id="9c83139a" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -806,16 +812,16 @@ N.std(): 50.0</code></pre>
 <pre><code>Q1
 U.mean() = 15.0
 Q2
-[16.30229611 15.41018613 13.41192441 16.49800104 16.51132276 15.60952062
- 16.03809737 14.94074766 15.84245208 13.82965799 13.97818799 14.63363603
- 16.81333713 14.67640849 14.46768935 14.65454012 15.37414418 15.99827106
- 15.31105225 16.45546747 14.16236248 16.29349105 15.15408412 15.18941355
- 16.08102811]</code></pre>
+[14.10949476 16.29427464 15.24647383 14.4596524  15.28570664 15.33738386
+ 15.29239825 13.38710076 14.90854313 16.71477726 15.36531713 14.63423328
+ 15.41737064 18.01553163 14.68205038 15.44344319 15.6547333  15.29193281
+ 15.6287772  13.73147543 16.17762033 14.77816244 15.12761851 14.89092688
+ 15.17111018]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Chapter_08_files/figure-html/cell-13-output-2.png" width="558" height="411" class="figure-img"></p>
+<p><img src="Chapter_08_files/figure-html/cell-13-output-2.png" width="566" height="411" class="figure-img"></p>
 </figure>
 </div>
 </div>
