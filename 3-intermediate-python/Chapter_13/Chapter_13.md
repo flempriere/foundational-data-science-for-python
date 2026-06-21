@@ -568,7 +568,7 @@ print(f"g_ten prints as {g_ten}")
     l_ten is a <class 'list'>
     l_ten is prints as: [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
     g_ten is a <class 'generator'>
-    g_ten prints as <generator object <genexpr> at 0x7f2f34992400>
+    g_ten prints as <generator object <genexpr> at 0x7f53909ce400>
 
 - A generator does not provide it’s contents
 - To get values from a generator, you can call `next`
@@ -739,7 +739,7 @@ print(f"The third call to capitalised: {next(capitalised)}")
 
      def do_something(c):
          c = 3
-         d = 4
+         a = 4
          print(a)
          return c
 
@@ -747,11 +747,13 @@ print(f"The third call to capitalised: {next(capitalised)}")
      print(a + b)
     ```
 
-        1
+        4
         4
 
     - `do_something` returns `3` and assigns it to `b`
-      - As a side effect it calls `print` on `a`, so prints `1`
+      - It temporarily reassigns `a` to $4$
+      - As a side effect it calls `print` on `a`, so prints $4$
+    - In the outer scope the value of `a` is once again $1$
     - Then we call the equivalent of `print(3 + 1)` so the final result
       is `4`
 
@@ -867,7 +869,7 @@ b = 2
 
 def do_something(c):
     c = 3
-    d = 4
+    a = 4
     print(a)
     return c
 
@@ -876,7 +878,7 @@ print(a + b)
 ```
 
     Question 1
-    1
+    4
     4
 
 ``` python
