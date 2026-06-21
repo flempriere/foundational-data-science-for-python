@@ -555,7 +555,7 @@ Note
 <li>Prepend the command with the <code>!</code> operator</li>
 </ul></li>
 </ul>
-<div id="e0df468f" class="cell" data-execution_count="1">
+<div id="5d6995bc" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pwd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/home/runner/work/foundational-data-science-for-python/foundational-data-science-for-python/1_learning-python-in-a-notebook-environment/Chapter_01</code></pre>
@@ -564,7 +564,7 @@ Note
 <ul>
 <li>Shell output can be captured in Python variables to be used in the program</li>
 </ul>
-<div id="f42ae116" class="cell" data-execution_count="2">
+<div id="fadf4ddf" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> <span class="op">!</span>ls</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -578,17 +578,17 @@ Note
 <li>Magic functions are special in-builts that adjust how a python program runs</li>
 <li>For example, jupyter provides an inbuilt of the python <code>timeit</code> statement for timing the execution of a cell</li>
 </ul>
-<div id="16488402" class="cell" data-execution_count="3">
+<div id="a39f56df" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit time.sleep(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1 s ± 6.62 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)</code></pre>
+<pre><code>1 s ± 56.7 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)</code></pre>
 </div>
 </div>
 <ul>
 <li>Or to render HTML</li>
 </ul>
-<div id="a62893f2" class="cell" data-execution_count="4">
+<div id="7e377b60" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>html</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>marquee style<span class="op">=</span><span class="st">'width: 30%; color: blue;'</span><span class="op">&gt;&lt;</span>b<span class="op">&gt;</span>Whee<span class="op">!&lt;/</span>b<span class="op">&gt;&lt;/</span>marquee<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
