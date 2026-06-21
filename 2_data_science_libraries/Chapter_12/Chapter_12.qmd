@@ -136,7 +136,7 @@ caesar_filtered = [word for word in caesar if word not in string.punctuation]
 
 print("Number of punctuation symbols:", len(caesar) - len(caesar_filtered))
 
-caesar_dist = nltk.freqDist(caesar_filtered)
+caesar_dist = nltk.FreqDist(caesar_filtered)
 caesar_dist.most_common(15)
 ```
 
@@ -185,7 +185,7 @@ caesar_filtered = [
     if word.lower() not in english_stopwords
 ]
 
-print("Number of stop words:", len(caesar_punctuation_filtered) - caesar_filtered)
+print("Number of stop words:", len(caesar_punctuation_filtered) - len(caesar_filtered))
 
 caesar_dist = nltk.freqDist(caesar_filtered)
 caesar_dist.most_common(15)
@@ -212,7 +212,7 @@ caesar_filtered = [
     word for word in caesar_filtered if word.lower() not in english_stopwords
 ]
 
-caesar_dist = nltk.freqDist(caesar_filtered)
+caesar_dist = nltk.FreqDist(caesar_filtered)
 
 
 print("caesar_dist.max():", caesar_dist.max())  # The word with the most appearances
@@ -281,7 +281,7 @@ print("caesar_t.similar('Caesar'):")
 caesar_t.similar("Caesar")
 
 print("caesar_t.findall(r'<O><C.*>'):"
-caesar_t.findall(r"<O><C.*>")
+caesar_t.findall(r"<O><C.*>"))
 
 caesar_t.dispersion_plot(["Caesar", "Antony", "Brutus", "Cassi"])
 ```
@@ -449,7 +449,10 @@ editorial_paragraphs_flattened = [
 ]
 fiction_paragraphs_flattened = [flatten(paragraph) for paragraph in fiction_paragraphs]
 
-print("Flattened editorial paragraphs:\n", editorial_paragraphs_flattened)
+print(
+    "Flattened editorial paragraphs:\n",
+    "\n".join([str(paragraph) for paragraph in editorial_paragraphs_flattened]),
+)
 ```
 
 - Next we need to associate the labels to each of our data sets
@@ -543,9 +546,10 @@ editorial_paragraphs_labelled = itertools.product(
 fiction_paragraphs_labelled = itertools.product(
     editorial_paragraphs_flattened, ("fiction",)
 )
-labelled_data = itertools.chain(
-    editorial_paragraphs_labelled, fiction_paragraphs_labelled
+labelled_data = list(
+    itertools.chain(editorial_paragraphs_labelled, fiction_paragraphs_labelled)
 )
+
 random.shuffle(labelled_data)
 labelled_data
 ```
@@ -636,8 +640,8 @@ editorial_paragraphs_labelled = itertools.product(
 fiction_paragraphs_labelled = itertools.product(
     editorial_paragraphs_flattened, ("fiction",)
 )
-labelled_data = itertools.chain(
-    editorial_paragraphs_labelled, fiction_paragraphs_labelled
+labelled_data = list(
+    itertools.chain(editorial_paragraphs_labelled, fiction_paragraphs_labelled)
 )
 random.shuffle(labelled_data)
 
@@ -742,8 +746,8 @@ editorial_paragraphs_labelled = itertools.product(
 fiction_paragraphs_labelled = itertools.product(
     editorial_paragraphs_flattened, ("fiction",)
 )
-labelled_data = itertools.chain(
-    editorial_paragraphs_labelled, fiction_paragraphs_labelled
+labelled_data = list(
+    itertools.chain(editorial_paragraphs_labelled, fiction_paragraphs_labelled)
 )
 random.shuffle(labelled_data)
 
@@ -867,7 +871,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
         english_stopwords = stopwords.words("english")
         alice_filtered = [word for word in alice_filtered if word.lower() not in english_stopwords]
 
-        alice_dist = nltk.freqDist(alice_filtered)
+        alice_dist = nltk.FreqDist(alice_filtered)
         alice_dist.tabulate(10)
      ```
 
@@ -914,7 +918,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
 
         hamlet_words = gutenberg.words("shakespeare-hamlet")
 
-        hamlet_words_filtered = [name for word in hamlet_words if name := word.capitalize() in male_names or name in female_names]
+        hamlet_words_filtered = [name for word in hamlet_words if (name := word.capitalize()) in male_names or name in female_names]
 
         hamlet_name_dist = nltk.FreqDist(hamelet_words_filtered)
         hamlet_name_dist.most_common(10)
@@ -967,7 +971,7 @@ alice_filtered = [
     word for word in alice_filtered if word.lower() not in english_stopwords
 ]
 
-caesar_dist = nltk.freqDist(caesar_filtered)
+caesar_dist = nltk.FreqDist(caesar_filtered)
 caesar_dist.tabulate(10)
 
 print("Question 4")
@@ -990,7 +994,11 @@ female_names = names.words("female.txt")
 
 hamlet_words = gutenberg.words("shakespeare-hamlet")
 
-hamlet_words_filtered = [name for word in hamlet_words if name := word.capitalize() in male_names or name in female_names]
+hamlet_words_filtered = [
+    name
+    for word in hamlet_words
+    if (name := word.capitalize()) in male_names or name in female_names
+]
 
 hamlet_name_dist = nltk.FreqDist(hamelet_words_filtered)
 hamlet_name_dist.most_common(10)
