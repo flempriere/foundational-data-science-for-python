@@ -269,18 +269,18 @@ from nltk.text import Text
 caesar = gutenberg.words("shakespeare-caesar.txt")
 caesar_t = Text(caesar)
 
-print(
-    "caesar_t.concordance('Antony', lines=5):\n",
-    caesar_t.concordance("Antony", lines=5),
-)
+print("caesar_t.concordance('Antony', lines=5):")
+(caesar_t.concordance("Antony", lines=5),)
 
-print("caesar_t.collocations(num=4):")
+
+print("\ncaesar_t.collocations(num=4):")
 caesar_t.collocations(num=4)
 
-print("caesar_t.similar('Caesar'):")
+print("\ncaesar_t.similar('Caesar'):")
 caesar_t.similar("Caesar")
 
-print("caesar_t.findall(r'<O><C.*>'):", caesar_t.findall(r"<O><C.*>"))
+print("\ncaesar_t.findall(r'<O><C.*>'):\n")
+caesar_t.findall(r"<O><C.*>")
 
 caesar_t.dispersion_plot(["Caesar", "Antony", "Brutus", "Cassi"])
 ```
@@ -550,7 +550,7 @@ labelled_data = list(
 )
 
 random.shuffle(labelled_data)
-labelled_data[:10]
+labelled_data[0]
 ```
 
 - To use the classifier we have to convert our paragraphs into a *feature set*
@@ -647,7 +647,7 @@ random.shuffle(labelled_data)
 
 # create the feature sets
 def define_features(paragraph: Set[str], feature_words: Set[str]) -> dict[str, bool]:
-    features = {word: word in feature_words for word in paragraph}
+    features = {word: word in paragraph for word in feature_words}
     return features
 
 
@@ -918,7 +918,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
      ```{python}
         from nltk.corpus import gutenberg
 
-        hamlet_words = gutenberg.words("shakespeare-hamlet")
+        hamlet_words = gutenberg.words("shakespeare-hamlet.txt")
 
         hamlet_words_filtered = [name for word in hamlet_words if (name := word.capitalize()) in male_names or name in female_names]
 
@@ -1002,6 +1002,6 @@ hamlet_words_filtered = [
     if (name := word.capitalize()) in male_names or name in female_names
 ]
 
-hamlet_name_dist = nltk.FreqDist(hamelet_words_filtered)
+hamlet_name_dist = nltk.FreqDist(hamlet_words_filtered)
 hamlet_name_dist.most_common(10)
 ```
