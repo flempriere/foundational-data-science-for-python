@@ -24,7 +24,8 @@ This repository contains notes and code examples from the book,
 - [Chapter 8: SciPy](2_data_science_libraries/Chapter_08/Chapter_08.md)
 - [Chapter 9: Pandas](2_data_science_libraries/Chapter_09/Chapter_09.md)
 - [Chapter 10: Visualisation Libraries](2_data_science_libraries/Chapter_10/Chapter_10.md)
-- [Chapter 11: Machine Learning Libraries](2_data_science/libraries/Chapter_11/Chapter_11.md)
+- [Chapter 11: Machine Learning Libraries](2_data_science_libraries/Chapter_11/Chapter_11.md)
+- [Chapter 12: Natural Language Toolkit](2_data_science_libraries/Chapter_12/Chapter_12.md)
 
 ### III: Intermediate Python
 
