@@ -132,7 +132,7 @@ print("punctuation:", string.punctuation)
 
 caesar = gutenberg.words("shakespeare-caesar.txt")
 
-caesar_filtered = [word if word not in string.punctuation for word in caesar]
+caesar_filtered = [word for word in caesar if word not in string.punctuation]
 
 print("Number of punctuation symbols:", len(caesar) - len(caesar_filtered))
 
@@ -173,11 +173,17 @@ from nltk.corpus import gutenberg, stopwords
 caesar = gutenberg.words("shakespeare-caesar.txt")
 
 # filter out punctuation
-caesar_punctuation_filtered = [word if word not in string.punctuation for word in caesar]
+caesar_punctuation_filtered = [
+    word for word in caesar if word not in string.punctuation
+]
 
 # filter out stopwords
 english_stopwords = stopwords.words("english")
-caesar_filtered = [word if word.lower() not in english_stopwords for word in caesar_punctuation_filtered]
+caesar_filtered = [
+    word
+    for word in caesar_punctuation_filtered
+    if word.lower() not in english_stopwords
+]
 
 print("Number of stop words:", len(caesar_punctuation_filtered) - caesar_filtered)
 
@@ -198,24 +204,32 @@ from nltk.corpus import gutenberg, stopwords
 caesar = gutenberg.words("shakespeare-caesar.txt")
 
 # filter out punctuation
-caesar_filtered = [word if word not in string.punctuation for word in caesar]
+caesar_filtered = [word for word in caesar if word not in string.punctuation]
 
 # filter out stopwords
 english_stopwords = stopwords.words("english")
-caesar_filtered = [word if word.lower() not in english_stopwords for word in caesar_filtered]
+caesar_filtered = [
+    word for word in caesar_filtered if word.lower() not in english_stopwords
+]
 
 caesar_dist = nltk.freqDist(caesar_filtered)
 
 
-print("caesar_dist.max():", caesar_dist.max()) # The word with the most appearances
+print("caesar_dist.max():", caesar_dist.max())  # The word with the most appearances
 
-print("caesar_dist['Cassi']:", caesar_dist['Cassi']) # perform a key lookup for the count of a particular word
+print(
+    "caesar_dist['Cassi']:", caesar_dist["Cassi"]
+)  # perform a key lookup for the count of a particular word
 
-print("caesar_dist.freq('Cassi'):", caesar_dist.freq('Cassi')) # Count of the word divided by the total count
+print(
+    "caesar_dist.freq('Cassi'):", caesar_dist.freq("Cassi")
+)  # Count of the word divided by the total count
 
-print("caesar_dist.N():", caesar_dist.N()) # The number of words
+print("caesar_dist.N():", caesar_dist.N())  # The number of words
 
-print("caesar_dist.tabulate(10):\n", caesar_dist.tabulate(10)) # Display the count for the top 10 words
+print(
+    "caesar_dist.tabulate(10):\n", caesar_dist.tabulate(10)
+)  # Display the count for the top 10 words
 
 # plot the 10 most frequent words
 caesar_dist.plot(10)
@@ -435,7 +449,7 @@ editorial_paragraphs_flattened = [
 ]
 fiction_paragraphs_flattened = [flatten(paragraph) for paragraph in fiction_paragraphs]
 
-print("Flattened editorial paragraphs:\n", "\n".join(editorial_paragraphs_flattened))
+print("Flattened editorial paragraphs:\n", editorial_paragraphs_flattened)
 ```
 
 - Next we need to associate the labels to each of our data sets
@@ -847,11 +861,11 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
         alice = gutenberg.words("carroll-alice.txt")
 
         # filter out punctuation
-        alice_filtered = [word if word not in string.punctuation for word in alice]
+        alice_filtered = [word for word in alice if word not in string.punctuation]
 
         # filter out stopwords
         english_stopwords = stopwords.words("english")
-        alice_filtered = [word if word.lower() not in english_stopwords for word in alice_filtered]
+        alice_filtered = [word for word in alice_filtered if word.lower() not in english_stopwords]
 
         alice_dist = nltk.freqDist(alice_filtered)
         alice_dist.tabulate(10)
@@ -900,7 +914,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
 
         hamlet_words = gutenberg.words("shakespeare-hamlet")
 
-        hamlet_words_filtered = [name if name := word.capitalize() in male_names or name in female_names for word in hamlet_words]
+        hamlet_words_filtered = [name for word in hamlet_words if name := word.capitalize() in male_names or name in female_names]
 
         hamlet_name_dist = nltk.FreqDist(hamelet_words_filtered)
         hamlet_name_dist.most_common(10)
@@ -945,11 +959,13 @@ print(
 print("Question 3")
 
 # filter out punctuation
-alice_filtered = [word if word not in string.punctuation for word in alice]
+alice_filtered = [word for word in alice if word not in string.punctuation]
 
 # filter out stopwords
 english_stopwords = stopwords.words("english")
-alice_filtered = [word if word.lower() not in english_stopwords for word in alice_filtered]
+alice_filtered = [
+    word for word in alice_filtered if word.lower() not in english_stopwords
+]
 
 caesar_dist = nltk.freqDist(caesar_filtered)
 caesar_dist.tabulate(10)
@@ -958,7 +974,10 @@ print("Question 4")
 
 alice = gutenberg.words("carroll-alice.txt")
 alice_text = Text(alice)
-print("Words similar to 'rabbit' in Alice in Wonderland are:\n", alice_text.similar("rabbit"))
+print(
+    "Words similar to 'rabbit' in Alice in Wonderland are:\n",
+    alice_text.similar("rabbit"),
+)
 ```
 
 ```{python}
@@ -971,7 +990,7 @@ female_names = names.words("female.txt")
 
 hamlet_words = gutenberg.words("shakespeare-hamlet")
 
-hamlet_words_filtered = [name if name := word.capitalize() in male_names or name in female_names for word in hamlet_words]
+hamlet_words_filtered = [name for word in hamlet_words if name := word.capitalize() in male_names or name in female_names]
 
 hamlet_name_dist = nltk.FreqDist(hamelet_words_filtered)
 hamlet_name_dist.most_common(10)
