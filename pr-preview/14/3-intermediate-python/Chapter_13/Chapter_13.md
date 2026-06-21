@@ -569,7 +569,7 @@ print(f"g_ten prints as {g_ten}")
     l_ten is a <class 'list'>
     l_ten is prints as: [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
     g_ten is a <class 'generator'>
-    g_ten prints as <generator object <genexpr> at 0x7f53909ce400>
+    g_ten prints as <generator object <genexpr> at 0x7fca70442400>
 
 - A generator does not provide it’s contents
 - To get values from a generator, you can call `next`
@@ -772,8 +772,7 @@ print(f"The third call to capitalised: {next(capitalised)}")
 
       ``` python
          word = "omni"
-         result = map(lambda c : c * 2, word)
-         result = list(result)
+         result = list(map(lambda c : c * 2, word))
          print(result)
       ```
 
@@ -783,10 +782,11 @@ print(f"The third call to capitalised: {next(capitalised)}")
     list comprehension to find the summation of the positive even
     numbers below $100$
 
-    - We can do this as a fairly simple one-liner
+    - We can do this as a fairly simple one-liner, bypassing the list
+      comprehension entirely
 
       ``` python
-         total = sum([2 * x for x in range(50)])
+         total = sum(range(0, 100, 2))
          print(total)
       ```
 
@@ -831,18 +831,12 @@ print(f"The third call to capitalised: {next(capitalised)}")
          int
              The $i$-th call, where $i$ is the number of calls
          """
+         x_0 = 0
+         x_1 = 1
 
-         # initial state
-         yield 0
-         yield 1
-
-         x_prev_prev = 0
-         x_prev = 1
          while True:
-             fibonacci_number = x_prev_prev + x_prev
-             x_prev_prev = x_prev
-             x_prev = fibonacci_number
-             yield fibonacci_number
+             yield x_0
+             x_0, x_1 = x_1, x_0 + x_1
 
      fib = fibonacci_sequence()
      for i in range(10):
@@ -897,7 +891,7 @@ print(result)
 ``` python
 print("Question 3")
 
-total = sum([2 * x for x in range(50)])
+total = sum(range(0, 100, 2))
 print(total)
 ```
 
@@ -930,32 +924,21 @@ def fibonacci_sequence():
     int
         The $i$-th call, where $i$ is the number of calls
     """
+        x_0 = 0
+        x_1 = 1
 
-    # initial state
-    yield 0
-    yield 1
+        while True:
+            yield x_0
+            x_0, x_1 = x_1, x_0 + x_1
 
-    x_prev_prev = 0
-    x_prev = 1
-    while True:
-        fibonacci_number = x_prev_prev + x_prev
-        x_prev_prev = x_prev
-        x_prev = fibonacci_number
-        yield fibonacci_number
 
 fib = fibonacci_sequence()
 for i in range(10):
     print(f"{i}-th fibonacci:", next(fib))
 ```
 
-    Question 5
-    0-th fibonacci: 0
-    1-th fibonacci: 1
-    2-th fibonacci: 1
-    3-th fibonacci: 2
-    4-th fibonacci: 3
-    5-th fibonacci: 5
-    6-th fibonacci: 8
-    7-th fibonacci: 13
-    8-th fibonacci: 21
-    9-th fibonacci: 34
+    IndentationError: unexpected indent (2112530044.py, line 12)
+      Cell In[41], line 12
+        x_0 = 0
+        ^
+    IndentationError: unexpected indent
