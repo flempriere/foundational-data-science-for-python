@@ -639,7 +639,7 @@ b = 2
 
 def do_something(c):
     c = 3
-    d = 4
+    a = 4
     print(a)
     return c
 
