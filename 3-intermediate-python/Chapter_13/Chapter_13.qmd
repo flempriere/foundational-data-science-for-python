@@ -570,17 +570,16 @@ print(f"The third call to capitalised: {next(capitalised)}")
 
      ```{python}
         word = "omni"
-        result = map(lambda c : c * 2, word)
-        result = list(result)
+        result = list(map(lambda c : c * 2, word))
         print(result)
      ```
 
 3. Use the `sum` function which sums the contents of a sequence, with a list comprehension to find the summation of the positive even numbers below $100$
 
-   - We can do this as a fairly simple one-liner
+   - We can do this as a fairly simple one-liner, bypassing the list comprehension entirely
 
      ```{python}
-        total = sum([2 * x for x in range(50)])
+        total = sum(range(0, 100, 2))
         print(total)
      ```
 
@@ -611,18 +610,12 @@ print(f"The third call to capitalised: {next(capitalised)}")
         int
             The $i$-th call, where $i$ is the number of calls
         """
+        x_0 = 0
+        x_1 = 1
 
-        # initial state
-        yield 0
-        yield 1
-
-        x_prev_prev = 0
-        x_prev = 1
         while True:
-            fibonacci_number = x_prev_prev + x_prev
-            x_prev_prev = x_prev
-            x_prev = fibonacci_number
-            yield fibonacci_number
+            yield x_0
+            x_0, x_1 = x_1, x_0 + x_1
 
     fib = fibonacci_sequence()
     for i in range(10):
@@ -659,7 +652,7 @@ print(result)
 ```{python}
 print("Question 3")
 
-total = sum([2 * x for x in range(50)])
+total = sum(range(0, 100, 2))
 print(total)
 ```
 
@@ -684,18 +677,13 @@ def fibonacci_sequence():
     int
         The $i$-th call, where $i$ is the number of calls
     """
+        x_0 = 0
+        x_1 = 1
 
-    # initial state
-    yield 0
-    yield 1
+        while True:
+            yield x_0
+            x_0, x_1 = x_1, x_0 + x_1
 
-    x_prev_prev = 0
-    x_prev = 1
-    while True:
-        fibonacci_number = x_prev_prev + x_prev
-        x_prev_prev = x_prev
-        x_prev = fibonacci_number
-        yield fibonacci_number
 
 fib = fibonacci_sequence()
 for i in range(10):
