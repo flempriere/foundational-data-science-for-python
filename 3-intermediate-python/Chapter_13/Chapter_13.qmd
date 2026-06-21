@@ -547,7 +547,7 @@ print(f"The third call to capitalised: {next(capitalised)}")
 
     def do_something(c):
         c = 3
-        d = 4
+        a = 4
         print(a)
         return c
 
@@ -556,7 +556,9 @@ print(f"The third call to capitalised: {next(capitalised)}")
    ```
 
    - `do_something` returns `3` and assigns it to `b`
-     - As a side effect it calls `print` on `a`, so prints `1`
+     - It temporarily reassigns `a` to $4$
+     - As a side effect it calls `print` on `a`, so prints $4$
+   - In the outer scope the value of `a` is once again $1$
    - Then we call the equivalent of `print(3 + 1)` so the final result is `4`
 
 2. Use the `map` function to take the string `"omni"` and return the list `["oo", "mm", "nn", "ii"]`
