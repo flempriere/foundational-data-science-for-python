@@ -100,7 +100,7 @@ caesar
 
 ### Frequency Distributions
 
-- The `nltk.freqDist` class can be used to examine the occurrences of words within a text
+- The `nltk.FreqDist` class can be used to examine the occurrences of words within a text
 - Can look at,
     - Which words are the most frequent
     - How many unique words there are
@@ -187,13 +187,13 @@ caesar_filtered = [
 
 print("Number of stop words:", len(caesar_punctuation_filtered) - len(caesar_filtered))
 
-caesar_dist = nltk.freqDist(caesar_filtered)
+caesar_dist = nltk.FreqDist(caesar_filtered)
 caesar_dist.most_common(15)
 ```
 
 - With the extraneous words removed we can start deriving insight into the text
     - For example, the above shows Caesar and Brutus are mentioned the most out of any other characters
-- The `freqDist` class also comes with a bunch of other methods for analysing a text
+- The `FreqDist` class also comes with a bunch of other methods for analysing a text
 
 ```{python}
 import string
@@ -280,8 +280,7 @@ caesar_t.collocations(num=4)
 print("caesar_t.similar('Caesar'):")
 caesar_t.similar("Caesar")
 
-print("caesar_t.findall(r'<O><C.*>'):"
-caesar_t.findall(r"<O><C.*>"))
+print("caesar_t.findall(r'<O><C.*>'):", caesar_t.findall(r"<O><C.*>"))
 
 caesar_t.dispersion_plot(["Caesar", "Antony", "Brutus", "Cassi"])
 ```
@@ -451,7 +450,7 @@ fiction_paragraphs_flattened = [flatten(paragraph) for paragraph in fiction_para
 
 print(
     "Flattened editorial paragraphs:\n",
-    "\n".join([str(paragraph) for paragraph in editorial_paragraphs_flattened]),
+    "\n".join([str(paragraph) for paragraph in editorial_paragraphs_flattened][:5]),
 )
 ```
 
@@ -551,7 +550,7 @@ labelled_data = list(
 )
 
 random.shuffle(labelled_data)
-labelled_data
+labelled_data[:10]
 ```
 
 - To use the classifier we have to convert our paragraphs into a *feature set*
@@ -661,7 +660,10 @@ feature_data = [
 train_data = feature_data[:1400]
 test_data = feature_data[1400:]
 
-print("test data sample:\n", test_data[0:10])
+print(
+    "test data sample:\n",
+    "\n".join([str(test_entry) for test_entry in test_data[0:10]]),
+)
 ```
 
 - Now that the data has been cleaned and converted to the required input format we can classify it
@@ -754,7 +756,7 @@ random.shuffle(labelled_data)
 
 # create the feature sets
 def define_features(paragraph: Set[str], feature_words: Set[str]) -> dict[str, bool]:
-    features = {word: word in feature_words for word in paragraph}
+    features = {word: word in paragraph for word in feature_words}
     return features
 
 
@@ -914,7 +916,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
    - Then simply report the ten most common via `FreqDist`
 
      ```{python}
-        from nltk import gutenberg
+        from nltk.corpus import gutenberg
 
         hamlet_words = gutenberg.words("shakespeare-hamlet")
 
@@ -992,7 +994,7 @@ from nltk.corpus import gutenberg, names
 male_names = names.words("male.txt")
 female_names = names.words("female.txt")
 
-hamlet_words = gutenberg.words("shakespeare-hamlet")
+hamlet_words = gutenberg.words("shakespeare-hamlet.txt")
 
 hamlet_words_filtered = [
     name
