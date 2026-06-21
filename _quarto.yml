@@ -29,12 +29,12 @@ website:
           - 1-learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.qmd
       - section: "II: Data Science Libraries"
         contents:
-          - 2_data-science-libraries/Chapter_07/Chapter_07.qmd
-          - 2_data-science-libraries/Chapter_08/Chapter_08.qmd
-          - 2_data-science-libraries/Chapter_09/Chapter_09.qmd
-          - 2_data-science-libraries/Chapter_10/Chapter_10.qmd
-          - 2_data-science-libraries/Chapter_11/Chapter_11.qmd
-          - 2_data-science-libraries/Chapter_12/Chapter_12.qmd
+          - 2-data-science-libraries/Chapter_07/Chapter_07.qmd
+          - 2-data-science-libraries/Chapter_08/Chapter_08.qmd
+          - 2-data-science-libraries/Chapter_09/Chapter_09.qmd
+          - 2-data-science-libraries/Chapter_10/Chapter_10.qmd
+          - 2-data-science-libraries/Chapter_11/Chapter_11.qmd
+          - 2-data-science-libraries/Chapter_12/Chapter_12.qmd
       - section: "III: Functional Programming"
         contents:
           - 3-intermediate-python/Chapter_13/Chapter_13.qmd

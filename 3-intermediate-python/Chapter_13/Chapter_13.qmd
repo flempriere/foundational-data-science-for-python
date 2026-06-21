@@ -36,7 +36,7 @@ title: "Chapter 13: Functional Programming"
 
 ```{python}
 a = "a outer"
-b = "b inner"
+b = "b outer"
 
 def scoped_function():
     a = "a inner"
@@ -338,7 +338,7 @@ names = ["tim", "tiger", "tabassum", "theodora", "tanya"]
 
 titled = []
 for name in names:
-    capd.append(name.title())
+    titled.append(name.title())
 
 print(titled)
 ```
@@ -556,7 +556,8 @@ print(f"The third call to capitalised: {next(capitalised)}")
    ```
 
    - `do_something` returns `3` and assigns it to `b`
-   - Then we call `print(3 + 1)` so the final result is `4`
+     - As a side effect it calls `print` on `a`, so prints `1`
+   - Then we call the equivalent of `print(3 + 1)` so the final result is `4`
 
 2. Use the `map` function to take the string `"omni"` and return the list `["oo", "mm", "nn", "ii"]`
 

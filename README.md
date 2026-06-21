@@ -29,6 +29,8 @@ This repository contains notes and code examples from the book,
 
 ### III: Intermediate Python
 
+- [Chapter 13: Functional Programming](3-intermediate-python/Chapter_13/Chapter_13.md)
+
 ## Attribution
 
 The notes and code in this repository are based on the work of the original author. You can find their original supplied code at the attached submodule, or at the following [github repository](https://github.com/kbehrman/foundational-python-for-data-science).
