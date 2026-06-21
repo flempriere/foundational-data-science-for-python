@@ -1,6 +1,5 @@
 # Chapter 13: Functional Programming
 
-
 - [Notes](#notes)
   - [Introduction to Functional
     Programming](#introduction-to-functional-programming)
@@ -52,9 +51,9 @@
 
 - This includes,
 
-  1.  Function definitions
-  2.  Imported modules
-  3.  variables and their values
+  1. Function definitions
+  2. Imported modules
+  3. variables and their values
 
 - *Scope* refers to where the *state* holds.
 
@@ -273,9 +272,9 @@ print("After:", d)
 
 - The three fundamental functions of functional programming are,
 
-  1.  `map`
-  2.  `filter`
-  3.  `reduce`
+  1. `map`
+  2. `filter`
+  3. `reduce`
 
 #### `map`
 
@@ -456,11 +455,11 @@ print(titled)
     NameError                                 Traceback (most recent call last)
     Cell In[17], line 5
           1 names = ["tim", "tiger", "tabassum", "theodora", "tanya"]
-          2 
+          2
           3 titled = []
           4 for name in names:
     ----> 5     capd.append(name.title())
-          6 
+          6
           7 print(titled)
 
     NameError: name 'capd' is not defined
@@ -629,7 +628,7 @@ g_ten[3]
     TypeError                                 Traceback (most recent call last)
     Cell In[27], line 3
           1 g_ten = (x**3 for x in range(10))
-          2 
+          2
     ----> 3 g_ten[3]
 
     TypeError: 'generator' object is not subscriptable
@@ -744,7 +743,7 @@ print(f"The third call to capitalised: {next(capitalised)}")
 
 ## Questions
 
-1.  What would the following code print?
+1. What would the following code print?
 
     ``` python
      a = 1
@@ -766,7 +765,7 @@ print(f"The third call to capitalised: {next(capitalised)}")
     - `do_something` returns `3` and assigns it to `b`
     - Then we call `print(3 + 1)` so the final result is `4`
 
-2.  Use the `map` function to take the string `"omni"` and return the
+2. Use the `map` function to take the string `"omni"` and return the
     list `["oo", "mm", "nn", "ii"]`
 
     - This is a pretty straightforward exercise once recall that a
@@ -787,7 +786,7 @@ print(f"The third call to capitalised: {next(capitalised)}")
 
           ['oo', 'mm', 'nn', 'ii']
 
-3.  Use the `sum` function which sums the contents of a sequence, with a
+3. Use the `sum` function which sums the contents of a sequence, with a
     list comprehension to find the summation of the positive even
     numbers below $100$
 
@@ -800,7 +799,7 @@ print(f"The third call to capitalised: {next(capitalised)}")
 
           2450
 
-4.  Write a generator expression that returns cubed numbers up to
+4. Write a generator expression that returns cubed numbers up to
     $1,000$
 
     - We’ll interpret *cubed numbers up to 1,000* as meaning the number
@@ -819,7 +818,7 @@ print(f"The third call to capitalised: {next(capitalised)}")
           1
           8
 
-5.  A Fibonacci Sequence starts with $0$ and $1$, and every subsequent
+5. A Fibonacci Sequence starts with $0$ and $1$, and every subsequent
     number is the sum of the previous two numbers. Write a generator
     function that calculates a Fibonacci sequence.
 
