@@ -645,11 +645,11 @@ print(
 ```
 
     Flattened editorial paragraphs:
-     {'schools', 'with', 'an', 'convened', 'showdown', 'in', 'to', 'risk', 'much', 'has', 'atmosphere', 'education', 'day', 'session', 'public', 'a', 'today', 'crisis', 'the', 'which', 'it', 'of', 'squarely', 'met', 'performed', 'adjourns', 'governor', ',', 'and', 'faced', 'immediately', 'good', 'on', 'conjunction', 'struggle', 'issue', 'brought', 'not', 'decision', 'general', 'abandoning', 'was', 'assembly', 'from', '.'}
-    {'need', 'provide', 'powers', 'fight', 'in', 'strengthening', 'to', 'has', 'final', 'a', 'the', 'they', 'which', 'executive', 'historic', 'went', 'procedures', 'decided', 'been', 'followed', 'and', ',', 'opened', 'but', 'appropriations', 'there', 'tackle', 'for', 'decision', 'general', 'budgeting', 'information', 'legislators', 'way', 'budget', 'assembly', '.'}
-    {'now', 'state', 'is', 'programs', 'musts', 'in', 'to', 'become', 'crisis-to-crisis', 'this', 'few', 'them', 'instance', 'long-range', 'planning', 'session', 'financial', 'a', 'crisis', 'the', 'next', 'of', 'two', 'have', 'ways', 'may', 'avoid', 'and', ',', 'if', 'government', 'for', 'insured', 'years', 'finance', 'from', '.'}
-    {'bills', 'state', 'ban', 'lost', 'an', 'city', 'passage', 'racing', 'in', 'all', 'teacher', 'acceptance', 'municipalities', 'pensions', 'at', 'passed', 'future', 'school', 'auto', 'the', 'age', 'await', 'action', 'law', 'of', 'rate', 'drag', 'road', 'roads', 'applaud', 'certainly', 'maintenance', 'other', 'same', 'outside', ',', 'some', 'and', 'as', 'repeal', 'college', 'responsibility', 'limit', 'increase', 'good', 'on', 'shuffle', 'can', 'issue', 'for', 'title', 'were', 'legislation', 'limits', 'bond', 'was', 'turmoil', 'by', '.'}
-    {'such', 'state', 'ending', 'fee', 'problems', 'in', 'to', 'no', 'outright', 'has', 'its', 'banning', 'attacking', 'companion', 'fireworks', 'a', 'only', 'the', 'reappraisal', 'tax', 'action', 'system', 'industry', 'of', 'unit', 'reform', 'sales', 'been', ',', 'however', 'major', 'taken', 'as', 'and', 'token', 'made', 'modification', 'on', 'issue', 'county', 'start', 'question', 'attracting', 'was', 'penal', '.'}
+     {'governor', 'risk', 'met', 'struggle', 'convened', 'which', 'crisis', 'the', 'performed', 'general', 'day', 'education', 'and', 'issue', 'conjunction', 'today', ',', 'much', 'showdown', 'abandoning', 'assembly', 'schools', 'to', '.', 'brought', 'a', 'in', 'from', 'session', 'squarely', 'decision', 'immediately', 'adjourns', 'an', 'was', 'good', 'of', 'it', 'not', 'on', 'atmosphere', 'faced', 'has', 'public', 'with'}
+    {'strengthening', 'powers', 'which', 'the', 'provide', 'general', 'information', 'procedures', 'and', 'way', 'they', 'executive', 'budget', ',', 'legislators', 'assembly', 'decided', 'to', 'historic', '.', 'but', 'a', 'followed', 'in', 'went', 'been', 'tackle', 'for', 'decision', 'fight', 'opened', 'budgeting', 'there', 'final', 'appropriations', 'has', 'need'}
+    {'crisis', 'the', 'planning', 'long-range', 'government', 'if', 'this', 'and', 'years', 'ways', 'is', 'few', 'insured', 'two', ',', 'may', 'have', 'to', 'next', '.', 'crisis-to-crisis', 'a', 'in', 'avoid', 'become', 'from', 'them', 'for', 'session', 'instance', 'state', 'financial', 'musts', 'of', 'finance', 'now', 'programs'}
+    {'age', 'title', 'all', 'passed', 'shuffle', 'same', 'limit', 'the', 'action', 'repeal', 'some', 'future', 'by', 'rate', 'and', 'maintenance', 'limits', 'issue', 'lost', 'drag', 'as', 'were', ',', 'certainly', 'teacher', 'law', 'college', '.', 'racing', 'ban', 'at', 'in', 'applaud', 'for', 'increase', 'municipalities', 'turmoil', 'bills', 'passage', 'road', 'state', 'an', 'was', 'can', 'good', 'of', 'auto', 'school', 'outside', 'acceptance', 'await', 'on', 'city', 'bond', 'legislation', 'pensions', 'roads', 'other', 'responsibility'}
+    {'reform', 'fee', 'ending', 'the', 'action', 'question', 'and', 'only', 'modification', 'its', 'issue', 'unit', 'fireworks', 'as', ',', 'however', 'token', 'penal', 'outright', 'county', 'reappraisal', 'to', '.', 'a', 'in', 'start', 'companion', 'been', 'taken', 'attracting', 'made', 'attacking', 'no', 'state', 'was', 'such', 'of', 'major', 'tax', 'banning', 'on', 'industry', 'sales', 'has', 'system', 'problems'}
 
 - Next we need to associate the labels to each of our data sets
 - Then combine together into a test set
@@ -760,34 +760,39 @@ labelled_data[0]
 
     ({',',
       '.',
-      'a',
-      'ability',
-      'american',
-      'any',
-      'besides',
-      'by',
-      'country',
-      'fight',
-      'have',
-      'heightened',
-      'its',
-      'kind',
-      'limited',
-      'limiting',
-      'much',
-      'nuclear',
+      '39-year-old',
+      "aircraft's",
+      'amateur',
+      'an',
+      'approached',
+      'at',
+      'b.',
+      'carvey',
+      'cdc',
+      'democratic',
+      'develop',
+      'duties',
+      'engineering',
+      'fashion',
+      'hard-nosed',
+      "he's",
+      'head',
+      'helping',
+      'his',
+      'hughes',
+      'in',
+      'is',
+      'jr.',
+      'missiles',
+      'moon',
+      'normal',
       'of',
-      'possibility',
-      'strategy',
-      'strength',
-      'that',
+      'politico',
+      'profession',
       'the',
-      'this',
-      'to',
-      'too',
-      'war',
-      'we',
-      'would'},
+      'thomas',
+      'unorthodox',
+      'whose'},
      'fiction')
 
 - To use the classifier we have to convert our paragraphs into a
@@ -907,16 +912,16 @@ print(
 ```
 
     test data sample:
-     ({'state': False, 'national': False, 'face': False, 'fact': False, 'city': False, 'every': False, 'country': False, 'thought': False, 'nuclear': False, 'house': False, 'states': False, 'war': False, 'peace': False, 'public': False, 'president': False, 'told': False, 'eyes': False, 'home': False, 'political': False, 'though': False, 'congress': False, 'church': False, 'world': False, 'god': False, 'voice': False, 'felt': False, 'head': False, 'room': False, 'washington': False, 'knew': False, 'night': False, 'moment': False, 'seemed': False, 'american': False, 'stood': False, 'party': False, 'power': False, 'think': False, 'government': False, 'county': False, 'big': False, 'hand': False, 'united': False, 'editor': False, 'found': False}, 'editorial')
-    ({'state': False, 'national': False, 'face': False, 'fact': False, 'city': False, 'every': False, 'country': False, 'thought': False, 'nuclear': False, 'house': False, 'states': True, 'war': False, 'peace': False, 'public': False, 'president': True, 'told': False, 'eyes': False, 'home': False, 'political': True, 'though': False, 'congress': False, 'church': False, 'world': False, 'god': False, 'voice': False, 'felt': False, 'head': False, 'room': False, 'washington': False, 'knew': False, 'night': False, 'moment': False, 'seemed': False, 'american': False, 'stood': False, 'party': False, 'power': False, 'think': False, 'government': True, 'county': False, 'big': False, 'hand': False, 'united': True, 'editor': False, 'found': False}, 'fiction')
-    ({'state': False, 'national': False, 'face': False, 'fact': False, 'city': False, 'every': False, 'country': False, 'thought': False, 'nuclear': False, 'house': False, 'states': False, 'war': False, 'peace': False, 'public': False, 'president': False, 'told': False, 'eyes': False, 'home': False, 'political': False, 'though': False, 'congress': False, 'church': False, 'world': False, 'god': False, 'voice': False, 'felt': False, 'head': False, 'room': False, 'washington': False, 'knew': False, 'night': False, 'moment': False, 'seemed': False, 'american': False, 'stood': False, 'party': False, 'power': False, 'think': False, 'government': False, 'county': False, 'big': False, 'hand': False, 'united': False, 'editor': True, 'found': False}, 'editorial')
-    ({'state': False, 'national': False, 'face': False, 'fact': False, 'city': False, 'every': False, 'country': False, 'thought': False, 'nuclear': False, 'house': False, 'states': False, 'war': False, 'peace': False, 'public': False, 'president': False, 'told': False, 'eyes': False, 'home': False, 'political': False, 'though': False, 'congress': False, 'church': False, 'world': False, 'god': False, 'voice': False, 'felt': False, 'head': False, 'room': False, 'washington': False, 'knew': False, 'night': False, 'moment': False, 'seemed': False, 'american': False, 'stood': False, 'party': False, 'power': False, 'think': False, 'government': False, 'county': False, 'big': False, 'hand': False, 'united': False, 'editor': False, 'found': False}, 'editorial')
-    ({'state': False, 'national': False, 'face': False, 'fact': False, 'city': False, 'every': False, 'country': False, 'thought': False, 'nuclear': False, 'house': False, 'states': False, 'war': False, 'peace': False, 'public': False, 'president': False, 'told': True, 'eyes': False, 'home': False, 'political': False, 'though': False, 'congress': False, 'church': False, 'world': False, 'god': False, 'voice': False, 'felt': False, 'head': False, 'room': False, 'washington': False, 'knew': False, 'night': False, 'moment': False, 'seemed': False, 'american': False, 'stood': False, 'party': False, 'power': False, 'think': False, 'government': False, 'county': False, 'big': False, 'hand': False, 'united': False, 'editor': False, 'found': False}, 'fiction')
-    ({'state': False, 'national': False, 'face': False, 'fact': False, 'city': False, 'every': False, 'country': False, 'thought': False, 'nuclear': False, 'house': False, 'states': False, 'war': False, 'peace': False, 'public': False, 'president': False, 'told': False, 'eyes': False, 'home': False, 'political': False, 'though': False, 'congress': False, 'church': False, 'world': False, 'god': False, 'voice': False, 'felt': False, 'head': False, 'room': False, 'washington': False, 'knew': False, 'night': False, 'moment': False, 'seemed': False, 'american': False, 'stood': False, 'party': False, 'power': False, 'think': False, 'government': False, 'county': False, 'big': False, 'hand': False, 'united': False, 'editor': False, 'found': False}, 'editorial')
-    ({'state': False, 'national': False, 'face': False, 'fact': False, 'city': False, 'every': False, 'country': False, 'thought': False, 'nuclear': False, 'house': False, 'states': False, 'war': False, 'peace': False, 'public': False, 'president': False, 'told': False, 'eyes': False, 'home': False, 'political': False, 'though': False, 'congress': False, 'church': False, 'world': False, 'god': False, 'voice': False, 'felt': False, 'head': False, 'room': False, 'washington': False, 'knew': False, 'night': False, 'moment': False, 'seemed': False, 'american': False, 'stood': False, 'party': False, 'power': False, 'think': False, 'government': False, 'county': False, 'big': False, 'hand': False, 'united': False, 'editor': False, 'found': False}, 'fiction')
-    ({'state': False, 'national': False, 'face': False, 'fact': False, 'city': False, 'every': False, 'country': False, 'thought': False, 'nuclear': False, 'house': False, 'states': False, 'war': False, 'peace': False, 'public': True, 'president': False, 'told': False, 'eyes': False, 'home': False, 'political': False, 'though': False, 'congress': False, 'church': False, 'world': False, 'god': False, 'voice': False, 'felt': False, 'head': False, 'room': False, 'washington': False, 'knew': False, 'night': False, 'moment': False, 'seemed': False, 'american': False, 'stood': False, 'party': False, 'power': False, 'think': False, 'government': False, 'county': False, 'big': False, 'hand': False, 'united': False, 'editor': False, 'found': False}, 'editorial')
-    ({'state': False, 'national': False, 'face': False, 'fact': False, 'city': False, 'every': False, 'country': False, 'thought': False, 'nuclear': False, 'house': False, 'states': False, 'war': False, 'peace': False, 'public': False, 'president': False, 'told': False, 'eyes': False, 'home': False, 'political': False, 'though': False, 'congress': False, 'church': False, 'world': True, 'god': False, 'voice': False, 'felt': False, 'head': False, 'room': False, 'washington': False, 'knew': False, 'night': False, 'moment': False, 'seemed': False, 'american': False, 'stood': False, 'party': False, 'power': False, 'think': False, 'government': False, 'county': False, 'big': False, 'hand': False, 'united': False, 'editor': False, 'found': False}, 'fiction')
-    ({'state': False, 'national': False, 'face': False, 'fact': False, 'city': True, 'every': False, 'country': False, 'thought': False, 'nuclear': False, 'house': False, 'states': False, 'war': False, 'peace': False, 'public': True, 'president': False, 'told': False, 'eyes': False, 'home': False, 'political': False, 'though': False, 'congress': False, 'church': False, 'world': False, 'god': False, 'voice': False, 'felt': False, 'head': False, 'room': False, 'washington': False, 'knew': False, 'night': False, 'moment': False, 'seemed': False, 'american': False, 'stood': False, 'party': True, 'power': False, 'think': False, 'government': False, 'county': False, 'big': False, 'hand': False, 'united': False, 'editor': True, 'found': False}, 'editorial')
+     ({'national': False, 'every': False, 'peace': False, 'nuclear': False, 'big': False, 'party': False, 'war': False, 'thought': False, 'hand': False, 'room': False, 'house': False, 'government': False, 'washington': False, 'knew': False, 'felt': False, 'political': False, 'stood': False, 'head': False, 'seemed': False, 'found': False, 'told': False, 'president': False, 'power': False, 'american': False, 'fact': False, 'though': False, 'church': False, 'god': False, 'voice': False, 'country': False, 'home': False, 'face': False, 'states': False, 'state': False, 'eyes': False, 'congress': False, 'moment': False, 'united': False, 'think': False, 'city': False, 'editor': False, 'night': False, 'world': False, 'county': False, 'public': False}, 'fiction')
+    ({'national': False, 'every': False, 'peace': False, 'nuclear': False, 'big': False, 'party': False, 'war': False, 'thought': False, 'hand': False, 'room': False, 'house': False, 'government': False, 'washington': False, 'knew': False, 'felt': False, 'political': False, 'stood': False, 'head': False, 'seemed': False, 'found': False, 'told': False, 'president': False, 'power': False, 'american': False, 'fact': False, 'though': False, 'church': False, 'god': False, 'voice': False, 'country': False, 'home': False, 'face': False, 'states': False, 'state': False, 'eyes': False, 'congress': False, 'moment': False, 'united': False, 'think': False, 'city': False, 'editor': False, 'night': False, 'world': False, 'county': False, 'public': False}, 'editorial')
+    ({'national': False, 'every': False, 'peace': False, 'nuclear': False, 'big': True, 'party': False, 'war': False, 'thought': False, 'hand': False, 'room': False, 'house': False, 'government': False, 'washington': False, 'knew': False, 'felt': False, 'political': False, 'stood': False, 'head': False, 'seemed': False, 'found': False, 'told': False, 'president': False, 'power': False, 'american': False, 'fact': False, 'though': False, 'church': False, 'god': False, 'voice': False, 'country': False, 'home': False, 'face': False, 'states': False, 'state': False, 'eyes': False, 'congress': False, 'moment': False, 'united': False, 'think': False, 'city': False, 'editor': True, 'night': False, 'world': False, 'county': False, 'public': False}, 'editorial')
+    ({'national': False, 'every': False, 'peace': False, 'nuclear': False, 'big': False, 'party': False, 'war': False, 'thought': False, 'hand': False, 'room': False, 'house': False, 'government': False, 'washington': False, 'knew': False, 'felt': False, 'political': False, 'stood': False, 'head': False, 'seemed': False, 'found': False, 'told': False, 'president': False, 'power': False, 'american': False, 'fact': False, 'though': False, 'church': False, 'god': False, 'voice': False, 'country': False, 'home': False, 'face': False, 'states': False, 'state': False, 'eyes': False, 'congress': False, 'moment': False, 'united': False, 'think': False, 'city': False, 'editor': False, 'night': False, 'world': False, 'county': False, 'public': True}, 'fiction')
+    ({'national': False, 'every': False, 'peace': False, 'nuclear': False, 'big': False, 'party': False, 'war': False, 'thought': False, 'hand': False, 'room': False, 'house': False, 'government': True, 'washington': False, 'knew': False, 'felt': False, 'political': False, 'stood': False, 'head': False, 'seemed': False, 'found': False, 'told': False, 'president': False, 'power': False, 'american': False, 'fact': False, 'though': False, 'church': False, 'god': False, 'voice': False, 'country': False, 'home': False, 'face': False, 'states': False, 'state': False, 'eyes': False, 'congress': False, 'moment': False, 'united': False, 'think': False, 'city': False, 'editor': False, 'night': False, 'world': False, 'county': False, 'public': False}, 'editorial')
+    ({'national': False, 'every': False, 'peace': False, 'nuclear': False, 'big': False, 'party': False, 'war': False, 'thought': False, 'hand': False, 'room': False, 'house': False, 'government': False, 'washington': False, 'knew': False, 'felt': False, 'political': False, 'stood': False, 'head': False, 'seemed': False, 'found': False, 'told': False, 'president': False, 'power': False, 'american': False, 'fact': False, 'though': False, 'church': False, 'god': False, 'voice': False, 'country': False, 'home': False, 'face': False, 'states': True, 'state': False, 'eyes': False, 'congress': False, 'moment': False, 'united': True, 'think': False, 'city': False, 'editor': False, 'night': False, 'world': False, 'county': False, 'public': False}, 'fiction')
+    ({'national': False, 'every': False, 'peace': False, 'nuclear': False, 'big': False, 'party': False, 'war': False, 'thought': False, 'hand': False, 'room': False, 'house': False, 'government': True, 'washington': False, 'knew': False, 'felt': False, 'political': False, 'stood': False, 'head': False, 'seemed': False, 'found': False, 'told': False, 'president': False, 'power': False, 'american': False, 'fact': False, 'though': False, 'church': False, 'god': False, 'voice': False, 'country': False, 'home': False, 'face': False, 'states': True, 'state': False, 'eyes': False, 'congress': False, 'moment': False, 'united': True, 'think': False, 'city': False, 'editor': False, 'night': False, 'world': False, 'county': False, 'public': False}, 'fiction')
+    ({'national': False, 'every': False, 'peace': False, 'nuclear': False, 'big': False, 'party': False, 'war': False, 'thought': False, 'hand': False, 'room': False, 'house': False, 'government': False, 'washington': False, 'knew': False, 'felt': False, 'political': False, 'stood': False, 'head': False, 'seemed': False, 'found': False, 'told': False, 'president': False, 'power': False, 'american': False, 'fact': False, 'though': False, 'church': False, 'god': False, 'voice': False, 'country': False, 'home': False, 'face': False, 'states': False, 'state': False, 'eyes': False, 'congress': False, 'moment': False, 'united': False, 'think': False, 'city': False, 'editor': False, 'night': False, 'world': False, 'county': False, 'public': True}, 'fiction')
+    ({'national': False, 'every': False, 'peace': False, 'nuclear': False, 'big': False, 'party': False, 'war': False, 'thought': False, 'hand': False, 'room': False, 'house': False, 'government': False, 'washington': False, 'knew': False, 'felt': False, 'political': False, 'stood': False, 'head': False, 'seemed': False, 'found': False, 'told': False, 'president': False, 'power': False, 'american': False, 'fact': False, 'though': False, 'church': False, 'god': False, 'voice': False, 'country': False, 'home': False, 'face': False, 'states': False, 'state': False, 'eyes': False, 'congress': False, 'moment': False, 'united': False, 'think': False, 'city': False, 'editor': False, 'night': False, 'world': False, 'county': False, 'public': False}, 'editorial')
+    ({'national': False, 'every': False, 'peace': False, 'nuclear': False, 'big': False, 'party': False, 'war': False, 'thought': False, 'hand': False, 'room': False, 'house': False, 'government': False, 'washington': False, 'knew': False, 'felt': False, 'political': False, 'stood': False, 'head': False, 'seemed': False, 'found': False, 'told': False, 'president': False, 'power': False, 'american': False, 'fact': True, 'though': False, 'church': False, 'god': False, 'voice': False, 'country': False, 'home': False, 'face': False, 'states': False, 'state': True, 'eyes': False, 'congress': False, 'moment': False, 'united': False, 'think': False, 'city': False, 'editor': False, 'night': False, 'world': False, 'county': False, 'public': False}, 'fiction')
 
 - Now that the data has been cleaned and converted to the required input
   format we can classify it
@@ -1035,20 +1040,20 @@ bayes.show_most_informative_features()
 print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accuracy
 ```
 
-    editorial
+    fiction
     Which features (tell words) were assessed to be the most significant indicators?
     Most Informative Features
-                      seemed = True           fictio : editor =      3.0 : 1.0
-                      county = True           fictio : editor =      1.6 : 1.0
-                        head = True           fictio : editor =      1.5 : 1.0
+                     thought = True           editor : fictio =      1.8 : 1.0
+                        felt = True           fictio : editor =      1.6 : 1.0
+                        face = True           fictio : editor =      1.6 : 1.0
                   washington = True           fictio : editor =      1.5 : 1.0
-                   political = True           fictio : editor =      1.4 : 1.0
-                      though = True           fictio : editor =      1.4 : 1.0
-                       house = True           fictio : editor =      1.4 : 1.0
-                        told = True           editor : fictio =      1.3 : 1.0
-                       found = True           editor : fictio =      1.3 : 1.0
-                         war = True           fictio : editor =      1.3 : 1.0
-    Accuracy: 0.43234323432343236
+                        home = True           fictio : editor =      1.5 : 1.0
+                        eyes = True           fictio : editor =      1.5 : 1.0
+                      moment = True           editor : fictio =      1.4 : 1.0
+                      seemed = True           editor : fictio =      1.4 : 1.0
+                       power = True           fictio : editor =      1.3 : 1.0
+                      editor = True           fictio : editor =      1.3 : 1.0
+    Accuracy: 0.41914191419141916
 
 - The model should perform better than a 50 / 50 guess
   - Obviously we could use a wider set of features rather than just the
