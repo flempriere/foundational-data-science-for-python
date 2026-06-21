@@ -358,7 +358,7 @@ window.Quarto = {
 </ul></li>
 </ul></li>
 </ul>
-<div id="35765acd" class="cell" data-execution_count="1">
+<div id="668f1a36" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"gutenberg"</span>)</span>
@@ -397,7 +397,7 @@ Tip
 <li>Text’s are stored as files</li>
 </ul></li>
 </ul>
-<div id="104e0593" class="cell" data-execution_count="2">
+<div id="a99154b0" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>gutenberg.fileids()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -434,7 +434,7 @@ Tip
 </ul></li>
 <li>For example, loading Shakespeare’s <em>Julius Caesar</em></li>
 </ul>
-<div id="0d115d42" class="cell" data-execution_count="3">
+<div id="0d9d2a08" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>caesar <span class="op">=</span> gutenberg.sents(<span class="st">"shakespeare-caesar.txt"</span>)</span>
@@ -465,7 +465,7 @@ Tip
 </ol></li>
 </ul></li>
 </ul>
-<div id="cdcc1a87" class="cell" data-execution_count="4">
+<div id="19d3f48c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">~/</span>nltk_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>corpora  tokenizers</code></pre>
@@ -474,7 +474,7 @@ Tip
 <ul>
 <li>Inside the corpora directory we can see the text set’s we have downloaded</li>
 </ul>
-<div id="981e0cad" class="cell" data-execution_count="5">
+<div id="34389d7a" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">~/</span>nltk_data<span class="op">/</span>corpora</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>gutenberg  gutenberg.zip</code></pre>
@@ -483,7 +483,7 @@ Tip
 <ul>
 <li>and of-course the text’s they contain</li>
 </ul>
-<div id="84d8c819" class="cell" data-execution_count="6">
+<div id="0d89f226" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">~/</span>nltk_data<span class="op">/</span>corpora<span class="op">/</span>gutenberg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>README             burgess-busterbrown.txt  milton-paradise.txt
@@ -498,7 +498,7 @@ bryant-stories.txt     melville-moby_dick.txt</code></pre>
 <ul>
 <li>Inside the tokenizers directory we can see the tokenizers we’ve downloaded</li>
 </ul>
-<div id="ec761635" class="cell" data-execution_count="7">
+<div id="1adcab6b" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">~/</span>nltk_data<span class="op">/</span>tokenizers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>punkt_tab  punkt_tab.zip</code></pre>
@@ -507,7 +507,7 @@ bryant-stories.txt     melville-moby_dick.txt</code></pre>
 <ul>
 <li>and within the <code>punkt_tab</code> directory we can see the languages it supports</li>
 </ul>
-<div id="1fd68511" class="cell" data-execution_count="8">
+<div id="5262e264" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">~/</span>nltk_data<span class="op">/</span>tokenizers<span class="op">/</span>punkt_tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>README  dutch     finnish  greek      norwegian   russian  swedish
@@ -527,7 +527,7 @@ danish  estonian  german   malayalam  portuguese  spanish</code></pre>
 <li>etc.</li>
 </ul></li>
 </ul>
-<div id="c332860e" class="cell" data-execution_count="9">
+<div id="b9daef12" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -564,7 +564,7 @@ danish  estonian  german   malayalam  portuguese  spanish</code></pre>
 </ul></li>
 <li>For example, to filter the punctuation out of the above example, we can,</li>
 </ul>
-<div id="8f3dfae4" class="cell" data-execution_count="10">
+<div id="07ecb555" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
@@ -624,7 +624,7 @@ Note
 </ul></li>
 <li>NLTK provides the <code>stopwords</code> corpus which can be downloaded to perform this filtering</li>
 </ul>
-<div id="a5777d8e" class="cell" data-execution_count="11">
+<div id="1e3caa3d" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"stopwords"</span>)</span>
@@ -644,7 +644,7 @@ Note
 <ul>
 <li>Once we’ve downloaded the <code>stopwords</code> corpus we can use it to filter out the these common words from our analysis of Julius Caesar.</li>
 </ul>
-<div id="58de6304" class="cell" data-execution_count="12">
+<div id="c847b9d6" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
@@ -697,7 +697,7 @@ Note
 </ul></li>
 <li>The <code>FreqDist</code> class also comes with a bunch of other methods for analysing a text</li>
 </ul>
-<div id="232d7b87" class="cell" data-execution_count="13">
+<div id="ef448702" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
@@ -760,7 +760,7 @@ caesar_dist.tabulate(10):
 <li>The <code>Text</code> class is provides functionality for exploring a text</li>
 <li>Is initialised from a list of words</li>
 </ul>
-<div id="6aeebdf2" class="cell" data-execution_count="14">
+<div id="bf745b69" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.text <span class="im">import</span> Text</span>
@@ -792,7 +792,7 @@ caesar_dist.tabulate(10):
 <li><code>dispersion_plot</code> compares where words appear in a given text</li>
 </ul></li>
 </ul>
-<div id="70cc69d4" class="cell" data-execution_count="15">
+<div id="aa4bed09" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.text <span class="im">import</span> Text</span>
@@ -864,7 +864,7 @@ Cassius; O Coward; O Cassius; O Clitus</code></pre>
 </ul></li>
 <li>First need to download our data</li>
 </ul>
-<div id="aa5b16e0" class="cell" data-execution_count="16">
+<div id="bf200ff1" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'brown'</span>)</span>
@@ -883,7 +883,7 @@ Cassius; O Coward; O Cassius; O Clitus</code></pre>
 <ul>
 <li>Now we need to load our data, clean it and define our <code>tell_words</code> dictionary</li>
 </ul>
-<div id="1b4a3e2f" class="cell" data-execution_count="17">
+<div id="dde6b566" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> brown, stopwords</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -961,7 +961,7 @@ There are 1043 fiction paragraphs</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="8024b376" class="cell" data-execution_count="18">
+<div id="70b96e4f" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> brown, stopwords</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Sequence</span>
@@ -1038,11 +1038,11 @@ There are 1043 fiction paragraphs</code></pre>
 <span id="cb40-74"><a href="#cb40-74" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Flattened editorial paragraphs:
- {'immediately', 'faced', ',', '.', 'showdown', 'performed', 'it', 'education', 'struggle', 'from', 'was', 'adjourns', 'much', 'conjunction', 'met', 'governor', 'day', 'good', 'issue', 'general', 'which', 'in', 'decision', 'public', 'of', 'session', 'convened', 'assembly', 'atmosphere', 'a', 'the', 'crisis', 'schools', 'to', 'not', 'brought', 'with', 'risk', 'and', 'an', 'today', 'abandoning', 'squarely', 'on', 'has'}
-{'executive', 'been', ',', '.', 'provide', 'legislators', 'appropriations', 'went', 'final', 'information', 'historic', 'general', 'which', 'in', 'decision', 'decided', 'followed', 'budgeting', 'for', 'procedures', 'assembly', 'there', 'budget', 'need', 'way', 'a', 'the', 'but', 'opened', 'to', 'fight', 'tackle', 'and', 'powers', 'they', 'strengthening', 'has'}
-{'them', 'avoid', 'programs', 'have', '.', 'this', ',', 'if', 'from', 'years', 'government', 'become', 'in', 'of', 'planning', 'two', 'now', 'for', 'session', 'instance', 'insured', 'state', 'is', 'musts', 'a', 'the', 'crisis', 'financial', 'to', 'few', 'and', 'crisis-to-crisis', 'finance', 'may', 'ways', 'next', 'long-range'}
-{'legislation', 'other', 'law', ',', '.', 'applaud', 'teacher', 'roads', 'rate', 'outside', 'await', 'can', 'some', 'limit', 'as', 'responsibility', 'was', 'shuffle', 'age', 'repeal', 'ban', 'bills', 'all', 'good', 'lost', 'issue', 'increase', 'action', 'road', 'in', 'certainly', 'bond', 'municipalities', 'turmoil', 'of', 'acceptance', 'college', 'racing', 'on', 'for', 'school', 'passage', 'auto', 'state', 'maintenance', 'by', 'city', 'future', 'pensions', 'the', 'drag', 'limits', 'same', 'were', 'passed', 'and', 'at', 'an', 'title'}
-{'been', ',', '.', 'made', 'start', 'modification', 'as', 'fee', 'was', 'penal', 'reform', 'industry', 'county', 'question', 'fireworks', 'attracting', 'issue', 'however', 'action', 'such', 'in', 'outright', 'of', 'system', 'reappraisal', 'taken', 'only', 'token', 'unit', 'its', 'state', 'attacking', 'no', 'the', 'a', 'tax', 'companion', 'to', 'major', 'banning', 'problems', 'ending', 'sales', 'and', 'on', 'has'}</code></pre>
+ {'a', 'session', 'governor', 'an', 'met', ',', 'schools', 'which', 'education', 'public', 'abandoning', 'from', 'much', 'today', 'showdown', 'decision', 'with', 'it', 'has', 'of', 'conjunction', 'adjourns', 'assembly', 'on', 'faced', 'atmosphere', 'to', 'brought', 'issue', 'not', 'in', 'good', 'was', 'performed', 'struggle', '.', 'the', 'crisis', 'risk', 'immediately', 'general', 'day', 'squarely', 'convened', 'and'}
+{'a', 'been', 'need', 'for', 'tackle', 'appropriations', ',', 'final', 'budgeting', 'which', 'budget', 'opened', 'followed', 'information', 'decision', 'procedures', 'but', 'has', 'went', 'strengthening', 'assembly', 'decided', 'to', 'provide', 'they', 'powers', 'historic', 'in', 'way', 'fight', '.', 'the', 'legislators', 'general', 'and', 'there', 'executive'}
+{'a', 'if', 'session', 'for', ',', 'ways', 'have', 'few', 'years', 'avoid', 'crisis-to-crisis', 'two', 'from', 'finance', 'musts', 'next', 'of', 'now', 'government', 'state', 'to', 'programs', 'in', 'financial', 'long-range', 'this', '.', 'the', 'crisis', 'planning', 'may', 'them', 'instance', 'insured', 'become', 'and', 'is'}
+{'same', 'passed', 'road', 'for', 'age', 'some', 'shuffle', 'an', 'law', 'school', ',', 'future', 'responsibility', 'maintenance', 'outside', 'limits', 'acceptance', 'city', 'municipalities', 'racing', 'limit', 'certainly', 'were', 'auto', 'roads', 'of', 'college', 'increase', 'as', 'passage', 'state', 'on', 'issue', 'drag', 'repeal', 'all', 'applaud', 'good', 'in', 'await', 'action', 'was', 'pensions', '.', 'turmoil', 'the', 'ban', 'bills', 'other', 'bond', 'at', 'legislation', 'title', 'can', 'teacher', 'by', 'rate', 'lost', 'and'}
+{'been', 'a', 'unit', 'banning', 'question', 'system', 'major', ',', 'reappraisal', 'no', 'its', 'problems', 'taken', 'industry', 'has', 'of', 'as', 'however', 'state', 'on', 'companion', 'modification', 'made', 'to', 'fee', 'ending', 'sales', 'attacking', 'issue', 'outright', 'penal', 'reform', 'in', 'action', 'attracting', 'was', 'county', '.', 'the', 'start', 'such', 'only', 'fireworks', 'tax', 'and', 'token'}</code></pre>
 </div>
 </div>
 <ul>
@@ -1065,7 +1065,7 @@ There are 1043 fiction paragraphs</code></pre>
 <li>So we randomly shuffle the data set via <code>shuffle</code> from the <code>random</code> built-in module</li>
 </ul></li>
 </ul>
-<div id="c441833c" class="cell" data-execution_count="19">
+<div id="682d0c1f" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1151,42 +1151,17 @@ There are 1043 fiction paragraphs</code></pre>
 <span id="cb42-83"><a href="#cb42-83" aria-hidden="true" tabindex="-1"></a>random.shuffle(labelled_data)</span>
 <span id="cb42-84"><a href="#cb42-84" aria-hidden="true" tabindex="-1"></a>labelled_data[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>({',',
-  '.',
-  'age',
-  'and',
-  'answer',
-  'archaic',
-  'be',
-  'become',
-  'changing',
-  'contemporary',
-  'continuous',
-  'danger',
-  'english',
-  'however',
-  'is',
-  'jet',
-  'marks',
-  'may',
-  'new',
-  'of',
-  'one',
-  'only',
-  'phrases',
-  'rapidity',
-  'some',
-  'soon',
-  'study',
-  'that',
-  'the',
-  'themselves',
-  'there',
-  'this',
-  'version',
-  'will',
-  'with',
-  'words'},
+<pre><code>({'(',
+  ')',
+  ':',
+  'berlin',
+  'communist',
+  'east',
+  'german',
+  'germany',
+  'in',
+  'radio',
+  'to'},
  'editorial')</code></pre>
 </div>
 </div>
@@ -1204,7 +1179,7 @@ There are 1043 fiction paragraphs</code></pre>
 <li>We use a <em>dictionary comprehension</em> for the function implementation (See again the discussion of list comprehensions and set comprehensions)</li>
 </ul></li>
 </ul>
-<div id="3bd481c9" class="cell" data-execution_count="20">
+<div id="3debb762" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1310,23 +1285,23 @@ There are 1043 fiction paragraphs</code></pre>
 <span id="cb44-103"><a href="#cb44-103" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>test data sample:
- ({'fact': False, 'big': False, 'told': False, 'washington': False, 'knew': False, 'states': False, 'felt': False, 'county': False, 'power': False, 'house': False, 'government': False, 'voice': False, 'god': False, 'public': False, 'every': False, 'home': False, 'stood': False, 'nuclear': False, 'moment': False, 'hand': False, 'party': False, 'think': False, 'country': False, 'political': False, 'congress': False, 'city': False, 'state': False, 'eyes': False, 'room': False, 'head': False, 'face': False, 'seemed': False, 'world': False, 'peace': False, 'church': False, 'editor': False, 'united': False, 'found': False, 'national': False, 'president': False, 'though': False, 'thought': False, 'war': False, 'night': False, 'american': False}, 'editorial')
-({'fact': False, 'big': False, 'told': False, 'washington': False, 'knew': False, 'states': False, 'felt': False, 'county': False, 'power': False, 'house': False, 'government': False, 'voice': False, 'god': False, 'public': False, 'every': False, 'home': False, 'stood': False, 'nuclear': False, 'moment': False, 'hand': False, 'party': False, 'think': False, 'country': False, 'political': False, 'congress': False, 'city': False, 'state': False, 'eyes': False, 'room': False, 'head': False, 'face': False, 'seemed': False, 'world': False, 'peace': False, 'church': False, 'editor': False, 'united': False, 'found': False, 'national': False, 'president': False, 'though': False, 'thought': False, 'war': False, 'night': False, 'american': False}, 'editorial')
-({'fact': True, 'big': False, 'told': False, 'washington': False, 'knew': False, 'states': False, 'felt': False, 'county': False, 'power': False, 'house': False, 'government': False, 'voice': False, 'god': False, 'public': False, 'every': False, 'home': False, 'stood': False, 'nuclear': False, 'moment': False, 'hand': False, 'party': False, 'think': False, 'country': False, 'political': False, 'congress': False, 'city': False, 'state': False, 'eyes': False, 'room': False, 'head': False, 'face': False, 'seemed': False, 'world': False, 'peace': False, 'church': False, 'editor': False, 'united': False, 'found': False, 'national': False, 'president': False, 'though': False, 'thought': False, 'war': False, 'night': False, 'american': False}, 'fiction')
-({'fact': False, 'big': False, 'told': False, 'washington': False, 'knew': False, 'states': False, 'felt': False, 'county': False, 'power': False, 'house': False, 'government': False, 'voice': False, 'god': False, 'public': False, 'every': False, 'home': False, 'stood': False, 'nuclear': False, 'moment': False, 'hand': False, 'party': False, 'think': False, 'country': False, 'political': False, 'congress': False, 'city': False, 'state': False, 'eyes': False, 'room': False, 'head': False, 'face': False, 'seemed': False, 'world': False, 'peace': False, 'church': False, 'editor': False, 'united': False, 'found': False, 'national': False, 'president': False, 'though': False, 'thought': False, 'war': False, 'night': False, 'american': False}, 'editorial')
-({'fact': False, 'big': False, 'told': False, 'washington': False, 'knew': False, 'states': False, 'felt': False, 'county': False, 'power': False, 'house': False, 'government': False, 'voice': False, 'god': False, 'public': False, 'every': False, 'home': False, 'stood': False, 'nuclear': False, 'moment': False, 'hand': False, 'party': False, 'think': False, 'country': False, 'political': False, 'congress': False, 'city': False, 'state': False, 'eyes': False, 'room': False, 'head': False, 'face': False, 'seemed': False, 'world': False, 'peace': False, 'church': False, 'editor': False, 'united': False, 'found': True, 'national': False, 'president': False, 'though': False, 'thought': False, 'war': False, 'night': False, 'american': False}, 'editorial')
-({'fact': False, 'big': False, 'told': False, 'washington': False, 'knew': False, 'states': False, 'felt': False, 'county': False, 'power': False, 'house': False, 'government': False, 'voice': False, 'god': False, 'public': False, 'every': False, 'home': False, 'stood': False, 'nuclear': False, 'moment': False, 'hand': False, 'party': False, 'think': False, 'country': False, 'political': False, 'congress': False, 'city': False, 'state': False, 'eyes': False, 'room': False, 'head': False, 'face': False, 'seemed': False, 'world': False, 'peace': False, 'church': False, 'editor': False, 'united': False, 'found': False, 'national': False, 'president': False, 'though': False, 'thought': False, 'war': False, 'night': False, 'american': False}, 'fiction')
-({'fact': False, 'big': False, 'told': False, 'washington': False, 'knew': False, 'states': False, 'felt': False, 'county': False, 'power': False, 'house': False, 'government': False, 'voice': False, 'god': False, 'public': False, 'every': False, 'home': False, 'stood': False, 'nuclear': False, 'moment': False, 'hand': False, 'party': False, 'think': False, 'country': False, 'political': False, 'congress': False, 'city': False, 'state': False, 'eyes': False, 'room': False, 'head': False, 'face': False, 'seemed': False, 'world': False, 'peace': False, 'church': False, 'editor': False, 'united': False, 'found': False, 'national': False, 'president': False, 'though': False, 'thought': False, 'war': False, 'night': False, 'american': False}, 'editorial')
-({'fact': False, 'big': False, 'told': False, 'washington': False, 'knew': False, 'states': False, 'felt': False, 'county': False, 'power': False, 'house': False, 'government': False, 'voice': False, 'god': False, 'public': False, 'every': False, 'home': False, 'stood': False, 'nuclear': False, 'moment': False, 'hand': False, 'party': False, 'think': False, 'country': False, 'political': False, 'congress': False, 'city': False, 'state': True, 'eyes': False, 'room': False, 'head': False, 'face': False, 'seemed': False, 'world': False, 'peace': False, 'church': False, 'editor': False, 'united': False, 'found': False, 'national': False, 'president': False, 'though': False, 'thought': False, 'war': False, 'night': False, 'american': False}, 'editorial')
-({'fact': False, 'big': False, 'told': False, 'washington': False, 'knew': False, 'states': False, 'felt': False, 'county': False, 'power': False, 'house': False, 'government': False, 'voice': False, 'god': False, 'public': False, 'every': False, 'home': False, 'stood': False, 'nuclear': False, 'moment': False, 'hand': False, 'party': False, 'think': False, 'country': False, 'political': False, 'congress': False, 'city': False, 'state': False, 'eyes': False, 'room': False, 'head': False, 'face': False, 'seemed': False, 'world': False, 'peace': False, 'church': False, 'editor': False, 'united': False, 'found': False, 'national': False, 'president': False, 'though': False, 'thought': False, 'war': False, 'night': False, 'american': True}, 'editorial')
-({'fact': False, 'big': False, 'told': False, 'washington': False, 'knew': False, 'states': True, 'felt': False, 'county': False, 'power': False, 'house': False, 'government': False, 'voice': False, 'god': False, 'public': False, 'every': False, 'home': False, 'stood': False, 'nuclear': False, 'moment': False, 'hand': False, 'party': False, 'think': False, 'country': False, 'political': False, 'congress': False, 'city': True, 'state': False, 'eyes': False, 'room': False, 'head': False, 'face': False, 'seemed': False, 'world': False, 'peace': False, 'church': False, 'editor': False, 'united': True, 'found': False, 'national': False, 'president': False, 'though': False, 'thought': False, 'war': False, 'night': False, 'american': False}, 'editorial')</code></pre>
+ ({'president': False, 'war': False, 'hand': False, 'big': False, 'thought': False, 'peace': False, 'power': False, 'voice': False, 'city': False, 'head': False, 'stood': False, 'public': False, 'nuclear': False, 'states': False, 'house': False, 'congress': False, 'seemed': False, 'editor': False, 'government': False, 'state': False, 'national': False, 'night': False, 'fact': False, 'church': False, 'eyes': False, 'home': False, 'every': False, 'party': False, 'american': False, 'moment': False, 'found': False, 'room': False, 'united': False, 'county': False, 'world': False, 'felt': False, 'though': False, 'political': False, 'washington': False, 'face': False, 'country': False, 'knew': False, 'told': False, 'god': False, 'think': False}, 'editorial')
+({'president': False, 'war': False, 'hand': False, 'big': False, 'thought': False, 'peace': False, 'power': False, 'voice': False, 'city': False, 'head': False, 'stood': False, 'public': False, 'nuclear': False, 'states': False, 'house': False, 'congress': False, 'seemed': False, 'editor': False, 'government': False, 'state': False, 'national': False, 'night': False, 'fact': False, 'church': False, 'eyes': False, 'home': False, 'every': False, 'party': False, 'american': False, 'moment': False, 'found': False, 'room': False, 'united': False, 'county': False, 'world': False, 'felt': False, 'though': False, 'political': False, 'washington': False, 'face': False, 'country': False, 'knew': False, 'told': False, 'god': False, 'think': False}, 'editorial')
+({'president': False, 'war': False, 'hand': False, 'big': False, 'thought': False, 'peace': False, 'power': False, 'voice': False, 'city': False, 'head': False, 'stood': False, 'public': False, 'nuclear': False, 'states': False, 'house': False, 'congress': True, 'seemed': False, 'editor': False, 'government': False, 'state': False, 'national': False, 'night': False, 'fact': False, 'church': False, 'eyes': False, 'home': False, 'every': False, 'party': False, 'american': False, 'moment': False, 'found': False, 'room': False, 'united': False, 'county': False, 'world': False, 'felt': False, 'though': False, 'political': False, 'washington': False, 'face': False, 'country': False, 'knew': False, 'told': False, 'god': False, 'think': False}, 'fiction')
+({'president': False, 'war': False, 'hand': False, 'big': False, 'thought': False, 'peace': False, 'power': False, 'voice': False, 'city': False, 'head': False, 'stood': False, 'public': False, 'nuclear': False, 'states': False, 'house': False, 'congress': False, 'seemed': False, 'editor': False, 'government': False, 'state': False, 'national': False, 'night': False, 'fact': False, 'church': False, 'eyes': False, 'home': False, 'every': False, 'party': False, 'american': False, 'moment': False, 'found': False, 'room': False, 'united': False, 'county': False, 'world': False, 'felt': False, 'though': False, 'political': False, 'washington': False, 'face': False, 'country': False, 'knew': False, 'told': False, 'god': False, 'think': False}, 'fiction')
+({'president': False, 'war': False, 'hand': False, 'big': False, 'thought': False, 'peace': False, 'power': False, 'voice': False, 'city': False, 'head': False, 'stood': False, 'public': False, 'nuclear': False, 'states': False, 'house': False, 'congress': False, 'seemed': False, 'editor': False, 'government': False, 'state': False, 'national': False, 'night': False, 'fact': False, 'church': False, 'eyes': False, 'home': False, 'every': False, 'party': False, 'american': False, 'moment': False, 'found': False, 'room': False, 'united': False, 'county': False, 'world': False, 'felt': False, 'though': False, 'political': False, 'washington': True, 'face': False, 'country': False, 'knew': False, 'told': False, 'god': False, 'think': False}, 'fiction')
+({'president': False, 'war': False, 'hand': False, 'big': False, 'thought': False, 'peace': False, 'power': False, 'voice': False, 'city': False, 'head': False, 'stood': False, 'public': False, 'nuclear': False, 'states': False, 'house': False, 'congress': False, 'seemed': False, 'editor': False, 'government': False, 'state': False, 'national': False, 'night': False, 'fact': False, 'church': False, 'eyes': False, 'home': False, 'every': False, 'party': False, 'american': False, 'moment': False, 'found': False, 'room': False, 'united': False, 'county': False, 'world': False, 'felt': False, 'though': False, 'political': False, 'washington': False, 'face': False, 'country': False, 'knew': False, 'told': False, 'god': False, 'think': False}, 'editorial')
+({'president': False, 'war': False, 'hand': False, 'big': False, 'thought': False, 'peace': False, 'power': False, 'voice': False, 'city': False, 'head': False, 'stood': False, 'public': False, 'nuclear': False, 'states': False, 'house': False, 'congress': False, 'seemed': False, 'editor': False, 'government': False, 'state': False, 'national': False, 'night': False, 'fact': False, 'church': False, 'eyes': False, 'home': False, 'every': False, 'party': False, 'american': False, 'moment': False, 'found': False, 'room': False, 'united': False, 'county': False, 'world': False, 'felt': False, 'though': False, 'political': False, 'washington': False, 'face': False, 'country': False, 'knew': False, 'told': False, 'god': False, 'think': False}, 'fiction')
+({'president': False, 'war': False, 'hand': False, 'big': False, 'thought': False, 'peace': False, 'power': False, 'voice': False, 'city': False, 'head': False, 'stood': False, 'public': False, 'nuclear': False, 'states': False, 'house': False, 'congress': False, 'seemed': False, 'editor': False, 'government': False, 'state': False, 'national': False, 'night': False, 'fact': True, 'church': False, 'eyes': False, 'home': False, 'every': False, 'party': False, 'american': True, 'moment': False, 'found': False, 'room': False, 'united': False, 'county': False, 'world': False, 'felt': False, 'though': False, 'political': False, 'washington': False, 'face': False, 'country': False, 'knew': False, 'told': False, 'god': False, 'think': False}, 'editorial')
+({'president': False, 'war': False, 'hand': False, 'big': False, 'thought': False, 'peace': False, 'power': False, 'voice': False, 'city': False, 'head': False, 'stood': False, 'public': False, 'nuclear': False, 'states': False, 'house': False, 'congress': False, 'seemed': False, 'editor': False, 'government': True, 'state': False, 'national': False, 'night': False, 'fact': False, 'church': False, 'eyes': False, 'home': False, 'every': False, 'party': False, 'american': False, 'moment': False, 'found': False, 'room': False, 'united': False, 'county': False, 'world': False, 'felt': False, 'though': False, 'political': False, 'washington': False, 'face': False, 'country': False, 'knew': False, 'told': False, 'god': False, 'think': False}, 'fiction')
+({'president': False, 'war': False, 'hand': False, 'big': False, 'thought': False, 'peace': False, 'power': False, 'voice': False, 'city': False, 'head': False, 'stood': False, 'public': True, 'nuclear': False, 'states': False, 'house': False, 'congress': False, 'seemed': False, 'editor': False, 'government': False, 'state': True, 'national': False, 'night': False, 'fact': False, 'church': False, 'eyes': False, 'home': False, 'every': False, 'party': False, 'american': False, 'moment': False, 'found': False, 'room': False, 'united': False, 'county': False, 'world': False, 'felt': False, 'though': False, 'political': False, 'washington': False, 'face': False, 'country': False, 'knew': False, 'told': False, 'god': False, 'think': False}, 'fiction')</code></pre>
 </div>
 </div>
 <ul>
 <li>Now that the data has been cleaned and converted to the required input format we can classify it</li>
 <li>Here we train an <code>nltk.NaiveBayesClassifier</code> on the training set, and then assess it’s effectiveness on the test data</li>
 </ul>
-<div id="5e369034" class="cell" data-execution_count="21">
+<div id="6b9cf03e" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1440,17 +1415,17 @@ There are 1043 fiction paragraphs</code></pre>
 <pre><code>fiction
 Which features (tell words) were assessed to be the most significant indicators?
 Most Informative Features
-                    knew = True           fictio : editor =      1.8 : 1.0
-                   night = True           fictio : editor =      1.5 : 1.0
-                  moment = True           fictio : editor =      1.4 : 1.0
-                   think = True           fictio : editor =      1.4 : 1.0
-                   every = True           fictio : editor =      1.4 : 1.0
-                     god = True           fictio : editor =      1.3 : 1.0
-                    room = True           fictio : editor =      1.3 : 1.0
-                  church = True           editor : fictio =      1.3 : 1.0
+                  seemed = True           fictio : editor =      1.9 : 1.0
+                 thought = True           editor : fictio =      1.7 : 1.0
+                   found = True           fictio : editor =      1.4 : 1.0
+                   think = True           editor : fictio =      1.4 : 1.0
+                   every = True           editor : fictio =      1.3 : 1.0
+                    hand = True           editor : fictio =      1.3 : 1.0
+                     god = True           editor : fictio =      1.3 : 1.0
                     face = True           editor : fictio =      1.3 : 1.0
-                   voice = True           fictio : editor =      1.3 : 1.0
-Accuracy: 0.4207920792079208</code></pre>
+                congress = True           fictio : editor =      1.3 : 1.0
+                     big = True           editor : fictio =      1.3 : 1.0
+Accuracy: 0.4389438943894389</code></pre>
 </div>
 </div>
 <ul>
@@ -1478,7 +1453,7 @@ Accuracy: 0.4207920792079208</code></pre>
 <li><p>How would you load the text <em>Emma</em> by Jane Austen as words, sentences and paragraphs?</p>
 <ul>
 <li><p>First we need to identify the name of the text by using <code>fileids</code></p>
-<div id="498e4456" class="cell" data-execution_count="22">
+<div id="37b0b20a" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>   gutenberg.fileids()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1505,7 +1480,7 @@ Accuracy: 0.4207920792079208</code></pre>
 </div>
 <ul>
 <li><p>We can then load words</p>
-<div id="6c75288e" class="cell" data-execution_count="23">
+<div id="d6bd59a8" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a> <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a> emma_words <span class="op">=</span> gutenberg.words(<span class="st">"austen-emma.txt"</span>)</span>
@@ -1515,7 +1490,7 @@ Accuracy: 0.4207920792079208</code></pre>
 </div>
 </div></li>
 <li><p>Sentences</p>
-<div id="a19acf8c" class="cell" data-execution_count="24">
+<div id="5cbb1902" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a> <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a> emma_sentences <span class="op">=</span> gutenberg.sents(<span class="st">"austen-emma.txt"</span>)</span>
@@ -1525,7 +1500,7 @@ Accuracy: 0.4207920792079208</code></pre>
 </div>
 </div></li>
 <li><p>Paragraphs</p>
-<div id="0922a7ed" class="cell" data-execution_count="25">
+<div id="26e47756" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    emma_paragraphs <span class="op">=</span> gutenberg.paras(<span class="st">"austen-emma.txt"</span>)</span>
@@ -1539,13 +1514,13 @@ Accuracy: 0.4207920792079208</code></pre>
 <li><p>Count the occurrences of the word Alice in <em>Alice in Wonderland</em> by Lewis Carroll</p>
 <ul>
 <li><p>Again first load the dataset</p>
-<div id="d4a492e8" class="cell" data-execution_count="26">
+<div id="ff82a131" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>   alice_words <span class="op">=</span> gutenberg.words(<span class="st">"carroll-alice.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p>Then we want to apply a <code>FreqDist</code> to this and access the <code>Alice</code> key</p>
-<div id="1e261338" class="cell" data-execution_count="27">
+<div id="3169998f" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>  <span class="im">import</span> nltk</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  alice_dist <span class="op">=</span> nltk.FreqDist(alice_words)</span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1561,7 +1536,7 @@ Accuracy: 0.4207920792079208</code></pre>
 <li><p>First we use <code>string.punctuation</code> to remove punctuation</p></li>
 <li><p>Then we load the <code>stopwords</code> corpus to remove stop words</p></li>
 <li><p>Finally we create our <code>FreqDist</code> and call <code>tabulate</code></p>
-<div id="54edf54d" class="cell" data-execution_count="28">
+<div id="36e7dd9b" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">import</span> string</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>   <span class="im">import</span> nltk</span>
@@ -1588,7 +1563,7 @@ Accuracy: 0.4207920792079208</code></pre>
 <ul>
 <li><p>First we need to load the text into a <code>Text</code> object</p></li>
 <li><p>We can then call the <code>similar</code> method</p>
-<div id="7b7deb2c" class="cell" data-execution_count="29">
+<div id="c0296e3f" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">import</span> nltk</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.text <span class="im">import</span> Text</span>
@@ -1608,7 +1583,7 @@ game jury well way question hall door table key pool</code></pre>
 <ul>
 <li><p>This is a slightly more involved example</p></li>
 <li><p>First we have to download the <code>names</code> corpus</p>
-<div id="4c956ca1" class="cell" data-execution_count="30">
+<div id="3c96a646" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">import</span> nltk</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>   nltk.download(<span class="st">"names"</span>)</span>
@@ -1633,7 +1608,7 @@ First ten female names:
 </div></li>
 <li><p>We can then load the data set and retain only valid names</p></li>
 <li><p>Then simply report the ten most common via <code>FreqDist</code></p>
-<div id="6ea61fbb" class="cell" data-execution_count="31">
+<div id="098ef5d0" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>   hamlet_words <span class="op">=</span> gutenberg.words(<span class="st">"shakespeare-hamlet.txt"</span>)</span>
@@ -1658,7 +1633,7 @@ First ten female names:
 </ul></li>
 </ol>
 <p>We’ve recreated the above answers below as complete cells so you can interact with them in the notebook</p>
-<div id="62126169" class="cell" data-execution_count="32">
+<div id="efcf5154" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 1"</span>)</span>
@@ -1678,7 +1653,7 @@ First two sentences: [['[', 'Emma', 'by', 'Jane', 'Austen', '1816', ']'], ['VOLU
 First paragraph: [['[', 'Emma', 'by', 'Jane', 'Austen', '1816', ']']]</code></pre>
 </div>
 </div>
-<div id="7c785011" class="cell" data-execution_count="33">
+<div id="813b7165" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
@@ -1732,7 +1707,7 @@ Words similar to 'rabbit' in Alice in Wonderland are:
  None</code></pre>
 </div>
 </div>
-<div id="117591ef" class="cell" data-execution_count="34">
+<div id="767ee77b" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg, names</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>

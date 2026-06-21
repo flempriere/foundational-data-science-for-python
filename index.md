@@ -44,6 +44,8 @@ Behrman](https://www.amazon.com.au/dp/0136624359)
   Libraries](2_data_science_libraries/Chapter_10/Chapter_10.qmd)
 - [Chapter 11: Machine Learning
   Libraries](2_data_science_libraries/Chapter_11/Chapter_11.qmd)
+- [Chapter 12: Natural Language
+  Toolkit](2_data_science_libraries/Chapter_12/Chapter_12.qmd)
 
 ### III: Intermediate Python
 
