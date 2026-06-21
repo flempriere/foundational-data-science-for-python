@@ -151,8 +151,8 @@ wind = WINDS[0]
 
 
 def change_wind():
-    global WIND
-    WIND = WINDS[(WINDS.index(wind) + 1) % 3]
+    global wind
+    wind = WINDS[(WINDS.index(wind) + 1) % 3]
 
 
 print(wind)
@@ -167,11 +167,11 @@ for _ in WINDS:
 ```
 
     Northeast
+    Northwest
+    Northwest
+    Southeast
     Northeast
-    Northeast
-    Northeast
-    Northeast
-    Northeast
+    Northwest
 
 - A more functional approach is to move the `WINDS` variable into the
   inner state
@@ -569,7 +569,7 @@ print(f"g_ten prints as {g_ten}")
     l_ten is a <class 'list'>
     l_ten is prints as: [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
     g_ten is a <class 'generator'>
-    g_ten prints as <generator object <genexpr> at 0x7fca70442400>
+    g_ten prints as <generator object <genexpr> at 0x7f58c47f2400>
 
 - A generator does not provide it’s contents
 - To get values from a generator, you can call `next`
@@ -924,12 +924,12 @@ def fibonacci_sequence():
     int
         The $i$-th call, where $i$ is the number of calls
     """
-        x_0 = 0
-        x_1 = 1
+    x_0 = 0
+    x_1 = 1
 
-        while True:
-            yield x_0
-            x_0, x_1 = x_1, x_0 + x_1
+    while True:
+        yield x_0
+        x_0, x_1 = x_1, x_0 + x_1
 
 
 fib = fibonacci_sequence()
@@ -937,8 +937,14 @@ for i in range(10):
     print(f"{i}-th fibonacci:", next(fib))
 ```
 
-    IndentationError: unexpected indent (2112530044.py, line 12)
-      Cell In[41], line 12
-        x_0 = 0
-        ^
-    IndentationError: unexpected indent
+    Question 5
+    0-th fibonacci: 0
+    1-th fibonacci: 1
+    2-th fibonacci: 1
+    3-th fibonacci: 2
+    4-th fibonacci: 3
+    5-th fibonacci: 5
+    6-th fibonacci: 8
+    7-th fibonacci: 13
+    8-th fibonacci: 21
+    9-th fibonacci: 34
