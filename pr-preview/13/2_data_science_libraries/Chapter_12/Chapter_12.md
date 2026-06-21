@@ -420,39 +420,42 @@ from nltk.text import Text
 caesar = gutenberg.words("shakespeare-caesar.txt")
 caesar_t = Text(caesar)
 
-print(
-    "caesar_t.concordance('Antony', lines=5):\n",
-    caesar_t.concordance("Antony", lines=5),
-)
+print("caesar_t.concordance('Antony', lines=5):")
+(caesar_t.concordance("Antony", lines=5),)
 
-print("caesar_t.collocations(num=4):")
+
+print("\ncaesar_t.collocations(num=4):")
 caesar_t.collocations(num=4)
 
-print("caesar_t.similar('Caesar'):")
+print("\ncaesar_t.similar('Caesar'):")
 caesar_t.similar("Caesar")
 
-print("caesar_t.findall(r'<O><C.*>'):", caesar_t.findall(r"<O><C.*>"))
+print("\ncaesar_t.findall(r'<O><C.*>'):\n")
+caesar_t.findall(r"<O><C.*>")
 
 caesar_t.dispersion_plot(["Caesar", "Antony", "Brutus", "Cassi"])
 ```
 
+    caesar_t.concordance('Antony', lines=5):
     Displaying 5 of 75 matches:
     efulnesse . Exeunt . Enter Caesar , Antony for the Course , Calphurnia , Porti
     rt Of that quicke Spirit that is in Antony : Let me not hinder Cassius your de
     . He loues no Playes , As thou dost Antony : he heares no Musicke ; Seldome he
     fer ' d him the Crowne ? Cask . Why Antony Bru . Tell vs the manner of it , ge
     , I did not marke it . I sawe Marke Antony offer him a Crowne , yet ' twas not
-    caesar_t.concordance('Antony', lines=5):
-     None
+
     caesar_t.collocations(num=4):
     Mark Antony; Marke Antony; Good morrow; Caius Ligarius
+
     caesar_t.similar('Caesar'):
     me it brutus you he rome that cassius this if men worke him vs feare
     world thee what know day
+
+    caesar_t.findall(r'<O><C.*>'):
+
     O Cicero; O Cassius; O Conspiracie; O Caesar; O Caesar; O Caesar; O
     Constancie; O Caesar; O Caesar; O Caesar; O Cassius; O Cassius; O
     Cassius; O Coward; O Cassius; O Clitus
-    caesar_t.findall(r'<O><C.*>'): None
 
 ![](Chapter_12_files/figure-commonmark/cell-16-output-2.png)
 
@@ -641,11 +644,11 @@ print(
 ```
 
     Flattened editorial paragraphs:
-     {'governor', 'atmosphere', 'has', 'session', 'was', 'faced', 'convened', 'issue', 'adjourns', 'struggle', 'abandoning', 'public', 'to', 'conjunction', 'brought', 'the', 'today', 'in', 'it', 'of', 'squarely', 'immediately', 'crisis', 'education', 'on', 'from', 'risk', ',', 'an', 'The', 'and', 'with', 'performed', 'General', 'good', 'Assembly', 'decision', '.', 'showdown', 'not', 'day', 'which', 'It', 'met', 'a', 'much', 'schools'}
-    {'procedures', 'has', 'strengthening', 'way', 'appropriations', 'information', 'need', 'but', 'fight', 'budgeting', 'There', 'to', 'a', 'the', 'historic', 'in', 'legislators', 'they', 'for', 'went', 'provide', 'budget', ',', 'final', 'been', 'The', 'and', 'General', 'Assembly', 'decided', 'decision', '.', 'opened', 'which', 'tackle', 'powers', 'executive', 'followed'}
-    {'next', 'session', 'two', 'government', 'musts', 'insured', 'to', 'the', 'in', 'years', 'become', 'of', 'is', 'now', 'for', 'financial', 'finance', 'crisis', 'from', ',', 'crisis-to-crisis', 'and', 'planning', 'state', 'if', 'them', 'ways', 'avoid', 'instance', '.', 'programs', 'have', 'may', 'Long-range', 'few', 'a', 'This'}
-    {'responsibility', 'was', 'future', 'issue', 'pensions', 'bond', 'await', 'increase', 'were', 'auto', 'school', 'as', 'the', 'Certainly', 'in', 'other', 'of', 'acceptance', 'by', 'same', 'for', 'law', 'shuffle', 'some', 'ban', 'legislation', 'on', 'title', 'passage', 'turmoil', 'at', ',', 'rate', 'an', 'passed', 'and', 'lost', 'teacher', 'state', 'age', 'good', 'In', 'road', 'municipalities', 'roads', '.', 'college', 'can', 'city', 'all', 'maintenance', 'action', 'limit', 'bills', 'applaud', 'racing', 'limits', 'repeal', 'drag', 'Some', 'outside'}
-    {'has', 'its', 'was', 'No', 'system', 'issue', 'penal', 'attacking', 'industry', 'start', 'as', 'to', 'taken', 'the', 'banning', 'attracting', 'in', 'sales', 'of', 'problems', 'reappraisal', 'companion', 'however', 'outright', 'on', 'unit', ',', 'token', 'been', 'major', 'reform', 'and', 'made', 'state', 'tax', 'such', 'modification', 'ending', 'Only', '.', 'fireworks', 'fee', 'action', 'county', 'question', 'a'}
+     {'met', 'It', 'on', 'has', 'it', 'adjourns', 'convened', 'faced', 'which', 'governor', 'crisis', 'The', 'from', 'issue', 'public', 'General', 'a', ',', 'immediately', 'in', 'showdown', 'not', 'brought', 'good', 'and', 'conjunction', '.', 'atmosphere', 'to', 'much', 'education', 'performed', 'Assembly', 'session', 'with', 'today', 'an', 'of', 'decision', 'struggle', 'risk', 'the', 'schools', 'squarely', 'abandoning', 'day', 'was'}
+    {'decided', 'powers', 'provide', 'opened', 'has', 'way', 'budgeting', 'but', 'which', 'The', 'strengthening', 'procedures', 'General', 'tackle', 'appropriations', 'a', ',', 'in', 'they', 'historic', 'and', 'final', '.', 'to', 'There', 'Assembly', 'budget', 'fight', 'need', 'executive', 'decision', 'the', 'been', 'legislators', 'for', 'information', 'went', 'followed'}
+    {'two', 'crisis-to-crisis', 'financial', 'Long-range', 'musts', 'planning', 'state', 'crisis', 'from', 'them', 'avoid', 'become', 'a', ',', 'years', 'in', 'next', 'finance', 'and', 'This', '.', 'to', 'is', 'if', 'government', 'session', 'have', 'ways', 'of', 'now', 'the', 'instance', 'few', 'for', 'programs', 'may', 'insured'}
+    {'shuffle', 'limits', 'rate', 'city', 'auto', 'school', 'passage', 'at', 'action', 'can', 'were', 'same', 'state', 'issue', 'roads', 'title', 'teacher', 'college', 'all', 'increase', 'pensions', 'bond', ',', 'other', 'limit', 'in', 'ban', 'acceptance', 'good', 'and', 'maintenance', '.', 'applaud', 'racing', 'age', 'Certainly', 'responsibility', 'repeal', 'municipalities', 'passed', 'some', 'legislation', 'bills', 'of', 'an', 'law', 'drag', 'future', 'Some', 'road', 'outside', 'the', 'as', 'In', 'lost', 'for', 'await', 'by', 'turmoil', 'on', 'was'}
+    {'outright', 'has', 'penal', 'action', 'unit', 'reappraisal', 'state', 'issue', 'fee', 'attacking', 'problems', 'industry', 'however', 'tax', 'a', ',', 'such', 'sales', 'in', 'its', 'companion', 'No', 'fireworks', 'start', 'question', 'and', 'attracting', 'ending', '.', 'taken', 'to', 'modification', 'reform', 'of', 'been', 'as', 'the', 'county', 'major', 'made', 'banning', 'on', 'Only', 'token', 'system', 'was'}
 
 - Next we need to associate the labels to each of our data sets
 - Then combine together into a test set
@@ -751,400 +754,115 @@ labelled_data = list(
 )
 
 random.shuffle(labelled_data)
-labelled_data[:10]
+labelled_data[0]
 ```
 
-    [({',',
-       '.',
-       ':',
-       '?',
-       'Reply',
-       'Sewing',
-       'There',
-       'This',
-       'What',
-       'a',
-       'an',
-       'and',
-       'are',
-       'be',
-       'beginning',
-       'brings',
-       'circulation',
-       'conditions',
-       'cramp',
-       'disorders',
-       'early',
-       'functional',
-       'hands',
-       'including',
-       'makes',
-       'manifestation',
-       'many',
-       'may',
-       'multiple',
-       'my',
-       'neurological',
-       'numb',
-       'numbness',
-       'of',
-       'or',
-       'poor',
-       'possibilities',
-       'sclerosis',
-       "sewer's",
-       'sewing',
-       'sign',
-       'the',
-       'variety',
-       'when',
-       'writes'},
-      'fiction'),
-     ({',',
-       '.',
-       'And',
-       'Geneva',
-       'Once',
-       'Only',
-       'Soviet',
-       'States',
-       'United',
-       'With',
-       'again',
-       'and',
-       'are',
-       'around',
-       'at',
-       'been',
-       'choice',
-       'choices',
-       'choose',
-       'conditions',
-       'different',
-       'far',
-       'harder',
-       'has',
-       'hope',
-       'however',
-       'intransigence',
-       'is',
-       'much',
-       'must',
-       'of',
-       'once',
-       'prove',
-       'resumption',
-       'same',
-       'shaken',
-       'talks',
-       'testing',
-       'that',
-       'the',
-       'their',
-       'third',
-       'this',
-       'time',
-       'viable',
-       'would'},
-      'fiction'),
-     ({',',
-       '.',
-       'Everything',
-       'adapted',
-       'been',
-       'from',
-       'games',
-       'has',
-       'history',
-       'histrionics',
-       'party',
-       'philosophy',
-       'phonetics',
-       'poetry',
-       'the',
-       'to',
-       'turntable'},
-      'fiction'),
-     ({',',
-       '.',
-       'But',
-       'Conant',
-       'Dr.',
-       'It',
-       'Negro',
-       'That',
-       'The',
-       'a',
-       'accuses',
-       'adds',
-       'alike',
-       'and',
-       'are',
-       'as',
-       'bad',
-       'by',
-       'calling',
-       'central',
-       'color',
-       'complacency',
-       'conditions',
-       'cuts',
-       'dead-end',
-       'deny',
-       'double-talk',
-       'employers',
-       'especially',
-       'facts',
-       'for',
-       'from',
-       'he',
-       'hidden',
-       'hundreds',
-       'hypocrisies',
-       'improvement',
-       'insistence',
-       'integration',
-       'issues',
-       'job',
-       'labels',
-       'labor',
-       'name',
-       'objections',
-       'of',
-       'on',
-       'opportunities',
-       'piece',
-       'powerful',
-       'public',
-       'rather',
-       'real',
-       'regardless',
-       'right',
-       'schools',
-       'side',
-       'slums',
-       'squeamish',
-       'streets',
-       'students',
-       'than',
-       'the',
-       'their',
-       'theme',
-       'these',
-       'those',
-       'thousands',
-       'through',
-       'to',
-       'token',
-       'unions',
-       'view',
-       'villains',
-       'who',
-       'youngsters'},
-      'fiction'),
-     ({',',
-       '.',
-       'Dulles',
-       'Rusk',
-       'States',
-       'The',
-       'United',
-       'a',
-       'balanced',
-       'belief',
-       'danger',
-       'defense',
-       'existed',
-       'grave',
-       'has',
-       'idea',
-       'in',
-       'massive',
-       'of',
-       'removes',
-       'replacing',
-       'retaliation',
-       'strengthens',
-       'that',
-       'the',
-       'theory'},
-      'editorial'),
-     ({',', '?', 'Where', 'can', 'for', 'improvement', 'look', 'then', 'we'},
-      'editorial'),
-     ({',',
-       '.',
-       'Christian',
-       'It',
-       'The',
-       'a',
-       'and',
-       'are',
-       'as',
-       'been',
-       'being',
-       'by',
-       'chance',
-       'course',
-       'days',
-       'did',
-       "emperor's",
-       'football',
-       'have',
-       'homecoming',
-       'is',
-       'killed',
-       'life',
-       'lion',
-       'lions',
-       'little',
-       'more',
-       'now',
-       'of',
-       'on',
-       'one',
-       'opponent',
-       'ruined',
-       'said',
-       'selected',
-       'team',
-       'than',
-       'that',
-       'the',
-       'then',
-       'they',
-       'thrown',
-       'to',
-       'true',
-       'uncertainties',
-       'view',
-       'visiting',
-       'what',
-       'when',
-       'will',
-       'with'},
-      'fiction'),
-     ({"''",
-       '(',
-       ')',
-       ',',
-       '.',
-       '11',
-       'Facts',
-       'Interpretation',
-       'Lester',
-       'Mar.',
-       'Markel',
-       'Of',
-       'SR',
-       'The',
-       '``',
-       'a',
-       'ago',
-       'and',
-       'article',
-       'by',
-       'called',
-       'combination',
-       'country',
-       'current',
-       'doctored',
-       'fact',
-       'fancy',
-       'flourished',
-       'focus',
-       'from',
-       'generation',
-       'his',
-       'in',
-       'invaluable',
-       'is',
-       'its',
-       'journalism',
-       'more',
-       'news',
-       'of',
-       'on',
-       'opinion',
-       'personal',
-       'pollution',
-       'press',
-       'probably',
-       'protecting',
-       'readers',
-       'reporting',
-       'right',
-       'stereotype',
-       'straight',
-       'than',
-       'that',
-       'the',
-       'this',
-       'track',
-       'was',
-       'which',
-       'yellow'},
-      'editorial'),
-     ({"''",
-       ',',
-       '.',
-       'B.',
-       'Colee',
-       'D.',
-       'Floridians',
-       'Harold',
-       'Jacksonville',
-       'John',
-       'Miami',
-       'Singer',
-       'South',
-       'The',
-       'Turner',
-       'William',
-       '``',
-       'all',
-       'and',
-       'areas',
-       'by',
-       'calm',
-       'continued',
-       'established',
-       'field',
-       'group',
-       'has',
-       'headed',
-       'in',
-       'including',
-       'of',
-       'pattern',
-       'race',
-       'relations',
-       'relative',
-       'reported',
-       'the',
-       'this',
-       'two'},
-      'fiction'),
-     ({',',
-       '.',
-       'DePugh',
-       'Mrs.',
-       'active',
-       'all',
-       'an',
-       'and',
-       'children',
-       'exercises',
-       'five',
-       'her',
-       "husband's",
-       'in',
-       'member',
-       'mother',
-       'of',
-       'organization',
-       'participated',
-       'the'},
-      'editorial')]
+    ({'$3',
+      "''",
+      ',',
+      '.',
+      '10-year',
+      '1960',
+      'Bostitch',
+      'East',
+      'Greenwich',
+      'Inc.',
+      'It',
+      'The',
+      'What',
+      'With',
+      '``',
+      'a',
+      'achieve',
+      'and',
+      'another',
+      'approximately',
+      'are',
+      'areas',
+      'as',
+      'assume',
+      'attempting',
+      'balance',
+      'best',
+      'between',
+      'book',
+      'but',
+      'commercial',
+      'community',
+      'completely',
+      'consistent',
+      'costs',
+      'current',
+      'density',
+      'develop',
+      'development',
+      'do',
+      'dollars',
+      'entirely',
+      'estate',
+      'excess',
+      'exemption',
+      'exemptions',
+      'fact',
+      'for',
+      'governmental',
+      'granting',
+      'half',
+      'help',
+      'hundred',
+      'in',
+      'indicates',
+      'industrial',
+      'instance',
+      'is',
+      'it',
+      'low',
+      'maintain',
+      'matter',
+      'medium',
+      'meet',
+      'million',
+      'modest',
+      'my',
+      'of',
+      'opinion',
+      'our',
+      'particular',
+      'pay',
+      'per',
+      'plant',
+      'problems',
+      'property',
+      'qualify',
+      'rate',
+      'real',
+      'residential',
+      'safe',
+      'satisfactory',
+      'should',
+      'such',
+      'suggest',
+      'suggestion',
+      'tax',
+      'that',
+      'the',
+      'their',
+      'these',
+      'this',
+      'through',
+      'to',
+      'try',
+      'two',
+      'valuation',
+      'way',
+      'we',
+      'when',
+      'will',
+      'wisdom',
+      'with',
+      'you',
+      'your'},
+     'fiction')
 
 - To use the classifier we have to convert our paragraphs into a
   *feature set*
@@ -1243,7 +961,7 @@ random.shuffle(labelled_data)
 
 # create the feature sets
 def define_features(paragraph: Set[str], feature_words: Set[str]) -> dict[str, bool]:
-    features = {word: word in feature_words for word in paragraph}
+    features = {word: word in paragraph for word in feature_words}
     return features
 
 
@@ -1263,16 +981,16 @@ print(
 ```
 
     test data sample:
-     ({'impression': False, "Wagner's": False, 'are': False, 'known': False, 'mercilessly': False, 'be': False, 'Levitt': False, 'exposed': False, 'to': False, 'more': False, 'public-spirited': False, 'in': False, 'of': False, 'quiet': False, 'post': False, 'Mr.': False, 'those': False, 'left': False, 'honest': False, 'who': False, 'men': False, 'been': False, 'an': False, 'and': False, 'Mayor': False, 'state': True, 'perhaps': False, '.': False, 'his': False, 'have': False, 'competence': False, 'Both': False, 'than': False, 'shortcomings': False, 'protected': False}, 'editorial')
-    ({'miles': False, 'life': False, 'power': True, 'would': False, 'long': False, 'ground': False, 'unsheltered': False, 'missile': False, 'be': False, 'could': False, 'to': False, 'Top': False, '50': False, 'underground': False, 'in': False, 'or': False, 'of': False, 'by': False, 'suffocating': False, 'for': False, 'massive': False, 'also': False, 'survive': False, 'engulfed': False, 'persist': False, 'above': False, 'no': False, 'atomic': False, ',': False, 'area': False, 'at': False, 'an': False, 'The': False, 'diameter': False, 'warned': False, 'fire': False, 'that': False, 'storm': False, '.': False, 'have': False, 'least': False, 'which': False, 'sheltered': False, 'time': False, 'a': False, 'scientists': False, 'hit': False, 'expected': False}, 'fiction')
-    ({'power': True, 'States': False, 'two': False, 'enough': False, 'newest': False, 'history': False, 'deadly': False, 'warfare': False, 'statements': False, 'be': False, 'destructive': False, 'murderous': False, 'to': False, 'bombs': False, 'the': False, 'neutral': False, 'Germany': False, 'conventional': False, 'in': False, 'sufficient': False, 'of': False, 'is': False, 'by': False, 'nuclear': True, 'Times': False, 'those': False, 'still': False, 'past': False, 'destroy': False, 'said': False, 'For': False, 'well-known': False, 'world': True, 'regarding': False, 'York': False, 'nullity': False, 'negotiations': False, 'editor': True, 'entire': False, 'dominated': False, 'who': False, 'advocate': False, ',': False, 'militarism': False, 'Recent': False, 'The': False, 'and': False, 'with': False, 'should': False, 'large': False, 'weapons': False, 'Russia': False, 'instead': False, 'Soviet': False, ':': False, 'that': False, '.': False, 'have': False, 'armed': False, 'first': False, 'fear': False, 'nations': False, 'United': False, 'all': False, 'make': False, 'time': False, 'voices': False, 'powerful': False, 'fall-outs': False, 'Soviets': False, 'a': False, 'scientists': False, 'resurgence': False, 'New': False, 'German': False}, 'fiction')
-    ({'beyond': False, 'we': False, 'would': False, 'be': False, 'often': False, 'regardless': False, 'refusal': False, 'part': False, 'There': False, 'to': False, 'start': False, 'the': False, 'atmospheric': False, 'in': False, 'of': False, 'our': False, 'used': False, 'will': False, 'past': False, 'Too': False, 'resume': False, 'on': False, 'go': False, 'allow': False, 'justify': False, 'been': False, 'The': False, 'testing': False, 'point': False, 'like': False, 'ought': False, 'Russia': False, 'good': False, '.': False, 'not': False, 'have': False, 'ourselves': False, 'tactics': False, 'does': False, 'which': False, 'a': False, 'Russian': False, 'what': False}, 'fiction')
-    ({'P.': False, 'session': False, 'two': False, 'most': False, 'history': False, 'As': False, '``': False, 'Congress': False, "Sandburg's": False, 'Spoken': False, 'memorable': False, "Lincoln's": False, 'to': False, 'the': False, 'set': False, 'Lincoln': False, 'in': False, 'lecturer': False, 'Basler': False, 'years': False, "''": False, 'of': False, 'by': False, 'Thanks': False, 'bonus': False, 'joint': False, 'address': False, 'birthday': False, 'speeches': False, 'Records': False, 'hear': False, 'letters': False, 'interpreted': False, 'Arts': False, 'Roy': False, ',': False, 'contemporary': False, 'at': False, 'on': False, 'and': False, 'delivered': False, '.': False, 'includes': False, 'may': False, 'Carl': False, 'authority': False, 'a': False, 'buffs': False, 'two-disc': False, 'ago': False}, 'editorial')
-    ({'extremely': False, 'appear': False, 'pickup': False, 'its': False, 'reduced': False, 'was': False, 'consideration': False, 'devoid': False, '``': False, 'but': False, 'sack': False, 'any': False, 'to': False, 'as': False, 'the': False, 'Hoover': False, 'in': False, 'it': False, 'partisan': False, 'of': False, "''": False, 'people': False, 'their': False, 'for': False, 'mule-drawn': False, 'dust': False, 'trouble': False, ',': False, 'lacking': False, 'The': False, 'tobacco': False, 'spoke': False, '.': False, 'not': False, 'trucks': False, 'carts': False, 'Farmers': False, 'party': True, 'Republican': False, 'make': False, 'makings': False, 'Smokers': False, 'humanity': False, 'permitted': False, 'called': False, 'leadership': False}, 'editorial')
-    ({'fosters': False, 'VA': False, 'would': False, 'grow': False, ';': False, 'the': False, 'of': False, 'A.M.A.': False, 'supported': False, 'support': False, 'deduction': False, 'approximately': False, 'matched': False, 'age': False, 'care': False, 'Nevertheless': False, 'opposed': False, 'dollars': False, 'cost': False, 'federal': False, 'stand': False, 'as': False, 'compulsory': False, 'burden': False, 'grant': False, 'major': False, 'aged': False, 'medical': False, 'that': False, '.': False, 'ours': False, 'incidentally': False, 'time': False, 'administration': False, 'we': False, 'passes': False, 'to': False, 'proportionately': False, 'Forand': False, 'confronting': False, 'veterans': False, 'they': False, 'hospitals': False, 'illness': False, 'for': False, 'will': False, 'wonder': False, 'bill': False, 'himself': False, 'on': False, 'yet': False, 'at': False, ',': False, '(': False, 'They': False, 'have': False, 'which': False, 'health': False, 'initiate': False, 'million': False, ')': False, 'We': False, 'fact': True, 'by': False, 'payroll': False, 'small': False, 'financial': False, 'through': False, 'demand': False, 'individual': False, 'upon': False, 'Eisenhower': False, 'problem': False, 'state': True, 'placed': False, 'five': False, 'like': False, 'acknowledge': False, 'a': False}, 'editorial')
-    ({'impression': False, "Wagner's": False, 'are': False, 'known': False, 'mercilessly': False, 'be': False, 'Levitt': False, 'exposed': False, 'to': False, 'more': False, 'public-spirited': False, 'in': False, 'of': False, 'quiet': False, 'post': False, 'Mr.': False, 'those': False, 'left': False, 'honest': False, 'who': False, 'men': False, 'been': False, 'an': False, 'and': False, 'Mayor': False, 'state': True, 'perhaps': False, '.': False, 'his': False, 'have': False, 'competence': False, 'Both': False, 'than': False, 'shortcomings': False, 'protected': False}, 'fiction')
-    ({'Foote': False, 'experts': False, 'anniversary': False, 'States': False, 'Seoul': False, 'was': False, '80th': False, 'year': False, 'between': False, 'are': False, 'State': False, 'correspondence': False, 'to': False, 'the': False, 'in': False, 'minister': False, 'Frederick': False, 'Next': False, 'is': False, 'of': False, '1884': False, 'trying': False, 'Korea': False, 'signing': False, 'who': False, ',': False, 'and': False, 'treaty': False, '.': False, 'first': False, 'Frelinghuysen': False, 'United': False, 'Lucius': False, 'find': False, 'Gen.': False, '1883': False, 'Secretary': False}, 'editorial')
-    ({'VA': False, 'hospital': False, 'leaves': False, 'when': False, 'surgery': False, 'he': False, 'to': False, 'a': False, 'the': False, 'visit': False, 'until': False, 'in': False, 'going': False, 'or': False, 'of': False, 'is': False, 'keeps': False, 'no': False, ',': False, 'effects': False, 'chance': False, 'that': False, 'his': False, '.': False, 'have': False, 'can': False, 'knows': False, 'Secondly': False, 'patient': False, 'observe': False, 'veteran': False, 'So': False, 'longer': False, 'physician': False, 'treatment': False}, 'fiction')
+     ({'congress': False, 'peace': False, 'city': False, 'party': False, 'fact': True, 'think': False, 'seemed': False, 'hand': False, 'face': False, 'room': False, 'thought': False, 'united': False, 'state': False, 'country': False, 'nuclear': False, 'political': False, 'voice': False, 'public': False, 'home': False, 'found': False, 'told': False, 'national': False, 'head': False, 'world': False, 'washington': False, 'though': False, 'american': False, 'night': False, 'states': False, 'editor': False, 'war': False, 'knew': False, 'stood': False, 'government': False, 'felt': False, 'president': False, 'church': False, 'house': False, 'every': False, 'county': False, 'power': False, 'big': False, 'god': False, 'moment': False, 'eyes': False}, 'editorial')
+    ({'congress': False, 'peace': False, 'city': False, 'party': False, 'fact': False, 'think': False, 'seemed': False, 'hand': False, 'face': False, 'room': False, 'thought': False, 'united': False, 'state': False, 'country': False, 'nuclear': False, 'political': False, 'voice': False, 'public': False, 'home': False, 'found': False, 'told': False, 'national': False, 'head': False, 'world': False, 'washington': False, 'though': False, 'american': False, 'night': False, 'states': False, 'editor': False, 'war': False, 'knew': False, 'stood': False, 'government': False, 'felt': False, 'president': False, 'church': False, 'house': False, 'every': False, 'county': False, 'power': True, 'big': False, 'god': False, 'moment': False, 'eyes': False}, 'editorial')
+    ({'congress': False, 'peace': False, 'city': False, 'party': False, 'fact': False, 'think': False, 'seemed': False, 'hand': False, 'face': False, 'room': False, 'thought': False, 'united': False, 'state': False, 'country': False, 'nuclear': False, 'political': False, 'voice': False, 'public': False, 'home': False, 'found': False, 'told': False, 'national': False, 'head': False, 'world': False, 'washington': False, 'though': True, 'american': False, 'night': False, 'states': False, 'editor': False, 'war': False, 'knew': False, 'stood': False, 'government': False, 'felt': False, 'president': False, 'church': False, 'house': False, 'every': False, 'county': False, 'power': False, 'big': False, 'god': False, 'moment': False, 'eyes': False}, 'fiction')
+    ({'congress': False, 'peace': False, 'city': False, 'party': False, 'fact': False, 'think': False, 'seemed': False, 'hand': False, 'face': False, 'room': False, 'thought': False, 'united': False, 'state': False, 'country': False, 'nuclear': False, 'political': False, 'voice': False, 'public': False, 'home': False, 'found': False, 'told': False, 'national': False, 'head': False, 'world': False, 'washington': False, 'though': False, 'american': False, 'night': False, 'states': False, 'editor': False, 'war': False, 'knew': False, 'stood': False, 'government': False, 'felt': False, 'president': False, 'church': False, 'house': False, 'every': False, 'county': False, 'power': False, 'big': False, 'god': False, 'moment': False, 'eyes': False}, 'fiction')
+    ({'congress': False, 'peace': False, 'city': False, 'party': False, 'fact': False, 'think': False, 'seemed': False, 'hand': False, 'face': False, 'room': False, 'thought': False, 'united': False, 'state': False, 'country': False, 'nuclear': False, 'political': False, 'voice': False, 'public': False, 'home': False, 'found': False, 'told': False, 'national': False, 'head': False, 'world': False, 'washington': False, 'though': False, 'american': False, 'night': False, 'states': False, 'editor': False, 'war': False, 'knew': False, 'stood': False, 'government': False, 'felt': False, 'president': False, 'church': False, 'house': False, 'every': False, 'county': False, 'power': False, 'big': False, 'god': False, 'moment': False, 'eyes': False}, 'fiction')
+    ({'congress': False, 'peace': False, 'city': False, 'party': False, 'fact': False, 'think': False, 'seemed': False, 'hand': False, 'face': False, 'room': False, 'thought': False, 'united': False, 'state': False, 'country': False, 'nuclear': False, 'political': False, 'voice': False, 'public': False, 'home': False, 'found': False, 'told': False, 'national': False, 'head': False, 'world': False, 'washington': False, 'though': False, 'american': False, 'night': False, 'states': False, 'editor': False, 'war': False, 'knew': False, 'stood': False, 'government': False, 'felt': False, 'president': False, 'church': False, 'house': False, 'every': False, 'county': False, 'power': False, 'big': False, 'god': False, 'moment': False, 'eyes': False}, 'fiction')
+    ({'congress': False, 'peace': False, 'city': False, 'party': False, 'fact': False, 'think': False, 'seemed': False, 'hand': False, 'face': False, 'room': False, 'thought': False, 'united': False, 'state': False, 'country': False, 'nuclear': False, 'political': False, 'voice': False, 'public': False, 'home': False, 'found': False, 'told': False, 'national': False, 'head': False, 'world': False, 'washington': False, 'though': False, 'american': False, 'night': False, 'states': False, 'editor': True, 'war': False, 'knew': False, 'stood': False, 'government': False, 'felt': False, 'president': False, 'church': False, 'house': False, 'every': False, 'county': False, 'power': False, 'big': True, 'god': False, 'moment': False, 'eyes': False}, 'editorial')
+    ({'congress': False, 'peace': False, 'city': False, 'party': False, 'fact': False, 'think': False, 'seemed': False, 'hand': False, 'face': False, 'room': False, 'thought': False, 'united': False, 'state': True, 'country': False, 'nuclear': False, 'political': False, 'voice': False, 'public': False, 'home': False, 'found': False, 'told': False, 'national': False, 'head': False, 'world': False, 'washington': False, 'though': False, 'american': False, 'night': False, 'states': False, 'editor': False, 'war': False, 'knew': False, 'stood': False, 'government': False, 'felt': False, 'president': False, 'church': False, 'house': False, 'every': False, 'county': False, 'power': False, 'big': False, 'god': False, 'moment': False, 'eyes': False}, 'fiction')
+    ({'congress': False, 'peace': False, 'city': False, 'party': False, 'fact': False, 'think': False, 'seemed': False, 'hand': False, 'face': False, 'room': False, 'thought': False, 'united': False, 'state': False, 'country': False, 'nuclear': False, 'political': False, 'voice': False, 'public': False, 'home': False, 'found': False, 'told': False, 'national': False, 'head': False, 'world': False, 'washington': False, 'though': False, 'american': False, 'night': False, 'states': False, 'editor': False, 'war': False, 'knew': False, 'stood': False, 'government': False, 'felt': False, 'president': False, 'church': False, 'house': False, 'every': False, 'county': False, 'power': False, 'big': False, 'god': False, 'moment': False, 'eyes': False}, 'fiction')
+    ({'congress': False, 'peace': False, 'city': False, 'party': False, 'fact': True, 'think': False, 'seemed': False, 'hand': False, 'face': False, 'room': False, 'thought': False, 'united': False, 'state': False, 'country': False, 'nuclear': False, 'political': False, 'voice': False, 'public': False, 'home': False, 'found': False, 'told': False, 'national': False, 'head': False, 'world': False, 'washington': False, 'though': False, 'american': False, 'night': False, 'states': False, 'editor': False, 'war': False, 'knew': False, 'stood': False, 'government': False, 'felt': False, 'president': False, 'church': False, 'house': False, 'every': False, 'county': False, 'power': False, 'big': False, 'god': False, 'moment': False, 'eyes': False}, 'editorial')
 
 - Now that the data has been cleaned and converted to the required input
   format we can classify it
@@ -1394,17 +1112,17 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
     editorial
     Which features (tell words) were assessed to be the most significant indicators?
     Most Informative Features
-                        knew = True           editor : fictio =      1.8 : 1.0
-                      united = True           editor : fictio =      1.8 : 1.0
-                        room = True           fictio : editor =      1.6 : 1.0
-                      church = True           fictio : editor =      1.6 : 1.0
-                        told = True           editor : fictio =      1.5 : 1.0
-                       peace = True           editor : fictio =      1.5 : 1.0
-                        home = True           fictio : editor =      1.3 : 1.0
-                       night = True           editor : fictio =      1.3 : 1.0
-                     thought = True           editor : fictio =      1.3 : 1.0
-                         war = True           editor : fictio =      1.3 : 1.0
-    Accuracy: 0.4521452145214521
+                       voice = True           editor : fictio =      3.0 : 1.0
+                     thought = True           fictio : editor =      1.8 : 1.0
+                        eyes = True           editor : fictio =      1.4 : 1.0
+                        knew = True           editor : fictio =      1.4 : 1.0
+                        face = True           fictio : editor =      1.4 : 1.0
+                      though = True           editor : fictio =      1.3 : 1.0
+                        room = True           editor : fictio =      1.3 : 1.0
+                     country = True           fictio : editor =      1.3 : 1.0
+                        hand = True           editor : fictio =      1.3 : 1.0
+                      states = True           fictio : editor =      1.3 : 1.0
+    Accuracy: 0.45544554455445546
 
 - The model should perform better than a 50 / 50 guess
   - Obviously we could use a wider set of features rather than just the
@@ -1601,7 +1319,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
       ``` python
          from nltk.corpus import gutenberg
 
-         hamlet_words = gutenberg.words("shakespeare-hamlet")
+         hamlet_words = gutenberg.words("shakespeare-hamlet.txt")
 
          hamlet_words_filtered = [name for word in hamlet_words if (name := word.capitalize()) in male_names or name in female_names]
 
@@ -1609,50 +1327,18 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
          hamlet_name_dist.most_common(10)
       ```
 
-          OSError: No such file or directory: '/home/runner/nltk_data/corpora/gutenberg/shakespeare-hamlet'
+          NameError: name 'hamelet_words_filtered' is not defined
           ---------------------------------------------------------------------------
-          OSError                                   Traceback (most recent call last)
-          Cell In[31], line 3
-                1 from nltk.corpus import gutenberg
-                2 
-          ----> 3 hamlet_words = gutenberg.words("shakespeare-hamlet")
+          NameError                                 Traceback (most recent call last)
+          Cell In[31], line 7
+                3 hamlet_words = gutenberg.words("shakespeare-hamlet.txt")
                 4 
                 5 hamlet_words_filtered = [name for word in hamlet_words if (name := word.capitalize()) in male_names or name in female_names]
                 6 
+          ----> 7 hamlet_name_dist = nltk.FreqDist(hamelet_words_filtered)
+                8 hamlet_name_dist.most_common(10)
 
-          File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/nltk/corpus/reader/plaintext.py:76, in PlaintextCorpusReader.words(self, fileids)
-               67 def words(self, fileids=None):
-               68     """
-               69     :return: the given file(s) as a list of words
-               70         and punctuation symbols.
-               71     :rtype: list(str)
-               72     """
-               73     return concat(
-               74         [
-               75             self.CorpusView(path, self._read_word_block, encoding=enc)
-          ---> 76             for (path, enc, fileid) in self.abspaths(fileids, True, True)
-               77         ]
-               78     )
-
-          File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/nltk/corpus/reader/api.py:195, in CorpusReader.abspaths(self, fileids, include_encoding, include_fileid)
-              192 elif isinstance(fileids, str):
-              193     fileids = [fileids]
-          --> 195 paths = [self._root.join(f) for f in fileids]
-              197 if include_encoding and include_fileid:
-              198     return list(zip(paths, [self.encoding(f) for f in fileids], fileids))
-
-          File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/nltk/data.py:413, in FileSystemPathPointer.join(self, fileid)
-              410 if not (joined == root or joined.startswith(root + os.sep)):
-              411     raise ValueError(f"Escape outside root blocked: {joined}")
-          --> 413 return FileSystemPathPointer(joined)
-
-          File ~/work/foundational-data-science-for-python/foundational-data-science-for-python/.venv/lib/python3.14/site-packages/nltk/data.py:371, in FileSystemPathPointer.__init__(self, _path)
-              369 _path = os.path.abspath(_path)
-              370 if not os.path.exists(_path):
-          --> 371     raise OSError("No such file or directory: %r" % _path)
-              372 self._path = _path
-
-          OSError: No such file or directory: '/home/runner/nltk_data/corpora/gutenberg/shakespeare-hamlet'
+          NameError: name 'hamelet_words_filtered' is not defined
 
 We’ve recreated the above answers below as complete cells so you can
 interact with them in the notebook
@@ -1747,19 +1433,17 @@ hamlet_words_filtered = [
     if (name := word.capitalize()) in male_names or name in female_names
 ]
 
-hamlet_name_dist = nltk.FreqDist(hamelet_words_filtered)
+hamlet_name_dist = nltk.FreqDist(hamlet_words_filtered)
 hamlet_name_dist.most_common(10)
 ```
 
-    NameError: name 'hamelet_words_filtered' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[34], line 16
-         12     for word in hamlet_words
-         13     if (name := word.capitalize()) in male_names or name in female_names
-         14 ]
-         15 
-    ---> 16 hamlet_name_dist = nltk.FreqDist(hamelet_words_filtered)
-         17 hamlet_name_dist.most_common(10)
-
-    NameError: name 'hamelet_words_filtered' is not defined
+    [('Ham', 337),
+     ('King', 172),
+     ('Will', 149),
+     ('Hamlet', 100),
+     ('May', 65),
+     ('Say', 52),
+     ('Doe', 51),
+     ('See', 48),
+     ('Horatio', 40),
+     ('Clo', 29)]
