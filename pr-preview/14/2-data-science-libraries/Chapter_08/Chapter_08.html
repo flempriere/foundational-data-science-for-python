@@ -68,6 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../2-data-science-libraries/Chapter_09/Chapter_09.html" rel="next">
+<link href="../../2-data-science-libraries/Chapter_07/Chapter_07.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -174,7 +176,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Chapter 8: SciPy</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html">II: Data Science Libraries</a></li><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_08/Chapter_08.html">Chapter 8: SciPy</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -243,31 +245,49 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">II: Data Science Libraries</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_07/Chapter_07.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 7: NumPy</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_08/Chapter_08.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_08/Chapter_08.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Chapter 8: SciPy</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_09/Chapter_09.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_09/Chapter_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 9: Pandas</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_10/Chapter_10.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_10/Chapter_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 10: Visualisation Libraries</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_11/Chapter_11.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_11/Chapter_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 11: Machine Learning Libraries</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_12/Chapter_12.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_12/Chapter_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 12: Natural Language Toolkit</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -316,7 +336,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html">II: Data Science Libraries</a></li><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_08/Chapter_08.html">Chapter 8: SciPy</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Chapter 8: SciPy</h1>
 </div>
@@ -380,7 +400,7 @@ Important
 <p>Scipy has deprecated <code>misc</code> and it is planned for removal in Scipy 2.0. All the functionality of <code>misc</code> has been removed. For example the <code>face</code> and <code>ascent</code> functions now live in <code>scipy.datasets</code></p>
 </div>
 </div>
-<div id="65a991d4" class="cell" data-execution_count="1">
+<div id="f37d7ce6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> datasets</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -454,7 +474,7 @@ Important
 <ul>
 <li>And doing the same for <code>ascent</code></li>
 </ul>
-<div id="06da8dac" class="cell" data-execution_count="2">
+<div id="122e1b48" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> datasets</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -505,7 +525,7 @@ Important
 </ul></li>
 <li>For example,</li>
 </ul>
-<div id="b77ba692" class="cell" data-execution_count="3">
+<div id="de7f35e0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> special</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"special.factorial(3):"</span>, special.factorial(<span class="dv">3</span>))</span>
@@ -544,7 +564,7 @@ Caution
 <li>Each provides a common interface</li>
 <li>For example, demonstrating with a binomial distribution</li>
 </ul>
-<div id="14973146" class="cell" data-execution_count="4">
+<div id="6504f6bd" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -571,8 +591,8 @@ Caution
 B.cdf(4): 0.23750777887760136
 B.mean(): 6.0
 B.std(): 2.04939015319192
-B.rvs(): 4
-B.rvs(15): [ 6  7  6  7  6  5  5  6  6  7  3  5  5 11  8]</code></pre>
+B.rvs(): 10
+B.rvs(15): [ 6  8  3  7  7  3  5  7  7  6  7  3  2  4 10]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -595,7 +615,7 @@ B.rvs(15): [ 6  7  6  7  6  5  5  6  6  7  3  5  5 11  8]</code></pre>
 </ul></li>
 <li>A left-skewed distribution</li>
 </ul>
-<div id="bf50d46a" class="cell" data-execution_count="5">
+<div id="0c936e76" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -614,7 +634,7 @@ B.rvs(15): [ 6  7  6  7  6  5  5  6  6  7  3  5  5 11  8]</code></pre>
 <ul>
 <li>A right-shifted distribution</li>
 </ul>
-<div id="7049673c" class="cell" data-execution_count="6">
+<div id="3501e959" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -660,7 +680,7 @@ B.rvs(15): [ 6  7  6  7  6  5  5  6  6  7  3  5  5 11  8]</code></pre>
 </ul></li>
 <li>For example, a common continuous distribution is the normal distribution</li>
 </ul>
-<div id="97f61390" class="cell" data-execution_count="7">
+<div id="1cef606b" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -679,7 +699,7 @@ B.rvs(15): [ 6  7  6  7  6  5  5  6  6  7  3  5  5 11  8]</code></pre>
 <ul>
 <li>As we change the <code>loc</code> and <code>scale</code> parameters the distribution will change too</li>
 </ul>
-<div id="b5e38d22" class="cell" data-execution_count="8">
+<div id="f7495337" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -698,7 +718,7 @@ B.rvs(15): [ 6  7  6  7  6  5  5  6  6  7  3  5  5 11  8]</code></pre>
 <ul>
 <li>As mentioned continuous distributions have a common interface</li>
 </ul>
-<div id="6afe2a59" class="cell" data-execution_count="9">
+<div id="042c6c20" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">30</span>, scale<span class="op">=</span><span class="dv">50</span>)</span>
@@ -720,7 +740,7 @@ B.rvs(15): [ 6  7  6  7  6  5  5  6  6  7  3  5  5 11  8]</code></pre>
 <pre><code>N.mean(): 30.0
 N.pdf(4): 0.006969850255179491
 N.cdf(2): 0.28773971884902705
-N.rvs(): -47.0854578447054
+N.rvs(): 71.38700712744962
 N.var(): 2500.0
 N.median(): 30.0
 N.std(): 50.0</code></pre>
@@ -729,7 +749,7 @@ N.std(): 50.0</code></pre>
 <ul>
 <li>A continuous analogue to the Poisson Distribution is the exponential distribution</li>
 </ul>
-<div id="888f45cb" class="cell" data-execution_count="10">
+<div id="577cce44" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -748,7 +768,7 @@ N.std(): 50.0</code></pre>
 <ul>
 <li>We can also use a uniform distribution</li>
 </ul>
-<div id="c0760a44" class="cell" data-execution_count="11">
+<div id="f3e1dc4a" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -795,7 +815,7 @@ N.std(): 50.0</code></pre>
 </ul></li>
 </ol>
 <p>See answers implemented below</p>
-<div id="95f6092a" class="cell" data-execution_count="12">
+<div id="d91cef41" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -815,11 +835,11 @@ N.std(): 50.0</code></pre>
 <pre><code>Q1
 U.mean() = 15.0
 Q2
-[13.57144734 14.42963034 15.93938503 13.86649631 16.03119475 14.32497206
- 17.3410994  14.65489104 13.37963085 14.31004795 14.71696348 14.15359945
- 14.8997307  16.49009774 15.57041923 15.16757471 12.46628908 13.9321665
- 15.79430258 14.02901162 14.47505953 15.65498985 15.13929682 15.64703716
- 13.50501789]</code></pre>
+[15.82017345 14.4254289  16.15422973 15.92543253 17.52907351 15.67190891
+ 15.54647155 14.67111072 14.93458427 14.49409633 14.26003296 14.4440279
+ 15.14992529 17.26352356 12.64674075 13.09205252 13.7103761  13.56227257
+ 16.09455724 16.18264368 14.06173117 14.05280087 14.55872447 14.75719107
+ 15.38218233]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1238,6 +1258,18 @@ Standard Deviation: 2.04939015319192</code></pre>
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html" class="pagination-link" aria-label="Chapter 7: NumPy">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Chapter 7: NumPy</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../2-data-science-libraries/Chapter_09/Chapter_09.html" class="pagination-link" aria-label="Chapter 9: Pandas">
+        <span class="nav-page-text">Chapter 9: Pandas</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

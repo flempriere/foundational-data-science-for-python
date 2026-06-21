@@ -68,7 +68,7 @@
 
 ``` python
 a = "a outer"
-b = "b inner"
+b = "b outer"
 
 def scoped_function():
     a = "a inner"
@@ -81,9 +81,9 @@ print(b)
 ```
 
     a inner
-    b inner
+    b outer
     a outer
-    b inner
+    b outer
 
 #### Depending on Global Scope
 
@@ -446,24 +446,12 @@ names = ["tim", "tiger", "tabassum", "theodora", "tanya"]
 
 titled = []
 for name in names:
-    capd.append(name.title())
+    titled.append(name.title())
 
 print(titled)
 ```
 
-    NameError: name 'capd' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[17], line 5
-          1 names = ["tim", "tiger", "tabassum", "theodora", "tanya"]
-          2 
-          3 titled = []
-          4 for name in names:
-    ----> 5     capd.append(name.title())
-          6 
-          7 print(titled)
-
-    NameError: name 'capd' is not defined
+    ['Tim', 'Tiger', 'Tabassum', 'Theodora', 'Tanya']
 
 #### Replacing `map` and `filter`
 
@@ -581,7 +569,7 @@ print(f"g_ten prints as {g_ten}")
     l_ten is a <class 'list'>
     l_ten is prints as: [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
     g_ten is a <class 'generator'>
-    g_ten prints as <generator object <genexpr> at 0x7feab9ccd970>
+    g_ten prints as <generator object <genexpr> at 0x7fad849f2400>
 
 - A generator does not provide it’s contents
 - To get values from a generator, you can call `next`
@@ -764,7 +752,9 @@ print(f"The third call to capitalised: {next(capitalised)}")
         4
 
     - `do_something` returns `3` and assigns it to `b`
-    - Then we call `print(3 + 1)` so the final result is `4`
+      - As a side effect it calls `print` on `a`, so prints `1`
+    - Then we call the equivalent of `print(3 + 1)` so the final result
+      is `4`
 
 2.  Use the `map` function to take the string `"omni"` and return the
     list `["oo", "mm", "nn", "ii"]`

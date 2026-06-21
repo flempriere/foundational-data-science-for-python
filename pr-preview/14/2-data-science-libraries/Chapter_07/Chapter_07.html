@@ -68,6 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../2-data-science-libraries/Chapter_08/Chapter_08.html" rel="next">
+<link href="../../1-learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -172,7 +174,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Chapter 7: NumPy</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html">II: Data Science Libraries</a></li><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html">Chapter 7: NumPy</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -241,31 +243,49 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">II: Data Science Libraries</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_07/Chapter_07.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Chapter 7: NumPy</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_08/Chapter_08.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_08/Chapter_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 8: SciPy</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_09/Chapter_09.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_09/Chapter_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 9: Pandas</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_10/Chapter_10.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_10/Chapter_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 10: Visualisation Libraries</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_11/Chapter_11.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_11/Chapter_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 11: Machine Learning Libraries</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">2_data-science-libraries/Chapter_12/Chapter_12.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_12/Chapter_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 12: Natural Language Toolkit</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -315,7 +335,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html">II: Data Science Libraries</a></li><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html">Chapter 7: NumPy</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Chapter 7: NumPy</h1>
 </div>
@@ -417,7 +437,7 @@ Important
 <li>and more!</li>
 </ul></li>
 </ul>
-<div id="dd5ba7b3" class="cell" data-execution_count="1">
+<div id="055ad2d0" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])) <span class="co"># Creating from a list</span></span>
@@ -475,7 +495,7 @@ Important
 </ul></li>
 </ul></li>
 </ul>
-<div id="5d08fd5c" class="cell" data-execution_count="2">
+<div id="83502360" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>one_d_array <span class="op">=</span> np.arange(<span class="dv">21</span>)</span>
@@ -507,7 +527,7 @@ int64
 <li>Technically the type for a Numpy array is the <code>ndarray</code> which is a shorthand for <em>n-dimensional array</em></li>
 <li>This means they can also be used to make matrices</li>
 </ul>
-<div id="a2898be3" class="cell" data-execution_count="3">
+<div id="5ad94d91" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>list_of_lists <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]]</span>
@@ -534,7 +554,7 @@ int64
 </ul></li>
 <li>For example, we could instead create a matrix by defining a one-dimensional list then reshaping it</li>
 </ul>
-<div id="8128b5de" class="cell" data-execution_count="4">
+<div id="38e5d2ce" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>one_d_array <span class="op">=</span> np.arange(<span class="dv">12</span>)</span>
@@ -561,7 +581,7 @@ int64
 <li>i.e.&nbsp;we cannot over or under-specify the number of elements</li>
 </ul></li>
 </ul>
-<div id="b2b97f08" class="cell" data-execution_count="5">
+<div id="6ef6ed07" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>matrix <span class="op">=</span> np.arange(<span class="dv">12</span>).reshape(<span class="dv">5</span>, <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -588,7 +608,7 @@ int64
 <li>Numpy arrays support indexing and slicing like lists</li>
 <li>Each dimension can be sliced or indexed independently of each other</li>
 </ul>
-<div id="3a9f4dfd" class="cell" data-execution_count="6">
+<div id="97104c71" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>one_d_array <span class="op">=</span> np.arange(<span class="dv">21</span>)</span>
@@ -638,7 +658,7 @@ Print accessing last 3 columns in row 0 and 1: [[ 4  5  6]
 <li>This includes reassigning to a whole sliced section</li>
 </ul></li>
 </ul>
-<div id="08b5cd58" class="cell" data-execution_count="7">
+<div id="8fb1b73a" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>two_d_array <span class="op">=</span> np.arange(<span class="dv">21</span>).reshape(<span class="dv">3</span>, <span class="dv">7</span>)</span>
@@ -673,7 +693,7 @@ Zeroing out the slice [1:, :3]:
 </ul></li>
 <li>For example, to perform element-wise multiplication of two lists in regular python we could write</li>
 </ul>
-<div id="f89a7d45" class="cell" data-execution_count="8">
+<div id="b37ce36d" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>list_1 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>))</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>list_2 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>))</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -693,7 +713,7 @@ results: [0, 9, 16, 21, 24, 25, 24, 21, 16, 9]</code></pre>
 <ul>
 <li>The equivalent operation in NumPy becomes,</li>
 </ul>
-<div id="4e8c6f3a" class="cell" data-execution_count="9">
+<div id="ce00e52a" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>array_1 <span class="op">=</span> np.arange(<span class="dv">10</span>)</span>
@@ -724,7 +744,7 @@ Results: [ 0  9 16 21 24 25 24 21 16  9]</code></pre>
 <li>Then simply pass it the array as if we were selecting an index</li>
 </ul></li>
 </ul>
-<div id="bd4b20a0" class="cell" data-execution_count="10">
+<div id="ad0bb63b" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>two_d_array <span class="op">=</span> np.arange(<span class="dv">21</span>).reshape(<span class="dv">3</span>, <span class="dv">7</span>)</span>
@@ -740,7 +760,7 @@ Results: [ 0  9 16 21 24 25 24 21 16  9]</code></pre>
 <ul>
 <li>Comparison operators will also naturally create an element-by-element mask</li>
 </ul>
-<div id="b8c98fcf" class="cell" data-execution_count="11">
+<div id="f8356ffa" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>two_d_array <span class="op">=</span> np.arange(<span class="dv">21</span>).reshape(<span class="dv">3</span>, <span class="dv">7</span>)</span>
@@ -757,7 +777,7 @@ Results: [ 0  9 16 21 24 25 24 21 16  9]</code></pre>
 <ul>
 <li>We can also use logic operators to do things such as pair multiple array comparisons together to build complex masks</li>
 </ul>
-<div id="ce575d2e" class="cell" data-execution_count="12">
+<div id="11683c3c" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>two_d_array <span class="op">=</span> np.arange(<span class="dv">21</span>).reshape(<span class="dv">3</span>, <span class="dv">7</span>)</span>
@@ -788,7 +808,7 @@ Results: [ 0  9 16 21 24 25 24 21 16  9]</code></pre>
 <li>This includes other views too</li>
 </ul></li>
 </ul>
-<div id="154209ee" class="cell" data-execution_count="13">
+<div id="f992d988" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>original_data <span class="op">=</span> np.arange(<span class="dv">24</span>).reshape(<span class="dv">4</span>, <span class="dv">6</span>)</span>
@@ -828,7 +848,7 @@ Original data after change:
 </ul></li>
 <li>If you want to make a copy, you can do so explicitly</li>
 </ul>
-<div id="3028ca71" class="cell" data-execution_count="14">
+<div id="6d407022" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>original_data <span class="op">=</span> np.arange(<span class="dv">24</span>).reshape(<span class="dv">4</span>, <span class="dv">6</span>)</span>
@@ -880,7 +900,7 @@ Original data after change:
 </ul></li>
 </ul></li>
 </ul>
-<div id="f3b02107" class="cell" data-execution_count="15">
+<div id="3ed508ec" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.arange(<span class="dv">12</span>).reshape(<span class="dv">3</span>, <span class="dv">4</span>)</span>
@@ -917,7 +937,7 @@ data.std(axis=1): [1.11803399 1.11803399 1.11803399]</code></pre>
 <li>Retrieve the diagonal (<code>.diagonal()</code>)</li>
 </ul></li>
 </ul>
-<div id="287f6996" class="cell" data-execution_count="16">
+<div id="7202257b" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.arange(<span class="dv">9</span>).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
@@ -982,7 +1002,7 @@ M.diagonal():
 <li>For example adding <code>0.5</code> to a <code>int8</code> numpy array will be coerced into <code>0</code></li>
 </ul></li>
 </ul>
-<div id="e83cfec9" class="cell" data-execution_count="17">
+<div id="9774a0f8" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>simple_array <span class="op">=</span> np.arange(<span class="dv">100</span>)</span>
@@ -1053,7 +1073,7 @@ Modifying a value to a string</code></pre>
 </ul></li>
 <li>This can be confusing but is best shown with examples</li>
 </ul>
-<div id="d5cfd903" class="cell" data-execution_count="18">
+<div id="9a28bb86" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">10</span>).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
@@ -1094,7 +1114,7 @@ Broadcasted addition (M + 1): [[ 2  3  4]
 </ul></li>
 <li>For example operations between an array of shape <code>(1, 3, 4, 4)</code> and <code>(5, 3, 4, 1)</code> would broadcast to a <code>(5, 3, 4, 4)</code> size array</li>
 </ul>
-<div id="11993958" class="cell" data-execution_count="19">
+<div id="79013e02" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Demonstrating broadcasting between a (2, 1, 5) and (2, 7, 1) array"</span>)</span>
@@ -1167,7 +1187,7 @@ N:
 <li>Printing it shows the polynomial representation</li>
 </ul></li>
 </ul>
-<div id="6abb4520" class="cell" data-execution_count="20">
+<div id="c1fd966e" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.poly1d((<span class="dv">4</span>, <span class="dv">5</span>))</span>
@@ -1180,7 +1200,7 @@ N:
 <ul>
 <li>Alternatively takes a boolean flag as the second argument to indicate the first argument is the polynomial’s roots rather than coefficients</li>
 </ul>
-<div id="2211ab90" class="cell" data-execution_count="21">
+<div id="f02bf2eb" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.poly1d([<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>], <span class="va">True</span>)</span>
@@ -1193,7 +1213,7 @@ N:
 <ul>
 <li>A polynomial can be evaluated using the function call syntax and passing the value to evaluate it at</li>
 </ul>
-<div id="c06d9558" class="cell" data-execution_count="22">
+<div id="ca4e14ec" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.poly1d([<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>], <span class="va">True</span>)</span>
@@ -1212,7 +1232,7 @@ N:
 </ul></li>
 </ul></li>
 </ul>
-<div id="ddc4d83d" class="cell" data-execution_count="23">
+<div id="0eca43ba" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.poly1d((<span class="dv">2</span>, <span class="dv">3</span>))</span>
@@ -1296,7 +1316,7 @@ Integral of p is    2
 <ul>
 <li>The answers are repeated below</li>
 </ul>
-<div id="d3b86015" class="cell" data-execution_count="24">
+<div id="462af9c5" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>d1 <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">9</span>]])</span>
@@ -1737,6 +1757,18 @@ Q5:
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../1-learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.html" class="pagination-link" aria-label="Chapter 6: Functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Chapter 6: Functions</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../2-data-science-libraries/Chapter_08/Chapter_08.html" class="pagination-link" aria-label="Chapter 8: SciPy">
+        <span class="nav-page-text">Chapter 8: SciPy</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
