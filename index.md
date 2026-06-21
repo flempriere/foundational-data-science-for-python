@@ -36,18 +36,21 @@ Behrman](https://www.amazon.com.au/dp/0136624359)
 
 ### II: Data Science Libraries
 
-- [Chapter 7: NumPy](2_data_science_libraries/Chapter_07/Chapter_07.qmd)
-- [Chapter 8: SciPy](2_data_science_libraries/Chapter_08/Chapter_08.qmd)
+- [Chapter 7: NumPy](2_data-science-libraries/Chapter_07/Chapter_07.qmd)
+- [Chapter 8: SciPy](2_data-science-libraries/Chapter_08/Chapter_08.qmd)
 - [Chapter 9:
-  Pandas](2_data_science_libraries/Chapter_09/Chapter_09.qmd)
+  Pandas](2_data-science-libraries/Chapter_09/Chapter_09.qmd)
 - [Chapter 10: Visualisation
-  Libraries](2_data_science_libraries/Chapter_10/Chapter_10.qmd)
+  Libraries](2-data-science-libraries/Chapter_10/Chapter_10.qmd)
 - [Chapter 11: Machine Learning
-  Libraries](2_data_science_libraries/Chapter_11/Chapter_11.qmd)
+  Libraries](2-data-science-libraries/Chapter_11/Chapter_11.qmd)
 - [Chapter 12: Natural Language
-  Toolkit](2_data_science_libraries/Chapter_12/Chapter_12.qmd)
+  Toolkit](2-data_science-libraries/Chapter_12/Chapter_12.qmd)
 
 ### III: Intermediate Python
+
+- [Chapter 13: Functional
+  Programming](3-intermediate-python/Chapter_13/Chapter_13.qmd)
 
 ## Attribution
 
