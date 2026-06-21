@@ -374,6 +374,7 @@ print("There are", len(fiction_paragraphs), "fiction paragraphs")
     - Each sub-list is a sentence in a paragraph
 - For this analysis we only care about the unique words in a paragraph
     - So we want to flatten each paragraph into the set of words it contains
+    - We also want to normalise the words to be all lower case for easier analysis
     - We can do this with a simple function and a *set comprehension* (See the earlier discussion of list comprehensions)
         - We've added *type hints* to help the reader understand what is happening to the dimensions of the data
 
@@ -440,7 +441,7 @@ fiction_paragraphs = brown.paras(categories="fiction")  # load only fiction para
 
 
 def flatten(paragraph: Sequence[Sequence[str]]) -> Set[str]:
-    return {word for sentence in paragraph for word in sentence}
+    return {word.lower() for sentence in paragraph for word in sentence}
 
 
 editorial_paragraphs_flattened = [
@@ -530,7 +531,7 @@ fiction_paragraphs = brown.paras(categories="fiction")  # load only fiction para
 
 # clean the data
 def flatten(paragraph: Sequence[Sequence[str]]) -> Set[str]:
-    return {word for sentence in paragraph for word in sentence}
+    return {word.lower() for sentence in paragraph for word in sentence}
 
 
 editorial_paragraphs_flattened = [
@@ -624,7 +625,7 @@ fiction_paragraphs = brown.paras(categories="fiction")  # load only fiction para
 
 # clean the data
 def flatten(paragraph: Sequence[Sequence[str]]) -> Set[str]:
-    return {word for sentence in paragraph for word in sentence}
+    return {word.lower() for sentence in paragraph for word in sentence}
 
 
 editorial_paragraphs_flattened = [
@@ -733,7 +734,7 @@ fiction_paragraphs = brown.paras(categories="fiction")  # load only fiction para
 
 # clean the data
 def flatten(paragraph: Sequence[Sequence[str]]) -> Set[str]:
-    return {word for sentence in paragraph for word in sentence}
+    return {word.lower() for sentence in paragraph for word in sentence}
 
 
 editorial_paragraphs_flattened = [
@@ -922,7 +923,7 @@ print("Accuracy:", nltk.classify.accuracy(bayes, test_data))  # Assess the accur
 
         hamlet_words_filtered = [name for word in hamlet_words if (name := word.capitalize()) in male_names or name in female_names]
 
-        hamlet_name_dist = nltk.FreqDist(hamelet_words_filtered)
+        hamlet_name_dist = nltk.FreqDist(hamlet_words_filtered)
         hamlet_name_dist.most_common(10)
      ```
 
