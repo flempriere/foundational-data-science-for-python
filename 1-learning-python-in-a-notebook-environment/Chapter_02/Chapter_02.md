@@ -164,7 +164,7 @@ import os
 os.getcwd()
 ```
 
-    '/home/runner/work/foundational-data-science-for-python/foundational-data-science-for-python/1_learning-python-in-a-notebook-environment/Chapter_02'
+    '/home/runner/work/foundational-data-science-for-python/foundational-data-science-for-python/1-learning-python-in-a-notebook-environment/Chapter_02'
 
 #### Assert Statements
 
@@ -373,8 +373,8 @@ print(generator_func())
 print(generator_func())
 ```
 
-    <generator object generator_func at 0x7f6531afdd80>
-    <generator object generator_func at 0x7f6531afdd80>
+    <generator object generator_func at 0x7fd34c585f00>
+    <generator object generator_func at 0x7fd34c585f00>
 
 #### Raise Statements
 
