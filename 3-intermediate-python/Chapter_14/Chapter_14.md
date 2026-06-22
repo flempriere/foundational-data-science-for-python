@@ -1,0 +1,236 @@
+# Object-Oriented Programming
+
+
+- [Notes](#notes)
+  - [Grouping State and Function](#grouping-state-and-function)
+    - [Classes and Instances](#classes-and-instances)
+  - [Private Methods and Attributes](#private-methods-and-attributes)
+  - [Class Variables](#class-variables)
+  - [Special Methods](#special-methods)
+- [Summary](#summary)
+- [Questions and Answers](#questions-and-answers)
+
+## Notes
+
+- Object-Oriented is a common and popular paradigm
+- Instead of organising code around functions or procedural state code
+  is organised around *objects*
+- Objects combine state and the functions that act on that state
+- Program flow follows through objects interacting via methods that
+  change their internal states
+
+### Grouping State and Function
+
+- As mentioned *objects* in an Object-Oriented sense are seen as those
+  items that combine state and functions on that state
+  - In contrast to procedural or systems programming where an *object*
+    is often a thing that exists in memory
+- In Python everything is fundamentally an *object*, combining state and
+  methods
+- For example, `int` has the `to_bytes` method to convert an integer to
+  it’s byte representation
+
+``` python
+number = 13
+number.to_bytes(8, "little")
+```
+
+    b'\r\x00\x00\x00\x00\x00\x00\x00'
+
+- More complex objects like `string` or `pandas.DataFrame` combine more
+  state and functionality
+
+#### Classes and Instances
+
+- Typically in the language of OOP we distinguish between
+  1.  Classes
+      - A definition of an object
+      - Type definition
+      - e.g. `3` is of type `int`
+  2.  Object Instance
+      - A specific *instantiation* of a class
+      - `3` is an *instance* of an `int`
+- Classes are defined via the `class` keyword
+- Then instantiated by calling the class name as a function e.g.,
+
+``` python
+class DoNothing:
+    pass
+
+
+nothing = DoNothing()
+print(type(nothing))
+```
+
+    <class '__main__.DoNothing'>
+
+- The above defines an empty class
+- To check if an object is of a given class dynamically one can use
+  `isinstance`
+  - Accepts an argument list containing the object to be tested then
+    either the class to test against, or a tuple of classes
+
+``` python
+class DoNothing:
+    pass
+
+
+nothing = DoNothing()
+
+isinstance(nothing, DoNothing)
+```
+
+    True
+
+- Methods are defined on a class indented one level to be inside the
+  class scope
+- All normal methods must have at least one parameter
+  - This first parameter is a reference to the object the method is
+    called on
+  - By convention this is always called `self`
+
+``` python
+class DoSomething:
+    def return_self(self):
+        return self
+
+do_something = DoSomething()
+
+do_something == do_something.return_self()
+```
+
+    True
+
+> [!NOTE]
+>
+> **The `self` Parameter**
+>
+> While the `self` parameter must always be specified in the method
+> signature, it does not need to actually be passed. It is done so
+> implicitly. Once can consider the method call,
+>
+> ``` python
+> do_something.return_self()
+> ```
+>
+> as equivalent to the following standard function call
+>
+> ``` python
+> return_self(do_something)
+> ```
+
+- Attributes, or variables attached to a class or object instance can
+  also be defined using the `.` syntax
+
+``` python
+class AddAttribute:
+    def add_score(self):
+        self.score = 14  # set's the score attribute, creates it if it does not exist
+
+
+add_attribute = AddAttribute()
+add_attribute.add_score()
+
+add_attribute.score
+```
+
+    14
+
+- Method’s can call other methods like any function by referencing the
+  target method on the `self` argument
+
+``` python
+class InternalMethodCaller:
+    def method_one(self):
+        print("Calling method one")
+
+    def method_two(self, n):
+        print(f"Method two calling method one {n} times")
+        for _ in range(n):
+            self.method_one()
+
+
+internal_method_caller = InternalMethodCaller()
+internal_method_caller.method_one()
+internal_method_caller.method_two(2)
+```
+
+    Calling method one
+    Method two calling method one 2 times
+    Calling method one
+    Calling method one
+
+### Private Methods and Attributes
+
+- Methods and attributes on an object are by default accessible by
+  anyone who can access the object
+  - Referred to as a *public* method or attribute
+- Sometimes methods or attributes are defined that are not supposed to
+  be accessed by an external caller
+  - Called *private*
+- Python unlike some languages does not provide strong guarantees or
+  support for private variables
+- Instead by convention a method or attribute beginning with an `_` is
+  regarded as *protected*
+  - Should not be accessed outside the class
+
+``` python
+class PrivatePublic():
+    def _private_method(self):
+        print("private")
+
+    def public_method(self)
+        self._private_method()
+
+private_public = PrivatePublic()
+private_public.public_method()
+```
+
+    SyntaxError: expected ':' (3800167625.py, line 5)
+      Cell In[7], line 5
+        def public_method(self)
+                               ^
+    SyntaxError: expected ':'
+
+### Class Variables
+
+- Variables associated to a specific instance (e.g. via `self.<name>`)
+  are called *instance variables*
+  - They can have a unique value for each specific instanceof the
+    variable
+- Class level variables or *class variables* are defined on the class
+  itself
+  - Hence exist at the class level
+  - Shared across all instances of the class
+  - They are defined the same way a method is defined
+    - Inside the class scope
+
+``` python
+class ClassyVariables:
+    class_variable = "Yellow"
+
+    def __init__(self, colour):
+        self.instance_variable = colour
+
+
+red = ClassyVariables("red")
+blue = ClassyVariables("blue")
+
+print(f"red.instance_variable:", red.instance_variable)
+print(f"red.class_variable:", red.class_variable)
+print(f"blue.instance_variable:", blue.instance_variable)
+print(f"blue.class_variable:", blue.class_variable)
+```
+
+    red.instance_variable: red
+    red.class_variable: Yellow
+    blue.instance_variable: blue
+    blue.class_variable: Yellow
+
+### Special Methods
+
+- 
+
+## Summary
+
+## Questions and Answers
