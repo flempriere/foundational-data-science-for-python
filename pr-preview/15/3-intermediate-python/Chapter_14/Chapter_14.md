@@ -1,4 +1,4 @@
-# Object-Oriented Programming
+# Chapter 14: Object-Oriented Programming
 
 
 - [Notes](#notes)
@@ -182,18 +182,14 @@ class PrivatePublic():
     def _private_method(self):
         print("private")
 
-    def public_method(self)
+    def public_method(self):
         self._private_method()
 
 private_public = PrivatePublic()
 private_public.public_method()
 ```
 
-    SyntaxError: expected ':' (3800167625.py, line 5)
-      Cell In[7], line 5
-        def public_method(self)
-                               ^
-    SyntaxError: expected ':'
+    private
 
 ### Class Variables
 
@@ -381,7 +377,7 @@ low_time = CompareMe(100, 25)
 
 print("high_score > mid_score:", high_score > mid_score)
 print("high_score >= mid_score:", high_score >= mid_score)
-print("high_score == low_score:", high_score == low_score)
+print("high_score == low_time:", high_score == low_time)
 print("mid_score == mid_score_l:", mid_score == mid_score_l)
 print("low_time == high_score:", low_time == high_score)
 ```
@@ -390,20 +386,21 @@ print("low_time == high_score:", low_time == high_score)
     high_score > mid_score: True
     Called __ge__
     high_score >= mid_score: True
+    Called __eq__
+    high_score == low_time: False
 
-    NameError: name 'low_score' is not defined
+    NameError: name 'mid_score_l' is not defined
     ---------------------------------------------------------------------------
     NameError                                 Traceback (most recent call last)
-    Cell In[11], line 41
-         37 low_time = CompareMe(100, 25)
+    Cell In[11], line 42
          38 
          39 print("high_score > mid_score:", high_score > mid_score)
          40 print("high_score >= mid_score:", high_score >= mid_score)
-    ---> 41 print("high_score == low_score:", high_score == low_score)
-         42 print("mid_score == mid_score_l:", mid_score == mid_score_l)
+         41 print("high_score == low_time:", high_score == low_time)
+    ---> 42 print("mid_score == mid_score_l:", mid_score == mid_score_l)
          43 print("low_time == high_score:", low_time == high_score)
 
-    NameError: name 'low_score' is not defined
+    NameError: name 'mid_score_l' is not defined
 
 - Comparisons don’t have to be defined purely against their own type
   - But in reality they often should be
@@ -620,7 +617,7 @@ class Person:
         self.last_name = last_name
 
 
-class Student:
+class Student(Person):
     def __init__(self, school_name, first_name, last_name):
         self.school_name = school_name
         super().__init__(first_name, last_name)
@@ -630,23 +627,7 @@ lydia = Student("boxford", "lydia", "smith")
 lydia.last_name
 ```
 
-    TypeError: object.__init__() takes exactly one argument (the instance to initialize)
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[18], line 13
-          9         self.school_name = school_name
-         10         super().__init__(first_name, last_name)
-         11 
-         12 
-    ---> 13 lydia = Student("boxford", "lydia", "smith")
-         14 lydia.last_name
-
-    Cell In[18], line 10, in Student.__init__(self, school_name, first_name, last_name)
-          8     def __init__(self, school_name, first_name, last_name):
-          9         self.school_name = school_name
-    ---> 10         super().__init__(first_name, last_name)
-
-    TypeError: object.__init__() takes exactly one argument (the instance to initialize)
+    'smith'
 
 - Inheritance can have multiple levels
 
@@ -663,12 +644,12 @@ class C(B):
     pass
 
 
-print("isinstance(C(), B)")
-print("isinstance(C(), A)")
+print("isinstance(C(), B):", isinstance(C(), B))
+print("isinstance(C(), A):", isinstance(C(), A))
 ```
 
-    isinstance(C(), B)
-    isinstance(C(), A)
+    isinstance(C(), B): True
+    isinstance(C(), A): True
 
 - Another form of multiple inheritance, is when one class inherits from
   multiple classes simultaneously
