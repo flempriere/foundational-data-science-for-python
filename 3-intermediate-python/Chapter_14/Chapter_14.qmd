@@ -1,5 +1,5 @@
 ---
-title: "Object-Oriented Programming"
+title: "Chapter 14: Object-Oriented Programming"
 ---
 
 ## Notes
@@ -139,7 +139,7 @@ class PrivatePublic():
     def _private_method(self):
         print("private")
 
-    def public_method(self)
+    def public_method(self):
         self._private_method()
 
 private_public = PrivatePublic()
@@ -302,7 +302,7 @@ low_time = CompareMe(100, 25)
 
 print("high_score > mid_score:", high_score > mid_score)
 print("high_score >= mid_score:", high_score >= mid_score)
-print("high_score == low_score:", high_score == low_score)
+print("high_score == low_time:", high_score == low_time)
 print("mid_score == mid_score_l:", mid_score == mid_score_l)
 print("low_time == high_score:", low_time == high_score)
 ```
@@ -484,7 +484,7 @@ class Person:
         self.last_name = last_name
 
 
-class Student:
+class Student(Person):
     def __init__(self, school_name, first_name, last_name):
         self.school_name = school_name
         super().__init__(first_name, last_name)
@@ -509,8 +509,8 @@ class C(B):
     pass
 
 
-print("isinstance(C(), B)")
-print("isinstance(C(), A)")
+print("isinstance(C(), B):", isinstance(C(), B))
+print("isinstance(C(), A):", isinstance(C(), A))
 ```
 
 - Another form of multiple inheritance, is when one class inherits from multiple classes simultaneously
