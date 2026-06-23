@@ -1,6 +1,5 @@
 # Object-Oriented Programming
 
-
 - [Notes](#notes)
   - [Grouping State and Function](#grouping-state-and-function)
     - [Classes and Instances](#classes-and-instances)
@@ -43,11 +42,11 @@ number.to_bytes(8, "little")
 #### Classes and Instances
 
 - Typically in the language of OOP we distinguish between
-  1.  Classes
+  1. Classes
       - A definition of an object
       - Type definition
       - e.g. `3` is of type `int`
-  2.  Object Instance
+  2. Object Instance
       - A specific *instantiation* of a class
       - `3` is an *instance* of an `int`
 - Classes are defined via the `class` keyword
@@ -229,7 +228,7 @@ print(f"blue.class_variable:", blue.class_variable)
 
 ### Special Methods
 
-- 
+-
 
 ## Summary
 
