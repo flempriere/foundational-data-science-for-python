@@ -411,7 +411,7 @@ window.Quarto = {
 </ul></li>
 </ul></li>
 </ul>
-<div id="c24438e7" class="cell" data-execution_count="1">
+<div id="5018b217" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>person <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Betty"</span>, <span class="st">"height"</span>: <span class="dv">62</span>, <span class="st">"gpa"</span>: <span class="fl">3.6</span>}</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -436,7 +436,7 @@ window.Quarto = {
 <li>As seen dictionaries can be created with the a brace-delimited comma separated list</li>
 <li>To create an empty dictionary, simply pass an empty list like <code>{}</code></li>
 </ul>
-<div id="6da6330b" class="cell" data-execution_count="2">
+<div id="0c571372" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {}</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"dictionary is of type </span><span class="sc">{</span><span class="bu">type</span>(dictionary)<span class="sc">}</span><span class="ss"> and has value </span><span class="sc">{</span>dictionary<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -451,7 +451,7 @@ window.Quarto = {
 <li>Or, optionally accept key, value pairs as a sequence of sequences</li>
 </ul></li>
 </ul>
-<div id="fa80e88e" class="cell" data-execution_count="3">
+<div id="a5ff8720" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># empty `dict` call</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> <span class="bu">dict</span>()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dictionary created by the call dict(): </span><span class="sc">{</span>dictionary<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -478,7 +478,7 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 <li>Can be used to access their associated value</li>
 </ul></li>
 </ul>
-<div id="567001ca" class="cell" data-execution_count="4">
+<div id="4700de7c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># key access</span></span>
@@ -495,7 +495,7 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 <li>Assigning to a non-existent key will create the key</li>
 <li>If the key does exist then the old value is overwritten</li>
 </ul>
-<div id="fa70feb1" class="cell" data-execution_count="5">
+<div id="b385d1bd" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># defining a new key</span></span>
@@ -525,7 +525,7 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 </ul></li>
 <li>One option is to overwrite the value with something meaningless like <code>None</code></li>
 </ul>
-<div id="4967e616" class="cell" data-execution_count="6">
+<div id="1bdda206" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing name</span></span>
@@ -538,7 +538,7 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 <ul>
 <li>The <code>key:value</code> pair can be removed directly by the <code>del</code> operator</li>
 </ul>
-<div id="919bd306" class="cell" data-execution_count="7">
+<div id="2890c8a3" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Deleting the key</span></span>
@@ -575,7 +575,7 @@ Subject 2: {'name': 'Paula', 'height': 64, 'gpa': 3.8, 'ranking': 1}</code></pre
 <li><code>popitem</code> returns the most recent <code>key:value</code> pair</li>
 </ul></li>
 </ul>
-<div id="c496a5e3" class="cell" data-execution_count="8">
+<div id="65df13ae" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Using `popitem`</span></span>
@@ -616,7 +616,7 @@ pop('id', default=0): None</code></pre>
 </ul></li>
 </ol></li>
 </ul>
-<div id="f67641e4" class="cell" data-execution_count="9">
+<div id="afb35d2b" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
@@ -639,7 +639,7 @@ Items: dict_items([('name', 'Paula'), ('height', 64), ('gpa', 3.8)])</code></pre
 <ul>
 <li>You can test a view for membership with the <code>in</code></li>
 </ul>
-<div id="abad25ec" class="cell" data-execution_count="10">
+<div id="1c3e7a5e" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
@@ -665,7 +665,7 @@ Items: dict_items([('name', 'Paula'), ('height', 64), ('gpa', 3.8)])</code></pre
 <li>If dictionary is updated so is the corresponding view</li>
 </ul></li>
 </ul>
-<div id="efacce6f" class="cell" data-execution_count="11">
+<div id="55c406de" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
@@ -682,7 +682,7 @@ keys after updating dict: dict_keys(['name', 'height', 'gpa', 'id'])</code></pre
 <ul>
 <li>View’s also support the <code>len</code> built-in function</li>
 </ul>
-<div id="94a6a762" class="cell" data-execution_count="12">
+<div id="3d3135d1" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
@@ -695,7 +695,7 @@ keys after updating dict: dict_keys(['name', 'height', 'gpa', 'id'])</code></pre
 <ul>
 <li>Since <code>Python 3.8</code> they can be reversed via the <code>reversed</code> built-in</li>
 </ul>
-<div id="2357cc9e" class="cell" data-execution_count="13">
+<div id="5267f4df" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keys view</span></span>
@@ -711,7 +711,7 @@ keys after updating dict: dict_keys(['name', 'height', 'gpa', 'id'])</code></pre
 <li>They support set operations</li>
 </ul></li>
 </ul>
-<div id="d7e99561" class="cell" data-execution_count="14">
+<div id="85872df7" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>admission_record <span class="op">=</span> {</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"first"</span>: <span class="st">"Julia"</span>,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"last"</span>: <span class="st">"Brown"</span>,</span>
@@ -745,10 +745,10 @@ keys after updating dict: dict_keys(['name', 'height', 'gpa', 'id'])</code></pre
 <span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Union:"</span>, admission_record.keys() <span class="op">|</span> student_record.keys())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Testing key equality: False
-Symmetric Difference: {'admitted', 'minor', 'major', 'advisor', 'gpa'}
-Intersection: {'id', 'last', 'first'}
+Symmetric Difference: {'advisor', 'admitted', 'minor', 'gpa', 'major'}
+Intersection: {'last', 'id', 'first'}
 Difference: {'admitted'}
-Union: {'admitted', 'minor', 'last', 'first', 'id', 'major', 'advisor', 'gpa'}</code></pre>
+Union: {'id', 'advisor', 'admitted', 'minor', 'last', 'gpa', 'major', 'first'}</code></pre>
 </div>
 </div>
 <ul>
@@ -757,7 +757,7 @@ Union: {'admitted', 'minor', 'last', 'first', 'id', 'major', 'advisor', 'gpa'}</
 <li>We can use <code>dict_keys</code> and <code>dict_values</code> if we only want to iterate over keys or values</li>
 </ul></li>
 </ul>
-<div id="558dc03c" class="cell" data-execution_count="15">
+<div id="fa1043bd" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> student.items():</span>
@@ -777,7 +777,7 @@ gpa =&gt; 3.8</code></pre>
 <li>This is implicitly done by just using the <code>in</code> operator on the dictionary directly</li>
 </ul></li>
 </ul>
-<div id="c8d086e7" class="cell" data-execution_count="16">
+<div id="682382aa" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>keys <span class="op">=</span> student.keys()</span>
@@ -796,7 +796,7 @@ Using `in` on a dictionary directly: True</code></pre>
 <li>Can use a <code>try/except</code> block to handle this</li>
 </ul></li>
 </ul>
-<div id="29f749fa" class="cell" data-execution_count="17">
+<div id="2b98754d" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -817,7 +817,7 @@ Using `in` on a dictionary directly: True</code></pre>
 <li>If not supplied the <code>default</code> value is <code>None</code></li>
 </ul></li>
 </ul>
-<div id="bd160747" class="cell" data-execution_count="18">
+<div id="75d142a0" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Paula"</span>, <span class="st">"height"</span>: <span class="dv">64</span>, <span class="st">"gpa"</span>: <span class="fl">3.8</span>}</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Existing key</span></span>
@@ -857,7 +857,7 @@ Caution
 <div class="callout-body-container callout-body">
 <p><strong>Tuple Immutability</strong></p>
 <p>Tuples are regarded as immutable their contents cannot be changed, i.e.&nbsp;we can’t redefine an index. However, if a tuple contains <em>mutable</em> types, those objects can still be mutated by their reference. For example,</p>
-<div id="22015703" class="cell" data-execution_count="19">
+<div id="5c6ab7e3" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>immutable_tuple <span class="op">=</span> (<span class="st">"a"</span>, [<span class="st">"b"</span>, <span class="st">"c"</span>])</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tuple before mutation:"</span>, immutable_tuple)</span>
@@ -871,7 +871,7 @@ tuple after mutation: ('a', ['b', 'c', 'd'])</code></pre>
 </div>
 </div>
 <p>This means that in these cases the overall object is <em>not immutable</em>. This means that such objects cannot be used for example as dictionary keys</p>
-<div id="22fffe9b" class="cell" data-execution_count="20">
+<div id="0766a084" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {(<span class="st">"a"</span>, [<span class="st">"b"</span>, <span class="st">"c"</span>]): <span class="dv">1</span>}</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dictionary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
@@ -888,7 +888,7 @@ tuple after mutation: ('a', ['b', 'c', 'd'])</code></pre>
 </div>
 </div>
 </div>
-<div id="7f63e841" class="cell" data-execution_count="21">
+<div id="d8aa42ac" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {<span class="dv">1</span>: <span class="dv">1</span>, <span class="st">"a"</span>: <span class="dv">2</span>, <span class="fl">2.3</span>: <span class="dv">3</span>, (<span class="st">"b"</span>, <span class="st">"c"</span>): <span class="dv">4</span>, <span class="st">b"bytes"</span>: <span class="dv">5</span>, <span class="bu">range</span>(<span class="dv">3</span>): <span class="dv">6</span>}</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A dict showing a range of key types:"</span>, dictionary)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -925,12 +925,12 @@ Trying to use a list as a key</code></pre>
 <li>It can only be implemented on <em>immutable</em> objects because it must be <em>stable</em> for a given object reference</li>
 </ul></li>
 </ul>
-<div id="c0d18ebe" class="cell" data-execution_count="22">
+<div id="999360ee" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calling __hash__ on string:"</span>, <span class="st">"abc"</span>.<span class="fu">__hash__</span>())</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calling __hash__ on a list:"</span>, <span class="bu">list</span>(<span class="st">"abc"</span>).<span class="fu">__hash__</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Calling __hash__ on string: -8683950279225004560</code></pre>
+<pre><code>Calling __hash__ on string: -6690602481150861861</code></pre>
 </div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -983,7 +983,7 @@ Tip
 </ul></li>
 </ol></li>
 </ul>
-<div id="d6c03b2f" class="cell" data-execution_count="23">
+<div id="dbef80cd" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>empty_set_a <span class="op">=</span> <span class="bu">set</span>()</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>empty_set_b <span class="op">=</span> {}</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Empty set via `set()`:"</span>, empty_set_a)</span>
@@ -1001,15 +1001,15 @@ Tip
 <div class="cell-output cell-output-stdout">
 <pre><code>Empty set via `set()`: set()
 Empty set via {}: {}
-Set constructed via `set` called on a string: {'c', 'a', 'b'}
-Set constructed via `set` called on a tuple: {'c', 'a', 'b'}
+Set constructed via `set` called on a string: {'a', 'c', 'b'}
+Set constructed via `set` called on a tuple: {'a', 'c', 'b'}
 Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}</code></pre>
 </div>
 </div>
 <ul>
 <li>As mentioned, sets do not work with mutable types</li>
 </ul>
-<div id="1cbe0950" class="cell" data-execution_count="24">
+<div id="57da007f" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>broken_set <span class="op">=</span> {[<span class="st">"a"</span>, <span class="st">"b"</span>], <span class="st">"c"</span>}</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(broken_set)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
@@ -1028,7 +1028,7 @@ Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}</code></pre>
 <li><code>set</code> supports most of the standard sequence operations</li>
 <li>Can test for membership with <code>in</code> or <code>not in</code></li>
 </ul>
-<div id="7cb8142e" class="cell" data-execution_count="25">
+<div id="ac8b3ab2" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"3 in unique_numbers:"</span>, <span class="dv">3</span> <span class="kw">in</span> unique_numbers)</span>
@@ -1041,7 +1041,7 @@ Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}</code></pre>
 <ul>
 <li><code>len</code> returns the cardinality of a set</li>
 </ul>
-<div id="275bc63d" class="cell" data-execution_count="26">
+<div id="5218d18d" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"len(unique_numbers):"</span>, <span class="bu">len</span>(unique_numbers))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1068,7 +1068,7 @@ Set constructed via {1, 1, 1, 2, 2, 3}: {1, 2, 3}</code></pre>
 <li><code>clear</code> removes the entire contents of a set</li>
 </ul></li>
 </ul>
-<div id="05888fd7" class="cell" data-execution_count="27">
+<div id="bf5ddaaf" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding an item</span></span>
@@ -1138,7 +1138,7 @@ Attempting to remove non-existent 5 using `remove`</code></pre>
 <li>Returns <code>True</code> if two sets are disjoint, else <code>False</code></li>
 </ul></li>
 </ul>
-<div id="aad4e118" class="cell" data-execution_count="28">
+<div id="0389fc63" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>four_to_six <span class="op">=</span> {<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>even <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
@@ -1160,7 +1160,7 @@ one_to_three is disjoint from even: False</code></pre>
 <li>Alternatively can use the <code>&lt;=</code> operator</li>
 </ul></li>
 </ul>
-<div id="ee0b4d83" class="cell" data-execution_count="29">
+<div id="0e238a03" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
@@ -1185,7 +1185,7 @@ False</code></pre>
 <li>Operator approach will not</li>
 </ul></li>
 </ul>
-<div id="6c884ef3" class="cell" data-execution_count="30">
+<div id="ed0598a3" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"one_to_three is a subset of range(6):"</span>, one_to_three.issubset(<span class="bu">range</span>(<span class="dv">6</span>)))</span>
@@ -1217,7 +1217,7 @@ False</code></pre>
 </ul></li>
 <li>The <code>&lt;</code> operator can be used to test for proper subsets between sets</li>
 </ul>
-<div id="7394ec58" class="cell" data-execution_count="31">
+<div id="6d76c67f" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1242,7 +1242,7 @@ one_to_three is a proper subset of one_to_three: False</code></pre>
 <li>To test for a proper superset we use the <code>&gt;</code> operator</li>
 </ul></li>
 </ul>
-<div id="1d61d98c" class="cell" data-execution_count="32">
+<div id="8fc47b50" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>one_to_six <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
@@ -1274,7 +1274,7 @@ one_to_six is a proper superset of one_to_six: False</code></pre>
 <li>The union of set <span class="math inline">\(A\)</span> and set <span class="math inline">\(B\)</span> is the set containing all elements of <span class="math inline">\(A\)</span> <em>or</em> <span class="math inline">\(B\)</span></li>
 <li>Can be performed via the <code>union</code> method or the <code>|</code> operator</li>
 </ul>
-<div id="a6cc46bb" class="cell" data-execution_count="33">
+<div id="677dfc0d" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>odds <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>}</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1298,7 +1298,7 @@ Using the `|` operator:
 <li>The intersection of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is the set containing all elements in <em>both</em> <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></li>
 <li>Performed via the <code>intersection</code> method or the <code>&amp;</code> operator</li>
 </ul>
-<div id="cda110eb" class="cell" data-execution_count="34">
+<div id="9ae293f8" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1322,7 +1322,7 @@ Using the `&amp;` operator:
 <li>The difference <span class="math inline">\(A - B\)</span> of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is the set of all elements in <span class="math inline">\(A\)</span> that are not contained in <span class="math inline">\(B\)</span></li>
 <li>Performed via the <code>difference</code> method or the <code>-</code> operator</li>
 </ul>
-<div id="dfeadd9a" class="cell" data-execution_count="35">
+<div id="3ae60af2" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1349,7 +1349,7 @@ Repeated using the `-` operator:
 </ul></li>
 <li>Can be calculated via the <code>symmetric_difference</code> method or the <code>^</code> operator</li>
 </ul>
-<div id="26a06640" class="cell" data-execution_count="36">
+<div id="62e5d97a" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>one_to_three <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1374,7 +1374,7 @@ Symmetric difference via `^` operator: {1, 3, 4, 6}</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="fc940b20" class="cell" data-execution_count="37">
+<div id="9c32a13c" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set before update:"</span>, unique_numbers)</span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1407,7 +1407,7 @@ Set after |=: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="0d5eaed3" class="cell" data-execution_count="38">
+<div id="3305aeea" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1464,7 +1464,7 @@ Unique numbers after ^= update: {0, 1, 3, 4, 6}</code></pre>
 <li>Is pretty much a drop-in replacement for <code>set</code></li>
 </ul></li>
 </ul>
-<div id="d3f0560e" class="cell" data-execution_count="39">
+<div id="88203390" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>frozen <span class="op">=</span> <span class="bu">frozenset</span>(<span class="bu">range</span>(<span class="dv">10</span>))</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(frozen)</span>
@@ -1543,7 +1543,7 @@ frozenset({0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14})</code></pre>
 </ul></li>
 </ol>
 <p>The answers can be seen below</p>
-<div id="45fc5dbb" class="cell" data-execution_count="40">
+<div id="72d1c37f" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Q1</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 1:"</span>)</span>
@@ -1579,7 +1579,7 @@ After modification: {'name': 'Paula', 'height': 64, 'gpa': 4.0}
 Question 3:
 data.get("settings"): None
 Question 5:
-{'n', 's', 'l', 'o', ' ', 'g', 'a', 'i', 'd', 't'}</code></pre>
+{'s', 'i', 'n', 'a', 'd', 't', 'g', 'l', ' ', 'o'}</code></pre>
 </div>
 </div>
 
