@@ -51,8 +51,7 @@
 
 #### Lists
 
-- Python provides the built-in `sort` function for sorting a `list`
-  in-place
+- Python provides the list `sort` method for sorting a `list` in-place
 - For example we might sort a list of whales
 
 ``` python
@@ -66,6 +65,7 @@ print("Whales:", whales)
 - Since `sort` performs the sort in-place it does not return a value
   (Technically the return is `None`)
 - If you want a sorted *copy* then you can use the `sorted` built-in
+  function
 
 ``` python
 whales = ["Blue", "Killer", "Sperm", "Humpback", "Beluga", "Bowhead"]
@@ -113,15 +113,11 @@ print("whales:", whales)
 
 ``` python
 whales = ["Blue", "Killer", "Sperm", "Humpback", "Beluga", "Bowhead"]
-whales.sort(key=lambda: x: (len(x), x))
+whales.sort(key=lambda x: (len(x), x))
 print("whales:", whales)
 ```
 
-    SyntaxError: invalid syntax (2472723947.py, line 2)
-      Cell In[5], line 2
-        whales.sort(key=lambda: x: (len(x), x))
-                                 ^
-    SyntaxError: invalid syntax
+    whales: ['Blue', 'Sperm', 'Beluga', 'Killer', 'Bowhead', 'Humpback']
 
 #### Sorting your own Classes
 
@@ -244,8 +240,8 @@ df
     - Returns an open file object or a *stream*
 - We can then read from the stream via the `readline` function
   - Returns a line of text (ended by a newline)
-- Once you’ve finished with a file you must call `close` to close the
-  stream
+- Once you’ve finished with a file you must call the `close` method to
+  close the stream
   - Frees the resource
   - For example, allowing other programs to read or write from the
     program
@@ -258,25 +254,13 @@ print(read_me)
 print("First line:", read_me.readline())
 print("Second line:", read_me.readline())
 
-close(read_me)
+read_me.close()
 ```
 
     <_io.TextIOWrapper name='Examples/hello.txt' mode='r' encoding='UTF-8'>
     First line: Hello, World!
 
     Second line: Another line
-
-    NameError: name 'close' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[9], line 7
-          3 
-          4 print("First line:", read_me.readline())
-          5 print("Second line:", read_me.readline())
-          6 
-    ----> 7 close(read_me)
-
-    NameError: name 'close' is not defined
 
 #### Context Managers
 
@@ -317,28 +301,17 @@ data[0]
 text = "My intriguing story"
 file_path = "Examples/output.txt"
 
-with open(file_path) as out_stream:
+with open(file_path, "w") as out_stream:
     out_stream.write(text)
 
 # verifying that the file was created and written:
 print("File contents")
-with open(file_path) as in_stream:
+with open(file_path, "r") as in_stream:
     print(in_stream.readlines())
 ```
 
-    FileNotFoundError: [Errno 2] No such file or directory: 'Examples/output.txt'
-    ---------------------------------------------------------------------------
-    FileNotFoundError                         Traceback (most recent call last)
-    Cell In[11], line 4
-          1 text = "My intriguing story"
-          2 file_path = "Examples/output.txt"
-          3 
-    ----> 4 with open(file_path) as out_stream:
-          5     out_stream.write(text)
-          6 
-          7 # verifying that the file was created and written:
-
-    FileNotFoundError: [Errno 2] No such file or directory: 'Examples/output.txt'
+    File contents
+    ['My intriguing story']
 
 > [!CAUTION]
 >
@@ -358,7 +331,7 @@ with open(file_path) as in_stream:
 ``` python
 import json
 
-with open("Examples/serialised.json") as open_file:
+with open("Examples/serialised.json", "r") as open_file:
     data = json.load(open_file)
 
 print(data)
@@ -453,23 +426,13 @@ print("Reformatted datetime string:", reformatted_str)
 ``` python
 from datetime import datetime, timedelta
 
-dt = datetime
+dt = datetime(2022, 10, 1, 13, 59, 33, 10_000)
 delta = timedelta(days=3)
 
 dt - delta
 ```
 
-    TypeError: unsupported operand type(s) for -: 'type' and 'datetime.timedelta'
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[15], line 6
-          2 
-          3 dt = datetime
-          4 delta = timedelta(days=3)
-          5 
-    ----> 6 dt - delta
-
-    TypeError: unsupported operand type(s) for -: 'type' and 'datetime.timedelta'
+    datetime.datetime(2022, 9, 28, 13, 59, 33, 10000)
 
 - Python 3.9 introduced the `zoneinfo` built-in package which simplifies
   handling timezones and can be used in conjunction with `datetime`
@@ -514,10 +477,10 @@ date.today()
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
 re.match("Ahab:", captains)  # look for "Ahab:" in captains
 ```
@@ -536,10 +499,10 @@ re.match("Ahab:", captains)  # look for "Ahab:" in captains
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
 if re.match("Ahab:", captains):
     print("We found Ahab!")
@@ -547,7 +510,7 @@ else:
     print("Ahab is unaccounted for...")
 
 
-if re.match("Ahab:", captains):
+if re.match("Peleg:", captains):
     print("We found Peleg")
 else:
     print("No Peleg found!")
@@ -558,8 +521,8 @@ if search := re.search("Peleg", captains):
 ```
 
     We found Ahab!
-    We found Peleg
-    On closer inspection, here is Peleg: <re.Match object; span=(36, 41), match='Peleg'>
+    No Peleg found!
+    On closer inspection, here is Peleg: <re.Match object; span=(22, 27), match='Peleg'>
 
 #### Character Sets
 
@@ -612,26 +575,21 @@ if search := re.search("Peleg", captains):
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
 print(re.search("[A-Z][a-z]", captains))
 print(re.search("[A-Za-z]+", captains))
 print(re.search("[A-Za-z]{7}", captains))
-print(re.search("[a-z]+\@[a-z]+\.[a-z]+", captains))
+print(re.search(r"[a-z]+\@[a-z]+\.[a-z]+", captains))
 ```
 
     <re.Match object; span=(0, 2), match='Ah'>
     <re.Match object; span=(0, 4), match='Ahab'>
-    <re.Match object; span=(74, 81), match='Ishmael'>
+    <re.Match object; span=(46, 53), match='Ishmael'>
     <re.Match object; span=(6, 21), match='ahab@pequad.com'>
-
-    <>:12: SyntaxWarning: "\@" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\@"? A raw string is also an option.
-    <>:12: SyntaxWarning: "\@" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\@"? A raw string is also an option.
-    /tmp/ipykernel_4143/2657035932.py:12: SyntaxWarning: "\@" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\@"? A raw string is also an option.
-      print(re.search("[a-z]+\@[a-z]+\.[a-z]+", captains))
 
 #### Character Classes
 
@@ -656,13 +614,8 @@ print(re.search("[a-z]+\@[a-z]+\.[a-z]+", captains))
   by word characters
 
 ``` python
-re.search("\w\d\w", "His panic over Y2K was overwhelming")
+re.search(r"\w\d\w", "His panic over Y2K was overwhelming")
 ```
-
-    <>:1: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:1: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    /tmp/ipykernel_4143/2657193867.py:1: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-      re.search("\w\d\w", "His panic over Y2K was overwhelming")
 
     <re.Match object; span=(15, 18), match='Y2K'>
 
@@ -673,18 +626,13 @@ re.search("\w\d\w", "His panic over Y2K was overwhelming")
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-re.search("\w+\@\w+\.\w+", captains)
+re.search(r"\w+\@\w+\.\w+", captains)
 ```
-
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    /tmp/ipykernel_4143/3764882435.py:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-      re.search("\w+\@\w+\.\w+", captains)
 
     <re.Match object; span=(6, 21), match='ahab@pequad.com'>
 
@@ -699,12 +647,12 @@ re.search("\w+\@\w+\.\w+", captains)
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-m = re.search("(\w+)\@(\w+)\.(\w+)", captains)
+m = re.search(r"(\w+)\@(\w+)\.(\w+)", captains)
 print(f"Group 0 is {m.group(0)}")
 print(f"Group 1 is {m.group(1)}")
 print(f"Group 2 is {m.group(2)}")
@@ -715,11 +663,6 @@ print(f"Group 3 is {m.group(3)}")
     Group 1 is ahab
     Group 2 is pequad
     Group 3 is com
-
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    /tmp/ipykernel_4143/495805083.py:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-      m = re.search("(\w+)\@(\w+)\.(\w+)", captains)
 
 ##### Named Groups
 
@@ -738,12 +681,12 @@ print(f"Group 3 is {m.group(3)}")
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-m = re.search("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
+m = re.search(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", captains)
 
 print(f"""
 Email Address: {m.group()}
@@ -752,69 +695,11 @@ Secondary Level Domain: {m.group("SLD")}
 Top Level Domain: {m.group("TLD")}""")
 ```
 
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    /tmp/ipykernel_4143/2668660918.py:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-      m = re.search("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
 
-    PatternError: nothing to repeat at position 0
-    ---------------------------------------------------------------------------
-    PatternError                              Traceback (most recent call last)
-    Cell In[24], line 9
-          5               Ishmael: ishmael@pequad.com
-          6               Herman: herman@acushnet.io
-          7               Pollard: pollard@essex.me"""
-          8 
-    ----> 9 m = re.search("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
-         10 
-         11 print(f"""
-         12 Email Address: {m.group()}
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/__init__.py:177, in search(pattern, string, flags)
-        174 def search(pattern, string, flags=0):
-        175     """Scan through string looking for a match to the pattern, returning
-        176     a Match object, or None if no match was found."""
-    --> 177     return _compile(pattern, flags).search(string)
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/__init__.py:350, in _compile(pattern, flags)
-        348 if not _compiler.isstring(pattern):
-        349     raise TypeError("first argument must be string or compiled pattern")
-    --> 350 p = _compiler.compile(pattern, flags)
-        351 if flags & DEBUG:
-        352     return p
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_compiler.py:762, in compile(p, flags)
-        760 if isstring(p):
-        761     pattern = p
-    --> 762     p = _parser.parse(p, flags)
-        763 else:
-        764     pattern = None
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_parser.py:973, in parse(str, flags, state)
-        970 state.flags = flags
-        971 state.str = str
-    --> 973 p = _parse_sub(source, state, flags & SRE_FLAG_VERBOSE, 0)
-        974 p.state.flags = fix_flags(str, p.state.flags)
-        976 if source.next is not None:
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_parser.py:460, in _parse_sub(source, state, verbose, nested)
-        458 start = source.tell()
-        459 while True:
-    --> 460     itemsappend(_parse(source, state, verbose, nested + 1,
-        461                        not nested and not items))
-        462     if not sourcematch("|"):
-        463         break
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_parser.py:687, in _parse(source, state, verbose, nested, first)
-        685     item = None
-        686 if not item or item[0][0] is AT:
-    --> 687     raise source.error("nothing to repeat",
-        688                        source.tell() - here + len(this))
-        689 if item[0][0] in _REPEATCODES:
-        690     raise source.error("multiple repeat",
-        691                        source.tell() - here + len(this))
-
-    PatternError: nothing to repeat at position 0
+    Email Address: ahab@pequad.com
+    Name: ahab
+    Secondary Level Domain: pequad
+    Top Level Domain: com
 
 - Observe that `group()` i.e. with no group specified returns the full
   match
@@ -831,20 +716,19 @@ Top Level Domain: {m.group("TLD")}""")
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-re.findall("\w+\@\.\w+", captains)
+re.findall(r"\w+\@\w+\.\w+", captains)
 ```
 
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    /tmp/ipykernel_4143/913872192.py:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-      re.findall("\w+\@\.\w+", captains)
-
-    []
+    ['ahab@pequad.com',
+     'peleg@pequad.com',
+     'ishmael@pequad.com',
+     'herman@acushnet.io',
+     'pollard@essex.me']
 
 - If matching on groups, the each match is returned as a `tuple` of
   strings, corresponding to each group
@@ -853,77 +737,19 @@ re.findall("\w+\@\.\w+", captains)
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-re.findall("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
+re.findall(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", captains)
 ```
 
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    /tmp/ipykernel_4143/1706154180.py:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-      re.findall("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
-
-    PatternError: nothing to repeat at position 0
-    ---------------------------------------------------------------------------
-    PatternError                              Traceback (most recent call last)
-    Cell In[26], line 9
-          5               Ishmael: ishmael@pequad.com
-          6               Herman: herman@acushnet.io
-          7               Pollard: pollard@essex.me"""
-          8 
-    ----> 9 re.findall("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/__init__.py:278, in findall(pattern, string, flags)
-        270 def findall(pattern, string, flags=0):
-        271     """Return a list of all non-overlapping matches in the string.
-        272 
-        273     If one or more capturing groups are present in the pattern, return
-       (...)    276 
-        277     Empty matches are included in the result."""
-    --> 278     return _compile(pattern, flags).findall(string)
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/__init__.py:350, in _compile(pattern, flags)
-        348 if not _compiler.isstring(pattern):
-        349     raise TypeError("first argument must be string or compiled pattern")
-    --> 350 p = _compiler.compile(pattern, flags)
-        351 if flags & DEBUG:
-        352     return p
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_compiler.py:762, in compile(p, flags)
-        760 if isstring(p):
-        761     pattern = p
-    --> 762     p = _parser.parse(p, flags)
-        763 else:
-        764     pattern = None
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_parser.py:973, in parse(str, flags, state)
-        970 state.flags = flags
-        971 state.str = str
-    --> 973 p = _parse_sub(source, state, flags & SRE_FLAG_VERBOSE, 0)
-        974 p.state.flags = fix_flags(str, p.state.flags)
-        976 if source.next is not None:
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_parser.py:460, in _parse_sub(source, state, verbose, nested)
-        458 start = source.tell()
-        459 while True:
-    --> 460     itemsappend(_parse(source, state, verbose, nested + 1,
-        461                        not nested and not items))
-        462     if not sourcematch("|"):
-        463         break
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_parser.py:687, in _parse(source, state, verbose, nested, first)
-        685     item = None
-        686 if not item or item[0][0] is AT:
-    --> 687     raise source.error("nothing to repeat",
-        688                        source.tell() - here + len(this))
-        689 if item[0][0] in _REPEATCODES:
-        690     raise source.error("multiple repeat",
-        691                        source.tell() - here + len(this))
-
-    PatternError: nothing to repeat at position 0
+    [('ahab', 'pequad', 'com'),
+     ('peleg', 'pequad', 'com'),
+     ('ishmael', 'pequad', 'com'),
+     ('herman', 'acushnet', 'io'),
+     ('pollard', 'essex', 'me')]
 
 #### Find Iterator
 
@@ -935,86 +761,23 @@ re.findall("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-matches_iterator = re.finditer("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
+matches_iterator = re.finditer(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", captains)
 
 print(f"An {type(matches_iterator)} object was returned by `re.finditer`")
 
-m = next(iterator)
+m = next(matches_iterator)
 print(
     f"""The first match, {m.group()} is processed without touching the rest of the text"""
 )
 ```
 
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    /tmp/ipykernel_4143/368084093.py:9: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-      matches_iterator = re.finditer("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
-
-    PatternError: nothing to repeat at position 0
-    ---------------------------------------------------------------------------
-    PatternError                              Traceback (most recent call last)
-    Cell In[27], line 9
-          5               Ishmael: ishmael@pequad.com
-          6               Herman: herman@acushnet.io
-          7               Pollard: pollard@essex.me"""
-          8 
-    ----> 9 matches_iterator = re.finditer("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
-         10 
-         11 print(f"An {type(matches_iterator)} object was returned by `re.finditer`")
-         12 
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/__init__.py:285, in finditer(pattern, string, flags)
-        280 def finditer(pattern, string, flags=0):
-        281     """Return an iterator over all non-overlapping matches in the
-        282     string.  For each match, the iterator returns a Match object.
-        283 
-        284     Empty matches are included in the result."""
-    --> 285     return _compile(pattern, flags).finditer(string)
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/__init__.py:350, in _compile(pattern, flags)
-        348 if not _compiler.isstring(pattern):
-        349     raise TypeError("first argument must be string or compiled pattern")
-    --> 350 p = _compiler.compile(pattern, flags)
-        351 if flags & DEBUG:
-        352     return p
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_compiler.py:762, in compile(p, flags)
-        760 if isstring(p):
-        761     pattern = p
-    --> 762     p = _parser.parse(p, flags)
-        763 else:
-        764     pattern = None
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_parser.py:973, in parse(str, flags, state)
-        970 state.flags = flags
-        971 state.str = str
-    --> 973 p = _parse_sub(source, state, flags & SRE_FLAG_VERBOSE, 0)
-        974 p.state.flags = fix_flags(str, p.state.flags)
-        976 if source.next is not None:
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_parser.py:460, in _parse_sub(source, state, verbose, nested)
-        458 start = source.tell()
-        459 while True:
-    --> 460     itemsappend(_parse(source, state, verbose, nested + 1,
-        461                        not nested and not items))
-        462     if not sourcematch("|"):
-        463         break
-
-    File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/_parser.py:687, in _parse(source, state, verbose, nested, first)
-        685     item = None
-        686 if not item or item[0][0] is AT:
-    --> 687     raise source.error("nothing to repeat",
-        688                        source.tell() - here + len(this))
-        689 if item[0][0] in _REPEATCODES:
-        690     raise source.error("multiple repeat",
-        691                        source.tell() - here + len(this))
-
-    PatternError: nothing to repeat at position 0
+    An <class 'callable_iterator'> object was returned by `re.finditer`
+    The first match, ahab@pequad.com is processed without touching the rest of the text
 
 #### Substitution
 
@@ -1027,13 +790,8 @@ print(
 ``` python
 import re
 
-re.sub("\d", "#", "Your secret pin is 12345")
+re.sub(r"\d", "#", "Your secret pin is 12345")
 ```
-
-    <>:3: SyntaxWarning: "\d" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\d"? A raw string is also an option.
-    <>:3: SyntaxWarning: "\d" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\d"? A raw string is also an option.
-    /tmp/ipykernel_4143/3278862312.py:3: SyntaxWarning: "\d" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\d"? A raw string is also an option.
-      re.sub("\d", "#", "Your secret pin is 12345")
 
     'Your secret pin is #####'
 
@@ -1047,31 +805,22 @@ re.sub("\d", "#", "Your secret pin is 12345")
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
 new_text = re.sub(
-    "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
+    r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", r"\g<TLD>.\g<SLD>.\g<name>", captains
 )
 print(new_text)
 ```
 
     Ahab: com.pequad.ahab
-                  Peleg: com.pequad.peleg
-                  Ishmael: com.pequad.ishmael
-                  Herman: io.acushnet.herman
-                  Pollard: me.essex.pollard
-
-    <>:10: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:10: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-    <>:10: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:10: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-    /tmp/ipykernel_4143/1104937826.py:10: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-      "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-    /tmp/ipykernel_4143/1104937826.py:10: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-      "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
+    Peleg: com.pequad.peleg
+    Ishmael: com.pequad.ishmael
+    Herman: io.acushnet.herman
+    Pollard: me.essex.pollard
 
 #### Compiling Regular Expressions
 
@@ -1087,40 +836,16 @@ print(new_text)
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-compiled_regex = re.compile(
-    "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-)
-print(compiled_regex)
+compiled_email_regex = re.compile(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)")
+print(compiled_email_regex)
 ```
 
-    <>:10: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:10: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-    <>:10: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:10: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-    /tmp/ipykernel_4143/1552827687.py:10: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-      "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-    /tmp/ipykernel_4143/1552827687.py:10: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-      "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-
-    TypeError: compile() takes from 1 to 2 positional arguments but 3 were given
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[30], line 9
-          5               Ishmael: ishmael@pequad.com
-          6               Herman: herman@acushnet.io
-          7               Pollard: pollard@essex.me"""
-          8 
-    ----> 9 compiled_regex = re.compile(
-         10     "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-         11 )
-         12 print(compiled_regex)
-
-    TypeError: compile() takes from 1 to 2 positional arguments but 3 were given
+    re.compile('(?P<name>\\w+)\\@(?P<SLD>\\w+)\\.(?P<TLD>\\w+)')
 
 - The relevant `re` functions can then be called via the equivalent
   methods on the compiled regex object
@@ -1129,50 +854,29 @@ print(compiled_regex)
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-compiled_regex = re.compile(
-    "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-)
+compiled_email_regex = re.compile(r"\w+: (?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)")
 
-print(compiled_regex.match(captains))
-print(compiled_regex.search(captains))
-print(compiled_regex.findall(captains))
+print(compiled_email_regex.match(captains))
+print(compiled_email_regex.search(captains))
+print(compiled_email_regex.findall(captains))
 
-new_text = regex.sub("Ahoy \g<name>!", captains)
+new_text = compiled_email_regex.sub(r"Ahoy \g<name>!", captains)
 print(new_text)
 ```
 
-    <>:10: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:10: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-    <>:17: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-    <>:10: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-    <>:10: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-    <>:17: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-    /tmp/ipykernel_4143/3952513436.py:10: SyntaxWarning: "\w" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\w"? A raw string is also an option.
-      "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-    /tmp/ipykernel_4143/3952513436.py:10: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-      "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-    /tmp/ipykernel_4143/3952513436.py:17: SyntaxWarning: "\g" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\g"? A raw string is also an option.
-      new_text = regex.sub("Ahoy \g<name>!", captains)
-
-    TypeError: compile() takes from 1 to 2 positional arguments but 3 were given
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[31], line 9
-          5               Ishmael: ishmael@pequad.com
-          6               Herman: herman@acushnet.io
-          7               Pollard: pollard@essex.me"""
-          8 
-    ----> 9 compiled_regex = re.compile(
-         10     "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-         11 )
-         12 
-
-    TypeError: compile() takes from 1 to 2 positional arguments but 3 were given
+    <re.Match object; span=(0, 21), match='Ahab: ahab@pequad.com'>
+    <re.Match object; span=(0, 21), match='Ahab: ahab@pequad.com'>
+    [('ahab', 'pequad', 'com'), ('peleg', 'pequad', 'com'), ('ishmael', 'pequad', 'com'), ('herman', 'acushnet', 'io'), ('pollard', 'essex', 'me')]
+    Ahoy ahab!
+    Ahoy peleg!
+    Ahoy ishmael!
+    Ahoy herman!
+    Ahoy pollard!
 
 ## Summary
 
