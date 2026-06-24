@@ -35,9 +35,10 @@ website:
           - 2-data-science-libraries/Chapter_10/Chapter_10.qmd
           - 2-data-science-libraries/Chapter_11/Chapter_11.qmd
           - 2-data-science-libraries/Chapter_12/Chapter_12.qmd
-      - section: "III: Functional Programming"
+      - section: "III: Intermediate Python"
         contents:
           - 3-intermediate-python/Chapter_13/Chapter_13.qmd
+          - 3-intermediate-python/Chapter_14/Chapter_14.qmd
 
 format:
   html:

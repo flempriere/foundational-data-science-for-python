@@ -373,8 +373,8 @@ print(generator_func())
 print(generator_func())
 ```
 
-    <generator object generator_func at 0x7fc4aa155d80>
-    <generator object generator_func at 0x7fc4aa155d80>
+    <generator object generator_func at 0x7f32009e9d80>
+    <generator object generator_func at 0x7f32009e9d80>
 
 #### Raise Statements
 
