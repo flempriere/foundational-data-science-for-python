@@ -352,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>In Python everything is fundamentally an <em>object</em>, combining state and methods</li>
 <li>For example, <code>int</code> has the <code>to_bytes</code> method to convert an integer to it’s byte representation</li>
 </ul>
-<div id="846e2c71" class="cell" data-execution_count="1">
+<div id="9d955d8b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">13</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>number.to_bytes(<span class="dv">8</span>, <span class="st">"little"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> prompt_toolkit.contrib.regular_languages.regex_parser</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -380,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Classes are defined via the <code>class</code> keyword</li>
 <li>Then instantiated by calling the class name as a function e.g.,</li>
 </ul>
-<div id="11ed341b" class="cell" data-execution_count="2">
+<div id="cb112c88" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DoNothing:</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -398,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Accepts an argument list containing the object to be tested then either the class to test against, or a tuple of classes</li>
 </ul></li>
 </ul>
-<div id="3b076af9" class="cell" data-execution_count="3">
+<div id="cb49f1fe" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DoNothing:</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -418,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>By convention this is always called <code>self</code></li>
 </ul></li>
 </ul>
-<div id="d9350808" class="cell" data-execution_count="4">
+<div id="01828003" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DoSomething:</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> return_self(<span class="va">self</span>):</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
@@ -450,7 +450,7 @@ Note
 <ul>
 <li>Attributes, or variables attached to a class or object instance can also be defined using the <code>.</code> syntax</li>
 </ul>
-<div id="80d2c4a0" class="cell" data-execution_count="5">
+<div id="56d5f663" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AddAttribute:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_score(<span class="va">self</span>):</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.score <span class="op">=</span> <span class="dv">14</span>  <span class="co"># set's the score attribute, creates it if it does not exist</span></span>
@@ -467,7 +467,7 @@ Note
 <ul>
 <li>Method’s can call other methods like any function by referencing the target method on the <code>self</code> argument</li>
 </ul>
-<div id="f812bacd" class="cell" data-execution_count="6">
+<div id="d60a2b65" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> InternalMethodCaller:</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> method_one(<span class="va">self</span>):</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Calling method one"</span>)</span>
@@ -507,7 +507,7 @@ Calling method one</code></pre>
 <li>Should not be accessed outside the class</li>
 </ul></li>
 </ul>
-<div id="67bec9a3" class="cell" data-execution_count="7">
+<div id="b6cac8ae" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PrivatePublic():</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _private_method(<span class="va">self</span>):</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"private"</span>)</span>
@@ -539,7 +539,7 @@ Calling method one</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="efd79b9f" class="cell" data-execution_count="8">
+<div id="40edc15b" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ClassyVariables:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    class_variable <span class="op">=</span> <span class="st">"Yellow"</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -583,7 +583,7 @@ blue.class_variable: Yellow</code></pre>
 <li>Is then assigned to an internal attribute <code>count</code></li>
 </ul></li>
 </ul>
-<div id="374bcb0c" class="cell" data-execution_count="9">
+<div id="7574fea5" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Initialised:</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n):</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.count <span class="op">=</span> n</span>
@@ -618,7 +618,7 @@ After calling increment_count: 3</code></pre>
 <li>Done automatically when <code>print</code> is called on an object</li>
 </ul></li>
 </ul>
-<div id="c46501b6" class="cell" data-execution_count="10">
+<div id="21ed51d9" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Represented:</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n):</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n <span class="op">=</span> n</span>
@@ -689,7 +689,7 @@ represented: Object demonstrating __str__ and __repr__</code></pre>
 <li>Objects are ordered in terms of highest score, and lowest time (with score taking precedent)</li>
 </ul></li>
 </ul>
-<div id="b9f223a7" class="cell" data-execution_count="11">
+<div id="98757899" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CompareMe:</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, score, time):</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.score <span class="op">=</span> score</span>
@@ -731,7 +731,7 @@ represented: Object demonstrating __str__ and __repr__</code></pre>
 <span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"high_score &gt; mid_score:"</span>, high_score <span class="op">&gt;</span> mid_score)</span>
 <span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"high_score &gt;= mid_score:"</span>, high_score <span class="op">&gt;=</span> mid_score)</span>
 <span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"high_score == low_time:"</span>, high_score <span class="op">==</span> low_time)</span>
-<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mid_score == mid_score_l:"</span>, mid_score <span class="op">==</span> mid_score_l)</span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mid_score == mid_score_1:"</span>, mid_score <span class="op">==</span> mid_score_1)</span>
 <span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"low_time == high_score:"</span>, low_time <span class="op">==</span> high_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Called __gt__
@@ -739,22 +739,11 @@ high_score &gt; mid_score: True
 Called __ge__
 high_score &gt;= mid_score: True
 Called __eq__
-high_score == low_time: False</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 42</span>
-<span class="ansi-green-fg">     38</span> 
-<span class="ansi-green-fg">     39</span> print(<span class="ansi-yellow-fg">"high_score &gt; mid_score:"</span>, high_score &gt; mid_score)
-<span class="ansi-green-fg">     40</span> print(<span class="ansi-yellow-fg">"high_score &gt;= mid_score:"</span>, high_score &gt;= mid_score)
-<span class="ansi-green-fg">     41</span> print(<span class="ansi-yellow-fg">"high_score == low_time:"</span>, high_score == low_time)
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">42</span> print(<span class="ansi-yellow-fg">"mid_score == mid_score_l:"</span>, mid_score == mid_score_l)
-<span class="ansi-green-fg">     43</span> print(<span class="ansi-yellow-fg">"low_time == high_score:"</span>, low_time == high_score)
-
-<span class="ansi-red-fg">NameError</span>: name 'mid_score_l' is not defined</pre>
-</div>
+high_score == low_time: False
+Called __eq__
+mid_score == mid_score_1: True
+Called __eq__
+low_time == high_score: False</code></pre>
 </div>
 </div>
 <ul>
@@ -763,7 +752,7 @@ high_score == low_time: False</code></pre>
 <li>But in reality they often should be</li>
 </ul></li>
 </ul>
-<div id="b524128f" class="cell" data-execution_count="12">
+<div id="3ac6a9d6" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ScoreMatters:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, score):</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.score <span class="op">=</span> score</span>
@@ -795,7 +784,7 @@ my_score &lt; 15: True</code></pre>
 </ul></li>
 <li>It is possible to do dumb things like defining classes that always compare bigger than anything observed</li>
 </ul>
-<div id="2594fbe1" class="cell" data-execution_count="13">
+<div id="3712a1cc" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AlwaysBigger:</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__gt__</span>(<span class="va">self</span>, other):</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
@@ -840,7 +829,7 @@ biggest &gt; bigger: True</code></pre>
 </ol></li>
 <li><p>An example class is given below</p></li>
 </ul>
-<div id="9f97f992" class="cell" data-execution_count="14">
+<div id="2ca6cc69" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MathMe:</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value):</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.value <span class="op">=</span> value</span>
@@ -888,7 +877,7 @@ m5: 21</code></pre>
 <li><code>Student</code> does not define and <code>__init__</code> but inherits it from <code>Person</code> <code>Student</code> defines a method <code>introduce_yourself</code> which accesses the <code>self.first_name</code> attribute inherited from the <code>Person</code> superclass</li>
 </ul></li>
 </ul>
-<div id="e3fa7b86" class="cell" data-execution_count="15">
+<div id="32dc6ece" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Person:</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, first_name, last_name):</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.first_name <span class="op">=</span> first_name</span>
@@ -929,7 +918,7 @@ isinstance(barb, Person): True</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="a20b97b8" class="cell" data-execution_count="16">
+<div id="f2123fb3" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Job:</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> run(<span class="va">self</span>):</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"I'm running"</span>)</span>
@@ -960,7 +949,7 @@ I'm running</code></pre>
 <li>A child that defines a method or attribute already declared by it’s parent will use it’s definition in place of the parent’s definition</li>
 <li>For example,</li>
 </ul>
-<div id="e0441e8c" class="cell" data-execution_count="17">
+<div id="bd05d413" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Parent:</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> run(<span class="va">self</span>):</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"I'm the parent running free"</span>)</span>
@@ -983,7 +972,7 @@ I'm running</code></pre>
 <li>Most commonly this is done to invoke the super’s <code>__init__</code> method</li>
 </ul></li>
 </ul>
-<div id="e0d88a71" class="cell" data-execution_count="18">
+<div id="446b0c1f" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Person:</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, first_name, last_name):</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.first_name <span class="op">=</span> first_name</span>
@@ -1005,7 +994,7 @@ I'm running</code></pre>
 <ul>
 <li>Inheritance can have multiple levels</li>
 </ul>
-<div id="d8824a00" class="cell" data-execution_count="19">
+<div id="6940e806" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> A:</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1028,7 +1017,7 @@ isinstance(C(), A): True</code></pre>
 <ul>
 <li>Another form of multiple inheritance, is when one class inherits from multiple classes simultaneously</li>
 </ul>
-<div id="19558274" class="cell" data-execution_count="20">
+<div id="eb96d4b9" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> A:</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> a_method(<span class="va">self</span>):</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"A's method"</span>)</span>
@@ -1095,7 +1084,7 @@ Caution
 <li>It is called at object construction</li>
 </ul></li>
 <li><p>Given the following class definition</p>
-<div id="3682be43" class="cell" data-execution_count="21">
+<div id="d7c90b60" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">class</span> Confused:</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>     <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n):</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>         <span class="va">self</span>.n <span class="op">=</span> n</span>
@@ -1105,7 +1094,7 @@ Caution
 </div>
 <ul>
 <li><p>What would you expect from the following?</p>
-<div id="48e03e5b" class="cell" data-execution_count="22">
+<div id="40e233ce" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>   c <span class="op">=</span> Confused(<span class="dv">12</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>   c <span class="op">+</span> <span class="dv">12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
@@ -1115,7 +1104,7 @@ Caution
 <li><p>Looking at the definition this is equivalent to <code>12 - 12</code>, so the return is <code>0</code></p></li>
 </ul></li>
 <li><p>What wil be the output of the following code</p>
-<div id="150e732c" class="cell" data-execution_count="23">
+<div id="50000f76" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">class</span> A:</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>     <span class="kw">def</span> say_hello(<span class="va">self</span>):</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>         <span class="bu">print</span>(<span class="st">"Hello from A"</span>)</span>
