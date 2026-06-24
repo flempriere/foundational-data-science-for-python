@@ -51,6 +51,8 @@ Behrman](https://www.amazon.com.au/dp/0136624359)
 
 - [Chapter 13: Functional
   Programming](3-intermediate-python/Chapter_13/Chapter_13.qmd)
+- [Chapter 14: Object-Oriented
+  Programming](3-intermediate-python/Chapter_14/Chapter_14.qmd)
 
 ## Attribution
 
