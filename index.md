@@ -22,24 +22,24 @@ Behrman](https://www.amazon.com.au/dp/0136624359)
 ### I: Learning Python in a Notebook Environment
 
 - [Chapter 1: Introduction to
-  Notebooks](./1_learning-python-in-a-notebook-environment/Chapter_01/Chapter_01.qmd)
+  Notebooks](./1-learning-python-in-a-notebook-environment/Chapter_01/Chapter_01.qmd)
 - [Chapter 2: Fundamentals of
-  Python](./1_learning-python-in-a-notebook-environment/Chapter_02/Chapter_02.qmd)
+  Python](./1-learning-python-in-a-notebook-environment/Chapter_02/Chapter_02.qmd)
 - [Chapter 3:
-  Sequences](./1_learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.qmd)
+  Sequences](./1-learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.qmd)
 - [Chapter 4: Other Data
-  Structures](./1_learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.qmd)
+  Structures](./1-learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.qmd)
 - [Chapter 5: Execution
-  Control](./1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.qmd)
+  Control](./1-learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.qmd)
 - [Chapter 6:
-  Functions](./1_learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.qmd)
+  Functions](./1-learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.qmd)
 
 ### II: Data Science Libraries
 
-- [Chapter 7: NumPy](2_data-science-libraries/Chapter_07/Chapter_07.qmd)
-- [Chapter 8: SciPy](2_data-science-libraries/Chapter_08/Chapter_08.qmd)
+- [Chapter 7: NumPy](2-data-science-libraries/Chapter_07/Chapter_07.qmd)
+- [Chapter 8: SciPy](2-data-science-libraries/Chapter_08/Chapter_08.qmd)
 - [Chapter 9:
-  Pandas](2_data-science-libraries/Chapter_09/Chapter_09.qmd)
+  Pandas](2-data-science-libraries/Chapter_09/Chapter_09.qmd)
 - [Chapter 10: Visualisation
   Libraries](2-data-science-libraries/Chapter_10/Chapter_10.qmd)
 - [Chapter 11: Machine Learning
@@ -53,6 +53,8 @@ Behrman](https://www.amazon.com.au/dp/0136624359)
   Programming](3-intermediate-python/Chapter_13/Chapter_13.qmd)
 - [Chapter 14: Object-Oriented
   Programming](3-intermediate-python/Chapter_14/Chapter_14.qmd)
+- [Chapter 15: Other
+  Topics](3-intermediate-python/Chapter_15/Chapter_15.qmd)
 
 ## Attribution
 
