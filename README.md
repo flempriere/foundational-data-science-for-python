@@ -31,6 +31,7 @@ This repository contains notes and code examples from the book,
 
 - [Chapter 13: Functional Programming](3-intermediate-python/Chapter_13/Chapter_13.md)
 - [Chapter 14: Object-Oriented Programming](3-intermediate-python/Chapter_14/Chapter_14.md)
+- [Chapter 15: Other Topics](3-intermediate-python/Chapter_15/Chapter_15.md)
 
 ## Attribution
 

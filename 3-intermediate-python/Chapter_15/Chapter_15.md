@@ -1,0 +1,955 @@
+# Chapter 15: Other Topics
+
+- [Notes](#notes)
+  - [Sorting](#sorting)
+    - [Lists](#lists)
+    - [Sorting your own Classes](#sorting-your-own-classes)
+    - [Dictionaries](#dictionaries)
+    - [Pandas DataFrames](#pandas-dataframes)
+  - [Reading and Writing Files](#reading-and-writing-files)
+    - [Context Managers](#context-managers)
+    - [JSON](#json)
+  - [`datetime` Objects](#datetime-objects)
+  - [Regular Expressions](#regular-expressions)
+    - [Character Sets](#character-sets)
+    - [Character Classes](#character-classes)
+    - [Groups](#groups)
+      - [Named Groups](#named-groups)
+    - [Find All](#find-all)
+    - [Find Iterator](#find-iterator)
+    - [Substitution](#substitution)
+      - [Substitution using Named
+        Groups](#substitution-using-named-groups)
+    - [Compiling Regular Expressions](#compiling-regular-expressions)
+- [Summary](#summary)
+- [Questions and Answers](#questions-and-answers)
+
+## Notes
+
+- The Python standard Library comes with a range of specialised modules
+  and functionality that extend the basic syntax
+
+- Many of them have are extremely useful for data science
+
+- This Chapter will cover,
+
+  1. Sorting data
+  2. Reading and writing files
+  3. Representing dates and times with `datetime`
+  4. Searching for text using regular expressions
+
+### Sorting
+
+- Many Python data structures have built-in sorting capabilities
+  including,
+  - `list`
+  - NumPy Arrays
+  - Pandas DataFrames
+- Python also offers easily extensive sorting mechanics for defining
+  your own sort functionality
+
+#### Lists
+
+- Python provides the list `sort` method for sorting a `list` in-place
+- For example we might sort a list of whales
+
+``` python
+whales = ["Blue", "Killer", "Sperm", "Humpback", "Beluga", "Bowhead"]
+whales.sort()
+print("Whales:", whales)
+```
+
+    Whales: ['Beluga', 'Blue', 'Bowhead', 'Humpback', 'Killer', 'Sperm']
+
+- Since `sort` performs the sort in-place it does not return a value
+  (Technically the return is `None`)
+- If you want a sorted *copy* then you can use the `sorted` built-in
+  function
+
+``` python
+whales = ["Blue", "Killer", "Sperm", "Humpback", "Beluga", "Bowhead"]
+sorted_whales = sorted(whales)
+
+print("whales:", whales)
+print("sorted_whales:", sorted_whales)
+```
+
+    whales: ['Blue', 'Killer', 'Sperm', 'Humpback', 'Beluga', 'Bowhead']
+    sorted_whales: ['Beluga', 'Blue', 'Bowhead', 'Humpback', 'Killer', 'Sperm']
+
+- By default `sort` and `sorted` sort their arguments in *ascending
+  order*
+  - Based on the defined comparison operators
+- To sort in *descending order* both accept a `reverse` parameter
+
+``` python
+whales = ["Blue", "Killer", "Sperm", "Humpback", "Beluga", "Bowhead"]
+whales.sort(reverse=True)
+print("whales:", whales)
+```
+
+    whales: ['Sperm', 'Killer', 'Humpback', 'Bowhead', 'Blue', 'Beluga']
+
+- If you want to change how the sorting order is determined you can use
+  the `key` parameter
+  - `key` must map an element of the object being compared to a
+    comparable value
+- For example, we might want to sort strings based on their length
+  rather than alphabetically
+
+``` python
+whales = ["Blue", "Killer", "Sperm", "Humpback", "Beluga", "Bowhead"]
+whales.sort(key=lambda x: len(x))
+print("whales:", whales)
+```
+
+    whales: ['Blue', 'Sperm', 'Killer', 'Beluga', 'Bowhead', 'Humpback']
+
+- We can define more complex keys, for example, if we want to sort on
+  string length, then fallback to alphabetical ordering
+  - Relies on the fact that tuples are ordered by scanning through their
+    values
+
+``` python
+whales = ["Blue", "Killer", "Sperm", "Humpback", "Beluga", "Bowhead"]
+whales.sort(key=lambda x: (len(x), x))
+print("whales:", whales)
+```
+
+    whales: ['Blue', 'Sperm', 'Beluga', 'Killer', 'Bowhead', 'Humpback']
+
+#### Sorting your own Classes
+
+- Your own classes can be sorted as well
+- You can do this by defining the appropriate comparisons to define a
+  natural ordering
+- Or use the `key` parameter
+
+``` python
+class Food:
+    def __init__(self, rating, name):
+        self.rating = rating
+        self.name = name
+
+    def __repr__(self):
+        return f"Food({self.rating}, {self.name})"
+
+
+foods = [Food(3, "Banana"), Food(9, "Orange"), Food(2, "Tomato"), Food(1, "Olive")]
+
+print("Foods:", foods)
+sorted_foods = sorted(foods, key=lambda x: x.rating)
+print("Sorted foods:", sorted_foods)
+```
+
+    Foods: [Food(3, Banana), Food(9, Orange), Food(2, Tomato), Food(1, Olive)]
+    Sorted foods: [Food(1, Olive), Food(2, Tomato), Food(3, Banana), Food(9, Orange)]
+
+#### Dictionaries
+
+- Dictionaries can also be sorted
+  - *But* this doesn’t sort the dictionary, it sorts the list of keys
+- Dictionary keys are ordered in insertion order by default
+- For example, if we define a dictionary of whale weights based on [the
+  data from whalefacts](https://www.whalefacts.org/how-big-are-whales/)
+  - We can see by default the insertion order of keys is preserved
+
+``` python
+weights = {
+    "Blue": 300_000,
+    "Killer": 12_000,
+    "Sperm": 100_000,
+    "Humpback": 78_000,
+    "Beluga": 3_500,
+    "Bowhead": 200_000,
+}
+
+print("Keys:")
+for key in weights:
+    print(key)
+
+sorted_keys = sorted(weights)
+print("Sorted keys:")
+for key in sorted_keys:
+    print(f"{key} - {weights[key]}")
+```
+
+    Keys:
+    Blue
+    Killer
+    Sperm
+    Humpback
+    Beluga
+    Bowhead
+    Sorted keys:
+    Beluga - 3500
+    Blue - 300000
+    Bowhead - 200000
+    Humpback - 78000
+    Killer - 12000
+    Sperm - 100000
+
+#### Pandas DataFrames
+
+- DataFrames can also be sorted via the `sort_values` method
+  - Accepts a list of column names to be sorted
+
+``` python
+import pandas as pd
+
+data = {
+    "first": ["Dan", "Barb", "Bob"],
+    "last": ["Huerando", "Pousin", "Smith"],
+    "score": [0, 143, 99],
+}
+
+df = pd.DataFrame(data)
+df
+```
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+&#10;    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+&#10;    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+|     | first | last     | score |
+|-----|-------|----------|-------|
+| 0   | Dan   | Huerando | 0     |
+| 1   | Barb  | Pousin   | 143   |
+| 2   | Bob   | Smith    | 99    |
+
+</div>
+
+### Reading and Writing Files
+
+- We’ve seen that Pandas provides a one-line method call for reading
+  from a file
+  - It also provides an equivalent for writing to a file
+- What about when you want to read and write to a file without Pandas?
+  - Python provides the built-in `open`
+    - Accepts a path
+    - Returns an open file object or a *stream*
+- We can then read from the stream via the `readline` function
+  - Returns a line of text (ended by a newline)
+- Once you’ve finished with a file you must call the `close` method to
+  close the stream
+  - Frees the resource
+  - For example, allowing other programs to read or write from the
+    program
+- For example we can open the example file as directed below,
+
+``` python
+read_me = open("Examples/hello.txt", "r")
+print(read_me)
+
+print("First line:", read_me.readline())
+print("Second line:", read_me.readline())
+
+read_me.close()
+```
+
+    <_io.TextIOWrapper name='Examples/hello.txt' mode='r' encoding='UTF-8'>
+    First line: Hello, World!
+
+    Second line: Another line
+
+#### Context Managers
+
+- Context Managers are a python mechanism for automatically handling
+  resource acquisition and release
+  - Help avoid the pitfalls of ensuring an object is properly
+    relinquished after use
+    - For example if potential exceptions might interrupt standard
+      control flow
+- One of the most common uses of context managers is handling files
+  - This can be an especially error-prone process
+- We can repeat the previous example using a context manager
+  - Here we’ll use `readlines` instead of `readline` to read the entire
+    contents of the file in one go
+  - The general syntax is `with <resource> as <variable-name>:`
+
+``` python
+with open("Examples/hello.txt", "r") as read_me:
+    data = read_me.readlines()
+
+data[0]
+```
+
+    'Hello, World!\n'
+
+- When the context is exited the file is automatically closed without
+  the need to explicitly call `close`
+- By default, when a file is opened, it is opened as human-readable
+  UTF-8 (also the flag `"r"`)
+  - One can specify the encoding by hand
+  - Alternatively the file can opened in a number of different modes
+    - Read binary `rb`
+    - Write `w`
+    - Write binary `wb`
+- For example, writing a new file,
+
+``` python
+text = "My intriguing story"
+file_path = "Examples/output.txt"
+
+with open(file_path, "w") as out_stream:
+    out_stream.write(text)
+
+# verifying that the file was created and written:
+print("File contents")
+with open(file_path, "r") as in_stream:
+    print(in_stream.readlines())
+```
+
+    File contents
+    ['My intriguing story']
+
+> [!CAUTION]
+>
+> **Writing to an Existing File**
+>
+> Opening an existing file in `w` mode will clear the contents of the
+> file immediately. If you want to add to an existing file use the
+> append flag instead `a`
+
+#### JSON
+
+- JSON, short for JavaScript Object Notation is a common data
+  interchange format
+- Python’s standard library provides the built-in `json` library for
+  decoding and encoding JSON
+
+``` python
+import json
+
+with open("Examples/serialised.json", "r") as open_file:
+    data = json.load(open_file)
+
+print(data)
+```
+
+    {'hello': 'world', 'days': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']}
+
+### `datetime` Objects
+
+- A common data type in Data Science is *time-series data*
+  - i.e. Data that changes value over time
+- Representing time is a complex process
+  - For basic uses, strings and numbers (integer or float) are often
+    used
+  - When dealing with complex mathematics for dates and times or
+    timezones it is best to use a specialised object
+- There are a number of different built-in libraries for handling times
+  in Python
+  - The most ergonomic is the `datetime` built-in library
+    - Most of which is implemented through the `datetime` class
+
+``` python
+from datetime import datetime
+
+dt = datetime(2022, 10, 1, 13, 59, 33, 10_000)
+
+print("dt:", dt)
+print("dt.year:", dt.year)
+print("dt.month:", dt.month)
+print("dt.day:", dt.day)
+print("dt.hour:", dt.hour)
+print("dt.minute:", dt.minute)
+print("dt.second:", dt.second)
+print("dt.microsecond:", dt.microsecond)
+```
+
+    dt: 2022-10-01 13:59:33.010000
+    dt.year: 2022
+    dt.month: 10
+    dt.day: 1
+    dt.hour: 13
+    dt.minute: 59
+    dt.second: 33
+    dt.microsecond: 10000
+
+- To get the a `datetime` corresponding to the current time call
+  `datetime.now`
+- To convert
+  - Strings to `datetime.datetime`
+    - Use `datetime.strptime`
+  - Datetime to strings
+    - Use `datetime.strftime`
+- These functions rely on format codes that specify how to interpret the
+  string
+  - The format codes are provide in the [datetime
+    docs](https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior)
+- For example
+  - Providing a four-digit year `%Y`
+  - A two-digit year `%y`
+  - A two-digit month `%m`
+  - A two-digit day `%d`
+
+``` python
+from datetime import datetime
+
+# creating a datetime object from a four-digit year, two-digit month, two-digit day
+dt = datetime.strptime("1968-06-20", "%Y-%m-%d")
+print("dt:", dt)
+
+reformatted_str = dt.strftime("%y-%m-%d")
+print("Reformatted datetime string:", reformatted_str)
+```
+
+    dt: 1968-06-20 00:00:00
+    Reformatted datetime string: 68-06-20
+
+- If we want to calculate a new `datetime` object relative to another
+  time we have to use a `datetime.timedelta` object
+
+``` python
+from datetime import datetime, timedelta
+
+dt = datetime(2022, 10, 1, 13, 59, 33, 10_000)
+delta = timedelta(days=3)
+
+dt - delta
+```
+
+    datetime.datetime(2022, 9, 28, 13, 59, 33, 10000)
+
+- Python 3.9 introduced the `zoneinfo` built-in package which simplifies
+  handling timezones and can be used in conjunction with `datetime`
+  objects
+  - Timezones use specially formatted strings to convert a place to the
+    appropriate time zone
+
+``` python
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+dt = datetime(2032, 10, 14, 23, tzinfo=ZoneInfo("America/Jujuy"))
+dt.tzname()
+```
+
+    '-03'
+
+- Lastly, if you only need date’s rather than time’s you can use the
+  `datetime.date` object
+
+``` python
+from datetime import date
+
+date.today()
+```
+
+    datetime.date(2026, 6, 24)
+
+### Regular Expressions
+
+- Regular expressions are a powerful tool for performing pattern
+  matching on text
+  - Typically shortened to *regex*
+- Python provides the `re`, regular expression library as a standard
+  library module
+- A search pattern is given as a regular expression string
+  - Then used to search given strings
+- This form of matching is most often performed with the `match`
+  function
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+re.match("Ahab:", captains)  # look for "Ahab:" in captains
+```
+
+    <re.Match object; span=(0, 5), match='Ahab:'>
+
+- If no match is found the returned `match` object will evaluate as
+  `False`
+  - Means we can use it in a control expression
+- `match` ony matches if the search substring is found at the
+  *beginning* of the string
+  - To match *any* substring in the text matching the search pattern we
+    can use `re.search` instead
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+if re.match("Ahab:", captains):
+    print("We found Ahab!")
+else:
+    print("Ahab is unaccounted for...")
+
+
+if re.match("Peleg:", captains):
+    print("We found Peleg")
+else:
+    print("No Peleg found!")
+
+# Finding any substring
+if search := re.search("Peleg", captains):
+    print("On closer inspection, here is Peleg:", search)
+```
+
+    We found Ahab!
+    No Peleg found!
+    On closer inspection, here is Peleg: <re.Match object; span=(22, 27), match='Peleg'>
+
+#### Character Sets
+
+- The previous matches all looked for a specific substring
+
+- The regex syntax defines character sets for more generalised matches
+
+- A character set is a group of characters enclosed in square brackets
+
+  - e.g. to find the first occurrence of either `0` or `1`
+
+    ``` python
+      "[01]"
+    ```
+
+- To search for the first vowel followed by a punctuation mark
+
+  ``` python
+    "[aeiou][!,?.;]"
+  ```
+
+- A range can be indicated using a hyphen
+
+  - To check for any numeric character
+
+    ``` python
+      "[0-9]"
+    ```
+
+  - For any capital letter
+
+    ``` python
+      "[A-Z]"
+    ```
+
+  - For any lower case letter
+
+    ``` python
+      "[a-z]"
+    ```
+
+- A character set may be followed by,
+
+  - `+`
+    - To match one or more instances
+  - `{n}`, where `n` is a number
+    - To match exactly `n` copies
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+print(re.search("[A-Z][a-z]", captains))
+print(re.search("[A-Za-z]+", captains))
+print(re.search("[A-Za-z]{7}", captains))
+print(re.search(r"[a-z]+\@[a-z]+\.[a-z]+", captains))
+```
+
+    <re.Match object; span=(0, 2), match='Ah'>
+    <re.Match object; span=(0, 4), match='Ahab'>
+    <re.Match object; span=(46, 53), match='Ishmael'>
+    <re.Match object; span=(6, 21), match='ahab@pequad.com'>
+
+#### Character Classes
+
+- Character classes are predefined groups of characters for matching
+
+- The [Python docs for re](https://docs.python.org/3/library/re.html)
+  provide the list of defined character classes
+
+- Common ones include,
+
+  - `\d`
+    - Digital characters
+  - `\s`
+    - Whitespace characters
+  - `\w`
+    - Word characters
+
+- Word characters match any character commonly used in words, numeric
+  digits and underscores
+
+- For example, searching for the first occurrence of a digit surrounded
+  by word characters
+
+``` python
+re.search(r"\w\d\w", "His panic over Y2K was overwhelming")
+```
+
+    <re.Match object; span=(15, 18), match='Y2K'>
+
+- `+` and `{n}` syntax can be used with character classes as with the
+  character sets
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+re.search(r"\w+\@\w+\.\w+", captains)
+```
+
+    <re.Match object; span=(6, 21), match='ahab@pequad.com'>
+
+#### Groups
+
+- Enclosing a sub-expression in a regular expression converts it into a
+  *group*
+- Groups on a `match` can be accessed via the `group` method
+  - Groups are `0`-indexed
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+m = re.search(r"(\w+)\@(\w+)\.(\w+)", captains)
+print(f"Group 0 is {m.group(0)}")
+print(f"Group 1 is {m.group(1)}")
+print(f"Group 2 is {m.group(2)}")
+print(f"Group 3 is {m.group(3)}")
+```
+
+    Group 0 is ahab@pequad.com
+    Group 1 is ahab
+    Group 2 is pequad
+    Group 3 is com
+
+##### Named Groups
+
+- Like with dictionaries and lists it is often more useful to be able to
+  refer to a value by a key rather than an index
+
+- The syntax for a named group is,
+
+  ``` python
+    "(?P<GROUP_NAME>PATTERN)"
+  ```
+
+- Can then match on the group names
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+m = re.search(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", captains)
+
+print(f"""
+Email Address: {m.group()}
+Name: {m.group("name")}
+Secondary Level Domain: {m.group("SLD")}
+Top Level Domain: {m.group("TLD")}""")
+```
+
+    Email Address: ahab@pequad.com
+    Name: ahab
+    Secondary Level Domain: pequad
+    Top Level Domain: com
+
+- Observe that `group()` i.e. with no group specified returns the full
+  match
+
+#### Find All
+
+- All current searches have only looked for one match
+- What happens when we want to find all the matches?
+  - Or more generally a subset of matches
+- This can be done with the `re.findall` method
+  - Each match is returned as a string
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+re.findall(r"\w+\@\w+\.\w+", captains)
+```
+
+    ['ahab@pequad.com',
+     'peleg@pequad.com',
+     'ishmael@pequad.com',
+     'herman@acushnet.io',
+     'pollard@essex.me']
+
+- If matching on groups, the each match is returned as a `tuple` of
+  strings, corresponding to each group
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+re.findall(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", captains)
+```
+
+    [('ahab', 'pequad', 'com'),
+     ('peleg', 'pequad', 'com'),
+     ('ishmael', 'pequad', 'com'),
+     ('herman', 'acushnet', 'io'),
+     ('pollard', 'essex', 'me')]
+
+#### Find Iterator
+
+- When searching for matches in a large text rather than retrieving all
+  matches at once it can be better to iterate via `re.finditer`
+  - Returns an iterator over the matches
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+matches_iterator = re.finditer(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", captains)
+
+print(f"An {type(matches_iterator)} object was returned by `re.finditer`")
+
+m = next(matches_iterator)
+print(
+    f"""The first match, {m.group()} is processed without touching the rest of the text"""
+)
+```
+
+    An <class 'callable_iterator'> object was returned by `re.finditer`
+    The first match, ahab@pequad.com is processed without touching the rest of the text
+
+#### Substitution
+
+- Regular expressions can be used for substitution as well as matching
+- Performed via the `re.sub`, accepts a
+  1. A match pattern
+  2. Replacement string
+  3. Source text
+
+``` python
+import re
+
+re.sub(r"\d", "#", "Your secret pin is 12345")
+```
+
+    'Your secret pin is #####'
+
+##### Substitution using Named Groups
+
+- Named groups can be invoked as part of a substitution pattern via the
+  `\g<GROUP_NAME>` pattern
+- For example we could reverse the email addresses in `captains` string
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+new_text = re.sub(
+    r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", r"\g<TLD>.\g<SLD>.\g<name>", captains
+)
+print(new_text)
+```
+
+    Ahab: com.pequad.ahab
+    Peleg: com.pequad.peleg
+    Ishmael: com.pequad.ishmael
+    Herman: io.acushnet.herman
+    Pollard: me.essex.pollard
+
+#### Compiling Regular Expressions
+
+- Regular expressions need to be compiled into state machines in order
+  to be used
+- A raw regex string is recompiled each time it is passed to a regex
+  function call
+- It is more efficient to compile the object *once* and then use the
+  compiled object
+  - Done via the `re.compile` function
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+compiled_email_regex = re.compile(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)")
+print(compiled_email_regex)
+```
+
+    re.compile('(?P<name>\\w+)\\@(?P<SLD>\\w+)\\.(?P<TLD>\\w+)')
+
+- The relevant `re` functions can then be called via the equivalent
+  methods on the compiled regex object
+
+``` python
+import re
+
+captains = """Ahab: ahab@pequad.com
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
+
+compiled_email_regex = re.compile(r"\w+: (?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)")
+
+print(compiled_email_regex.match(captains))
+print(compiled_email_regex.search(captains))
+print(compiled_email_regex.findall(captains))
+
+new_text = compiled_email_regex.sub(r"Ahoy \g<name>!", captains)
+print(new_text)
+```
+
+    <re.Match object; span=(0, 21), match='Ahab: ahab@pequad.com'>
+    <re.Match object; span=(0, 21), match='Ahab: ahab@pequad.com'>
+    [('ahab', 'pequad', 'com'), ('peleg', 'pequad', 'com'), ('ishmael', 'pequad', 'com'), ('herman', 'acushnet', 'io'), ('pollard', 'essex', 'me')]
+    Ahoy ahab!
+    Ahoy peleg!
+    Ahoy ishmael!
+    Ahoy herman!
+    Ahoy pollard!
+
+## Summary
+
+- Python provides in-built functionality for many common data science
+  use cases
+  - Sorting
+    - Handled in-place via the `sort` method
+    - Returned as a sorted copy via `sorted`
+  - Handling files
+    - Opened via `open`
+      - Open files can be read to or written from
+    - Closed via `close`
+  - Dealing with dates and times
+    - Via the `datetime` library
+    - Dates are represented by the `date` object
+    - Time differences are represented by the `timedelta` object
+    - Date-times are represented by the `datetime` object
+    - The `tzinfo` module provides built-in support for specifying time
+      zones
+  - Matching text via regular expressions
+    - The `re` libary defines the full regular expression syntax
+- These are all built into the python standard library
+
+## Questions and Answers
+
+1. What is the final value of `sorted_names` in the following example?
+
+    ``` python
+     names = ["Rolly", "Polly", "Molly"]
+     sorted_names = names.sort()
+
+     print(sorted_names)
+    ```
+
+        None
+
+    - `sort` performs an in-place sort on `names`, so it returns `None`
+    - `sorted_names` is thus assigned `None`
+
+2. How would you sort the list `nums = [0, 4, 3, 2, 5]` in descending
+    order?
+
+    ``` python
+     nums = [0, 4, 3, 2, 5]
+     nums.sort(reverse=True)
+
+     print(nums)
+    ```
+
+        [5, 4, 3, 2, 0]
+
+    - We want to perform the sort in-place so we use `sort`
+    - To change the default *ascending* order to *descending* we use the
+      `reverse=True` flag
+
+3. What cleanup specific to file objects does a context manager handle?
+
+    - In general the the file object handles ensuring `close` is called
+      on the file object
+    - Under the hood this handles a lot details such as ensuring writes
+      to a file are flushed, and that locks on the file are released
+      etc.
+
+4. How would you create a `datetime` object with the following
+    variables?
+
+    ``` python
+     from datetime import datetime
+
+     year = 2022
+     month = 10
+     day = 14
+     hour = 12
+     minute = 59
+     second = 11
+     microsecond = 100
+
+     dt = datetime(year=2022, month=10, day=14, hour=12, minute=59, second=11, microsecond=100)
+     print(dt)
+    ```
+
+        2022-10-14 12:59:11.000100
+
+    - The `datetime` object provides a constructor that accepts the
+      standard time units from `year` down to `microsecond`
+      - Just have to pass the values in to the datetime object
+
+5. What does the `\d` represent in a regex pattern?
+
+    - `\d` is shorthand for a digit
