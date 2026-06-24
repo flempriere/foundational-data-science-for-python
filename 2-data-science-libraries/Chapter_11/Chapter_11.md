@@ -235,7 +235,7 @@ test_prediction = knn.predict(test_s)  # Test on the test set
 metrics.accuracy_score(test_t, test_prediction) # Accuracy against the test data
 ```
 
-    0.9473684210526315
+    0.9736842105263158
 
 ### Learning More About Scikit-Learn
 

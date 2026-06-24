@@ -400,24 +400,12 @@ from datetime import datetime
 dt = datetime.strptime("1968-06-20", "%Y-%m-%d")
 print("dt:", dt)
 
-reformatted_str = datetime.strftime("%y-%m-%d")
+reformatted_str = dt.strftime("%y-%m-%d")
 print("Reformatted datetime string:", reformatted_str)
 ```
 
     dt: 1968-06-20 00:00:00
-
-    TypeError: descriptor 'strftime' for 'datetime.date' objects doesn't apply to a 'str' object
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    Cell In[14], line 7
-          3 # creating a datetime object from a four-digit year, two-digit month, two-digit day
-          4 dt = datetime.strptime("1968-06-20", "%Y-%m-%d")
-          5 print("dt:", dt)
-          6
-    ----> 7 reformatted_str = datetime.strftime("%y-%m-%d")
-          8 print("Reformatted datetime string:", reformatted_str)
-
-    TypeError: descriptor 'strftime' for 'datetime.date' objects doesn't apply to a 'str' object
+    Reformatted datetime string: 68-06-20
 
 - If we want to calculate a new `datetime` object relative to another
   time we have to use a `datetime.timedelta` object
@@ -919,21 +907,12 @@ print(new_text)
 
     ``` python
      nums = [0, 4, 3, 2, 5]
-     sort(nums, reverse=True)
+     nums.sort(reverse=True)
 
      print(nums)
     ```
 
-        NameError: name 'sort' is not defined
-        ---------------------------------------------------------------------------
-        NameError                                 Traceback (most recent call last)
-        Cell In[33], line 2
-              1 nums = [0, 4, 3, 2, 5]
-        ----> 2 sort(nums, reverse=True)
-              3
-              4 print(nums)
-
-        NameError: name 'sort' is not defined
+        [5, 4, 3, 2, 0]
 
     - We want to perform the sort in-place so we use `sort`
     - To change the default *ascending* order to *descending* we use the
