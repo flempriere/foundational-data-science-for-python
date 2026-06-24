@@ -273,7 +273,7 @@ from datetime import datetime
 dt = datetime.strptime("1968-06-20", "%Y-%m-%d")
 print("dt:", dt)
 
-reformatted_str = datetime.strftime("%y-%m-%d")
+reformatted_str = dt.strftime("%y-%m-%d")
 print("Reformatted datetime string:", reformatted_str)
 ```
 
@@ -673,7 +673,7 @@ print(new_text)
 
    ```{python}
     nums = [0, 4, 3, 2, 5]
-    sort(nums, reverse=True)
+    nums.sort(reverse=True)
 
     print(nums)
    ```
