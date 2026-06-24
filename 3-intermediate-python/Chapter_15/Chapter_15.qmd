@@ -23,7 +23,7 @@ title: "Chapter 15: Other Topics"
 
 #### Lists
 
-- Python provides the built-in `sort` function for sorting a `list` in-place
+- Python provides the list `sort` method for sorting a `list` in-place
 - For example we might sort a list of whales
 
 ```{python}
@@ -33,7 +33,7 @@ print("Whales:", whales)
 ```
 
 - Since `sort` performs the sort in-place it does not return a value (Technically the return is `None`)
-- If you want a sorted *copy* then you can use the `sorted` built-in
+- If you want a sorted *copy* then you can use the `sorted` built-in function
 
 ```{python}
 whales = ["Blue", "Killer", "Sperm", "Humpback", "Beluga", "Bowhead"]
@@ -68,7 +68,7 @@ print("whales:", whales)
 
 ```{python}
 whales = ["Blue", "Killer", "Sperm", "Humpback", "Beluga", "Bowhead"]
-whales.sort(key=lambda: x: (len(x), x))
+whales.sort(key=lambda x: (len(x), x))
 print("whales:", whales)
 ```
 
@@ -151,7 +151,7 @@ df
         - Returns an open file object or a *stream*
 - We can then read from the stream via the `readline` function
     - Returns a line of text (ended by a newline)
-- Once you've finished with a file you must call `close` to close the stream
+- Once you've finished with a file you must call the `close` method to close the stream
     - Frees the resource
     - For example, allowing other programs to read or write from the program
 - For example we can open the example file as directed below,
@@ -163,7 +163,7 @@ print(read_me)
 print("First line:", read_me.readline())
 print("Second line:", read_me.readline())
 
-close(read_me)
+read_me.close()
 ```
 
 #### Context Managers
@@ -197,12 +197,12 @@ data[0]
 text = "My intriguing story"
 file_path = "Examples/output.txt"
 
-with open(file_path) as out_stream:
+with open(file_path, "w") as out_stream:
     out_stream.write(text)
 
 # verifying that the file was created and written:
 print("File contents")
-with open(file_path) as in_stream:
+with open(file_path, "r") as in_stream:
     print(in_stream.readlines())
 ```
 
@@ -220,7 +220,7 @@ Opening an existing file in `w` mode will clear the contents of the file immedia
 ```{python}
 import json
 
-with open("Examples/serialised.json") as open_file:
+with open("Examples/serialised.json", "r") as open_file:
     data = json.load(open_file)
 
 print(data)
@@ -282,7 +282,7 @@ print("Reformatted datetime string:", reformatted_str)
 ```{python}
 from datetime import datetime, timedelta
 
-dt = datetime
+dt = datetime(2022, 10, 1, 13, 59, 33, 10_000)
 delta = timedelta(days=3)
 
 dt - delta
@@ -320,10 +320,10 @@ date.today()
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
 re.match("Ahab:", captains)  # look for "Ahab:" in captains
 ```
@@ -337,10 +337,10 @@ re.match("Ahab:", captains)  # look for "Ahab:" in captains
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
 if re.match("Ahab:", captains):
     print("We found Ahab!")
@@ -348,7 +348,7 @@ else:
     print("Ahab is unaccounted for...")
 
 
-if re.match("Ahab:", captains):
+if re.match("Peleg:", captains):
     print("We found Peleg")
 else:
     print("No Peleg found!")
@@ -404,15 +404,15 @@ if search := re.search("Peleg", captains):
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
 print(re.search("[A-Z][a-z]", captains))
 print(re.search("[A-Za-z]+", captains))
 print(re.search("[A-Za-z]{7}", captains))
-print(re.search("[a-z]+\@[a-z]+\.[a-z]+", captains))
+print(re.search(r"[a-z]+\@[a-z]+\.[a-z]+", captains))
 ```
 
 #### Character Classes
@@ -432,7 +432,7 @@ print(re.search("[a-z]+\@[a-z]+\.[a-z]+", captains))
 - For example, searching for the first occurrence of a digit surrounded by word characters
 
 ```{python}
-re.search("\w\d\w", "His panic over Y2K was overwhelming")
+re.search(r"\w\d\w", "His panic over Y2K was overwhelming")
 ```
 
 - `+` and `{n}` syntax can be used with character classes as with the character sets
@@ -441,12 +441,12 @@ re.search("\w\d\w", "His panic over Y2K was overwhelming")
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-re.search("\w+\@\w+\.\w+", captains)
+re.search(r"\w+\@\w+\.\w+", captains)
 ```
 
 #### Groups
@@ -459,12 +459,12 @@ re.search("\w+\@\w+\.\w+", captains)
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-m = re.search("(\w+)\@(\w+)\.(\w+)", captains)
+m = re.search(r"(\w+)\@(\w+)\.(\w+)", captains)
 print(f"Group 0 is {m.group(0)}")
 print(f"Group 1 is {m.group(1)}")
 print(f"Group 2 is {m.group(2)}")
@@ -486,12 +486,12 @@ print(f"Group 3 is {m.group(3)}")
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-m = re.search("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
+m = re.search(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", captains)
 
 print(f"""
 Email Address: {m.group()}
@@ -514,12 +514,12 @@ Top Level Domain: {m.group("TLD")}""")
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-re.findall("\w+\@\.\w+", captains)
+re.findall(r"\w+\@\w+\.\w+", captains)
 ```
 
 - If matching on groups, the each match is returned as a `tuple` of strings, corresponding to each group
@@ -528,12 +528,12 @@ re.findall("\w+\@\.\w+", captains)
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-re.findall("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
+re.findall(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", captains)
 ```
 
 #### Find Iterator
@@ -545,16 +545,16 @@ re.findall("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-matches_iterator = re.finditer("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
+matches_iterator = re.finditer(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", captains)
 
 print(f"An {type(matches_iterator)} object was returned by `re.finditer`")
 
-m = next(iterator)
+m = next(matches_iterator)
 print(
     f"""The first match, {m.group()} is processed without touching the rest of the text"""
 )
@@ -571,7 +571,7 @@ print(
 ```{python}
 import re
 
-re.sub("\d", "#", "Your secret pin is 12345")
+re.sub(r"\d", "#", "Your secret pin is 12345")
 ```
 
 ##### Substitution using Named Groups
@@ -583,13 +583,13 @@ re.sub("\d", "#", "Your secret pin is 12345")
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
 new_text = re.sub(
-    "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
+    r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", r"\g<TLD>.\g<SLD>.\g<name>", captains
 )
 print(new_text)
 ```
@@ -605,15 +605,13 @@ print(new_text)
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-compiled_regex = re.compile(
-    "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-)
-print(compiled_regex)
+compiled_email_regex = re.compile(r"(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)")
+print(compiled_email_regex)
 ```
 
 - The relevant `re` functions can then be called via the equivalent methods on the compiled regex object
@@ -622,20 +620,18 @@ print(compiled_regex)
 import re
 
 captains = """Ahab: ahab@pequad.com
-              Peleg: peleg@pequad.com
-              Ishmael: ishmael@pequad.com
-              Herman: herman@acushnet.io
-              Pollard: pollard@essex.me"""
+Peleg: peleg@pequad.com
+Ishmael: ishmael@pequad.com
+Herman: herman@acushnet.io
+Pollard: pollard@essex.me"""
 
-compiled_regex = re.compile(
-    "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
-)
+compiled_email_regex = re.compile(r"\w+: (?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)")
 
-print(compiled_regex.match(captains))
-print(compiled_regex.search(captains))
-print(compiled_regex.findall(captains))
+print(compiled_email_regex.match(captains))
+print(compiled_email_regex.search(captains))
+print(compiled_email_regex.findall(captains))
 
-new_text = regex.sub("Ahoy \g<name>!", captains)
+new_text = compiled_email_regex.sub(r"Ahoy \g<name>!", captains)
 print(new_text)
 ```
 
