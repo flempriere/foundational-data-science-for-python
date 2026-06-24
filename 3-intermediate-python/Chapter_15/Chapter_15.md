@@ -1,6 +1,5 @@
 # Chapter 15: Other Topics
 
-
 - [Notes](#notes)
   - [Sorting](#sorting)
     - [Lists](#lists)
@@ -34,10 +33,10 @@
 
 - This Chapter will cover,
 
-  1.  Sorting data
-  2.  Reading and writing files
-  3.  Representing dates and times with `datetime`
-  4.  Searching for text using regular expressions
+  1. Sorting data
+  2. Reading and writing files
+  3. Representing dates and times with `datetime`
+  4. Searching for text using regular expressions
 
 ### Sorting
 
@@ -270,10 +269,10 @@ close(read_me)
     ---------------------------------------------------------------------------
     NameError                                 Traceback (most recent call last)
     Cell In[9], line 7
-          3 
+          3
           4 print("First line:", read_me.readline())
           5 print("Second line:", read_me.readline())
-          6 
+          6
     ----> 7 close(read_me)
 
     NameError: name 'close' is not defined
@@ -332,10 +331,10 @@ with open(file_path) as in_stream:
     Cell In[11], line 4
           1 text = "My intriguing story"
           2 file_path = "Examples/output.txt"
-          3 
+          3
     ----> 4 with open(file_path) as out_stream:
           5     out_stream.write(text)
-          6 
+          6
           7 # verifying that the file was created and written:
 
     FileNotFoundError: [Errno 2] No such file or directory: 'Examples/output.txt'
@@ -441,7 +440,7 @@ print("Reformatted datetime string:", reformatted_str)
           3 # creating a datetime object from a four-digit year, two-digit month, two-digit day
           4 dt = datetime.strptime("1968-06-20", "%Y-%m-%d")
           5 print("dt:", dt)
-          6 
+          6
     ----> 7 reformatted_str = datetime.strftime("%y-%m-%d")
           8 print("Reformatted datetime string:", reformatted_str)
 
@@ -463,10 +462,10 @@ dt - delta
     ---------------------------------------------------------------------------
     TypeError                                 Traceback (most recent call last)
     Cell In[15], line 6
-          2 
+          2
           3 dt = datetime
           4 delta = timedelta(days=3)
-          5 
+          5
     ----> 6 dt - delta
 
     TypeError: unsupported operand type(s) for -: 'type' and 'datetime.timedelta'
@@ -764,9 +763,9 @@ Top Level Domain: {m.group("TLD")}""")
           5               Ishmael: ishmael@pequad.com
           6               Herman: herman@acushnet.io
           7               Pollard: pollard@essex.me"""
-          8 
+          8
     ----> 9 m = re.search("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
-         10 
+         10
          11 print(f"""
          12 Email Address: {m.group()}
 
@@ -873,15 +872,15 @@ re.findall("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
           5               Ishmael: ishmael@pequad.com
           6               Herman: herman@acushnet.io
           7               Pollard: pollard@essex.me"""
-          8 
+          8
     ----> 9 re.findall("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
 
     File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/__init__.py:278, in findall(pattern, string, flags)
         270 def findall(pattern, string, flags=0):
         271     """Return a list of all non-overlapping matches in the string.
-        272 
+        272
         273     If one or more capturing groups are present in the pattern, return
-       (...)    276 
+       (...)    276
         277     Empty matches are included in the result."""
     --> 278     return _compile(pattern, flags).findall(string)
 
@@ -962,17 +961,17 @@ print(
           5               Ishmael: ishmael@pequad.com
           6               Herman: herman@acushnet.io
           7               Pollard: pollard@essex.me"""
-          8 
+          8
     ----> 9 matches_iterator = re.finditer("?P<name>(\w+)\@?P<SLD>(\w+)\.?P<TLD>(\w+)", captains)
-         10 
+         10
          11 print(f"An {type(matches_iterator)} object was returned by `re.finditer`")
-         12 
+         12
 
     File /opt/hostedtoolcache/Python/3.14.6/x64/lib/python3.14/re/__init__.py:285, in finditer(pattern, string, flags)
         280 def finditer(pattern, string, flags=0):
         281     """Return an iterator over all non-overlapping matches in the
         282     string.  For each match, the iterator returns a Match object.
-        283 
+        283
         284     Empty matches are included in the result."""
     --> 285     return _compile(pattern, flags).finditer(string)
 
@@ -1020,9 +1019,9 @@ print(
 
 - Regular expressions can be used for substitution as well as matching
 - Performed via the `re.sub`, accepts a
-  1.  A match pattern
-  2.  Replacement string
-  3.  Source text
+  1. A match pattern
+  2. Replacement string
+  3. Source text
 
 ``` python
 import re
@@ -1114,7 +1113,7 @@ print(compiled_regex)
           5               Ishmael: ishmael@pequad.com
           6               Herman: herman@acushnet.io
           7               Pollard: pollard@essex.me"""
-          8 
+          8
     ----> 9 compiled_regex = re.compile(
          10     "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
          11 )
@@ -1166,11 +1165,11 @@ print(new_text)
           5               Ishmael: ishmael@pequad.com
           6               Herman: herman@acushnet.io
           7               Pollard: pollard@essex.me"""
-          8 
+          8
     ----> 9 compiled_regex = re.compile(
          10     "(?P<name>\w+)\@(?P<SLD>\w+)\.(?P<TLD>\w+)", "\g<TLD>.\g<SLD>.\g<name>", captains
          11 )
-         12 
+         12
 
     TypeError: compile() takes from 1 to 2 positional arguments but 3 were given
 
@@ -1198,7 +1197,7 @@ print(new_text)
 
 ## Questions and Answers
 
-1.  What is the final value of `sorted_names` in the following example?
+1. What is the final value of `sorted_names` in the following example?
 
     ``` python
      names = ["Rolly", "Polly", "Molly"]
@@ -1212,7 +1211,7 @@ print(new_text)
     - `sort` performs an in-place sort on `names`, so it returns `None`
     - `sorted_names` is thus assigned `None`
 
-2.  How would you sort the list `nums = [0, 4, 3, 2, 5]` in descending
+2. How would you sort the list `nums = [0, 4, 3, 2, 5]` in descending
     order?
 
     ``` python
@@ -1228,7 +1227,7 @@ print(new_text)
         Cell In[33], line 2
               1 nums = [0, 4, 3, 2, 5]
         ----> 2 sort(nums, reverse=True)
-              3 
+              3
               4 print(nums)
 
         NameError: name 'sort' is not defined
@@ -1237,7 +1236,7 @@ print(new_text)
     - To change the default *ascending* order to *descending* we use the
       `reverse=True` flag
 
-3.  What cleanup specific to file objects does a context manager handle?
+3. What cleanup specific to file objects does a context manager handle?
 
     - In general the the file object handles ensuring `close` is called
       on the file object
@@ -1245,7 +1244,7 @@ print(new_text)
       to a file are flushed, and that locks on the file are released
       etc.
 
-4.  How would you create a `datetime` object with the following
+4. How would you create a `datetime` object with the following
     variables?
 
     ``` python
@@ -1269,6 +1268,6 @@ print(new_text)
       standard time units from `year` down to `microsecond`
       - Just have to pass the values in to the datetime object
 
-5.  What does the `\d` represent in a regex pattern?
+5. What does the `\d` represent in a regex pattern?
 
     - `\d` is shorthand for a digit
