@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Chapter 12: Natural Language Toolkit – Foundational Python for Data Science: Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../3-intermediate-python/Chapter_13/Chapter_13.html" rel="next">
+<link href="../../2-data-science-libraries/Chapter_11/Chapter_11.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-2b6469118f636657c08e1aa3d2b0badf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Chapter 12: Natural Language Toolkit – Foundational Python for Data Science: Notes">
+<meta property="og:description" content="">
+<meta property="og:image" content="Chapter_12_files/figure-html/cell-14-output-2.png">
+<meta property="og:site_name" content="Foundational Python for Data Science: Notes">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Foundational Python for Data Science: Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html">II: Data Science Libraries</a></li><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_12/Chapter_12.html">Chapter 12: Natural Language Toolkit</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">I: Learning Python in a Notebook Environment</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1-learning-python-in-a-notebook-environment/Chapter_01/Chapter_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 1: Learning Python in a Notebook Environment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1-learning-python-in-a-notebook-environment/Chapter_02/Chapter_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 2: Fundamentals of Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1-learning-python-in-a-notebook-environment/Chapter_03/Chapter_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 3: Sequences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1-learning-python-in-a-notebook-environment/Chapter_04/Chapter_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 4: Other Data Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1-learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 5: Execution Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1-learning-python-in-a-notebook-environment/Chapter_06/Chapter_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 6: Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">II: Data Science Libraries</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 7: NumPy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_08/Chapter_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 8: SciPy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_09/Chapter_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 9: Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_10/Chapter_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 10: Visualisation Libraries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_11/Chapter_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 11: Machine Learning Libraries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2-data-science-libraries/Chapter_12/Chapter_12.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Chapter 12: Natural Language Toolkit</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">III: Intermediate Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../3-intermediate-python/Chapter_13/Chapter_13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 13: Functional Programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../3-intermediate-python/Chapter_14/Chapter_14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 14: Object-Oriented Programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../3-intermediate-python/Chapter_15/Chapter_15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 15: Other Topics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a>
+  <ul>
+  <li><a href="#nltk-sample-texts" id="toc-nltk-sample-texts" class="nav-link" data-scroll-target="#nltk-sample-texts">NLTK Sample Texts</a></li>
+  <li><a href="#frequency-distributions" id="toc-frequency-distributions" class="nav-link" data-scroll-target="#frequency-distributions">Frequency Distributions</a></li>
+  <li><a href="#text-objects" id="toc-text-objects" class="nav-link" data-scroll-target="#text-objects">Text Objects</a></li>
+  <li><a href="#classifying-text" id="toc-classifying-text" class="nav-link" data-scroll-target="#classifying-text">Classifying Text</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#questions-and-answers" id="toc-questions-and-answers" class="nav-link" data-scroll-target="#questions-and-answers">Questions and Answers</a></li>
+  </ul>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/flempriere/foundational-data-science-for-python/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li><li><a href="https://mybinder.org/v2/gh/flempriere/foundational-data-science-for-python/HEAD?urlpath=vscode" target="_blank"><i class="bi bi-journals"></i>Launch Binder</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_07/Chapter_07.html">II: Data Science Libraries</a></li><li class="breadcrumb-item"><a href="../../2-data-science-libraries/Chapter_12/Chapter_12.html">Chapter 12: Natural Language Toolkit</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Chapter 12: Natural Language Toolkit</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<ul>
+<li>A specialised field of data science is the study of text or <em>natural language</em></li>
+<li>The Natural Language Toolkit (<a href="https://www.nltk.org/">NLTK</a>) is a python package for language processing</li>
+</ul>
+<section id="nltk-sample-texts" class="level3">
+<h3 class="anchored" data-anchor-id="nltk-sample-texts">NLTK Sample Texts</h3>
+<ul>
+<li>NTLTK comes with sample texts that can be downloaded and used</li>
+<li><a href="https://www.gutenberg.org/">Project Gutenburg</a> is an online library of E-Books
+<ul>
+<li>Mostly Public Domain works</li>
+<li>NLTK packages a subset of this collection</li>
+</ul></li>
+<li><code>nltk.download</code> is used to download data into a local <code>nltk/corpora</code> directory
+<ul>
+<li>Data can then be imported for use</li>
+<li>Stored as a <em>corpus reader</em> object</li>
+<li>A useful feature to download is <code>punkt_tab</code>
+<ul>
+<li>This is a tokenizer used to define sentence endings</li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="6851f8a1" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"gutenberg"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"punkt_tab"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>gutenberg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package gutenberg to /home/runner/nltk_data...
+[nltk_data]   Unzipping corpora/gutenberg.zip.
+[nltk_data] Downloading package punkt_tab to /home/runner/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt_tab.zip.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>&lt;PlaintextCorpusReader in '/home/runner/nltk_data/corpora/gutenberg'&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Corpus Readers</strong></p>
+<p>Corpus readers are designed to read a specific set of texts. There are different corpus readers for different types of text. For plain text like books typically the corpus reader is plain text via the <code>PlainTextCorpusReader</code>.</p>
+</div>
+</div>
+<ul>
+<li>Once a corpus is loaded, individual texts can be listed via the <code>fileids</code> method.
+<ul>
+<li>Text’s are stored as files</li>
+</ul></li>
+</ul>
+<div id="cab19c58" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>gutenberg.fileids()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>['austen-emma.txt',
+ 'austen-persuasion.txt',
+ 'austen-sense.txt',
+ 'bible-kjv.txt',
+ 'blake-poems.txt',
+ 'bryant-stories.txt',
+ 'burgess-busterbrown.txt',
+ 'carroll-alice.txt',
+ 'chesterton-ball.txt',
+ 'chesterton-brown.txt',
+ 'chesterton-thursday.txt',
+ 'edgeworth-parents.txt',
+ 'melville-moby_dick.txt',
+ 'milton-paradise.txt',
+ 'shakespeare-caesar.txt',
+ 'shakespeare-hamlet.txt',
+ 'shakespeare-macbeth.txt',
+ 'whitman-leaves.txt']</code></pre>
+</div>
+</div>
+<ul>
+<li>Corpus readers support various mechanisms for analysing text
+<ul>
+<li>Text can be loaded broken into
+<ul>
+<li>Words</li>
+<li>Sentences</li>
+<li>Paragraphs</li>
+</ul></li>
+</ul></li>
+<li>For example, loading Shakespeare’s <em>Julius Caesar</em></li>
+</ul>
+<div id="00ad112e" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>caesar <span class="op">=</span> gutenberg.sents(<span class="st">"shakespeare-caesar.txt"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>caesar</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>[['[', 'The', 'Tragedie', 'of', 'Julius', 'Caesar', 'by', 'William', 'Shakespeare', '1599', ']'], ['Actus', 'Primus', '.'], ...]</code></pre>
+</div>
+</div>
+<ul>
+<li>As mentioned to parse text into sentences you need to use a <em>tokenizer</em></li>
+<li>Punkt is a general-purpose tokenizer
+<ul>
+<li>Designed to work across multiple languages</li>
+</ul></li>
+<li>As mentioned before NLTK will download into a local <code>nltk_data</code> folder
+<ul>
+<li>It is divided up into,
+<ol type="1">
+<li><em>corpora</em>
+<ul>
+<li>Texts to analyse</li>
+</ul></li>
+<li><em>tokenizers</em>
+<ul>
+<li>Text analysis engines</li>
+</ul></li>
+</ol></li>
+</ul></li>
+</ul>
+<div id="12b0e58d" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">~/</span>nltk_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>corpora  tokenizers</code></pre>
+</div>
+</div>
+<ul>
+<li>Inside the corpora directory we can see the text set’s we have downloaded</li>
+</ul>
+<div id="e835a67b" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">~/</span>nltk_data<span class="op">/</span>corpora</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>gutenberg  gutenberg.zip</code></pre>
+</div>
+</div>
+<ul>
+<li>and of-course the text’s they contain</li>
+</ul>
+<div id="5ed8ac0f" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">~/</span>nltk_data<span class="op">/</span>corpora<span class="op">/</span>gutenberg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>README             burgess-busterbrown.txt  milton-paradise.txt
+austen-emma.txt        carroll-alice.txt    shakespeare-caesar.txt
+austen-persuasion.txt  chesterton-ball.txt  shakespeare-hamlet.txt
+austen-sense.txt       chesterton-brown.txt shakespeare-macbeth.txt
+bible-kjv.txt          chesterton-thursday.txt  whitman-leaves.txt
+blake-poems.txt        edgeworth-parents.txt
+bryant-stories.txt     melville-moby_dick.txt</code></pre>
+</div>
+</div>
+<ul>
+<li>Inside the tokenizers directory we can see the tokenizers we’ve downloaded</li>
+</ul>
+<div id="ba707734" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">~/</span>nltk_data<span class="op">/</span>tokenizers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>punkt_tab  punkt_tab.zip</code></pre>
+</div>
+</div>
+<ul>
+<li>and within the <code>punkt_tab</code> directory we can see the languages it supports</li>
+</ul>
+<div id="07f1b446" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">~/</span>nltk_data<span class="op">/</span>tokenizers<span class="op">/</span>punkt_tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>README  dutch     finnish  greek      norwegian   russian  swedish
+czech   english   french   italian    polish      slovene  turkish
+danish  estonian  german   malayalam  portuguese  spanish</code></pre>
+</div>
+</div>
+</section>
+<section id="frequency-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="frequency-distributions">Frequency Distributions</h3>
+<ul>
+<li>The <code>nltk.FreqDist</code> class can be used to examine the occurrences of words within a text</li>
+<li>Can look at,
+<ul>
+<li>Which words are the most frequent</li>
+<li>How many unique words there are</li>
+<li>etc.</li>
+</ul></li>
+</ul>
+<div id="92fab2ad" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>caesar <span class="op">=</span> gutenberg.words(<span class="st">"shakespeare-caesar.txt"</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>caesar_dist <span class="op">=</span> nltk.FreqDist(caesar)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>caesar_dist.most_common(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[(',', 2204),
+ ('.', 1296),
+ ('I', 531),
+ ('the', 502),
+ (':', 499),
+ ('and', 409),
+ ("'", 384),
+ ('to', 370),
+ ('you', 342),
+ ('of', 336),
+ ('?', 296),
+ ('not', 249),
+ ('a', 240),
+ ('is', 230),
+ ('And', 218)]</code></pre>
+</div>
+</div>
+<ul>
+<li>NLTK defines a word as any piece of text that is not whitespace</li>
+<li>This means punctuation is counted as separate “words”</li>
+<li>To filter out punctuation we can use the built-in <code>string</code> library
+<ul>
+<li>Contains a <code>punctuation</code> attribute
+<ul>
+<li>String containing every punctuation character</li>
+</ul></li>
+</ul></li>
+<li>For example, to filter the punctuation out of the above example, we can,</li>
+</ul>
+<div id="e9342707" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"punctuation:"</span>, string.punctuation)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>caesar <span class="op">=</span> gutenberg.words(<span class="st">"shakespeare-caesar.txt"</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>caesar_filtered <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> caesar <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> string.punctuation]</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Number of punctuation symbols:"</span>, <span class="bu">len</span>(caesar) <span class="op">-</span> <span class="bu">len</span>(caesar_filtered))</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>caesar_dist <span class="op">=</span> nltk.FreqDist(caesar_filtered)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>caesar_dist.most_common(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>punctuation: !"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+Number of punctuation symbols: 4960</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>[('I', 531),
+ ('the', 502),
+ ('and', 409),
+ ('to', 370),
+ ('you', 342),
+ ('of', 336),
+ ('not', 249),
+ ('a', 240),
+ ('is', 230),
+ ('And', 218),
+ ('d', 215),
+ ('in', 204),
+ ('that', 200),
+ ('Caesar', 189),
+ ('my', 188)]</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>List Comprehension</strong></p>
+<p>The syntax we’ve used above is called a list comprehension, and is designed for quickly creating a list based on the elements of an existing collection. You could achieve the same with a simple <code>for</code> loop as described in <a href="../../1-learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.html">Chapter 5</a>, but the list comprehension syntax is more compact. List comprehensions will be discussed in more detail later.</p>
+</div>
+</div>
+<ul>
+<li>Another common filtering step is remove common words that don’t provide much contextual understanding
+<ul>
+<li>These are simple words like “the”, “and”, “as” etc.</li>
+<li>Commonly referred to as <em>stopwords</em></li>
+</ul></li>
+<li>NLTK provides the <code>stopwords</code> corpus which can be downloaded to perform this filtering</li>
+</ul>
+<div id="3b63621c" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"stopwords"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>english_stopwords <span class="op">=</span> stopwords.words(<span class="st">"english"</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>english_stopwords[:<span class="dv">10</span>]  <span class="co"># show the first ten stopwords</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package stopwords to /home/runner/nltk_data...
+[nltk_data]   Unzipping corpora/stopwords.zip.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>['a', 'about', 'above', 'after', 'again', 'against', 'ain', 'all', 'am', 'an']</code></pre>
+</div>
+</div>
+<ul>
+<li>Once we’ve downloaded the <code>stopwords</code> corpus we can use it to filter out the these common words from our analysis of Julius Caesar.</li>
+</ul>
+<div id="5834a7b9" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg, stopwords</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>caesar <span class="op">=</span> gutenberg.words(<span class="st">"shakespeare-caesar.txt"</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out punctuation</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>caesar_punctuation_filtered <span class="op">=</span> [</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    word <span class="cf">for</span> word <span class="kw">in</span> caesar <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> string.punctuation</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out stopwords</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>english_stopwords <span class="op">=</span> stopwords.words(<span class="st">"english"</span>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>caesar_filtered <span class="op">=</span> [</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    word</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> word <span class="kw">in</span> caesar_punctuation_filtered</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> word.lower() <span class="kw">not</span> <span class="kw">in</span> english_stopwords</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Number of stop words:"</span>, <span class="bu">len</span>(caesar_punctuation_filtered) <span class="op">-</span> <span class="bu">len</span>(caesar_filtered))</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>caesar_dist <span class="op">=</span> nltk.FreqDist(caesar_filtered)</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>caesar_dist.most_common(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of stop words: 9746</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>[('Caesar', 189),
+ ('Brutus', 161),
+ ('Bru', 153),
+ ('haue', 128),
+ ('shall', 107),
+ ('Cassi', 107),
+ ('thou', 100),
+ ('Cassius', 85),
+ ('Antony', 75),
+ ('know', 66),
+ ('Enter', 63),
+ ('men', 62),
+ ('vs', 62),
+ ('man', 58),
+ ('thee', 55)]</code></pre>
+</div>
+</div>
+<ul>
+<li>With the extraneous words removed we can start deriving insight into the text
+<ul>
+<li>For example, the above shows Caesar and Brutus are mentioned the most out of any other characters</li>
+</ul></li>
+<li>The <code>FreqDist</code> class also comes with a bunch of other methods for analysing a text</li>
+</ul>
+<div id="af1627f9" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg, stopwords</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>caesar <span class="op">=</span> gutenberg.words(<span class="st">"shakespeare-caesar.txt"</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out punctuation</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>caesar_filtered <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> caesar <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> string.punctuation]</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out stopwords</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>english_stopwords <span class="op">=</span> stopwords.words(<span class="st">"english"</span>)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>caesar_filtered <span class="op">=</span> [</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    word <span class="cf">for</span> word <span class="kw">in</span> caesar_filtered <span class="cf">if</span> word.lower() <span class="kw">not</span> <span class="kw">in</span> english_stopwords</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>caesar_dist <span class="op">=</span> nltk.FreqDist(caesar_filtered)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"caesar_dist.max():"</span>, caesar_dist.<span class="bu">max</span>())  <span class="co"># The word with the most appearances</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"caesar_dist['Cassi']:"</span>, caesar_dist[<span class="st">"Cassi"</span>]</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>)  <span class="co"># perform a key lookup for the count of a particular word</span></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"caesar_dist.freq('Cassi'):"</span>, caesar_dist.freq(<span class="st">"Cassi"</span>)</span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>)  <span class="co"># Count of the word divided by the total count</span></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"caesar_dist.N():"</span>, caesar_dist.N())  <span class="co"># The number of words</span></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"caesar_dist.tabulate(10):</span><span class="ch">\n</span><span class="st">"</span>, caesar_dist.tabulate(<span class="dv">10</span>)</span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>)  <span class="co"># Display the count for the top 10 words</span></span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the 10 most frequent words</span></span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>caesar_dist.plot(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>caesar_dist.max(): Caesar
+caesar_dist['Cassi']: 107
+caesar_dist.freq('Cassi'): 0.009616248764267098
+caesar_dist.N(): 11127
+ Caesar  Brutus     Bru    haue   shall   Cassi    thou Cassius  Antony    know 
+    189     161     153     128     107     107     100      85      75      66 
+caesar_dist.tabulate(10):
+ None</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_12_files/figure-html/cell-14-output-2.png" width="594" height="469" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="text-objects" class="level3">
+<h3 class="anchored" data-anchor-id="text-objects">Text Objects</h3>
+<ul>
+<li>The <code>Text</code> class is provides functionality for exploring a text</li>
+<li>Is initialised from a list of words</li>
+</ul>
+<div id="0dd968ad" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.text <span class="im">import</span> Text</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>caesar <span class="op">=</span> gutenberg.words(<span class="st">"shakespeare-caesar.txt"</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>caesar_t <span class="op">=</span> Text(caesar)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(caesar_t)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>nltk.text.Text</code></pre>
+</div>
+</div>
+<ul>
+<li><code>Text</code> provides a number of useful methods for studying a text
+<ul>
+<li><code>concordance</code>
+<ul>
+<li>Show’s the context around a given word</li>
+</ul></li>
+<li><code>collocations</code>
+<ul>
+<li>Displays words commonly appearing together</li>
+</ul></li>
+<li><code>similar</code> finds words appearing in a similar context</li>
+<li><code>findall</code> returns all text matching a regular expression
+<ul>
+<li>Use <code>&lt;</code> and <code>&gt;</code> to define word boundaries</li>
+<li><code>*</code> as a match anything wildcard</li>
+</ul></li>
+<li><code>dispersion_plot</code> compares where words appear in a given text</li>
+</ul></li>
+</ul>
+<div id="04152dff" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.text <span class="im">import</span> Text</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>caesar <span class="op">=</span> gutenberg.words(<span class="st">"shakespeare-caesar.txt"</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>caesar_t <span class="op">=</span> Text(caesar)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"caesar_t.concordance('Antony', lines=5):"</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>(caesar_t.concordance(<span class="st">"Antony"</span>, lines<span class="op">=</span><span class="dv">5</span>),)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">caesar_t.collocations(num=4):"</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>caesar_t.collocations(num<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">caesar_t.similar('Caesar'):"</span>)</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>caesar_t.similar(<span class="st">"Caesar"</span>)</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">caesar_t.findall(r'&lt;O&gt;&lt;C.*&gt;'):</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>caesar_t.findall(<span class="vs">r"&lt;O&gt;&lt;C</span><span class="dv">.</span><span class="op">*</span><span class="vs">&gt;"</span>)</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>caesar_t.dispersion_plot([<span class="st">"Caesar"</span>, <span class="st">"Antony"</span>, <span class="st">"Brutus"</span>, <span class="st">"Cassi"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>caesar_t.concordance('Antony', lines=5):
+Displaying 5 of 75 matches:
+efulnesse . Exeunt . Enter Caesar , Antony for the Course , Calphurnia , Porti
+rt Of that quicke Spirit that is in Antony : Let me not hinder Cassius your de
+. He loues no Playes , As thou dost Antony : he heares no Musicke ; Seldome he
+fer ' d him the Crowne ? Cask . Why Antony Bru . Tell vs the manner of it , ge
+, I did not marke it . I sawe Marke Antony offer him a Crowne , yet ' twas not
+
+caesar_t.collocations(num=4):
+Mark Antony; Marke Antony; Good morrow; Caius Ligarius
+
+caesar_t.similar('Caesar'):
+me it brutus you he rome that cassius this if men worke him vs feare
+world thee what know day
+
+caesar_t.findall(r'&lt;O&gt;&lt;C.*&gt;'):
+
+O Cicero; O Cassius; O Conspiracie; O Caesar; O Caesar; O Caesar; O
+Constancie; O Caesar; O Caesar; O Caesar; O Cassius; O Cassius; O
+Cassius; O Coward; O Cassius; O Clitus</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chapter_12_files/figure-html/cell-16-output-2.png" width="597" height="451" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="classifying-text" class="level3">
+<h3 class="anchored" data-anchor-id="classifying-text">Classifying Text</h3>
+<ul>
+<li>Classifier classes are designed to label text data</li>
+<li>To label text data typically you need prepare data with category or label features
+<ul>
+<li>Can then build a model (See <a href="../../2-data-science-libraries/Chapter_11/Chapter_11.html">Chapter 11</a>)</li>
+</ul></li>
+<li>This section steps through a simple example using the <a href="http://korpus.uib.no/icame/brown/bcm.html">Brown Corpus</a>
+<ul>
+<li>This corpus simplifies the process since the data comes pre-labelled</li>
+</ul></li>
+<li>For example, let us consider attempting to label paragraphs as either <em>editorial</em> or <em>fiction</em>
+<ul>
+<li>We might do this based on the appearance of certain words</li>
+<li>Here a simple dictionary <code>tell_words</code></li>
+</ul></li>
+<li>First need to download our data</li>
+</ul>
+<div id="98202c24" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'brown'</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> brown</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>brown</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package brown to /home/runner/nltk_data...
+[nltk_data]   Unzipping corpora/brown.zip.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>&lt;CategorizedTaggedCorpusReader in '/home/runner/nltk_data/corpora/brown'&gt;</code></pre>
+</div>
+</div>
+<ul>
+<li>Now we need to load our data, clean it and define our <code>tell_words</code> dictionary</li>
+</ul>
+<div id="df18ad18" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> brown, stopwords</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>tell_words <span class="op">=</span> {</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"american"</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city"</span>,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"congress"</span>,</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"country"</span>,</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"county"</span>,</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"editor"</span>,</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fact"</span>,</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"government"</span>,</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"national"</span>,</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nuclear"</span>,</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"party"</span>,</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"peace"</span>,</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"political"</span>,</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"power"</span>,</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"president"</span>,</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"public"</span>,</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>,</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"states"</span>,</span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"united"</span>,</span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"war"</span>,</span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"washington"</span>,</span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"world"</span>,</span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"big"</span>,</span>
+<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"church"</span>,</span>
+<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"every"</span>,</span>
+<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"eyes"</span>,</span>
+<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"face"</span>,</span>
+<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"felt"</span>,</span>
+<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"found"</span>,</span>
+<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"god"</span>,</span>
+<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hand"</span>,</span>
+<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"head"</span>,</span>
+<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"home"</span>,</span>
+<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"house"</span>,</span>
+<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"knew"</span>,</span>
+<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"moment"</span>,</span>
+<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"night"</span>,</span>
+<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"room"</span>,</span>
+<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seemed"</span>,</span>
+<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"stood"</span>,</span>
+<span id="cb38-45"><a href="#cb38-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"think"</span>,</span>
+<span id="cb38-46"><a href="#cb38-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"though"</span>,</span>
+<span id="cb38-47"><a href="#cb38-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"thought"</span>,</span>
+<span id="cb38-48"><a href="#cb38-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"told"</span>,</span>
+<span id="cb38-49"><a href="#cb38-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"voice"</span>,</span>
+<span id="cb38-50"><a href="#cb38-50" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-51"><a href="#cb38-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-52"><a href="#cb38-52" aria-hidden="true" tabindex="-1"></a>english_stopwords <span class="op">=</span> stopwords.words(<span class="st">"english"</span>)</span>
+<span id="cb38-53"><a href="#cb38-53" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs <span class="op">=</span> brown.paras(categories<span class="op">=</span><span class="st">"editorial"</span>)  <span class="co"># load editorial paragraphs</span></span>
+<span id="cb38-54"><a href="#cb38-54" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs <span class="op">=</span> brown.paras(categories<span class="op">=</span><span class="st">"fiction"</span>)  <span class="co"># load only fiction paragraphs</span></span>
+<span id="cb38-55"><a href="#cb38-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-56"><a href="#cb38-56" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"There are"</span>, <span class="bu">len</span>(editorial_paragraphs), <span class="st">"editorial paragraphs"</span>)</span>
+<span id="cb38-57"><a href="#cb38-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"There are"</span>, <span class="bu">len</span>(fiction_paragraphs), <span class="st">"fiction paragraphs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>There are 1003 editorial paragraphs
+There are 1043 fiction paragraphs</code></pre>
+</div>
+</div>
+<ul>
+<li>Each paragraph is a list of lists
+<ul>
+<li>Each sub-list is a sentence in a paragraph</li>
+</ul></li>
+<li>For this analysis we only care about the unique words in a paragraph
+<ul>
+<li>So we want to flatten each paragraph into the set of words it contains</li>
+<li>We also want to normalise the words to be all lower case for easier analysis</li>
+<li>We can do this with a simple function and a <em>set comprehension</em> (See the earlier discussion of list comprehensions)
+<ul>
+<li>We’ve added <em>type hints</em> to help the reader understand what is happening to the dimensions of the data</li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="44951ceb" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> brown, stopwords</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Sequence</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>tell_words <span class="op">=</span> {</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"american"</span>,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city"</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"congress"</span>,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"country"</span>,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"county"</span>,</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"editor"</span>,</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fact"</span>,</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"government"</span>,</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"national"</span>,</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nuclear"</span>,</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"party"</span>,</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"peace"</span>,</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"political"</span>,</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"power"</span>,</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"president"</span>,</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"public"</span>,</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>,</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"states"</span>,</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"united"</span>,</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"war"</span>,</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"washington"</span>,</span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"world"</span>,</span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"big"</span>,</span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"church"</span>,</span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"every"</span>,</span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"eyes"</span>,</span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"face"</span>,</span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"felt"</span>,</span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"found"</span>,</span>
+<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"god"</span>,</span>
+<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hand"</span>,</span>
+<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"head"</span>,</span>
+<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"home"</span>,</span>
+<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"house"</span>,</span>
+<span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"knew"</span>,</span>
+<span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"moment"</span>,</span>
+<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"night"</span>,</span>
+<span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"room"</span>,</span>
+<span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seemed"</span>,</span>
+<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"stood"</span>,</span>
+<span id="cb40-46"><a href="#cb40-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"think"</span>,</span>
+<span id="cb40-47"><a href="#cb40-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"though"</span>,</span>
+<span id="cb40-48"><a href="#cb40-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"thought"</span>,</span>
+<span id="cb40-49"><a href="#cb40-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"told"</span>,</span>
+<span id="cb40-50"><a href="#cb40-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">"voice"</span>,</span>
+<span id="cb40-51"><a href="#cb40-51" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-52"><a href="#cb40-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-53"><a href="#cb40-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the datasets</span></span>
+<span id="cb40-54"><a href="#cb40-54" aria-hidden="true" tabindex="-1"></a>english_stopwords <span class="op">=</span> stopwords.words(<span class="st">"english"</span>)</span>
+<span id="cb40-55"><a href="#cb40-55" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs <span class="op">=</span> brown.paras(categories<span class="op">=</span><span class="st">"editorial"</span>)  <span class="co"># load editorial paragraphs</span></span>
+<span id="cb40-56"><a href="#cb40-56" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs <span class="op">=</span> brown.paras(categories<span class="op">=</span><span class="st">"fiction"</span>)  <span class="co"># load only fiction paragraphs</span></span>
+<span id="cb40-57"><a href="#cb40-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-58"><a href="#cb40-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-59"><a href="#cb40-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the data format</span></span>
+<span id="cb40-60"><a href="#cb40-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-61"><a href="#cb40-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-62"><a href="#cb40-62" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> flatten(paragraph: Sequence[Sequence[<span class="bu">str</span>]]) <span class="op">-&gt;</span> Set[<span class="bu">str</span>]:</span>
+<span id="cb40-63"><a href="#cb40-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {word.lower() <span class="cf">for</span> sentence <span class="kw">in</span> paragraph <span class="cf">for</span> word <span class="kw">in</span> sentence}</span>
+<span id="cb40-64"><a href="#cb40-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-65"><a href="#cb40-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-66"><a href="#cb40-66" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs_flattened <span class="op">=</span> [</span>
+<span id="cb40-67"><a href="#cb40-67" aria-hidden="true" tabindex="-1"></a>    flatten(paragraph) <span class="cf">for</span> paragraph <span class="kw">in</span> editorial_paragraphs</span>
+<span id="cb40-68"><a href="#cb40-68" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb40-69"><a href="#cb40-69" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs_flattened <span class="op">=</span> [flatten(paragraph) <span class="cf">for</span> paragraph <span class="kw">in</span> fiction_paragraphs]</span>
+<span id="cb40-70"><a href="#cb40-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-71"><a href="#cb40-71" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb40-72"><a href="#cb40-72" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Flattened editorial paragraphs:</span><span class="ch">\n</span><span class="st">"</span>,</span>
+<span id="cb40-73"><a href="#cb40-73" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join([<span class="bu">str</span>(paragraph) <span class="cf">for</span> paragraph <span class="kw">in</span> editorial_paragraphs_flattened][:<span class="dv">5</span>]),</span>
+<span id="cb40-74"><a href="#cb40-74" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Flattened editorial paragraphs:
+ {'performed', 'brought', 'atmosphere', 'from', 'on', 'met', 'showdown', 'to', 'abandoning', 'public', 'much', 'governor', 'and', 'session', 'which', 'issue', 'schools', 'it', 'faced', 'of', 'risk', 'crisis', 'today', '.', 'has', 'good', 'education', 'decision', 'with', 'an', 'in', 'a', 'the', 'was', 'assembly', 'day', 'squarely', ',', 'immediately', 'adjourns', 'general', 'not', 'conjunction', 'struggle', 'convened'}
+{'strengthening', 'powers', 'budget', 'need', 'to', 'final', 'provide', 'fight', 'went', 'and', 'which', 'been', 'information', '.', 'procedures', 'tackle', 'has', 'executive', 'decision', 'but', 'in', 'a', 'there', 'the', 'historic', 'assembly', ',', 'appropriations', 'general', 'budgeting', 'they', 'followed', 'decided', 'opened', 'for', 'way', 'legislators'}
+{'crisis-to-crisis', 'from', 'ways', 'to', 'become', 'next', 'long-range', 'two', 'programs', 'musts', 'and', 'session', 'them', 'of', 'if', 'is', 'crisis', 'years', 'insured', 'financial', 'few', '.', 'may', 'state', 'government', 'this', 'now', 'in', 'a', 'have', 'avoid', 'the', 'finance', ',', 'instance', 'planning', 'for'}
+{'city', 'repeal', 'action', 'applaud', 'passed', 'on', 'limit', 'as', 'bills', 'shuffle', 'teacher', 'some', 'and', 'issue', 'title', 'auto', 'legislation', 'certainly', 'municipalities', 'of', 'passage', '.', 'pensions', 'state', 'at', 'rate', 'good', 'law', 'all', 'racing', 'an', 'age', 'increase', 'in', 'lost', 'by', 'same', 'was', 'the', 'turmoil', 'maintenance', 'ban', 'road', 'await', 'acceptance', ',', 'were', 'school', 'roads', 'limits', 'college', 'outside', 'can', 'bond', 'future', 'for', 'other', 'responsibility', 'drag'}
+{'fireworks', 'major', 'action', 'such', 'start', 'on', 'companion', 'to', 'sales', 'as', 'token', 'taken', 'and', 'issue', 'county', 'been', 'attracting', 'of', 'industry', 'system', '.', 'made', 'state', 'has', 'unit', 'ending', 'problems', 'no', 'in', 'a', 'attacking', 'the', 'was', 'fee', 'question', 'outright', 'banning', 'only', 'reform', 'modification', ',', 'however', 'penal', 'reappraisal', 'its', 'tax'}</code></pre>
+</div>
+</div>
+<ul>
+<li>Next we need to associate the labels to each of our data sets</li>
+<li>Then combine together into a test set
+<ul>
+<li>We can do this via the <code>itertools</code> built-in library
+<ul>
+<li>Provides functions for simplifying the way of combining multi iterators</li>
+<li>Here <code>product</code> is used to generate a cartesian product, in this case adding the label to each element of the flattened data to form a tuple
+<ul>
+<li>We could also do this with a list comprehension, and it’s arguably cleaner to do so</li>
+<li>Goal here is demonstrating <code>itertools</code></li>
+</ul></li>
+<li>The two labelled datasets can then be merged via <code>itertools.chain</code> which combines multiple iterators into one iterator sequentially over each dataset</li>
+</ul></li>
+</ul></li>
+<li>We want to avoid the classifier picking up on some ordering in the data set (i.e.&nbsp;the first <span class="math inline">\(x\)</span> samples are all editorial, then the remaining are fiction)
+<ul>
+<li>So we randomly shuffle the data set via <code>shuffle</code> from the <code>random</code> built-in module</li>
+</ul></li>
+</ul>
+<div id="beb8e45d" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> brown, stopwords</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Sequence</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>tell_words <span class="op">=</span> {</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"american"</span>,</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city"</span>,</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"congress"</span>,</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"country"</span>,</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"county"</span>,</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"editor"</span>,</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fact"</span>,</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"government"</span>,</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"national"</span>,</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nuclear"</span>,</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"party"</span>,</span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"peace"</span>,</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"political"</span>,</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"power"</span>,</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"president"</span>,</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"public"</span>,</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>,</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"states"</span>,</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"united"</span>,</span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"war"</span>,</span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"washington"</span>,</span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"world"</span>,</span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"big"</span>,</span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"church"</span>,</span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"every"</span>,</span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"eyes"</span>,</span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"face"</span>,</span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"felt"</span>,</span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"found"</span>,</span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"god"</span>,</span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hand"</span>,</span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"head"</span>,</span>
+<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"home"</span>,</span>
+<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"house"</span>,</span>
+<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"knew"</span>,</span>
+<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"moment"</span>,</span>
+<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"night"</span>,</span>
+<span id="cb42-46"><a href="#cb42-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"room"</span>,</span>
+<span id="cb42-47"><a href="#cb42-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seemed"</span>,</span>
+<span id="cb42-48"><a href="#cb42-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"stood"</span>,</span>
+<span id="cb42-49"><a href="#cb42-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"think"</span>,</span>
+<span id="cb42-50"><a href="#cb42-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">"though"</span>,</span>
+<span id="cb42-51"><a href="#cb42-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">"thought"</span>,</span>
+<span id="cb42-52"><a href="#cb42-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">"told"</span>,</span>
+<span id="cb42-53"><a href="#cb42-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">"voice"</span>,</span>
+<span id="cb42-54"><a href="#cb42-54" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-55"><a href="#cb42-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-56"><a href="#cb42-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb42-57"><a href="#cb42-57" aria-hidden="true" tabindex="-1"></a>english_stopwords <span class="op">=</span> stopwords.words(<span class="st">"english"</span>)</span>
+<span id="cb42-58"><a href="#cb42-58" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs <span class="op">=</span> brown.paras(categories<span class="op">=</span><span class="st">"editorial"</span>)  <span class="co"># load editorial paragraphs</span></span>
+<span id="cb42-59"><a href="#cb42-59" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs <span class="op">=</span> brown.paras(categories<span class="op">=</span><span class="st">"fiction"</span>)  <span class="co"># load only fiction paragraphs</span></span>
+<span id="cb42-60"><a href="#cb42-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-61"><a href="#cb42-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-62"><a href="#cb42-62" aria-hidden="true" tabindex="-1"></a><span class="co"># clean the data</span></span>
+<span id="cb42-63"><a href="#cb42-63" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> flatten(paragraph: Sequence[Sequence[<span class="bu">str</span>]]) <span class="op">-&gt;</span> Set[<span class="bu">str</span>]:</span>
+<span id="cb42-64"><a href="#cb42-64" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {word.lower() <span class="cf">for</span> sentence <span class="kw">in</span> paragraph <span class="cf">for</span> word <span class="kw">in</span> sentence}</span>
+<span id="cb42-65"><a href="#cb42-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-66"><a href="#cb42-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-67"><a href="#cb42-67" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs_flattened <span class="op">=</span> [</span>
+<span id="cb42-68"><a href="#cb42-68" aria-hidden="true" tabindex="-1"></a>    flatten(paragraph) <span class="cf">for</span> paragraph <span class="kw">in</span> editorial_paragraphs</span>
+<span id="cb42-69"><a href="#cb42-69" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb42-70"><a href="#cb42-70" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs_flattened <span class="op">=</span> [flatten(paragraph) <span class="cf">for</span> paragraph <span class="kw">in</span> fiction_paragraphs]</span>
+<span id="cb42-71"><a href="#cb42-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-72"><a href="#cb42-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Label the data</span></span>
+<span id="cb42-73"><a href="#cb42-73" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs_labelled <span class="op">=</span> itertools.product(</span>
+<span id="cb42-74"><a href="#cb42-74" aria-hidden="true" tabindex="-1"></a>    editorial_paragraphs_flattened, (<span class="st">"editorial"</span>,)</span>
+<span id="cb42-75"><a href="#cb42-75" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-76"><a href="#cb42-76" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs_labelled <span class="op">=</span> itertools.product(</span>
+<span id="cb42-77"><a href="#cb42-77" aria-hidden="true" tabindex="-1"></a>    editorial_paragraphs_flattened, (<span class="st">"fiction"</span>,)</span>
+<span id="cb42-78"><a href="#cb42-78" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-79"><a href="#cb42-79" aria-hidden="true" tabindex="-1"></a>labelled_data <span class="op">=</span> <span class="bu">list</span>(</span>
+<span id="cb42-80"><a href="#cb42-80" aria-hidden="true" tabindex="-1"></a>    itertools.chain(editorial_paragraphs_labelled, fiction_paragraphs_labelled)</span>
+<span id="cb42-81"><a href="#cb42-81" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-82"><a href="#cb42-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-83"><a href="#cb42-83" aria-hidden="true" tabindex="-1"></a>random.shuffle(labelled_data)</span>
+<span id="cb42-84"><a href="#cb42-84" aria-hidden="true" tabindex="-1"></a>labelled_data[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>({',',
+  '.',
+  'a',
+  'abandoned',
+  'aloof',
+  'and',
+  'as',
+  'assumed',
+  'd.',
+  'during',
+  'dwight',
+  'eisenhower',
+  'engage',
+  'former',
+  'from',
+  'generally',
+  'his',
+  'however',
+  'in',
+  'missed',
+  'mr.',
+  'new',
+  'of',
+  'often',
+  'partisan',
+  'politician',
+  'politics',
+  'president',
+  'rally',
+  'republican',
+  'role',
+  'sniping',
+  'strife',
+  'target',
+  'the',
+  'this',
+  'to',
+  'york'},
+ 'fiction')</code></pre>
+</div>
+</div>
+<ul>
+<li>To use the classifier we have to convert our paragraphs into a <em>feature set</em>
+<ul>
+<li>Form of a dictionary mapping features to values</li>
+</ul></li>
+<li>Here our features are the presence or absence of a given tell word
+<ul>
+<li>Marked via a boolean flag</li>
+</ul></li>
+<li>Again can be implemented via a simple function <code>define_features</code>
+<ul>
+<li>We use a <em>dictionary comprehension</em> for the function implementation (See again the discussion of list comprehensions and set comprehensions)</li>
+</ul></li>
+</ul>
+<div id="7ec7a7aa" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> brown, stopwords</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Sequence</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>tell_words <span class="op">=</span> {</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"american"</span>,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city"</span>,</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"congress"</span>,</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"country"</span>,</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"county"</span>,</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"editor"</span>,</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fact"</span>,</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"government"</span>,</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"national"</span>,</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nuclear"</span>,</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"party"</span>,</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"peace"</span>,</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"political"</span>,</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"power"</span>,</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"president"</span>,</span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"public"</span>,</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>,</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"states"</span>,</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"united"</span>,</span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"war"</span>,</span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"washington"</span>,</span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"world"</span>,</span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"big"</span>,</span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"church"</span>,</span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"every"</span>,</span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"eyes"</span>,</span>
+<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"face"</span>,</span>
+<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"felt"</span>,</span>
+<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"found"</span>,</span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"god"</span>,</span>
+<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hand"</span>,</span>
+<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"head"</span>,</span>
+<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"home"</span>,</span>
+<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"house"</span>,</span>
+<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"knew"</span>,</span>
+<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"moment"</span>,</span>
+<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"night"</span>,</span>
+<span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"room"</span>,</span>
+<span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seemed"</span>,</span>
+<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"stood"</span>,</span>
+<span id="cb44-49"><a href="#cb44-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"think"</span>,</span>
+<span id="cb44-50"><a href="#cb44-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">"though"</span>,</span>
+<span id="cb44-51"><a href="#cb44-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">"thought"</span>,</span>
+<span id="cb44-52"><a href="#cb44-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">"told"</span>,</span>
+<span id="cb44-53"><a href="#cb44-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">"voice"</span>,</span>
+<span id="cb44-54"><a href="#cb44-54" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-56"><a href="#cb44-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a>english_stopwords <span class="op">=</span> stopwords.words(<span class="st">"english"</span>)</span>
+<span id="cb44-58"><a href="#cb44-58" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs <span class="op">=</span> brown.paras(categories<span class="op">=</span><span class="st">"editorial"</span>)  <span class="co"># load editorial paragraphs</span></span>
+<span id="cb44-59"><a href="#cb44-59" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs <span class="op">=</span> brown.paras(categories<span class="op">=</span><span class="st">"fiction"</span>)  <span class="co"># load only fiction paragraphs</span></span>
+<span id="cb44-60"><a href="#cb44-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-61"><a href="#cb44-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a><span class="co"># clean the data</span></span>
+<span id="cb44-63"><a href="#cb44-63" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> flatten(paragraph: Sequence[Sequence[<span class="bu">str</span>]]) <span class="op">-&gt;</span> Set[<span class="bu">str</span>]:</span>
+<span id="cb44-64"><a href="#cb44-64" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {word.lower() <span class="cf">for</span> sentence <span class="kw">in</span> paragraph <span class="cf">for</span> word <span class="kw">in</span> sentence}</span>
+<span id="cb44-65"><a href="#cb44-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-66"><a href="#cb44-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-67"><a href="#cb44-67" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs_flattened <span class="op">=</span> [</span>
+<span id="cb44-68"><a href="#cb44-68" aria-hidden="true" tabindex="-1"></a>    flatten(paragraph) <span class="cf">for</span> paragraph <span class="kw">in</span> editorial_paragraphs</span>
+<span id="cb44-69"><a href="#cb44-69" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb44-70"><a href="#cb44-70" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs_flattened <span class="op">=</span> [flatten(paragraph) <span class="cf">for</span> paragraph <span class="kw">in</span> fiction_paragraphs]</span>
+<span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-72"><a href="#cb44-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Label the data</span></span>
+<span id="cb44-73"><a href="#cb44-73" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs_labelled <span class="op">=</span> itertools.product(</span>
+<span id="cb44-74"><a href="#cb44-74" aria-hidden="true" tabindex="-1"></a>    editorial_paragraphs_flattened, (<span class="st">"editorial"</span>,)</span>
+<span id="cb44-75"><a href="#cb44-75" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-76"><a href="#cb44-76" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs_labelled <span class="op">=</span> itertools.product(</span>
+<span id="cb44-77"><a href="#cb44-77" aria-hidden="true" tabindex="-1"></a>    editorial_paragraphs_flattened, (<span class="st">"fiction"</span>,)</span>
+<span id="cb44-78"><a href="#cb44-78" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-79"><a href="#cb44-79" aria-hidden="true" tabindex="-1"></a>labelled_data <span class="op">=</span> <span class="bu">list</span>(</span>
+<span id="cb44-80"><a href="#cb44-80" aria-hidden="true" tabindex="-1"></a>    itertools.chain(editorial_paragraphs_labelled, fiction_paragraphs_labelled)</span>
+<span id="cb44-81"><a href="#cb44-81" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-82"><a href="#cb44-82" aria-hidden="true" tabindex="-1"></a>random.shuffle(labelled_data)</span>
+<span id="cb44-83"><a href="#cb44-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-84"><a href="#cb44-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-85"><a href="#cb44-85" aria-hidden="true" tabindex="-1"></a><span class="co"># create the feature sets</span></span>
+<span id="cb44-86"><a href="#cb44-86" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> define_features(paragraph: Set[<span class="bu">str</span>], feature_words: Set[<span class="bu">str</span>]) <span class="op">-&gt;</span> <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">bool</span>]:</span>
+<span id="cb44-87"><a href="#cb44-87" aria-hidden="true" tabindex="-1"></a>    features <span class="op">=</span> {word: word <span class="kw">in</span> paragraph <span class="cf">for</span> word <span class="kw">in</span> feature_words}</span>
+<span id="cb44-88"><a href="#cb44-88" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> features</span>
+<span id="cb44-89"><a href="#cb44-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-90"><a href="#cb44-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-91"><a href="#cb44-91" aria-hidden="true" tabindex="-1"></a>feature_data <span class="op">=</span> [</span>
+<span id="cb44-92"><a href="#cb44-92" aria-hidden="true" tabindex="-1"></a>    (define_features(paragraph, tell_words), label)</span>
+<span id="cb44-93"><a href="#cb44-93" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> paragraph, label <span class="kw">in</span> labelled_data</span>
+<span id="cb44-94"><a href="#cb44-94" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb44-95"><a href="#cb44-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-96"><a href="#cb44-96" aria-hidden="true" tabindex="-1"></a><span class="co"># split into test and training</span></span>
+<span id="cb44-97"><a href="#cb44-97" aria-hidden="true" tabindex="-1"></a>train_data <span class="op">=</span> feature_data[:<span class="dv">1400</span>]</span>
+<span id="cb44-98"><a href="#cb44-98" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> feature_data[<span class="dv">1400</span>:]</span>
+<span id="cb44-99"><a href="#cb44-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-100"><a href="#cb44-100" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb44-101"><a href="#cb44-101" aria-hidden="true" tabindex="-1"></a>    <span class="st">"test data sample:</span><span class="ch">\n</span><span class="st">"</span>,</span>
+<span id="cb44-102"><a href="#cb44-102" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join([<span class="bu">str</span>(test_entry) <span class="cf">for</span> test_entry <span class="kw">in</span> test_data[<span class="dv">0</span>:<span class="dv">10</span>]]),</span>
+<span id="cb44-103"><a href="#cb44-103" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>test data sample:
+ ({'city': False, 'country': False, 'seemed': False, 'hand': False, 'room': False, 'public': False, 'fact': False, 'think': False, 'face': False, 'found': False, 'states': False, 'county': False, 'moment': False, 'united': False, 'thought': False, 'national': False, 'stood': False, 'voice': False, 'washington': False, 'world': False, 'every': False, 'night': False, 'house': False, 'state': False, 'eyes': False, 'government': False, 'church': False, 'american': False, 'power': False, 'god': False, 'party': False, 'big': False, 'though': False, 'congress': False, 'peace': False, 'war': False, 'head': False, 'president': False, 'knew': False, 'editor': False, 'home': False, 'political': False, 'nuclear': False, 'told': False, 'felt': False}, 'fiction')
+({'city': False, 'country': False, 'seemed': False, 'hand': False, 'room': False, 'public': False, 'fact': False, 'think': False, 'face': False, 'found': False, 'states': False, 'county': True, 'moment': False, 'united': False, 'thought': False, 'national': False, 'stood': False, 'voice': False, 'washington': False, 'world': False, 'every': False, 'night': False, 'house': False, 'state': False, 'eyes': False, 'government': False, 'church': False, 'american': False, 'power': False, 'god': False, 'party': False, 'big': False, 'though': False, 'congress': False, 'peace': False, 'war': False, 'head': False, 'president': False, 'knew': False, 'editor': False, 'home': False, 'political': False, 'nuclear': False, 'told': False, 'felt': False}, 'editorial')
+({'city': False, 'country': False, 'seemed': False, 'hand': False, 'room': False, 'public': False, 'fact': False, 'think': False, 'face': False, 'found': False, 'states': False, 'county': False, 'moment': False, 'united': False, 'thought': False, 'national': False, 'stood': False, 'voice': False, 'washington': False, 'world': False, 'every': False, 'night': False, 'house': False, 'state': False, 'eyes': False, 'government': False, 'church': False, 'american': False, 'power': False, 'god': False, 'party': False, 'big': False, 'though': False, 'congress': False, 'peace': False, 'war': False, 'head': False, 'president': False, 'knew': False, 'editor': False, 'home': False, 'political': False, 'nuclear': False, 'told': False, 'felt': False}, 'editorial')
+({'city': False, 'country': True, 'seemed': False, 'hand': False, 'room': False, 'public': True, 'fact': False, 'think': False, 'face': False, 'found': False, 'states': False, 'county': False, 'moment': False, 'united': False, 'thought': False, 'national': False, 'stood': False, 'voice': False, 'washington': False, 'world': False, 'every': False, 'night': False, 'house': False, 'state': False, 'eyes': False, 'government': False, 'church': False, 'american': True, 'power': False, 'god': False, 'party': False, 'big': False, 'though': False, 'congress': False, 'peace': False, 'war': False, 'head': False, 'president': False, 'knew': False, 'editor': False, 'home': False, 'political': False, 'nuclear': False, 'told': False, 'felt': False}, 'fiction')
+({'city': False, 'country': False, 'seemed': False, 'hand': False, 'room': False, 'public': False, 'fact': False, 'think': False, 'face': False, 'found': False, 'states': False, 'county': False, 'moment': False, 'united': False, 'thought': False, 'national': False, 'stood': False, 'voice': False, 'washington': False, 'world': False, 'every': False, 'night': False, 'house': False, 'state': False, 'eyes': False, 'government': False, 'church': False, 'american': False, 'power': False, 'god': False, 'party': False, 'big': False, 'though': False, 'congress': False, 'peace': False, 'war': False, 'head': False, 'president': False, 'knew': False, 'editor': False, 'home': False, 'political': False, 'nuclear': False, 'told': False, 'felt': False}, 'editorial')
+({'city': False, 'country': False, 'seemed': False, 'hand': False, 'room': False, 'public': False, 'fact': False, 'think': False, 'face': False, 'found': False, 'states': False, 'county': False, 'moment': False, 'united': False, 'thought': False, 'national': False, 'stood': False, 'voice': False, 'washington': False, 'world': False, 'every': False, 'night': False, 'house': False, 'state': False, 'eyes': False, 'government': False, 'church': False, 'american': False, 'power': False, 'god': False, 'party': False, 'big': False, 'though': False, 'congress': False, 'peace': False, 'war': False, 'head': False, 'president': False, 'knew': False, 'editor': False, 'home': False, 'political': False, 'nuclear': False, 'told': False, 'felt': False}, 'fiction')
+({'city': True, 'country': False, 'seemed': False, 'hand': False, 'room': False, 'public': False, 'fact': False, 'think': False, 'face': False, 'found': False, 'states': False, 'county': False, 'moment': False, 'united': False, 'thought': False, 'national': False, 'stood': False, 'voice': False, 'washington': False, 'world': False, 'every': False, 'night': False, 'house': False, 'state': False, 'eyes': False, 'government': False, 'church': False, 'american': True, 'power': False, 'god': False, 'party': False, 'big': False, 'though': False, 'congress': False, 'peace': False, 'war': False, 'head': False, 'president': False, 'knew': False, 'editor': False, 'home': False, 'political': False, 'nuclear': False, 'told': False, 'felt': False}, 'fiction')
+({'city': False, 'country': False, 'seemed': False, 'hand': False, 'room': False, 'public': False, 'fact': False, 'think': False, 'face': False, 'found': False, 'states': False, 'county': False, 'moment': False, 'united': False, 'thought': False, 'national': False, 'stood': False, 'voice': False, 'washington': False, 'world': False, 'every': False, 'night': False, 'house': False, 'state': False, 'eyes': False, 'government': False, 'church': False, 'american': False, 'power': False, 'god': False, 'party': False, 'big': False, 'though': False, 'congress': False, 'peace': False, 'war': False, 'head': False, 'president': False, 'knew': False, 'editor': False, 'home': False, 'political': False, 'nuclear': False, 'told': False, 'felt': False}, 'fiction')
+({'city': False, 'country': False, 'seemed': False, 'hand': False, 'room': False, 'public': False, 'fact': False, 'think': False, 'face': False, 'found': False, 'states': False, 'county': False, 'moment': False, 'united': False, 'thought': False, 'national': False, 'stood': False, 'voice': False, 'washington': False, 'world': True, 'every': False, 'night': False, 'house': False, 'state': False, 'eyes': False, 'government': False, 'church': False, 'american': False, 'power': False, 'god': False, 'party': False, 'big': False, 'though': False, 'congress': False, 'peace': False, 'war': False, 'head': False, 'president': False, 'knew': False, 'editor': False, 'home': False, 'political': False, 'nuclear': False, 'told': False, 'felt': False}, 'fiction')
+({'city': True, 'country': False, 'seemed': False, 'hand': False, 'room': False, 'public': False, 'fact': False, 'think': False, 'face': False, 'found': False, 'states': False, 'county': False, 'moment': False, 'united': False, 'thought': False, 'national': False, 'stood': False, 'voice': False, 'washington': False, 'world': False, 'every': False, 'night': False, 'house': False, 'state': True, 'eyes': False, 'government': False, 'church': False, 'american': False, 'power': False, 'god': False, 'party': False, 'big': False, 'though': False, 'congress': False, 'peace': False, 'war': False, 'head': False, 'president': False, 'knew': False, 'editor': False, 'home': False, 'political': False, 'nuclear': False, 'told': False, 'felt': False}, 'fiction')</code></pre>
+</div>
+</div>
+<ul>
+<li>Now that the data has been cleaned and converted to the required input format we can classify it</li>
+<li>Here we train an <code>nltk.NaiveBayesClassifier</code> on the training set, and then assess it’s effectiveness on the test data</li>
+</ul>
+<div id="c466b689" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> brown, stopwords</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Sequence</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>tell_words <span class="op">=</span> {</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"american"</span>,</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city"</span>,</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"congress"</span>,</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"country"</span>,</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"county"</span>,</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"editor"</span>,</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fact"</span>,</span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"government"</span>,</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"national"</span>,</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nuclear"</span>,</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"party"</span>,</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"peace"</span>,</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"political"</span>,</span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"power"</span>,</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"president"</span>,</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"public"</span>,</span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state"</span>,</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"states"</span>,</span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"united"</span>,</span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"war"</span>,</span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"washington"</span>,</span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"world"</span>,</span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"big"</span>,</span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"church"</span>,</span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"every"</span>,</span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"eyes"</span>,</span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"face"</span>,</span>
+<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"felt"</span>,</span>
+<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"found"</span>,</span>
+<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"god"</span>,</span>
+<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hand"</span>,</span>
+<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"head"</span>,</span>
+<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"home"</span>,</span>
+<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"house"</span>,</span>
+<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"knew"</span>,</span>
+<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"moment"</span>,</span>
+<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"night"</span>,</span>
+<span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"room"</span>,</span>
+<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seemed"</span>,</span>
+<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"stood"</span>,</span>
+<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"think"</span>,</span>
+<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">"though"</span>,</span>
+<span id="cb46-51"><a href="#cb46-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">"thought"</span>,</span>
+<span id="cb46-52"><a href="#cb46-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">"told"</span>,</span>
+<span id="cb46-53"><a href="#cb46-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">"voice"</span>,</span>
+<span id="cb46-54"><a href="#cb46-54" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb46-55"><a href="#cb46-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-56"><a href="#cb46-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb46-57"><a href="#cb46-57" aria-hidden="true" tabindex="-1"></a>english_stopwords <span class="op">=</span> stopwords.words(<span class="st">"english"</span>)</span>
+<span id="cb46-58"><a href="#cb46-58" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs <span class="op">=</span> brown.paras(categories<span class="op">=</span><span class="st">"editorial"</span>)  <span class="co"># load editorial paragraphs</span></span>
+<span id="cb46-59"><a href="#cb46-59" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs <span class="op">=</span> brown.paras(categories<span class="op">=</span><span class="st">"fiction"</span>)  <span class="co"># load only fiction paragraphs</span></span>
+<span id="cb46-60"><a href="#cb46-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-61"><a href="#cb46-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-62"><a href="#cb46-62" aria-hidden="true" tabindex="-1"></a><span class="co"># clean the data</span></span>
+<span id="cb46-63"><a href="#cb46-63" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> flatten(paragraph: Sequence[Sequence[<span class="bu">str</span>]]) <span class="op">-&gt;</span> Set[<span class="bu">str</span>]:</span>
+<span id="cb46-64"><a href="#cb46-64" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {word.lower() <span class="cf">for</span> sentence <span class="kw">in</span> paragraph <span class="cf">for</span> word <span class="kw">in</span> sentence}</span>
+<span id="cb46-65"><a href="#cb46-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-66"><a href="#cb46-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-67"><a href="#cb46-67" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs_flattened <span class="op">=</span> [</span>
+<span id="cb46-68"><a href="#cb46-68" aria-hidden="true" tabindex="-1"></a>    flatten(paragraph) <span class="cf">for</span> paragraph <span class="kw">in</span> editorial_paragraphs</span>
+<span id="cb46-69"><a href="#cb46-69" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb46-70"><a href="#cb46-70" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs_flattened <span class="op">=</span> [flatten(paragraph) <span class="cf">for</span> paragraph <span class="kw">in</span> fiction_paragraphs]</span>
+<span id="cb46-71"><a href="#cb46-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-72"><a href="#cb46-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Label the data</span></span>
+<span id="cb46-73"><a href="#cb46-73" aria-hidden="true" tabindex="-1"></a>editorial_paragraphs_labelled <span class="op">=</span> itertools.product(</span>
+<span id="cb46-74"><a href="#cb46-74" aria-hidden="true" tabindex="-1"></a>    editorial_paragraphs_flattened, (<span class="st">"editorial"</span>,)</span>
+<span id="cb46-75"><a href="#cb46-75" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-76"><a href="#cb46-76" aria-hidden="true" tabindex="-1"></a>fiction_paragraphs_labelled <span class="op">=</span> itertools.product(</span>
+<span id="cb46-77"><a href="#cb46-77" aria-hidden="true" tabindex="-1"></a>    editorial_paragraphs_flattened, (<span class="st">"fiction"</span>,)</span>
+<span id="cb46-78"><a href="#cb46-78" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-79"><a href="#cb46-79" aria-hidden="true" tabindex="-1"></a>labelled_data <span class="op">=</span> <span class="bu">list</span>(</span>
+<span id="cb46-80"><a href="#cb46-80" aria-hidden="true" tabindex="-1"></a>    itertools.chain(editorial_paragraphs_labelled, fiction_paragraphs_labelled)</span>
+<span id="cb46-81"><a href="#cb46-81" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-82"><a href="#cb46-82" aria-hidden="true" tabindex="-1"></a>random.shuffle(labelled_data)</span>
+<span id="cb46-83"><a href="#cb46-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-84"><a href="#cb46-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-85"><a href="#cb46-85" aria-hidden="true" tabindex="-1"></a><span class="co"># create the feature sets</span></span>
+<span id="cb46-86"><a href="#cb46-86" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> define_features(paragraph: Set[<span class="bu">str</span>], feature_words: Set[<span class="bu">str</span>]) <span class="op">-&gt;</span> <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">bool</span>]:</span>
+<span id="cb46-87"><a href="#cb46-87" aria-hidden="true" tabindex="-1"></a>    features <span class="op">=</span> {word: word <span class="kw">in</span> paragraph <span class="cf">for</span> word <span class="kw">in</span> feature_words}</span>
+<span id="cb46-88"><a href="#cb46-88" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> features</span>
+<span id="cb46-89"><a href="#cb46-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-90"><a href="#cb46-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-91"><a href="#cb46-91" aria-hidden="true" tabindex="-1"></a>feature_data <span class="op">=</span> [</span>
+<span id="cb46-92"><a href="#cb46-92" aria-hidden="true" tabindex="-1"></a>    (define_features(paragraph, tell_words), label)</span>
+<span id="cb46-93"><a href="#cb46-93" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> paragraph, label <span class="kw">in</span> labelled_data</span>
+<span id="cb46-94"><a href="#cb46-94" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb46-95"><a href="#cb46-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-96"><a href="#cb46-96" aria-hidden="true" tabindex="-1"></a><span class="co"># split into test and training</span></span>
+<span id="cb46-97"><a href="#cb46-97" aria-hidden="true" tabindex="-1"></a>train_data <span class="op">=</span> feature_data[:<span class="dv">1400</span>]</span>
+<span id="cb46-98"><a href="#cb46-98" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> feature_data[<span class="dv">1400</span>:]</span>
+<span id="cb46-99"><a href="#cb46-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-100"><a href="#cb46-100" aria-hidden="true" tabindex="-1"></a><span class="co"># train and test the model</span></span>
+<span id="cb46-101"><a href="#cb46-101" aria-hidden="true" tabindex="-1"></a>bayes <span class="op">=</span> nltk.NaiveBayesClassifier.train(train_data)  <span class="co"># Train the model</span></span>
+<span id="cb46-102"><a href="#cb46-102" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bayes.classify(train_data[<span class="dv">0</span>][<span class="dv">0</span>]))  <span class="co"># classify a training set paragraph</span></span>
+<span id="cb46-103"><a href="#cb46-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-104"><a href="#cb46-104" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb46-105"><a href="#cb46-105" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Which features (tell words) were assessed to be the most significant indicators?"</span></span>
+<span id="cb46-106"><a href="#cb46-106" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-107"><a href="#cb46-107" aria-hidden="true" tabindex="-1"></a>bayes.show_most_informative_features()</span>
+<span id="cb46-108"><a href="#cb46-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-109"><a href="#cb46-109" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, nltk.classify.accuracy(bayes, test_data))  <span class="co"># Assess the accuracy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fiction
+Which features (tell words) were assessed to be the most significant indicators?
+Most Informative Features
+                    felt = True           editor : fictio =      1.7 : 1.0
+                    head = True           editor : fictio =      1.5 : 1.0
+                  seemed = True           editor : fictio =      1.5 : 1.0
+                 thought = True           editor : fictio =      1.5 : 1.0
+                  church = True           fictio : editor =      1.4 : 1.0
+                    city = True           editor : fictio =      1.4 : 1.0
+                  moment = True           editor : fictio =      1.4 : 1.0
+                    face = True           fictio : editor =      1.3 : 1.0
+                    eyes = True           editor : fictio =      1.3 : 1.0
+                    home = True           fictio : editor =      1.3 : 1.0
+Accuracy: 0.41254125412541254</code></pre>
+</div>
+</div>
+<ul>
+<li>The model should perform better than a 50 / 50 guess
+<ul>
+<li>Obviously we could use a wider set of features rather than just the presence of certain words</li>
+</ul></li>
+<li>For more advanced natural language work with NLTK consider the <a href="https://www.nltk.org/book/">Online book</a> authored by the library creators</li>
+</ul>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>NLTK is a specialised library for natural language processing</li>
+<li>It includes sample texts and tokenizers that can be downloaded and explored</li>
+<li><code>FreqDist</code> is used to explore the frequency and distribution of words in a text</li>
+<li><code>Text</code> provides methods for introspection on the contents of a text</li>
+<li>NLTK provides built-in support for classifiers that can be used to train models to categorise text</li>
+</ul>
+</section>
+<section id="questions-and-answers" class="level2">
+<h2 class="anchored" data-anchor-id="questions-and-answers">Questions and Answers</h2>
+<ol type="1">
+<li><p>How would you load the text <em>Emma</em> by Jane Austen as words, sentences and paragraphs?</p>
+<ul>
+<li><p>First we need to identify the name of the text by using <code>fileids</code></p>
+<div id="34e640a2" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>   gutenberg.fileids()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>['austen-emma.txt',
+ 'austen-persuasion.txt',
+ 'austen-sense.txt',
+ 'bible-kjv.txt',
+ 'blake-poems.txt',
+ 'bryant-stories.txt',
+ 'burgess-busterbrown.txt',
+ 'carroll-alice.txt',
+ 'chesterton-ball.txt',
+ 'chesterton-brown.txt',
+ 'chesterton-thursday.txt',
+ 'edgeworth-parents.txt',
+ 'melville-moby_dick.txt',
+ 'milton-paradise.txt',
+ 'shakespeare-caesar.txt',
+ 'shakespeare-hamlet.txt',
+ 'shakespeare-macbeth.txt',
+ 'whitman-leaves.txt']</code></pre>
+</div>
+</div>
+<ul>
+<li><p>We can then load words</p>
+<div id="5d1db336" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a> <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a> emma_words <span class="op">=</span> gutenberg.words(<span class="st">"austen-emma.txt"</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a> emma_words</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>['[', 'Emma', 'by', 'Jane', 'Austen', '1816', ']', ...]</code></pre>
+</div>
+</div></li>
+<li><p>Sentences</p>
+<div id="d6e140fc" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a> <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a> emma_sentences <span class="op">=</span> gutenberg.sents(<span class="st">"austen-emma.txt"</span>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a> emma_sentences</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>[['[', 'Emma', 'by', 'Jane', 'Austen', '1816', ']'], ['VOLUME', 'I'], ...]</code></pre>
+</div>
+</div></li>
+<li><p>Paragraphs</p>
+<div id="f74ddf37" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    emma_paragraphs <span class="op">=</span> gutenberg.paras(<span class="st">"austen-emma.txt"</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    emma_paragraphs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>[[['[', 'Emma', 'by', 'Jane', 'Austen', '1816', ']']], [['VOLUME', 'I']], ...]</code></pre>
+</div>
+</div></li>
+</ul></li>
+</ul></li>
+<li><p>Count the occurrences of the word Alice in <em>Alice in Wonderland</em> by Lewis Carroll</p>
+<ul>
+<li><p>Again first load the dataset</p>
+<div id="6aa9dc33" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>   alice_words <span class="op">=</span> gutenberg.words(<span class="st">"carroll-alice.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>Then we want to apply a <code>FreqDist</code> to this and access the <code>Alice</code> key</p>
+<div id="912d26fe" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>  <span class="im">import</span> nltk</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  alice_dist <span class="op">=</span> nltk.FreqDist(alice_words)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Alice appears"</span>, alice_dist[<span class="st">"Alice"</span>], <span class="st">"times in Alice in Wonderland by Lewis Carroll"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Alice appears 396 times in Alice in Wonderland by Lewis Carroll</code></pre>
+</div>
+</div></li>
+</ul></li>
+<li><p>Use tabulate to view the top 10 words in <em>Alice in Wonderland</em>, excluding punctuation and stop words</p>
+<ul>
+<li><p>We can repeat the process from before</p></li>
+<li><p>First we use <code>string.punctuation</code> to remove punctuation</p></li>
+<li><p>Then we load the <code>stopwords</code> corpus to remove stop words</p></li>
+<li><p>Finally we create our <code>FreqDist</code> and call <code>tabulate</code></p>
+<div id="b5ef8d4c" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">import</span> string</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>   <span class="im">import</span> nltk</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg, stopwords</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>   alice <span class="op">=</span> gutenberg.words(<span class="st">"carroll-alice.txt"</span>)</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>   <span class="co"># filter out punctuation</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>   alice_filtered <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> alice <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> string.punctuation]</span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>   <span class="co"># filter out stopwords</span></span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>   english_stopwords <span class="op">=</span> stopwords.words(<span class="st">"english"</span>)</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>   alice_filtered <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> alice_filtered <span class="cf">if</span> word.lower() <span class="kw">not</span> <span class="kw">in</span> english_stopwords]</span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>   alice_dist <span class="op">=</span> nltk.FreqDist(alice_filtered)</span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>   alice_dist.tabulate(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  said     ,'  Alice     !'     .'     ?'     -- little    one   know 
+   456    397    396    278    187    154    140    125     94     87 </code></pre>
+</div>
+</div></li>
+</ul></li>
+<li><p>Find words that are similar to “rabbit” in <em>Alice in Wonderland</em></p>
+<ul>
+<li><p>First we need to load the text into a <code>Text</code> object</p></li>
+<li><p>We can then call the <code>similar</code> method</p>
+<div id="e04bb4b5" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">import</span> nltk</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.text <span class="im">import</span> Text</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>   alice <span class="op">=</span> gutenberg.words(<span class="st">"carroll-alice.txt"</span>)</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>   alice_text <span class="op">=</span> Text(alice)</span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>   <span class="bu">print</span>(<span class="st">"Words similar to 'rabbit' in Alice in Wonderland are:"</span>)</span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>   alice_text.similar(<span class="st">"rabbit"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Words similar to 'rabbit' in Alice in Wonderland are:
+king duchess caterpillar queen hatter dormouse gryphon cat mouse other
+game jury well way question hall door table key pool</code></pre>
+</div>
+</div></li>
+</ul></li>
+<li><p>Use the corpus <code>names</code> to find the ten most frequently occurring names in <em>Hamlet</em></p>
+<ul>
+<li><p>This is a slightly more involved example</p></li>
+<li><p>First we have to download the <code>names</code> corpus</p>
+<div id="19045cff" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">import</span> nltk</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>   nltk.download(<span class="st">"names"</span>)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.corpus <span class="im">import</span> names</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>   male_names <span class="op">=</span> names.words(<span class="st">"male.txt"</span>)</span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>   <span class="bu">print</span>(<span class="st">"First ten male names:</span><span class="ch">\n</span><span class="st">"</span>, male_names[:<span class="dv">10</span>])</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>   female_names <span class="op">=</span> names.words(<span class="st">"female.txt"</span>)</span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>   <span class="bu">print</span>(<span class="st">"First ten female names:</span><span class="ch">\n</span><span class="st">"</span>, female_names[:<span class="dv">10</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>First ten male names:
+ ['Aamir', 'Aaron', 'Abbey', 'Abbie', 'Abbot', 'Abbott', 'Abby', 'Abdel', 'Abdul', 'Abdulkarim']
+First ten female names:
+ ['Abagael', 'Abagail', 'Abbe', 'Abbey', 'Abbi', 'Abbie', 'Abby', 'Abigael', 'Abigail', 'Abigale']</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package names to /home/runner/nltk_data...
+[nltk_data]   Unzipping corpora/names.zip.</code></pre>
+</div>
+</div></li>
+<li><p>We can then load the data set and retain only valid names</p></li>
+<li><p>Then simply report the ten most common via <code>FreqDist</code></p>
+<div id="4bfc25a7" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>   <span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>   hamlet_words <span class="op">=</span> gutenberg.words(<span class="st">"shakespeare-hamlet.txt"</span>)</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>   hamlet_words_filtered <span class="op">=</span> [name <span class="cf">for</span> word <span class="kw">in</span> hamlet_words <span class="cf">if</span> (name <span class="op">:=</span> word.capitalize()) <span class="kw">in</span> male_names <span class="kw">or</span> name <span class="kw">in</span> female_names]</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>   hamlet_name_dist <span class="op">=</span> nltk.FreqDist(hamlet_words_filtered)</span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>   hamlet_name_dist.most_common(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>[('Ham', 337),
+ ('King', 172),
+ ('Will', 149),
+ ('Hamlet', 100),
+ ('May', 65),
+ ('Say', 52),
+ ('Doe', 51),
+ ('See', 48),
+ ('Horatio', 40),
+ ('Clo', 29)]</code></pre>
+</div>
+</div></li>
+</ul></li>
+</ol>
+<p>We’ve recreated the above answers below as complete cells so you can interact with them in the notebook</p>
+<div id="497b64ca" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 1"</span>)</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>emma_words <span class="op">=</span> gutenberg.words(<span class="st">"austen-emma.txt"</span>)</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First 10 words:"</span>, emma_words[:<span class="dv">10</span>])</span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>emma_sentences <span class="op">=</span> gutenberg.sents(<span class="st">"austen-emma.txt"</span>)</span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First two sentences:"</span>, emma_sentences[:<span class="dv">2</span>])</span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>emma_paragraphs <span class="op">=</span> gutenberg.paras(<span class="st">"austen-emma.txt"</span>)</span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First paragraph:"</span>, emma_paragraphs[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Question 1
+First 10 words: ['[', 'Emma', 'by', 'Jane', 'Austen', '1816', ']', 'VOLUME', 'I', 'CHAPTER']
+First two sentences: [['[', 'Emma', 'by', 'Jane', 'Austen', '1816', ']'], ['VOLUME', 'I']]
+First paragraph: [['[', 'Emma', 'by', 'Jane', 'Austen', '1816', ']']]</code></pre>
+</div>
+</div>
+<div id="4de84fe5" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg, stopwords</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.text <span class="im">import</span> Text</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 2"</span>)</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>alice_words <span class="op">=</span> gutenberg.words(<span class="st">"carroll-alice.txt"</span>)</span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>alice_dist <span class="op">=</span> nltk.FreqDist(alice_words)</span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Alice appears"</span>,</span>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a>    alice_dist[<span class="st">"Alice"</span>],</span>
+<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"times in Alice in Wonderland by Lewis Carroll"</span>,</span>
+<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 3"</span>)</span>
+<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out punctuation</span></span>
+<span id="cb70-22"><a href="#cb70-22" aria-hidden="true" tabindex="-1"></a>alice_filtered <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> alice <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> string.punctuation]</span>
+<span id="cb70-23"><a href="#cb70-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-24"><a href="#cb70-24" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out stopwords</span></span>
+<span id="cb70-25"><a href="#cb70-25" aria-hidden="true" tabindex="-1"></a>english_stopwords <span class="op">=</span> stopwords.words(<span class="st">"english"</span>)</span>
+<span id="cb70-26"><a href="#cb70-26" aria-hidden="true" tabindex="-1"></a>alice_filtered <span class="op">=</span> [</span>
+<span id="cb70-27"><a href="#cb70-27" aria-hidden="true" tabindex="-1"></a>    word <span class="cf">for</span> word <span class="kw">in</span> alice_filtered <span class="cf">if</span> word.lower() <span class="kw">not</span> <span class="kw">in</span> english_stopwords</span>
+<span id="cb70-28"><a href="#cb70-28" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb70-29"><a href="#cb70-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-30"><a href="#cb70-30" aria-hidden="true" tabindex="-1"></a>caesar_dist <span class="op">=</span> nltk.FreqDist(caesar_filtered)</span>
+<span id="cb70-31"><a href="#cb70-31" aria-hidden="true" tabindex="-1"></a>caesar_dist.tabulate(<span class="dv">10</span>)</span>
+<span id="cb70-32"><a href="#cb70-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-33"><a href="#cb70-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question 4"</span>)</span>
+<span id="cb70-34"><a href="#cb70-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-35"><a href="#cb70-35" aria-hidden="true" tabindex="-1"></a>alice <span class="op">=</span> gutenberg.words(<span class="st">"carroll-alice.txt"</span>)</span>
+<span id="cb70-36"><a href="#cb70-36" aria-hidden="true" tabindex="-1"></a>alice_text <span class="op">=</span> Text(alice)</span>
+<span id="cb70-37"><a href="#cb70-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb70-38"><a href="#cb70-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Words similar to 'rabbit' in Alice in Wonderland are:</span><span class="ch">\n</span><span class="st">"</span>,</span>
+<span id="cb70-39"><a href="#cb70-39" aria-hidden="true" tabindex="-1"></a>    alice_text.similar(<span class="st">"rabbit"</span>),</span>
+<span id="cb70-40"><a href="#cb70-40" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Question 2
+Alice appears 396 times in Alice in Wonderland by Lewis Carroll
+Question 3
+ Caesar  Brutus     Bru    haue   shall   Cassi    thou Cassius  Antony    know 
+    189     161     153     128     107     107     100      85      75      66 
+Question 4
+king duchess caterpillar queen hatter dormouse gryphon cat mouse other
+game jury well way question hall door table key pool
+Words similar to 'rabbit' in Alice in Wonderland are:
+ None</code></pre>
+</div>
+</div>
+<div id="4383c8ef" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> gutenberg, names</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>male_names <span class="op">=</span> names.words(<span class="st">"male.txt"</span>)</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>female_names <span class="op">=</span> names.words(<span class="st">"female.txt"</span>)</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>hamlet_words <span class="op">=</span> gutenberg.words(<span class="st">"shakespeare-hamlet.txt"</span>)</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>hamlet_words_filtered <span class="op">=</span> [</span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>    name</span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> word <span class="kw">in</span> hamlet_words</span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (name <span class="op">:=</span> word.capitalize()) <span class="kw">in</span> male_names <span class="kw">or</span> name <span class="kw">in</span> female_names</span>
+<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a>hamlet_name_dist <span class="op">=</span> nltk.FreqDist(hamlet_words_filtered)</span>
+<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a>hamlet_name_dist.most_common(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>[('Ham', 337),
+ ('King', 172),
+ ('Will', 149),
+ ('Hamlet', 100),
+ ('May', 65),
+ ('Say', 52),
+ ('Doe', 51),
+ ('See', 48),
+ ('Horatio', 40),
+ ('Clo', 29)]</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../2-data-science-libraries/Chapter_11/Chapter_11.html" class="pagination-link" aria-label="Chapter 11: Machine Learning Libraries">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Chapter 11: Machine Learning Libraries</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../3-intermediate-python/Chapter_13/Chapter_13.html" class="pagination-link" aria-label="Chapter 13: Functional Programming">
+        <span class="nav-page-text">Chapter 13: Functional Programming</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
