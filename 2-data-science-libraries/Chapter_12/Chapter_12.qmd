@@ -143,7 +143,7 @@ caesar_dist.most_common(15)
 :::{.callout-note}
 **List Comprehension**
 
-The syntax we've used above is called a list comprehension, and is designed for quickly creating a list based on the elements of an existing collection. You could achieve the same with a simple `for` loop as described in [Chapter 5](../../1_learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.qmd), but the list comprehension syntax is more compact. List comprehensions will be discussed in more detail later.
+The syntax we've used above is called a list comprehension, and is designed for quickly creating a list based on the elements of an existing collection. You could achieve the same with a simple `for` loop as described in [Chapter 5](../../1-learning-python-in-a-notebook-environment/Chapter_05/Chapter_05.qmd), but the list comprehension syntax is more compact. List comprehensions will be discussed in more detail later.
 :::
 
 - Another common filtering step is remove common words that don't provide much contextual understanding
