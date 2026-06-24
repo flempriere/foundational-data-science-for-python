@@ -568,7 +568,7 @@ print(f"g_ten prints as {g_ten}")
     l_ten is a <class 'list'>
     l_ten is prints as: [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
     g_ten is a <class 'generator'>
-    g_ten prints as <generator object <genexpr> at 0x7f0fbc2524d0>
+    g_ten prints as <generator object <genexpr> at 0x7fade49824d0>
 
 - A generator does not provide it’s contents
 - To get values from a generator, you can call `next`
