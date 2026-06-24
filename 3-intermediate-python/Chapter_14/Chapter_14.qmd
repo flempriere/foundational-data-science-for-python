@@ -303,7 +303,7 @@ low_time = CompareMe(100, 25)
 print("high_score > mid_score:", high_score > mid_score)
 print("high_score >= mid_score:", high_score >= mid_score)
 print("high_score == low_time:", high_score == low_time)
-print("mid_score == mid_score_l:", mid_score == mid_score_l)
+print("mid_score == mid_score_1:", mid_score == mid_score_1)
 print("low_time == high_score:", low_time == high_score)
 ```
 
