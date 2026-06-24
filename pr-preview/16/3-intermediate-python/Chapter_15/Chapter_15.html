@@ -389,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Python provides the list <code>sort</code> method for sorting a <code>list</code> in-place</li>
 <li>For example we might sort a list of whales</li>
 </ul>
-<div id="0ad2c3ba" class="cell" data-execution_count="1">
+<div id="c4147338" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>whales <span class="op">=</span> [<span class="st">"Blue"</span>, <span class="st">"Killer"</span>, <span class="st">"Sperm"</span>, <span class="st">"Humpback"</span>, <span class="st">"Beluga"</span>, <span class="st">"Bowhead"</span>]</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>whales.sort()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Whales:"</span>, whales)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -401,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Since <code>sort</code> performs the sort in-place it does not return a value (Technically the return is <code>None</code>)</li>
 <li>If you want a sorted <em>copy</em> then you can use the <code>sorted</code> built-in function</li>
 </ul>
-<div id="bcc2bf95" class="cell" data-execution_count="2">
+<div id="51d2c0c5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>whales <span class="op">=</span> [<span class="st">"Blue"</span>, <span class="st">"Killer"</span>, <span class="st">"Sperm"</span>, <span class="st">"Humpback"</span>, <span class="st">"Beluga"</span>, <span class="st">"Bowhead"</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sorted_whales <span class="op">=</span> <span class="bu">sorted</span>(whales)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -419,7 +419,7 @@ sorted_whales: ['Beluga', 'Blue', 'Bowhead', 'Humpback', 'Killer', 'Sperm']</cod
 </ul></li>
 <li>To sort in <em>descending order</em> both accept a <code>reverse</code> parameter</li>
 </ul>
-<div id="05fcda23" class="cell" data-execution_count="3">
+<div id="e139a0af" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>whales <span class="op">=</span> [<span class="st">"Blue"</span>, <span class="st">"Killer"</span>, <span class="st">"Sperm"</span>, <span class="st">"Humpback"</span>, <span class="st">"Beluga"</span>, <span class="st">"Bowhead"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>whales.sort(reverse<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"whales:"</span>, whales)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -434,7 +434,7 @@ sorted_whales: ['Beluga', 'Blue', 'Bowhead', 'Humpback', 'Killer', 'Sperm']</cod
 </ul></li>
 <li>For example, we might want to sort strings based on their length rather than alphabetically</li>
 </ul>
-<div id="817aa517" class="cell" data-execution_count="4">
+<div id="6a4982fd" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>whales <span class="op">=</span> [<span class="st">"Blue"</span>, <span class="st">"Killer"</span>, <span class="st">"Sperm"</span>, <span class="st">"Humpback"</span>, <span class="st">"Beluga"</span>, <span class="st">"Bowhead"</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>whales.sort(key<span class="op">=</span><span class="kw">lambda</span> x: <span class="bu">len</span>(x))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"whales:"</span>, whales)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -448,7 +448,7 @@ sorted_whales: ['Beluga', 'Blue', 'Bowhead', 'Humpback', 'Killer', 'Sperm']</cod
 <li>Relies on the fact that tuples are ordered by scanning through their values</li>
 </ul></li>
 </ul>
-<div id="10f96612" class="cell" data-execution_count="5">
+<div id="805f0db1" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>whales <span class="op">=</span> [<span class="st">"Blue"</span>, <span class="st">"Killer"</span>, <span class="st">"Sperm"</span>, <span class="st">"Humpback"</span>, <span class="st">"Beluga"</span>, <span class="st">"Bowhead"</span>]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>whales.sort(key<span class="op">=</span><span class="kw">lambda</span> x: (<span class="bu">len</span>(x), x))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"whales:"</span>, whales)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -464,7 +464,7 @@ sorted_whales: ['Beluga', 'Blue', 'Bowhead', 'Humpback', 'Killer', 'Sperm']</cod
 <li>You can do this by defining the appropriate comparisons to define a natural ordering</li>
 <li>Or use the <code>key</code> parameter</li>
 </ul>
-<div id="2b4b3a83" class="cell" data-execution_count="6">
+<div id="c401c6cb" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Food:</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, rating, name):</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rating <span class="op">=</span> rating</span>
@@ -498,7 +498,7 @@ Sorted foods: [Food(1, Olive), Food(2, Tomato), Food(3, Banana), Food(9, Orange)
 <li>We can see by default the insertion order of keys is preserved</li>
 </ul></li>
 </ul>
-<div id="a63232f2" class="cell" data-execution_count="7">
+<div id="53b60ab3" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> {</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Blue"</span>: <span class="dv">300_000</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Killer"</span>: <span class="dv">12_000</span>,</span>
@@ -542,7 +542,7 @@ Sperm - 100000</code></pre>
 <li>Accepts a list of column names to be sorted</li>
 </ul></li>
 </ul>
-<div id="9fbf93f5" class="cell" data-execution_count="8">
+<div id="484055cb" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
@@ -619,7 +619,7 @@ Sperm - 100000</code></pre>
 </ul></li>
 <li>For example we can open the example file as directed below,</li>
 </ul>
-<div id="25d43a54" class="cell" data-execution_count="9">
+<div id="96e54f05" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>read_me <span class="op">=</span> <span class="bu">open</span>(<span class="st">"Examples/hello.txt"</span>, <span class="st">"r"</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(read_me)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -655,7 +655,7 @@ Second line: Another line
 <li>The general syntax is <code>with &lt;resource&gt; as &lt;variable-name&gt;:</code></li>
 </ul></li>
 </ul>
-<div id="a068c3e1" class="cell" data-execution_count="10">
+<div id="0a005304" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"Examples/hello.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> read_me:</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> read_me.readlines()</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -678,7 +678,7 @@ Second line: Another line
 </ul></li>
 <li>For example, writing a new file,</li>
 </ul>
-<div id="7e61e44a" class="cell" data-execution_count="11">
+<div id="8ea75aca" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"My intriguing story"</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"Examples/output.txt"</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -715,7 +715,7 @@ Caution
 <li>JSON, short for JavaScript Object Notation is a common data interchange format</li>
 <li>Python’s standard library provides the built-in <code>json</code> library for decoding and encoding JSON</li>
 </ul>
-<div id="b802b214" class="cell" data-execution_count="12">
+<div id="b6099047" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"Examples/serialised.json"</span>, <span class="st">"r"</span>) <span class="im">as</span> open_file:</span>
@@ -748,7 +748,7 @@ Caution
 </ul></li>
 </ul></li>
 </ul>
-<div id="0b671260" class="cell" data-execution_count="13">
+<div id="c053dab1" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime(<span class="dv">2022</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">13</span>, <span class="dv">59</span>, <span class="dv">33</span>, <span class="dv">10_000</span>)</span>
@@ -797,7 +797,7 @@ dt.microsecond: 10000</code></pre>
 <li>A two-digit day <code>%d</code></li>
 </ul></li>
 </ul>
-<div id="57fafd9e" class="cell" data-execution_count="14">
+<div id="e3fe4bf0" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a datetime object from a four-digit year, two-digit month, two-digit day</span></span>
@@ -828,7 +828,7 @@ dt.microsecond: 10000</code></pre>
 <ul>
 <li>If we want to calculate a new <code>datetime</code> object relative to another time we have to use a <code>datetime.timedelta</code> object</li>
 </ul>
-<div id="5c4f0d95" class="cell" data-execution_count="15">
+<div id="13c733ae" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime, timedelta</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime(<span class="dv">2022</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">13</span>, <span class="dv">59</span>, <span class="dv">33</span>, <span class="dv">10_000</span>)</span>
@@ -845,7 +845,7 @@ dt.microsecond: 10000</code></pre>
 <li>Timezones use specially formatted strings to convert a place to the appropriate time zone</li>
 </ul></li>
 </ul>
-<div id="7e34188c" class="cell" data-execution_count="16">
+<div id="be1e8d97" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> zoneinfo <span class="im">import</span> ZoneInfo</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -858,7 +858,7 @@ dt.microsecond: 10000</code></pre>
 <ul>
 <li>Lastly, if you only need date’s rather than time’s you can use the <code>datetime.date</code> object</li>
 </ul>
-<div id="a2a0d925" class="cell" data-execution_count="17">
+<div id="e7075cd4" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>date.today()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -881,7 +881,7 @@ dt.microsecond: 10000</code></pre>
 </ul></li>
 <li>This form of matching is most often performed with the <code>match</code> function</li>
 </ul>
-<div id="cee81e45" class="cell" data-execution_count="18">
+<div id="7ed3e916" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -905,7 +905,7 @@ dt.microsecond: 10000</code></pre>
 <li>To match <em>any</em> substring in the text matching the search pattern we can use <code>re.search</code> instead</li>
 </ul></li>
 </ul>
-<div id="1937c44c" class="cell" data-execution_count="19">
+<div id="1704058a" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -967,7 +967,7 @@ On closer inspection, here is Peleg: &lt;re.Match object; span=(22, 27), match='
 </ul></li>
 </ul></li>
 </ul>
-<div id="4ff27689" class="cell" data-execution_count="20">
+<div id="64cf0a49" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -1011,7 +1011,7 @@ On closer inspection, here is Peleg: &lt;re.Match object; span=(22, 27), match='
 <li><p>Word characters match any character commonly used in words, numeric digits and underscores</p></li>
 <li><p>For example, searching for the first occurrence of a digit surrounded by word characters</p></li>
 </ul>
-<div id="5d437650" class="cell" data-execution_count="21">
+<div id="5694c760" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>re.search(<span class="vs">r"</span><span class="dv">\w\d\w</span><span class="vs">"</span>, <span class="st">"His panic over Y2K was overwhelming"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>&lt;re.Match object; span=(15, 18), match='Y2K'&gt;</code></pre>
@@ -1020,7 +1020,7 @@ On closer inspection, here is Peleg: &lt;re.Match object; span=(22, 27), match='
 <ul>
 <li><code>+</code> and <code>{n}</code> syntax can be used with character classes as with the character sets</li>
 </ul>
-<div id="237ab0f3" class="cell" data-execution_count="22">
+<div id="bc137773" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -1044,7 +1044,7 @@ On closer inspection, here is Peleg: &lt;re.Match object; span=(22, 27), match='
 <li>Groups are <code>0</code>-indexed</li>
 </ul></li>
 </ul>
-<div id="faf03593" class="cell" data-execution_count="23">
+<div id="3c32c281" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -1073,7 +1073,7 @@ Group 3 is com</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">"(?P&lt;GROUP_NAME&gt;PATTERN)"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Can then match on the group names</p></li>
 </ul>
-<div id="65d2cc89" class="cell" data-execution_count="24">
+<div id="21477d29" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -1115,7 +1115,7 @@ Top Level Domain: com</code></pre>
 <li>Each match is returned as a string</li>
 </ul></li>
 </ul>
-<div id="c078723c" class="cell" data-execution_count="25">
+<div id="14863deb" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -1136,7 +1136,7 @@ Top Level Domain: com</code></pre>
 <ul>
 <li>If matching on groups, the each match is returned as a <code>tuple</code> of strings, corresponding to each group</li>
 </ul>
-<div id="eee60331" class="cell" data-execution_count="26">
+<div id="5872d325" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -1163,7 +1163,7 @@ Top Level Domain: com</code></pre>
 <li>Returns an iterator over the matches</li>
 </ul></li>
 </ul>
-<div id="b4da04cc" class="cell" data-execution_count="27">
+<div id="0737b133" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -1197,7 +1197,7 @@ The first match, ahab@pequad.com is processed without touching the rest of the t
 <li>Source text</li>
 </ol></li>
 </ul>
-<div id="1d7cd4b7" class="cell" data-execution_count="28">
+<div id="8ccffefa" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>re.sub(<span class="vs">r"</span><span class="dv">\d</span><span class="vs">"</span>, <span class="st">"#"</span>, <span class="st">"Your secret pin is 12345"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1211,7 +1211,7 @@ The first match, ahab@pequad.com is processed without touching the rest of the t
 <li>Named groups can be invoked as part of a substitution pattern via the <code>\g&lt;GROUP_NAME&gt;</code> pattern</li>
 <li>For example we could reverse the email addresses in <code>captains</code> string</li>
 </ul>
-<div id="2267b497" class="cell" data-execution_count="29">
+<div id="8c352b61" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -1244,7 +1244,7 @@ Pollard: me.essex.pollard</code></pre>
 <li>Done via the <code>re.compile</code> function</li>
 </ul></li>
 </ul>
-<div id="010c5d13" class="cell" data-execution_count="30">
+<div id="f567318c" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -1262,7 +1262,7 @@ Pollard: me.essex.pollard</code></pre>
 <ul>
 <li>The relevant <code>re</code> functions can then be called via the equivalent methods on the compiled regex object</li>
 </ul>
-<div id="2245e188" class="cell" data-execution_count="31">
+<div id="f7853ad7" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>captains <span class="op">=</span> <span class="st">"""Ahab: ahab@pequad.com</span></span>
@@ -1331,7 +1331,7 @@ Ahoy pollard!</code></pre>
 <h2 class="anchored" data-anchor-id="questions-and-answers">Questions and Answers</h2>
 <ol type="1">
 <li><p>What is the final value of <code>sorted_names</code> in the following example?</p>
-<div id="d9e5ef9d" class="cell" data-execution_count="32">
+<div id="b140b272" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a> names <span class="op">=</span> [<span class="st">"Rolly"</span>, <span class="st">"Polly"</span>, <span class="st">"Molly"</span>]</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a> sorted_names <span class="op">=</span> names.sort()</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1345,7 +1345,7 @@ Ahoy pollard!</code></pre>
 <li><code>sorted_names</code> is thus assigned <code>None</code></li>
 </ul></li>
 <li><p>How would you sort the list <code>nums = [0, 4, 3, 2, 5]</code> in descending order?</p>
-<div id="9659fbec" class="cell" data-execution_count="33">
+<div id="e35e9026" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a> nums <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>]</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a> sort(nums, reverse<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1374,7 +1374,7 @@ Ahoy pollard!</code></pre>
 <li>Under the hood this handles a lot details such as ensuring writes to a file are flushed, and that locks on the file are released etc.</li>
 </ul></li>
 <li><p>How would you create a <code>datetime</code> object with the following variables?</p>
-<div id="9194104b" class="cell" data-execution_count="34">
+<div id="800616de" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a> <span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a> year <span class="op">=</span> <span class="dv">2022</span></span>
