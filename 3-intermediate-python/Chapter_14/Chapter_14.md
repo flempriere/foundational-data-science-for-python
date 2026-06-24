@@ -377,7 +377,7 @@ low_time = CompareMe(100, 25)
 print("high_score > mid_score:", high_score > mid_score)
 print("high_score >= mid_score:", high_score >= mid_score)
 print("high_score == low_time:", high_score == low_time)
-print("mid_score == mid_score_l:", mid_score == mid_score_l)
+print("mid_score == mid_score_1:", mid_score == mid_score_1)
 print("low_time == high_score:", low_time == high_score)
 ```
 
@@ -387,19 +387,10 @@ print("low_time == high_score:", low_time == high_score)
     high_score >= mid_score: True
     Called __eq__
     high_score == low_time: False
-
-    NameError: name 'mid_score_l' is not defined
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-    Cell In[11], line 42
-         38
-         39 print("high_score > mid_score:", high_score > mid_score)
-         40 print("high_score >= mid_score:", high_score >= mid_score)
-         41 print("high_score == low_time:", high_score == low_time)
-    ---> 42 print("mid_score == mid_score_l:", mid_score == mid_score_l)
-         43 print("low_time == high_score:", low_time == high_score)
-
-    NameError: name 'mid_score_l' is not defined
+    Called __eq__
+    mid_score == mid_score_1: True
+    Called __eq__
+    low_time == high_score: False
 
 - Comparisons don’t have to be defined purely against their own type
   - But in reality they often should be
